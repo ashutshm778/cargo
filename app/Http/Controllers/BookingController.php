@@ -142,7 +142,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        return view('backend.booking.edit', compact('booking'));
     }
 
     /**
