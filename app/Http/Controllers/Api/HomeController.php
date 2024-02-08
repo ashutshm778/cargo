@@ -54,4 +54,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function get_booking(Request $request){
+        $booking = Booking::where('bill_no',$request->scanner_data)->get();
+
+        return response()->json([
+            'booking_data' => $booking,
+            'success' => true,
+            'status' => 200
+        ]);
+    }
+
 }
