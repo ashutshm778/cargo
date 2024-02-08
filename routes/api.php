@@ -29,5 +29,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('booking_log', [HomeController::class, 'booking_log']);
 
     Route::get('get_booking_data', [HomeController::class, 'get_booking']);
+    Route::post('booking_scan_update', [HomeController::class, 'booking_scan_update']);
 
 });

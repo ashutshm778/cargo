@@ -64,4 +64,9 @@ class HomeController extends Controller
         ]);
     }
 
+    public function booking_scan_update(Request $request){
+        dd($request->all());
+    }
+
+
 }
