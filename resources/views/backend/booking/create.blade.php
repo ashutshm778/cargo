@@ -127,6 +127,11 @@
                                 <input type="text" class="form-control" id="value" name="value" placeholder="Value"
                                     required>
                             </div>
+                            <div class="col-md-8">
+                                <label for="value" class="form-label">Description<span>*</span></label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Description"
+                                    required>
+                            </div>
                             <div class="col-12">
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Submit</button>

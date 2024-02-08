@@ -116,6 +116,7 @@ class BookingController extends Controller
         $booking->tax=$request->tax;
         $booking->status='shipped';
         $booking->value=$request->value;
+        $booking->description=$request->description;
         $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
         $booking->save();
 
@@ -186,6 +187,7 @@ class BookingController extends Controller
         $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
         $booking->value=$request->value;
+        $booking->description=$request->description;
         $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
         $booking->save();
 
