@@ -62,9 +62,6 @@ class BookingController extends Controller
 
 
         $arrData = $arrData->get();
-        foreach($arrData as $data){
-            $data->bar_code=DNS1D::getBarcodeHTML($data->tracking_code, 'PHARMA');
-        }
 
         $response = array(
             "draw" => intval($draw),
