@@ -10,7 +10,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Edit Booking  {!! DNS1D::getBarcodeHTML(''.$booking->booking_no, 'PHARMA',3,33) !!}</h6><br>
+                            <h6 class="mb-0">Edit Booking  </h6><br>
                         </div>
                     </div>
                 </div>

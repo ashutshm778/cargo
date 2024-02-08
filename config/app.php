@@ -197,7 +197,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Craftsys\Msg91\Msg91LaravelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Milon\Barcode\BarcodeServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
     ],
 
@@ -216,8 +216,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Msg91' => Craftsys\Msg91\Facade\Msg91::class,
-        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
-        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
     ])->toArray(),
 
 ];
