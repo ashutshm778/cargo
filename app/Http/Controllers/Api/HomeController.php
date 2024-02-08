@@ -66,6 +66,69 @@ class HomeController extends Controller
 
     public function booking_scan_update(Request $request){
         dd($request->all());
+
+        $booking=Booking::find($request->branch_id);
+
+
+        if($booking->status=='dispatched'){
+            if(empty(BookingLog::where('branch_id',Auth::guard('api')->user()->branch_id)->where('tracking_code',$booking->tracking_code)->where('status','arrived')->first()->id)){
+                $booking_log=new BookingLog;
+                $booking_log->booking_id=$booking->id;
+                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
+                $booking_log->tracking_code=$booking->tracking_code;
+                $booking_log->user_id=Auth::guard('api')->user()->id;
+                $booking_log->source='app';
+                $booking_log->action='Package Arrived At';
+                $booking_log->status='arrived';
+                $booking_log->description=$request->description;
+                $booking_log->save();
+            }
+            if(empty(BookingLog::where('branch_id',Auth::guard('api')->user()->branch_id)->where('tracking_code',$booking->tracking_code)->where('status','dispatched')->first()->id)){
+                $booking_log=new BookingLog;
+                $booking_log->booking_id=$booking->id;
+                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
+                $booking_log->tracking_code=$booking->tracking_code;
+                $booking_log->user_id=Auth::guard('api')->user()->id;
+                $booking_log->source='app';
+                $booking_log->action='Package Dispatched From';
+                $booking_log->status='dispatched';
+                $booking_log->description=$request->description;
+                $booking_log->save();
+            }
+            return response()->json([
+                'message' => 'Data Updated Successfully',
+                'success' => true,
+                'status' => 200
+            ]);
+        }
+        if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
+
+                $booking->status='dispatched';
+                $booking->save();
+
+                $booking_log=new BookingLog;
+                $booking_log->booking_id=$booking->id;
+                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
+                $booking_log->tracking_code=$booking->tracking_code;
+                $booking_log->user_id=Auth::guard('api')->user()->id;
+                $booking_log->source='app';
+                $booking_log->action='Package Dispatched From';
+                $booking_log->status='dispatched';
+                $booking_log->description=$request->description;
+                $booking_log->save();
+
+                return response()->json([
+                    'message' => 'Data Updated Successfully',
+                    'success' => true,
+                    'status' => 200
+                ]);
+
+        }
+        return response()->json([
+            'message' => 'Package Is Not Dispatched By Origin',
+            'success' => true,
+            'status' => 200
+        ]);
     }
 
 

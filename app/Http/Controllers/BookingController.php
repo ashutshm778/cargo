@@ -115,7 +115,7 @@ class BookingController extends Controller
         $booking->other_charges=$request->other_charges;
         $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
-        $booking->status='Order Created';
+        $booking->status='order_created';
         $booking->value=$request->value;
         $booking->description=$request->description;
         $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
