@@ -27,7 +27,7 @@ public function login(Request $request){
         } else {
 
             $credentials = request(['email', 'password']);
-            if (!Auth::attempt($credentials)){
+            if (!Auth::guard('admin')->attempt($credentials)){
                 $valid->getMessageBag()->add('password', 'Password wrong');
                 return response()->json(['error'=>$valid->errors(), 'status' =>'401'],401);
             }
