@@ -15,5 +15,5 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Route::get('/', [HomeController::class,'home'])->name('home');
-Route::get('/', [AdminController::class,'adminLogin'])->name('admin_login');
+Route::get('/', [HomeController::class,'home'])->name('home');
+
