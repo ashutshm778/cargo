@@ -19,6 +19,7 @@
                         <form class="row g-4" method="post" action="{{ route('booking.update',$booking->id) }}">
                             @csrf
                             @method('PUT')
+                            {!! DNS1D::getBarcodeHTML($booking->tracking_code, 'PHARMA') !!}
                             <div class="col-md-4">
                                 <label for="bill_no" class="form-label">Bill No<span>*</span></label>
                                 <input type="text" class="form-control" id="bill_no" name="bill_no" placeholder="Bill No" value="{{$booking->bill_no}}"
