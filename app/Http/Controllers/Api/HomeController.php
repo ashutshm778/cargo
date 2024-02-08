@@ -32,7 +32,7 @@ public function login(Request $request){
                 $valid->getMessageBag()->add('password', 'Password wrong');
                 return response()->json(['error'=>$valid->errors(), 'status' =>'401'],401);
             }
-            $data = Admin::where('email', $request->email)->first();
+            $data = Admin::where('email', $request->email)->first(['name','email','branch_id']);
             $data->access_token =  $data->createToken('MyApp')->plainTextToken;
             return $data;
         }
