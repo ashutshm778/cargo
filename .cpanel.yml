@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/techupgenial/public_html/
+    - export DEPLOYPATH=/home/cargop/public_html/
     - /bin/cp -R * $DEPLOYPATH
 
