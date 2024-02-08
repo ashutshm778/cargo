@@ -20,8 +20,6 @@ class HomeController extends Controller
 
     public function login(Request $request)
     {
-
-
         $valid = Validator::make($request->all(), [
             'email' => 'required|exists:admins',
             'password' => 'required',

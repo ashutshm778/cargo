@@ -16,6 +16,16 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
+        if ($request->expectsJson() && Auth::guard('admin')->check() ) {
+
+            $response = [
+            'status' => 401,
+            'message' => 'You are Not Login',
+             ];
+
+            return response()->json($response, 401);
+
+          }else{
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }

@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  Route::post('login', [HomeController::class, 'login']);
 
 
- Route::middleware('auth:sanctum','admin')->group(function () {
+ Route::middleware('admin')->group(function () {
 
     Route::get('home', [HomeController::class, 'home']);
 
