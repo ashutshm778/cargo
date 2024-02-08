@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use Milon\Barcode\DNS1D;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +62,9 @@ class BookingController extends Controller
 
 
         $arrData = $arrData->get();
+        foreach($arrData as $data){
+            $data->bar_code=DNS1D::getBarcodeHTML($data->tracking_code, 'PHARMA');
+        }
 
         $response = array(
             "draw" => intval($draw),
@@ -114,7 +118,7 @@ class BookingController extends Controller
         $booking->other_charges=$request->other_charges;
         $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
-        $booking->status='shipped';
+        $booking->status='Order Created';
         $booking->value=$request->value;
         $booking->description=$request->description;
         $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
@@ -126,8 +130,8 @@ class BookingController extends Controller
         $booking_log->tracking_code=$booking->tracking_code;
         $booking_log->user_id=$booking->added_by;
         $booking_log->source='web';
-        $booking_log->action='created';
-        $booking_log->status='sent_for_delivery';
+        $booking_log->action='Order Created';
+        $booking_log->status='order_created';
         $booking_log->description=$booking->description;
         $booking_log->save();
 
