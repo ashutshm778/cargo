@@ -28,12 +28,6 @@ class HomeController extends Controller
             return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
         } else {
 
-            $credentials = request(['email', 'password']);
-            if (!Auth::guard('admin')->attempt($credentials)) {
-                $valid->getMessageBag()->add('password', 'Password wrong');
-                return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
-            }
-            Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], !empty($request->remember) ? true : false);
             $data = Admin::where('email', $request->email)->first();
             $data->access_token =  $data->createToken('MyApp')->plainTextToken;
             return $data;

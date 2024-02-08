@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'vendors',
         ],
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -79,7 +83,7 @@ return [
         'vendors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Vendor::class,
-        ]
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
