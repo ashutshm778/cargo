@@ -43,7 +43,7 @@ class HomeController extends Controller
     }
 
     public function home(){
-        return Auth::guard('admin')->user();
+        dd(Auth::guard('admin')->user());
         $booking_log = BookingLog::where('user_id',Auth::guard('admin')->user()->id)->get();
 
         return response()->json([
