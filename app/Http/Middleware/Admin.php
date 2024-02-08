@@ -31,4 +31,5 @@ class Admin
         }
         return redirect()->route('admin_login');
     }
+    }
 }
