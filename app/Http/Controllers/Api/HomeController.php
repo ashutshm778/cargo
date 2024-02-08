@@ -44,5 +44,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function booking_log(){
+        $booking_log = BookingLog::where('user_id',Auth::guard('api')->user()->id)->get();
+
+        return response()->json([
+            'booking_log' => $booking_log,
+            'success' => true,
+            'status' => 200
+        ]);
+    }
 
 }

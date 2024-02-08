@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
  Route::middleware('auth:api')->group(function () {
 
     Route::get('home', [HomeController::class, 'home']);
+    Route::get('booking_log', [HomeController::class, 'booking_log']);
 
 });
