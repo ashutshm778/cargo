@@ -35,6 +35,7 @@ class HomeController extends Controller
                 $valid->getMessageBag()->add('password', 'Password wrong');
                 return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
             }
+            Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], !empty($request->remember) ? true : false);
             $data = Admin::where('email', $request->email)->first();
             $data->access_token =  $data->createToken('MyApp')->plainTextToken;
             return $data;
@@ -42,6 +43,7 @@ class HomeController extends Controller
     }
 
     public function home(){
+        return Auth::guard('admin')->user();
         $booking_log = BookingLog::where('user_id',Auth::guard('admin')->user()->id)->get();
 
         return response()->json([
