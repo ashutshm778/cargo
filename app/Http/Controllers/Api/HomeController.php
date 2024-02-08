@@ -36,6 +36,6 @@ public function login(Request $request){
             return $data;
         }
 
-}
+  }
 
 }
