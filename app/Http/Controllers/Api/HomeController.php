@@ -21,6 +21,7 @@ public function login(Request $request){
 
         $valid = Validator::make($request->all(), [
             'email' => 'required|exists:admins',
+            'password' => 'required',
         ]);
         if ($valid->fails()) {
             return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
