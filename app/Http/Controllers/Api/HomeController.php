@@ -133,12 +133,42 @@ class HomeController extends Controller
 
     public function getUserProfile(Request $request)
     {
-        $user_data = Admin::where('id', Auth::user()->id)->first(['name', 'phone', 'email']);
+        $user_data = Admin::where('id', Auth::guard('api')->user()->id)->first(['name', 'phone', 'email']);
 
         return response()->json([
             'user_data' => $user_data,
             'status' => '200'
         ], 200);
+    }
+
+    public function updateUserProfile(Request $request)
+    {
+
+        $valid = Validator::make($request->all(), [
+            'name' => 'required|min:3|max:50',
+            'email' => 'required|unique:admins,email,' .  Auth::guard('api')->user()->id
+        ]);
+        if ($valid->fails()) {
+            return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
+        } else {
+            if ($request->hasFile('photo')) {
+                $image = $request->file('photo');
+                $name = rand() . time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/public/frontend/user_profile');
+                $image->move($destinationPath, $name);
+            }
+
+            Admin::where('id',Auth::guard('api')->user()->id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+            ]);
+
+            return response()->json([
+                'message' => 'Profile Updated Successfully',
+                'status' => '200'
+            ], 200);
+        }
     }
 
 }
