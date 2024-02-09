@@ -10,7 +10,7 @@
                         <div class="section-title mb-0">
                             <h2 class="page-title">ABOUT US</h2>
                             <ul class="page-list">
-                                <li><a href="home.html">Home</a></li>
+                                <li><a href="#">Home</a></li>
                                 <li>About Us</li>
                             </ul>
                         </div>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-wrap">
-                                    <a class="btn btn-base" href="about.html">ABOUT MORE</a>
+                                    <a class="btn btn-base" href="#">ABOUT MORE</a>
                                     <div class="author-wrap">
                                         <div class="thumb"><img src="{{ asset('frontend/assets/img/about/4.png')}}" alt="img"></div>
                                         <div class="details">
@@ -242,7 +242,7 @@
                                 <h3>+19524357106</h3>
                             </div>
                         </div>
-                        <a class="btn btn-white" href="contact.html">CONTACT US</a>
+                        <a class="btn btn-white" href="#">CONTACT US</a>
                     </div>
                 </div>
             </div>

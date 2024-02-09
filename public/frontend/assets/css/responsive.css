@@ -330,6 +330,9 @@
 	.footer-area .footer-top .single-footer-top .details p {
 		font-size: 13px;
 	}
+    .widget_subscribe .single-subscribe-inner {
+        height: 57px;
+    }
 	.widget_subscribe .single-subscribe-inner input {
 		height: 55px;
 	}
@@ -636,10 +639,10 @@
 		margin-top: 30px;
 	}
 	.breadcrumb-area {
-		padding: 196px 0 110px;
+		padding: 120px 0 30px;
 	}
 	.breadcrumb-area .page-title {
-		font-size: 52px;
+		font-size: 42px;
 		line-height: initial;
 	}
 }
@@ -688,7 +691,7 @@
 		margin: 0 0 10px 0;
 	}
 	.breadcrumb-area .page-title {
-		font-size: 48px;
+		font-size: 32px;
 	}
 }
 @media all and (max-width: 375px) {
@@ -740,7 +743,7 @@
 	.about-inner-wrap .btn-wrap .video-wrap {
 		margin-left: 0px;
 		margin-top: 30px;
-	} 
+	}
 	.request-quote-inner .nav-pills .nav-item {
 		width: 100%;
 	}

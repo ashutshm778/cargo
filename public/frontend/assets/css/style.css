@@ -551,8 +551,8 @@ ul {
     ## Button
 ---------------------------------------*/
 .btn {
-  height: 60px;
-  line-height: 58px;
+  height: 52px;
+  line-height: 52px;
   padding: 0 30px;
   border-radius: 0;
   overflow: hidden;
@@ -600,7 +600,7 @@ ul {
 .btn-base {
   color: #fff;
   background: var(--main-color);
-  line-height: 60px;
+  line-height: 52px;
 }
 .btn-base:active, .btn-base:focus, .btn-base:hover {
   color: #fff;
@@ -885,7 +885,7 @@ ul {
   }
 }
 /*-----------------------------------------
-    ## video 
+    ## video
 ------------------------------------------*/
 .video-thumb-wrap {
   position: relative;
@@ -934,10 +934,10 @@ ul {
 }
 
 /*-----------------------------------------
-    ## Breadcumb 
+    ## Breadcumb
 ------------------------------------------*/
 .breadcrumb-area {
-  padding:190px 0 100px;
+  padding:175px 0 40px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -1221,7 +1221,7 @@ ul {
 }
 
 .pd-bottom-100 {
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 .pd-bottom-110 {
@@ -1449,7 +1449,7 @@ ul {
 }
 
 /*----------------------------------------------
-    # Nav bar 
+    # Nav bar
 ----------------------------------------------*/
 .navbar-top {
   background: transparent;
@@ -1562,6 +1562,7 @@ ul {
 }
 .navbar-area .nav-container .navbar-collapse .navbar-nav li + li {
   margin-left: 15px;
+  padding: 6px;
 }
 .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children {
   position: relative;
@@ -1572,7 +1573,7 @@ ul {
   content: "";
   position: absolute;
   right: -1px;
-  top: 26px;
+  top: 32px;
   height: 2px;
   width: 10px;
   background: var(--heading-color);
@@ -1791,7 +1792,7 @@ ul {
 }
 .sticky-active .nav-container .navbar-collapse .navbar-nav {
   padding-left: 0;
-  text-align: end;
+  text-align: center;
 }
 .sticky-active.navbar-area-2:after {
   display: none;
@@ -1861,6 +1862,7 @@ ul {
 .nav-right-part .btn {
   color: #fff;
   padding: 0 20px;
+  border-radius: 30px;
 }
 .nav-right-part a {
   margin-left: 30px;
@@ -5128,11 +5130,12 @@ ul {
   margin-bottom: 23px;
 }
 .widget_subscribe .single-subscribe-inner {
-  height: 60px;
+  height: 54px;
   line-height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border: 1px solid #ff3625;
 }
 .widget_subscribe .single-subscribe-inner input {
   height: 100%;
@@ -5749,4 +5752,12 @@ blockquote .icon {
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
+}
+.user-section .user-all-form .contact-form {
+    padding: 35px 35px!important;
+    background: #fff;
+    box-shadow: 0px 0px 0px 5px rgb(255 255 255 / 40%), 0px 4px 20px rgb(0 0 0 / 33%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }

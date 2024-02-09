@@ -106,7 +106,7 @@
             <div class="row">
                 <div class="col-lg-6 text-lg-start text-center">
                     <div class="copyright-area">
-                        <p>© Copyright 2022  By <a href="#">TransPro</a>, All right reserved.</p>
+                        <p>© 2024 All right reserved. Developed By <a href="#">Techup Technologies</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-lg-end text-center">

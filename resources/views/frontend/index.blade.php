@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-wrap">
-                                    <a class="btn btn-base" href="about.html">ABOUT MORE</a>
+                                    <a class="btn btn-base" href="#">ABOUT MORE</a>
                                     <div class="author-wrap">
                                         <div class="thumb"><img src="{{ asset('frontend/assets/img/about/4.png')}}" alt="img"></div>
                                         <div class="details">
@@ -173,7 +173,7 @@
                             <h5>SEA TRANSPORTATION</h5>
                             <p>Intrinsicly exploit e-business imperative with emerging human capital.</p>
                             <div class="btn-wrap">
-                                <a class="read-more-text" href="service-details.html">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
+                                <a class="read-more-text" href="#">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                             <h5>AIR TRANSPORTATION</h5>
                             <p>Intrinsicly exploit e-business imperative with emerging human capital.</p>
                             <div class="btn-wrap">
-                                <a class="read-more-text" href="service-details.html">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
+                                <a class="read-more-text" href="#">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                             <h5>WAREHOUSING</h5>
                             <p>Intrinsicly exploit e-business imperative with emerging human capital.</p>
                             <div class="btn-wrap">
-                                <a class="read-more-text" href="service-details.html">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
+                                <a class="read-more-text" href="#">READ MORE <span><i class="fa fa-arrow-right"></i></span></a>
                             </div>
                         </div>
                     </div>
@@ -332,15 +332,6 @@
                                 <div class="details">
                                     <h5>MICHEL RICHARD</h5>
                                     <p>Director & CEO</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -352,15 +343,6 @@
                                 <div class="details">
                                     <h5>ANJELINA ROSEE</h5>
                                     <p>Founder</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -372,15 +354,6 @@
                                 <div class="details">
                                     <h5>MISHEL MARSH</h5>
                                     <p>Co-Founder</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -412,7 +385,7 @@
                                 <h3>+19524357106</h3>
                             </div>
                         </div>
-                        <a class="btn btn-base" href="contact.html">CONTACT US</a>
+                        <a class="btn btn-base" href="#">CONTACT US</a>
                     </div>
                 </div>
             </div>
