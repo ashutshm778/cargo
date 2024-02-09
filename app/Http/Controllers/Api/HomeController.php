@@ -131,5 +131,14 @@ class HomeController extends Controller
         ]);
     }
 
+    public function getUserProfile(Request $request)
+    {
+        $user_data = Admin::where('id', Auth::user()->id)->first(['name', 'phone', 'email']);
+
+        return response()->json([
+            'user_data' => $user_data,
+            'status' => '200'
+        ], 200);
+    }
 
 }
