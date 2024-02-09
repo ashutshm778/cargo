@@ -133,7 +133,7 @@ class HomeController extends Controller
 
     public function getUserProfile(Request $request)
     {
-        $user_data = Admin::where('id', Auth::guard('api')->user()->id)->first(['name','email','branch_id']);
+        $user_data = Admin::where('id', Auth::guard('api')->user()->id)->with('branch')->first(['name','email','branch_id']);
 
         return response()->json([
             'user_data' => $user_data,
