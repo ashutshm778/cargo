@@ -62,9 +62,6 @@ class BookingController extends Controller
 
 
         $arrData = $arrData->get();
-        foreach($arrData as $data){
-            $data->bar_code=DNS1D::getBarcodeHTML($data->tracking_code, 'PHARMA');
-        }
 
         $response = array(
             "draw" => intval($draw),
@@ -118,7 +115,7 @@ class BookingController extends Controller
         $booking->other_charges=$request->other_charges;
         $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
-        $booking->status='Order Created';
+        $booking->status='order_created';
         $booking->value=$request->value;
         $booking->description=$request->description;
         $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
@@ -147,7 +144,10 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        return view('backend.booking.edit', compact('booking'));
+        $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+        $barcode = $generator->getBarcode($booking->bill_no, $generator::TYPE_CODE_128);
+
+        return view('backend.booking.show', compact('barcode','booking'));
     }
 
     /**
