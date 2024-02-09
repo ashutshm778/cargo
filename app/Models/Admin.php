@@ -21,10 +21,6 @@ class Admin extends Authenticatable
       'password', 'remember_token',
     ];
 
-    public function branch()
-    {
-        return $this->belongsTo(Branch::class,'id','branch_id');
-    }
 
     protected static function boot()
     {
