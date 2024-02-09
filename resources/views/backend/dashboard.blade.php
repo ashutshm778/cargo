@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Total Orders</p>
+                                    <p class="mb-0 text-secondary">Total Branch</p>
                                     <h4 class="my-1 text-info">4805</h4>
                                     <p class="mb-0 font-13">+2.5% from last week</p>
                                 </div>
@@ -41,7 +41,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Bounce Rate</p>
+                                    <p class="mb-0 text-secondary">Total Order</p>
                                     <h4 class="my-1 text-success">34.6%</h4>
                                     <p class="mb-0 font-13">-4.5% from last week</p>
                                 </div>
@@ -57,7 +57,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Total Customers</p>
+                                    <p class="mb-0 text-secondary">Total Staff</p>
                                     <h4 class="my-1 text-warning">8.4K</h4>
                                     <p class="mb-0 font-13">+8.4% from last week</p>
                                 </div>
@@ -72,6 +72,132 @@
 
             <div class="row">
                 <div class="col-12 col-lg-8 d-flex">
+                    <div class="card radius-10">
+
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Sales Overview</h6>
+                                </div>
+                                <div class="dropdown ms-auto">
+                                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
+                                        data-bs-toggle="dropdown"><i
+                                            class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="javascript:;">Action</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center ms-auto font-13 gap-2 mb-3">
+                                <span class="border px-1 rounded cursor-pointer"><i
+                                        class="bx bxs-circle me-1 text-info"></i>Downloads</span>
+                                <span class="border px-1 rounded cursor-pointer"><i
+                                        class="bx bxs-circle me-1 text-danger"></i>Earnings</span>
+                            </div>
+                            <div class="chart-container-9">
+                                <canvas id="chart55"></canvas>
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-0 row-group text-center border-top">
+                            <div class="col">
+                                <div class="p-3">
+                                    <h4 class="mb-0">$168</h4>
+                                    <small class="mb-0">Today's Sales <span> <i
+                                                class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3">
+                                    <h4 class="mb-0">$856</h4>
+                                    <small class="mb-0">This Week Sales <span> <i
+                                                class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3">
+                                    <h4 class="mb-0">$2400</h4>
+                                    <small class="mb-0">This Month Sales <span> <i
+                                                class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3">
+                                    <h4 class="mb-0">$4,562</h4>
+                                    <small class="mb-0">This Year Sales <span> <i
+                                                class="bx bx-up-arrow-alt align-middle"></i> 12.62%</span></small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 d-flex">
+                    <div class="card radius-10 w-100">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <h6 class="mb-0">Trending Products</h6>
+                                </div>
+                                <div class="dropdown ms-auto">
+                                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
+                                        data-bs-toggle="dropdown"><i
+                                            class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="javascript:;">Action</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container-2">
+                                <canvas id="chart2"></canvas>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li
+                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
+                                Jeans <span class="badge bg-success rounded-pill">25</span>
+                            </li>
+                            <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                                T-Shirts <span class="badge bg-danger rounded-pill">10</span>
+                            </li>
+                            <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                                Shoes <span class="badge bg-primary rounded-pill">65</span>
+                            </li>
+                            <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                                Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--end row-->
+
+
+
+
+            <div class="row">
+                <div class="col-12 col-lg-7 col-xl-8 d-flex">
+
                     <div class="card radius-10 w-100">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -132,95 +258,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-4 d-flex">
-                    <div class="card radius-10 w-100">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <h6 class="mb-0">Trending Products</h6>
-                                </div>
-                                <div class="dropdown ms-auto">
-                                    <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
-                                        data-bs-toggle="dropdown"><i
-                                            class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-container-2">
-                                <canvas id="chart2"></canvas>
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-                                Jeans <span class="badge bg-success rounded-pill">25</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                T-Shirts <span class="badge bg-danger rounded-pill">10</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Shoes <span class="badge bg-primary rounded-pill">65</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!--end row-->
-
-
-
-
-            <div class="row">
-                <div class="col-12 col-lg-7 col-xl-8 d-flex">
-
-                        <div class="card radius-10">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <h6 class="mb-0">Order Status</h6>
-                                    </div>
-                                    <div class="dropdown ms-auto">
-                                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-container-0">
-                                    <canvas id="chart21"></canvas>
-                                 </div>
-                            </div>
-                        </div>
 
                 </div>
 
@@ -299,10 +336,10 @@
                 </div>
                 <div class="col d-flex">
                     <div class="card radius-10 w-100">
-                        <div class="card-header bg-transparent">
+                        <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h6 class="mb-0">Orders Summary</h6>
+                                    <h6 class="mb-0">Order Status</h6>
                                 </div>
                                 <div class="dropdown ms-auto">
                                     <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
@@ -324,24 +361,10 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="chart-container-1 mt-3">
-                                <canvas id="chart4"></canvas>
+                            <div class="chart-container-0">
+                                <canvas id="chart21"></canvas>
                             </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-                                Completed <span class="badge bg-gradient-quepal rounded-pill">25</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Pending <span class="badge bg-gradient-ibiza rounded-pill">10</span>
-                            </li>
-                            <li
-                                class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Process <span class="badge bg-gradient-deepblue rounded-pill">65</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col d-flex">
@@ -606,54 +629,7 @@
 
 
 
-            // chart 4
 
-            var ctx = document.getElementById("chart4").getContext('2d');
-
-            var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-            gradientStroke1.addColorStop(0, '#ee0979');
-            gradientStroke1.addColorStop(1, '#ff6a00');
-
-            var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-            gradientStroke2.addColorStop(0, '#283c86');
-            gradientStroke2.addColorStop(1, '#39bd3c');
-
-            var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
-            gradientStroke3.addColorStop(0, '#7f00ff');
-            gradientStroke3.addColorStop(1, '#e100ff');
-
-            var myChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ["Completed", "Pending", "Process"],
-                    datasets: [{
-                        backgroundColor: [
-                            gradientStroke1,
-                            gradientStroke2,
-                            gradientStroke3
-                        ],
-
-                        hoverBackgroundColor: [
-                            gradientStroke1,
-                            gradientStroke2,
-                            gradientStroke3
-                        ],
-
-                        data: [50, 50, 50],
-                        borderWidth: [1, 1, 1]
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    cutout: 95,
-                    plugins: {
-                        legend: {
-                            display: false,
-                        }
-                    }
-
-                }
-            });
 
 
 
@@ -714,45 +690,123 @@
 
             var ctx = document.getElementById('chart21').getContext('2d');
 
-var gradientStroke = ctx.createLinearGradient(0, 0, 0, 300);
-    gradientStroke.addColorStop(0, '#ee0979');
-    gradientStroke.addColorStop(1, '#ff6a00');
+            var gradientStroke = ctx.createLinearGradient(0, 0, 0, 300);
+            gradientStroke.addColorStop(0, '#ee0979');
+            gradientStroke.addColorStop(1, '#ff6a00');
 
-var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [{
-      label: 'Sales',
-      data: [9, 7, 14, 10, 12, 8],
-      backgroundColor: gradientStroke,
-      hoverBackgroundColor: gradientStroke,
-      borderColor: "#fff",
-      pointRadius :6,
-      pointHoverRadius :6,
-      pointHoverBackgroundColor: "#fff",
-      borderWidth: 2,
-      borderRadius: 20,
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [9, 7, 14, 10, 12, 8],
+                        backgroundColor: gradientStroke,
+                        hoverBackgroundColor: gradientStroke,
+                        borderColor: "#fff",
+                        pointRadius: 6,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: "#fff",
+                        borderWidth: 2,
+                        borderRadius: 20,
 
-    }]
-  },
-  options: {
-    maintainAspectRatio: false,
-    barPercentage: 0.5,
-    categoryPercentage: 0.7,
-    plugins: {
-      legend: {
-        display: false,
-      }
-    },
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.7,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
 
+            var ctx = document.getElementById('chart55').getContext('2d');
+
+            var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+            gradientStroke1.addColorStop(0, '#17ead9');
+            gradientStroke1.addColorStop(1, '#6078ea');
+
+            var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
+            gradientStroke2.addColorStop(0, '#f80759');
+            gradientStroke2.addColorStop(1, '#bc4e9c');
+
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+                    datasets: [{
+                        label: 'Downloads',
+                        data: [0, 30, 60, 25, 60, 25, 50, 0],
+                        pointBorderWidth: 2,
+                        pointBackgroundColor: 'transparent',
+                        pointHoverBackgroundColor: gradientStroke1,
+                        borderColor: gradientStroke1,
+                        fill: {
+                            target: 'origin',
+                            above: gradientStroke1, // Area will be red above the origin
+                            //below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
+                        },
+                        tension: 0.4,
+                        borderWidth: 2
+                    }, {
+                        label: 'Earnings',
+                        data: [0, 60, 25, 80, 35, 75, 30, 0],
+                        pointBorderWidth: 2,
+                        pointBackgroundColor: 'transparent',
+                        pointHoverBackgroundColor: gradientStroke2,
+                        borderColor: gradientStroke2,
+                        fill: {
+                            target: 'origin',
+                            above: gradientStroke2, // Area will be red above the origin
+                            //below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
+                        },
+                        tension: 0.4,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    tooltips: {
+                        enabled: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: '#585757'
+                            },
+                            gridLines: {
+                                display: true,
+                                color: "rgba(0, 0, 0, 0.07)"
+                            },
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: '#585757'
+                            },
+                            gridLines: {
+                                display: true,
+                                color: "rgba(0, 0, 0, 0.07)"
+                            },
+                        }]
+                    }
+                }
+            });
 
         });
     </script>
