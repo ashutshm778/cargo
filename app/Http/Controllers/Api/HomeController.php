@@ -67,7 +67,7 @@ class HomeController extends Controller
     public function booking_scan_update(Request $request){
        // dd($request->all());
 
-        $booking=Booking::find($request->branch_id);
+        $booking=Booking::find($request->booking_id);
 
 
         if($booking->status=='dispatched'){
