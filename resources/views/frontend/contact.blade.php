@@ -9,7 +9,7 @@
                         <div class="section-title mb-0">
                             <h2 class="page-title">CONTACT US</h2>
                             <ul class="page-list">
-                                <li><a href="home.html">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li>Contact Us</li>
                             </ul>
                         </div>
@@ -79,8 +79,8 @@
                                     <i class="fa fa-phone-alt"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>+1 952-435-7106</p>
-                                    <p>+1 932-654-9874</p>
+                                    <p>+91-1234567890</p>
+                                    <p>+91-1234567890</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +91,8 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>info@transpro.com</p>
-                                    <p>info.example@gmail.com</p>
+                                    <p>info.info@prashantcargo.com</p>
+                                    <p>info.info@prashantcargo.com</p>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +103,8 @@
                                     <i class="fa fa-map-marker-alt"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>2245 Gilbert Ave, Cincinnati, OH</p>
-                                    <p>45206, United States</p>
+                                    <p>Varanasi, Uttar Pradesh</p>
+                                    <p>India</p>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
     <!-- contact area end -->
 
     <div class="contact-g-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d29208.601361499546!2d90.3598076!3d23.7803374!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1589109092857!5m2!1sen!2sbd"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115408.09799673867!2d82.90870585276089!3d25.320894921595844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2db76febcf4d%3A0x68131710853ff0b5!2sVaranasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1707554127921!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     @endsection

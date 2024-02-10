@@ -1,5 +1,15 @@
 @extends('frontend.layouts.front_app')
 @section('content')
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
     <!-- banner start -->
     <div class="banner-area banner-area-1">
         <div class="banner-slider owl-carousel">
@@ -327,22 +337,11 @@
                         <div class="item">
                             <div class="single-team-wrap">
                                 <div class="thumb">
-                                    <img src="{{ asset('frontend/assets/img/team/1.png')}}" alt="img">
+                                    <img src="{{ asset('frontend/assets/img/team/3.png')}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h5>MICHEL RICHARD</h5>
-                                    <p>Director & CEO</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="single-team-wrap">
-                                <div class="thumb">
-                                    <img src="{{ asset('frontend/assets/img/team/2.png')}}" alt="img">
-                                </div>
-                                <div class="details">
-                                    <h5>ANJELINA ROSEE</h5>
-                                    <p>Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                                 </div>
                             </div>
                         </div>
@@ -352,8 +351,19 @@
                                     <img src="{{ asset('frontend/assets/img/team/3.png')}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h5>MISHEL MARSH</h5>
-                                    <p>Co-Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="single-team-wrap">
+                                <div class="thumb">
+                                    <img src="{{ asset('frontend/assets/img/team/3.png')}}" alt="img">
+                                </div>
+                                <div class="details">
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                                 </div>
                             </div>
                         </div>
@@ -382,7 +392,7 @@
                             </div>
                             <div class="details">
                                 <h6>Have Any Question</h6>
-                                <h3>+19524357106</h3>
+                                <h3>+91-1234567890</h3>
                             </div>
                         </div>
                         <a class="btn btn-base" href="#">CONTACT US</a>
@@ -414,28 +424,11 @@
                         <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
                         <div class="client-wrap">
                             <div class="thumb">
-                                <img src="{{ asset('frontend/assets/img/testimonial/1.png')}}" alt="img">
+                                <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h5>ANJELINA MATHEUS</h5>
-                                <p>Co-Founder</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-wrap">
-                        <div class="icon">
-                            <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
-                        </div>
-                        <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
-                        <div class="client-wrap">
-                            <div class="thumb">
-                                <img src="{{ asset('frontend/assets/img/testimonial/2.png')}}" alt="img">
-                            </div>
-                            <div class="details">
-                                <h5>MONISH POUL</h5>
-                                <p>Co-Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                             </div>
                         </div>
                     </div>
@@ -451,8 +444,25 @@
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h5>MICHEL CLACRK</h5>
-                                <p>Co-Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-testimonial-wrap">
+                        <div class="icon">
+                            <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
+                        </div>
+                        <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
+                        <div class="client-wrap">
+                            <div class="thumb">
+                                <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
+                            </div>
+                            <div class="details">
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                             </div>
                         </div>
                     </div>
@@ -470,7 +480,7 @@
                     <div class="section-title text-center">
                         <h4 class="subtitle">HAPPY CLIENTS</h4>
                         <h2 class="title">TRUSTED BY OUR
-                            365,000 CLIENTS</h2>
+                            36,500 CLIENTS</h2>
                         <p class="content">Dramatically enhance interactive metrics for reliable services. Proactively unleash fully researched e-commerce.</p>
                     </div>
                 </div>

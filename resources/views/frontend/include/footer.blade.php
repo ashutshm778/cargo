@@ -10,8 +10,8 @@
                             </div>
                             <div class="details">
                                 <h6>OFFICE ADDRESS:</h6>
-                                <p>2245 Gilbert Ave, Cincinnati,</p>
-                                <p>OH 45206, United States</p>
+                                <p>Varanasi, Uttar Pradesh</p>
+                                <p>India</p>
                             </div>
                         </div>
                     </div>
@@ -22,8 +22,8 @@
                             </div>
                             <div class="details">
                                 <h6>CONTACT US:</h6>
-                                <p>info.logic@transpro.com</p>
-                                <p>+1 800-226-4054</p>
+                                <p>info.info@prashantcargo.com</p>
+                                <p>+91-1234567890</p>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <div class="details">
                                 <h6>WORKING HOURS:</h6>
                                 <p>Weekdays - Mon-Fri:  8am-21pm</p>
-                                <p>Weekend - Sta & Sun:  Closed</p>
+                                <p>Weekend - Sat & Sun:  Closed</p>
                             </div>
                         </div>
                     </div>
@@ -44,10 +44,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-md-6">
+                <div class="col-xl-6 col-md-6">
                     <div class="widget widget_about">
                         <div class="thumb">
-                            <img src="{{ asset('frontend/assets/img/logo-white.png')}}" alt="img">
+                            <img src="{{ asset('frontend/assets/img/logo.png')}}" alt="img">
                         </div>
                         <div class="details">
                             <p>Quickly supply alternative strategic theme areas vis-a-vis B2C mindshare. Objectively repurpose stand-alone synergy via user-centric architectures.</p>
@@ -60,19 +60,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-6">
+                <div class="col-xl-3 col-md-6">
                     <div class="widget widget_nav_menu">
                         <h4 class="widget-title">USEFULL LINKS</h4>
                         <ul>
-                            <li><a href="about.html"><i class="fa fa-arrow-right"></i> About Us</a></li>
-                            <li><a href="service.html"><i class="fa fa-arrow-right"></i> Services</a></li>
+                            <li><a href="#"><i class="fa fa-arrow-right"></i> About Us</a></li>
+                            <li><a href="#"><i class="fa fa-arrow-right"></i> Services</a></li>
                             <li><a href="#"><i class="fa fa-arrow-right"></i> Portfolio</a></li>
-                            <li><a href="blog.html"><i class="fa fa-arrow-right"></i>Blog</a></li>
-                            <li><a href="contact.html"><i class="fa fa-arrow-right"></i> Contact Us</a></li>
+                            <li><a href="#"><i class="fa fa-arrow-right"></i> Blog</a></li>
+                            <li><a href="#"><i class="fa fa-arrow-right"></i> Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-6">
+                <div class="col-xl-3 col-md-6">
                     <div class="widget widget_nav_menu">
                         <h4 class="widget-title">OUR SERVICES</h4>
                         <ul>
@@ -82,17 +82,6 @@
                             <li><a href="#"><i class="fa fa-arrow-right"></i> Warehousing</a></li>
                             <li><a href="#"><i class="fa fa-arrow-right"></i> Distribution</a></li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6">
-                    <div class="widget widget_subscribe">
-                        <h4 class="widget-title">SUBSCRIBE NOW</h4>
-                        <p>Continually evolve worldwide vortals rather than process centric human capital. Subscribe for our latest news & articles.
-                            and send message.</p>
-                        <div class="single-subscribe-inner">
-                            <input type="text" placeholder="Email Address">
-                            <a class="btn btn-base" href="#"><i class="fa fa-paper-plane"></i></a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +95,7 @@
             <div class="row">
                 <div class="col-lg-6 text-lg-start text-center">
                     <div class="copyright-area">
-                        <p>© 2024 All right reserved. Developed By <a href="#">Techup Technologies</a></p>
+                        <p>© 2024 All right reserved. Developed By <a href="https://techuptechnologies.com/">Techup Technologies</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-lg-end text-center">

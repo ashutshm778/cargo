@@ -62,13 +62,6 @@
                                 </div>
                                 <div class="btn-wrap">
                                     <a class="btn btn-base" href="#">ABOUT MORE</a>
-                                    <div class="author-wrap">
-                                        <div class="thumb"><img src="{{ asset('frontend/assets/img/about/4.png')}}" alt="img"></div>
-                                        <div class="details">
-                                            <img src="{{ asset('frontend/assets/img/about/signature.png')}}" alt="img">
-                                            <p>CEO, Of Company</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +232,7 @@
                             </div>
                             <div class="details">
                                 <h6>Have Any Question</h6>
-                                <h3>+19524357106</h3>
+                                <h3>+91-1234567890</h3>
                             </div>
                         </div>
                         <a class="btn btn-white" href="#">CONTACT US</a>
@@ -271,17 +264,8 @@
                                     <img src="{{ asset('frontend/assets/img/team/1.png')}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h5>MICHEL RICHARD</h5>
+                                    <h5>Admin</h5>
                                     <p>Director & CEO</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -291,17 +275,8 @@
                                     <img src="{{ asset('frontend/assets/img/team/2.png')}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h5>ANJELINA ROSEE</h5>
-                                    <p>Founder</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    <h5>Admin</h5>
+                                    <p>Director & CEO</p>
                                 </div>
                             </div>
                         </div>
@@ -311,17 +286,8 @@
                                     <img src="{{ asset('frontend/assets/img/team/3.png')}}" alt="img">
                                 </div>
                                 <div class="details">
-                                    <h5>MISHEL MARSH</h5>
-                                    <p>Co-Founder</p>
-                                    <div class="hover-icon">
-                                        <i class="fa fa-plus"></i>
-                                        <ul class="social-area">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    <h5>Admin</h5>
+                                    <p>Director & CEO</p>
                                 </div>
                             </div>
                         </div>
@@ -353,28 +319,11 @@
                         <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
                         <div class="client-wrap">
                             <div class="thumb">
-                                <img src="{{ asset('frontend/assets/img/testimonial/1.png')}}" alt="img">
+                                <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h5>ANJELINA MATHEUS</h5>
-                                <p>Co-Founder</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-wrap">
-                        <div class="icon">
-                            <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
-                        </div>
-                        <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
-                        <div class="client-wrap">
-                            <div class="thumb">
-                                <img src="{{ asset('frontend/assets/img/testimonial/2.png')}}" alt="img">
-                            </div>
-                            <div class="details">
-                                <h5>MONISH POUL</h5>
-                                <p>Co-Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                             </div>
                         </div>
                     </div>
@@ -390,8 +339,25 @@
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h5>MICHEL CLACRK</h5>
-                                <p>Co-Founder</p>
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-testimonial-wrap">
+                        <div class="icon">
+                            <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
+                        </div>
+                        <p>“Progressively strategize intermandated manufactured products after multidisci plinary sources. Conveniently iterate value-added systems with.”</p>
+                        <div class="client-wrap">
+                            <div class="thumb">
+                                <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
+                            </div>
+                            <div class="details">
+                                <h5>Shailesh Gupta</h5>
+                                <p>Varanasi</p>
                             </div>
                         </div>
                     </div>

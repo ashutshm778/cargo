@@ -338,7 +338,7 @@
 	}
 	.navbar-area-2 .logo {
 		position: initial;
-		width: 170px;
+		width: 250px;
 	}
 	.navbar-area-2 .logo .logo-1 {
 		display: none;
@@ -620,14 +620,17 @@
 	.navbar-area-1 {
 		top: 0;
 	}
+    .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:after {
+        top: 26px;
+    }
 	.toggle-btn {
-		top: 18px;
+		top: 10px;
 	}
 	.navbar-area .nav-container .navbar-collapse.sopen {
 		display: block;
 	}
 	.banner-area-1 .banner-inner {
-		padding: 150px 0 177px;
+		padding: 100px 0 160px;
 	}
 	.banner-area-1 .item:after {
 		background: rgba(8, 12, 36, 0.85);
@@ -652,7 +655,7 @@
 	}
 	.navbar-area-2 .nav-container,
 	.navbar-area-1 .nav-container {
-		padding: 7px 15px;
+		padding:10px 15px;
 	}
 	.banner-inner .title {
 		font-size: 37px;
