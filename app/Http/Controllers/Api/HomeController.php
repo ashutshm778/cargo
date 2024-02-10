@@ -65,9 +65,9 @@ class HomeController extends Controller
     }
 
     public function booking_scan_update(Request $request){
-        dd($request->all());
+       // dd($request->all());
 
-        $booking=Booking::find($request->branch_id);
+        $booking=Booking::find($request->booking_id);
 
 
         if($booking->status=='dispatched'){
@@ -127,8 +127,8 @@ class HomeController extends Controller
         return response()->json([
             'message' => 'Package Is Not Dispatched By Origin',
             'success' => true,
-            'status' => 200
-        ]);
+            'status' => 422
+        ],422);
     }
 
     public function getUserProfile(Request $request)
