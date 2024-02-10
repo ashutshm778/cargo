@@ -103,8 +103,7 @@ class HomeController extends Controller
         }
         if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
 
-                $booking->status='dispatched';
-                $booking->save();
+
 
                 $booking_log=new BookingLog;
                 $booking_log->booking_id=$booking->id;
@@ -116,6 +115,9 @@ class HomeController extends Controller
                 $booking_log->status='dispatched';
                 $booking_log->description=$request->description;
                 $booking_log->save();
+
+                $booking->status='dispatched';
+                $booking->save();
 
                 return response()->json([
                     'message' => 'Data Updated Successfully',
