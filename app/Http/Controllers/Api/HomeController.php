@@ -55,7 +55,7 @@ class HomeController extends Controller
     }
 
     public function get_booking(Request $request){
-        $booking = Booking::where('bill_no',$request->scanner_data)->get();
+        $booking = Booking::where('bill_no',$request->scanner_data)->first();
 
         return response()->json([
             'booking_data' => $booking,
