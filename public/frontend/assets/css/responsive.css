@@ -614,6 +614,14 @@
 	}
 }
 @media all and (max-width: 767px) {
+    .trackingid_mobile {
+        width: 100%;
+        text-align: left;
+    }
+    .courier_info span:first-child {
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }
 	.navbar-top {
 		display: none;
 	}
