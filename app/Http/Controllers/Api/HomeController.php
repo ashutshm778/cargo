@@ -103,8 +103,6 @@ class HomeController extends Controller
         }
         if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
 
-
-
                 $booking_log=new BookingLog;
                 $booking_log->booking_id=$booking->id;
                 $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
