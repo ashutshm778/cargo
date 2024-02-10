@@ -127,8 +127,8 @@ class HomeController extends Controller
         return response()->json([
             'message' => 'Package Is Not Dispatched By Origin',
             'success' => true,
-            'status' => 200
-        ]);
+            'status' => 422
+        ],422);
     }
 
     public function getUserProfile(Request $request)
