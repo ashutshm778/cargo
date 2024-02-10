@@ -14,6 +14,9 @@ class Booking extends Model
     {
         parent::boot();
 
+
+        if(!empty(auth()->guard("admin")->user()->id)){
+
         static::created(function ($resource) {
             ResourceLog::create([
                 'resource_id' => $resource->id,
@@ -43,6 +46,42 @@ class Booking extends Model
                 'model'=>'Booking'
             ]);
         });
+
+      }
+
+      if(!empty(auth()->guard("api")->user()->id)){
+
+        static::created(function ($resource) {
+            ResourceLog::create([
+                'resource_id' => $resource->id,
+                'action' => 'created',
+                'details' => 'Booking created with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
+                'user_id' => auth()->guard("api")->user()->id,
+                'model'=>'Booking'
+            ]);
+        });
+
+        static::updated(function ($resource) {
+            ResourceLog::create([
+                'resource_id' => $resource->id,
+                'action' => 'updated',
+                'details' => 'Booking updated with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
+                'user_id' => auth()->guard("api")->user()->id,
+                'model'=>'Booking'
+            ]);
+        });
+
+        static::deleted(function ($resource) {
+            ResourceLog::create([
+                'resource_id' => $resource->id,
+                'action' => 'deleted',
+                'details' => 'Booking deleted with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
+                'user_id' => auth()->guard("api")->user()->id,
+                'model'=>'Booking'
+            ]);
+        });
+
+      }
     }
 
 }

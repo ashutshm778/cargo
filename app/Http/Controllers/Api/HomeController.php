@@ -68,7 +68,13 @@ class HomeController extends Controller
        // dd($request->all());
 
         $booking=Booking::find($request->booking_id);
-
+        if(($booking->status=='dispatched') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
+            return response()->json([
+                'message' => 'Package Already Dispatched',
+                'success' => true,
+                'status' => 200
+            ]);
+        }
 
         if($booking->status=='dispatched'){
             if(empty(BookingLog::where('branch_id',Auth::guard('api')->user()->branch_id)->where('tracking_code',$booking->tracking_code)->where('status','arrived')->first()->id)){
@@ -101,10 +107,8 @@ class HomeController extends Controller
                 'status' => 200
             ]);
         }
-        if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
 
-                $booking->status='dispatched';
-                $booking->save();
+        if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
 
                 $booking_log=new BookingLog;
                 $booking_log->booking_id=$booking->id;
@@ -116,6 +120,9 @@ class HomeController extends Controller
                 $booking_log->status='dispatched';
                 $booking_log->description=$request->description;
                 $booking_log->save();
+
+                $booking->status='dispatched';
+                $booking->save();
 
                 return response()->json([
                     'message' => 'Data Updated Successfully',
