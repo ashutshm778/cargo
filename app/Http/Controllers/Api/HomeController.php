@@ -65,7 +65,7 @@ class HomeController extends Controller
     }
 
     public function booking_scan_update(Request $request){
-        dd($request->all());
+       // dd($request->all());
 
         $booking=Booking::find($request->branch_id);
 
