@@ -32,8 +32,7 @@
                                     <div class="widget widget_subscribe">
                                         <div class="single-subscribe-inner">
                                             <input type="number" placeholder="Enter Order No.">
-                                            <a class="btn btn-base" href="#">Track Order <i
-                                                    class="fa fa-paper-plane"></i></a>
+                                            <a class="btn btn-base" href="#">Track Order <i class="fa fa-paper-plane"></i></a>
                                         </div>
                                     </div>
                                 </div>
