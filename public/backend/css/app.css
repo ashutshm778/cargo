@@ -1826,26 +1826,13 @@ form select.error:focus {
 
 
 .invoice {
-
 	position: relative;
-
-	background-color: #fff;
-
-	min-height: 680px;
-
-	padding: 15px
-
+	/* background-color: #fff; */
 }
 
 
 
 .invoice header {
-
-	padding: 10px 0;
-
-	margin-bottom: 20px;
-
-	border-bottom: 1px solid #008cff
 
 }
 
@@ -1915,7 +1902,7 @@ form select.error:focus {
 
 .invoice main {
 
-	padding-bottom: 50px
+	/* padding-bottom: 50px */
 
 }
 
@@ -1972,13 +1959,8 @@ form select.error:focus {
 .invoice table td,
 
 .invoice table th {
-
 	padding: 15px;
-
-	background: #eee;
-
-	border-bottom: 1px solid #fff
-
+	border-bottom: 1px solid #eee
 }
 
 
@@ -2025,11 +2007,11 @@ form select.error:focus {
 
 .invoice table .no {
 
-	color: #fff;
+	/* color: #fff;
 
 	font-size: 1.6em;
 
-	background: #008cff
+	background: #008cff */
 
 }
 
@@ -2037,7 +2019,7 @@ form select.error:focus {
 
 .invoice table .unit {
 
-	background: #ddd
+	/* background: #ddd */
 
 }
 
@@ -2045,9 +2027,9 @@ form select.error:focus {
 
 .invoice table .total {
 
-	background: #008cff;
+	/* background: #008cff;
 
-	color: #fff
+	color: #fff */
 
 }
 
@@ -2055,7 +2037,7 @@ form select.error:focus {
 
 .invoice table tbody tr:last-child td {
 
-	border: none
+	/* border: none */
 
 }
 
@@ -2069,13 +2051,10 @@ form select.error:focus {
 
 	white-space: nowrap;
 
-	text-align: right;
-
 	padding: 10px 20px;
 
 	font-size: 1.2em;
 
-	border-top: 1px solid #aaa
 
 }
 
@@ -2090,12 +2069,12 @@ form select.error:focus {
 
 
 .invoice table tfoot tr:last-child td {
-
+/*
 	color: #008cff;
 
 	font-size: 1.4em;
 
-	border-top: 1px solid #008cff
+	border-top: 1px solid #008cff */
 
 }
 
@@ -5704,4 +5683,14 @@ input::placeholder {
 }
 .pull-right {
     float: right;
+}
+.fw-bold{
+    font-weight: 600;
+}
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }

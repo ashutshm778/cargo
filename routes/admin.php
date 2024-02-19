@@ -38,6 +38,7 @@ Route::post('attempt-login', [AdminController::class, 'attemptLogin'])->name('ad
 
 
 Route::group(['middleware' => ['admin']], function() {
+    Route::view('invoice', 'backend.invoice')->name('invoice');
     Route::view('track-order', 'backend.track_order')->name('track_order');
     Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/user_log', [AdminController::class,'user_log'])->name('admin.user_log');
