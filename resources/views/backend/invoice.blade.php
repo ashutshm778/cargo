@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 @section('content')
     <style>
-            @media print
+    @media print
     {
     .table td,
     .table th {
@@ -48,18 +48,7 @@
             border: 0;
         }
     </style>
-    <script>
-        function printdiv(elem) {
-            var header_str = '<html><head><title>' + document.title + '</title></head><body>';
-            var footer_str = '</body></html>';
-            var new_str = document.getElementById(elem).innerHTML;
-            var old_str = document.body.innerHTML;
-            document.body.innerHTML = header_str + new_str + footer_str;
-            window.print();
-            document.body.innerHTML = old_str;
-            return false;
-        }
-    </script>
+
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content" id='printable_div_id'>
@@ -220,3 +209,5 @@
     <!--end page wrapper -->
 @endsection
 @section('script')
+
+@endsection

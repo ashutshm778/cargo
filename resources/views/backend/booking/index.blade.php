@@ -9,9 +9,12 @@
                         <div>
                             <h6 class="mb-0">Booking List</h6>
                         </div>
-                        <div class="ms-auto">@if(auth()->guard("admin")->user()->can("booking-create"))<a href="{{ route('booking.create') }}"
+                        <div class="ms-auto">@if(auth()->guard("admin")->user()->can("booking-create"))
+                            <a href="{{ route('booking.create') }}"
                                 class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add New
-                                Booking</a>@endif</div>
+                                Booking</a>
+                                @endif
+                            </div>
                     </div>
                 </div>
                 <div class="card-body">
