@@ -94,17 +94,16 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                    Consignor <b style="text-align:end;">: AMAR
-                                                                        TRAVELS</b></td>
+                                                                    Consignor <b style="text-align:end;">: {{$booking->consignor}}</b></td>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                    Consignee <b>: JAI BABA GILLAT ORNAMENTS</b></td>
+                                                                    Consignee <b>:{{$booking->consignee}}</b></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
                                                                     GSTIN <b style="text-align:end;">:
-                                                                        10AZQPA8845A1ZQ</b></td>
+                                                                        {{$booking->consignor_gstin}}</b></td>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                    GSTIN <b>: 10AZQPA8845A1ZQ</b></td>
+                                                                    GSTIN <b>: {{$booking->consignee_gstin}}</b></td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
@@ -115,9 +114,9 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">Bill
-                                                                    No. <b style="text-align:end;">:965</b></td>
+                                                                    No. <b style="text-align:end;">:{{$booking->booking_no}}</b></td>
                                                                 <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                    Value <b>: 9250</b></td>
+                                                                    Value <b>: {{$booking->value}}</b></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -128,6 +127,7 @@
                                     <table class="table table-borderd">
                                         <thead>
                                             <tr>
+
                                                 <th>Number of Packages</th>
                                                 <th>Nature of Goods Said to contain</th>
                                                 <th>Weight</th>
@@ -137,30 +137,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($booking->booking_product as $key => $booking_product)
                                             <tr>
-                                                <td class="text-left">1</td>
-                                                <td>IMITATION</td>
-                                                <td>61.000</td>
+
+                                                <td>{{ $booking_product->no_of_pack }}</td>
+                                                <td>{{ $booking_product->product }}</td>
+                                                <td>{{ $booking_product->weight }}</td>
                                                 <td>TO PAY</td>
                                                 <td>Freight Charges</td>
-                                                <td>200.00</td>
+                                                <td>{{ $booking_product->freight_charges }}</td>
                                             </tr>
-                                            <tr>
-                                                <td class="text-left">1</td>
-                                                <td>IMITATION</td>
-                                                <td>61.000</td>
-                                                <td>TO PAY</td>
-                                                <td>Freight Charges</td>
-                                                <td>200.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-left">1</td>
-                                                <td>IMITATION</td>
-                                                <td>61.000</td>
-                                                <td>TO PAY</td>
-                                                <td>Freight Charges</td>
-                                                <td>200.00</td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -168,23 +155,28 @@
                                                     condition and correct measure.<br>
                                                     I/We declare that GST shall be payable by consignor/consignee</td>
                                                 <td colspan="1">Insurance</td>
-                                                <td>200.00</td>
+                                                <td>{{$booking->insurance}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4">I/We have not to claim or avail examption for value
                                                     of goods & material.</td>
                                                 <td colspan="1">B. Charges</td>
-                                                <td>0</td>
+                                                <td>{{$booking->b_charges}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"></td>
+                                                <td colspan="1">Other Charges</td>
+                                                <td>{{$booking->other_charges}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"></td>
                                                 <td colspan="1">G.S.T</td>
-                                                <td>30</td>
+                                                <td>{{$booking->tax}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"></td>
                                                 <td colspan="1">Total</td>
-                                                <td>500.00</td>
+                                                <td>{{$booking->total}}</td>
                                             </tr>
                                         </tfoot>
                                     </table>
