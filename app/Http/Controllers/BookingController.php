@@ -6,6 +6,7 @@ use App\Models\Booking;
 use Milon\Barcode\DNS1D;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
+use App\Models\BookingProduct;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
@@ -91,7 +92,8 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+       // dd($request->all());
+        $input=$request->all();
         $booking=new Booking;
         $booking->branch_id=1;
         $booking->added_by=Auth::guard('admin')->user()->id;
@@ -106,20 +108,27 @@ class BookingController extends Controller
         $booking->consignee_gstin=$request->consignee_gstin;
         $booking->consignee_gstin=$request->consignee_gstin;
         $booking->booking_no=$request->booking_no;
-        $booking->product=$request->product;
-        $booking->weight=$request->weight;
-        $booking->freight=$request->freight;
-        $booking->freight_charges=$request->freight_charges;
         $booking->insurance=$request->insurance;
         $booking->b_charges=$request->b_charges;
         $booking->other_charges=$request->other_charges;
-        $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
         $booking->status='order_created';
         $booking->value=$request->value;
         $booking->description=$request->description;
-        $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
+        $booking->total=$request->total;
         $booking->save();
+
+        foreach($input['no_of_pack'] as $key=>$value){
+
+            $booking_product = new BookingProduct;
+            $booking_product->booking_id=$booking->id;
+            $booking_product->no_of_pack=$value;
+            $booking_product->product=$input['product'][$key];
+            $booking_product->weight=$input['weight'][$key];
+            $booking_product->freight='To Pay';
+            $booking_product->freight_charges=$input['frieght_charge'][$key];
+            $booking_product->save();
+        }
 
         $booking_log=new BookingLog;
         $booking_log->booking_id=$booking->id;
@@ -170,8 +179,9 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
+        $input=$request->all();
         $booking->branch_id=1;
-        $booking->bill_no=$request->bill_no;
+        $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->from=$request->from;
         $booking->to=$request->to;
         $booking->date=$request->date;
@@ -180,20 +190,27 @@ class BookingController extends Controller
         $booking->consignor_gstin=$request->consignor_gstin;
         $booking->consignee_gstin=$request->consignee_gstin;
         $booking->consignee_gstin=$request->consignee_gstin;
-        $booking->booking_no=$request->booking_no;
-        $booking->product=$request->product;
-        $booking->weight=$request->weight;
-        $booking->freight=$request->freight;
-        $booking->freight_charges=$request->freight_charges;
         $booking->insurance=$request->insurance;
         $booking->b_charges=$request->b_charges;
         $booking->other_charges=$request->other_charges;
-        $booking->no_of_pack=$request->no_of_pack;
         $booking->tax=$request->tax;
+        $booking->status='order_created';
         $booking->value=$request->value;
         $booking->description=$request->description;
-        $booking->total=$request->freight_charges+$request->insurance+$request->b_charges+$request->other_charges+$request->tax;
+        $booking->total=$request->total;
         $booking->save();
+
+        foreach($input['booking_product_id'] as $key=>$value){
+
+            $booking_product = BookingProduct::find($value);
+            $booking_product->booking_id=$booking->id;
+            $booking_product->no_of_pack=$value;
+            $booking_product->product=$input['product'][$key];
+            $booking_product->weight=$input['weight'][$key];
+            $booking_product->freight='To Pay';
+            $booking_product->freight_charges=$input['frieght_charge'][$key];
+            $booking_product->save();
+        }
 
         return redirect()->route('booking.index')->with('success', 'Booking Updated Successfully!');
     }
