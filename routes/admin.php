@@ -39,7 +39,7 @@ Route::post('attempt-login', [AdminController::class, 'attemptLogin'])->name('ad
 
 Route::group(['middleware' => ['admin']], function() {
     Route::view('invoice', 'backend.invoice')->name('invoice');
-    Route::view('track-order', 'backend.track_order')->name('track_order');
+
     Route::view('payment_receipt', 'backend.payment_receipt')->name('payment_receipt');
     Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/user_log', [AdminController::class,'user_log'])->name('admin.user_log');
@@ -50,6 +50,8 @@ Route::group(['middleware' => ['admin']], function() {
 
     Route::resource('booking', BookingController::class);
     Route::get('get_booking', [BookingController::class,'get_booking'])->name('admin.get_booking');
+    Route::get('payment_receipt/{id}', [BookingController::class,'payment_receipt'])->name('admin.payment_receipt');
+    Route::get('track_order/{id}', [BookingController::class,'track_order'])->name('admin.track_order');
 
 
     Route::get('/pincode',[PincodeController::class,'index'])->name('admin.pincode');

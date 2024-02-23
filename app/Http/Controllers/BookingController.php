@@ -225,4 +225,14 @@ class BookingController extends Controller
     {
         //
     }
+
+    public function payment_receipt($id){
+        $booking=Booking::find($id);
+        return view('backend.booking.payment_receipt',compact('booking'));
+    }
+    public function track_order($id){
+        $booking=Booking::find($id);
+        return view('backend.track_order',compact('booking'));
+    }
+
 }

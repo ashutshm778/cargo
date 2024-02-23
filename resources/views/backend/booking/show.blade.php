@@ -127,7 +127,7 @@
                                     <table class="table table-borderd">
                                         <thead>
                                             <tr>
-
+                                                <th>#</th>
                                                 <th>Number of Packages</th>
                                                 <th>Nature of Goods Said to contain</th>
                                                 <th>Weight</th>
@@ -138,8 +138,12 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($booking->booking_product as $key => $booking_product)
+                                            @php
+                                                $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                                                $barcode = $generator->getBarcode($booking_product->id, $generator::TYPE_CODE_128);
+                                            @endphp
                                             <tr>
-
+                                                <td>{!! $barcode !!}</td>
                                                 <td>{{ $booking_product->no_of_pack }}</td>
                                                 <td>{{ $booking_product->product }}</td>
                                                 <td>{{ $booking_product->weight }}</td>
@@ -151,30 +155,30 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="4">Seal /Received above mentioned production in good
+                                                <td colspan="5">Seal /Received above mentioned production in good
                                                     condition and correct measure.<br>
                                                     I/We declare that GST shall be payable by consignor/consignee</td>
                                                 <td colspan="1">Insurance</td>
                                                 <td>{{$booking->insurance}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4">I/We have not to claim or avail examption for value
+                                                <td colspan="5">I/We have not to claim or avail examption for value
                                                     of goods & material.</td>
                                                 <td colspan="1">B. Charges</td>
                                                 <td>{{$booking->b_charges}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4"></td>
+                                                <td colspan="5"></td>
                                                 <td colspan="1">Other Charges</td>
                                                 <td>{{$booking->other_charges}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4"></td>
+                                                <td colspan="5"></td>
                                                 <td colspan="1">G.S.T</td>
                                                 <td>{{$booking->tax}}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4"></td>
+                                                <td colspan="5"></td>
                                                 <td colspan="1">Total</td>
                                                 <td>{{$booking->total}}</td>
                                             </tr>
