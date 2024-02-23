@@ -41,7 +41,6 @@
                                 </header>
                                 <form method="POST" action="{{ route('booking.store') }}">
                                     @csrf
-<<<<<<< HEAD
                                     <main>
                                         <table class="table table-sm">
                                             <tbody>
@@ -181,7 +180,6 @@
                                         <div class="">
                                             <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
-=======
                                 <main>
                                     <table class="table table-sm table-bordereds">
                                         <tbody>
@@ -326,7 +324,6 @@
                                 <div class="col-12">
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">Save</button>
->>>>>>> 2e7d7e4716b124ced2d33f91596759d014205440
                                     </div>
                                 </form>
                             </div>
@@ -382,12 +379,8 @@
                 // Add the value to the total amount
                 totalAmount += freightValue;
             });
-
-<<<<<<< HEAD
             var total = insurance + b_charge + gst + totalAmount;
-=======
             var total=insurance+b_charge+gst+other_charges+totalAmount;
->>>>>>> 2e7d7e4716b124ced2d33f91596759d014205440
             $('#total_amount').val(total);
 
         }
