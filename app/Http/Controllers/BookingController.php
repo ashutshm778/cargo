@@ -91,7 +91,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $booking=new Booking;
         $booking->branch_id=1;
         $booking->added_by=Auth::guard('admin')->user()->id;

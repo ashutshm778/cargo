@@ -71,7 +71,8 @@
                                         <hr>
                                     </div>
                                 </header>
-                                <form>
+                                <form method="POST" action="{{route('booking.store')}}">
+                                    @csrf
                                 <main>
                                     <table class="table table-sm table-bordereds">
                                         <tbody>
