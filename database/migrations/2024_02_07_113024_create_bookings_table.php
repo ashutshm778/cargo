@@ -27,11 +27,6 @@ return new class extends Migration
             $table->string('consignee_gstin');
             $table->string('booking_no')->unique();
             $table->string('value');
-            $table->string('no_of_pack');
-            $table->string('product');
-            $table->string('weight');
-            $table->string('freight');
-            $table->string('freight_charges');
             $table->string('insurance');
             $table->string('b_charges');
             $table->string('other_charges');

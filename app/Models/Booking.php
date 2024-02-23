@@ -84,4 +84,9 @@ class Booking extends Model
       }
     }
 
+    public function booking_product()
+    {
+        return $this->hasmany(BookingProduct::class,'booking_id','id');
+    }
+
 }

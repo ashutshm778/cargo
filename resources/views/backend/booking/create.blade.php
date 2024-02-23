@@ -173,26 +173,32 @@
                                                     condition and correct measure.<br>
                                                     I/We declare that GST shall be payable by consignor/consignee</td>
                                                 <td colspan="1">Insurance</td>
-                                                <td><input type="number" class="form-control" id="insurance"
+                                                <td><input type="number" class="form-control" id="insurance" name="insurance"
                                                         placeholder="Freight" value="0" onchange="cal_total_amount()" required></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5">I/We have not to claim or avail examption for value
                                                     of goods & material.</td>
                                                 <td colspan="1">B. Charges</td>
-                                                <td><input type="number" class="form-control" id="b_charges"
+                                                <td><input type="number" class="form-control" id="b_charges" name="b_charges"
                                                         placeholder="Freight" value="0" onchange="cal_total_amount()" required></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5"></td>
+                                                <td colspan="1">Other Charges</td>
+                                                <td><input type="number" class="form-control" id="other_charges" name="other_charges"
+                                                        placeholder="Other Charges" value="0" onchange="cal_total_amount()" required></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5"></td>
                                                 <td colspan="1">G.S.T</td>
-                                                <td><input type="number" class="form-control" id="gst"
+                                                <td><input type="number" class="form-control" id="gst" name="tax"
                                                         placeholder="Freight" value="0" onchange="cal_total_amount()" required></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="5"></td>
                                                 <td colspan="1">Total</td>
-                                                <td><input type="number" class="form-control" id="total_amount"
+                                                <td><input type="number" class="form-control" id="total_amount" name="total"
                                                         placeholder="Freight" value="0"  readonly required></td>
                                             </tr>
                                         </tfoot>
@@ -210,7 +216,7 @@
                                 </main>
                                 <div class="col-12">
                                     <div class="">
-                                        <button type="submit" class="btn btn-primary">Add</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
                                 </form>
@@ -255,6 +261,7 @@
             var insurance = parseInt($('#insurance').val());
             var b_charge = parseInt($('#b_charges').val());
             var gst = parseInt($('#gst').val());
+            var other_charges = parseInt($('#other_charges').val());
 
 
             let totalAmount = 0;
@@ -267,7 +274,7 @@
                 totalAmount += freightValue;
             });
 
-            var total=insurance+b_charge+gst+totalAmount;
+            var total=insurance+b_charge+gst+other_charges+totalAmount;
             $('#total_amount').val(total);
 
         }
