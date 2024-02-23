@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="pull-right trackingid_mobile">
                                             <span class="sfproBold" style="font-size: 13px;"><b>Tracking ID</b> </span>
-                                            <span class="tracking_id fs-12px sfproBold">14326582654336</span>
+                                            <span class="tracking_id fs-12px sfproBold">{{$booking->tracking_code}}</span>
                                         </div>
                                     </div>
                                     <div class="delievery_info pt-0 ulli_border">
