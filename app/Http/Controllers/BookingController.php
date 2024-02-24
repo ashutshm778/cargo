@@ -25,14 +25,14 @@ class BookingController extends Controller
     {
 
         $draw                 =         $request->get('draw'); // Internal use
-        $start                 =         $request->get("start"); // where to start next records for pagination
-        $rowPerPage         =         $request->get("length"); // How many recods needed per page for pagination
+        $start                =         $request->get("start"); // where to start next records for pagination
+        $rowPerPage           =         $request->get("length"); // How many recods needed per page for pagination
 
-        $orderArray        =         $request->get('order');
-        $columnNameArray     =         $request->get('columns'); // It will give us columns array
+        $orderArray           =         $request->get('order');
+        $columnNameArray      =         $request->get('columns'); // It will give us columns array
 
-        $searchArray         =         $request->get('search');
-        $columnIndex         =         $orderArray[0]['column'];  // This will let us know,
+        $searchArray          =         $request->get('search');
+        $columnIndex          =         $orderArray[0]['column'];  // This will let us know,
         // which column index should be sorted
         // 0 = id, 1 = name, 2 = email , 3 = created_at
 
