@@ -138,7 +138,7 @@
                                                         I/We declare that GST shall be payable by consignor/consignee</td>
                                                     <td colspan="1">Insurance</td>
                                                     <td><input type="number" class="form-control" id="insurance"
-                                                            placeholder="Freight" value="0"
+                                                         name="insurance"   placeholder="Freight" value="0"
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
@@ -146,7 +146,7 @@
                                                         of goods & material.</td>
                                                     <td colspan="1">B. Charges</td>
                                                     <td><input type="number" class="form-control" id="b_charges"
-                                                            placeholder="Freight" value="0"
+                                                        name="b_charges"    placeholder="Freight" value="0"
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
@@ -159,14 +159,14 @@
                                                     <td colspan="5"></td>
                                                     <td colspan="1">G.S.T</td>
                                                     <td><input type="number" class="form-control" id="gst"
-                                                            placeholder="Freight" value="0"
+                                                         name="tax"   placeholder="Freight" value="0"
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="5"></td>
                                                     <td colspan="1">Total</td>
                                                     <td><input type="number" class="form-control" id="total_amount"
-                                                            placeholder="Freight" value="0" readonly required></td>
+                                                         name="total"   placeholder="Freight" value="0" readonly required></td>
                                                 </tr>
                                             </tfoot>
                                         </table>

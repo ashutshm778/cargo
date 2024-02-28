@@ -49,6 +49,10 @@
 
         $(document).ready(function() {
             var dataTable = $('#datatable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'print','pdf', 'pageLength'
+                ],
                 'processing': true,
                 'serverSide': true,
                 'stateSave': true,
