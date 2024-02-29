@@ -71,7 +71,9 @@
 
                                         </div>
                                         <div class="col-3 mb-3">
-                                           <p class="float-end "> {!! $barcode !!}</p>
+                                           <p class="float-end "> {!! $barcode !!}
+                                            <span class="text-center">123456789</span>
+                                           </p>
                                         </div>
                                         <hr>
                                     </div>
