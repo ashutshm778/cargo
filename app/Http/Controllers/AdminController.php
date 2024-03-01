@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Pincode;
+use App\Models\Consignee;
+use App\Models\Consignor;
 use App\Models\ResourceLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -136,6 +138,200 @@ class AdminController extends Controller
     {
         $pincode = Pincode::where('status', 'active')->where('pincode', $request->pincode)->first();
         return $pincode;
+    }
+
+    public function consigner(Request $request)
+    {
+        return view('backend.consigner');
+    }
+
+    public function get_consigner(Request $request)
+    {
+
+        $draw                 =         $request->get('draw'); // Internal use
+        $start                 =         $request->get("start"); // where to start next records for pagination
+        $rowPerPage         =         $request->get("length"); // How many recods needed per page for pagination
+
+        $orderArray        =         $request->get('order');
+        $columnNameArray     =         $request->get('columns'); // It will give us columns array
+
+        $searchArray         =         $request->get('search');
+        $columnIndex         =         $orderArray[0]['column'];  // This will let us know,
+        // which column index should be sorted
+        // 0 = id, 1 = name, 2 = email , 3 = created_at
+
+        $columnName         =         $columnNameArray[$columnIndex]['data']; // Here we will get column name,
+        // Base on the index we get
+
+        $columnSortOrder     =         $orderArray[0]['dir']; // This will get us order direction(ASC/DESC)
+        $searchValue         =         $searchArray['value']; // This is search value
+
+
+        $branch = Consignor::where('id', '>', 0);
+        $total = $branch->count();
+
+        $totalFilter = Consignor::where('id', '>', 0);
+        if (!empty($searchValue)) {
+            $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
+        }
+        $totalFilter = $totalFilter->count();
+
+
+        $arrData = Consignor::where('id', '>', 0);
+        $arrData = $arrData->skip($start)->take($rowPerPage);
+        $arrData = $arrData->orderBy($columnName, $columnSortOrder);
+
+        if (!empty($searchValue)) {
+            $arrData = $arrData->where('name', 'like', '%' . $searchValue . '%')->orwhere('phone', 'like', '%' . $searchValue . '%')->orwhere('email', 'like', '%' . $searchValue . '%');
+        }
+
+
+        $arrData = $arrData->get();
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $total,
+            "recordsFiltered" => $totalFilter,
+            "data" => $arrData,
+        );
+
+        return response()->json($response);
+    }
+
+    public function consigner_create(Request $request)
+    {
+        return view('backend.consigner_create');
+    }
+
+    public function consigner_store(Request $request)
+    {
+        $consigner= new Consignor;
+        $consigner->name=$request->name;
+        $consigner->phone=$request->phone;
+        $consigner->gstin=$request->gstin;
+        $consigner->full_address=$request->address;
+        $consigner->pincode=$request->pincode;
+        $consigner->save();
+
+
+        return redirect()->route('admin.consigner');
+
+    }
+
+    public function consigner_edit(Request $request,$id)
+    {
+        $consigner= Consignor::find($request->id);
+        return view('backend.consigner_edit',compact('consigner'));
+    }
+
+    public function consigner_update(Request $request)
+    {
+        $consigner= Consignor::find($request->id);
+        $consigner->name=$request->name;
+        $consigner->phone=$request->phone;
+        $consigner->gstin=$request->gstin;
+        $consigner->full_address=$request->address;
+        $consigner->pincode=$request->pincode;
+        $consigner->save();
+
+        return redirect()->route('admin.consigner');
+    }
+
+    public function consignee(Request $request)
+    {
+        return view('backend.consignee');
+    }
+
+    public function get_consignee(Request $request)
+    {
+
+        $draw                 =         $request->get('draw'); // Internal use
+        $start                 =         $request->get("start"); // where to start next records for pagination
+        $rowPerPage         =         $request->get("length"); // How many recods needed per page for pagination
+
+        $orderArray        =         $request->get('order');
+        $columnNameArray     =         $request->get('columns'); // It will give us columns array
+
+        $searchArray         =         $request->get('search');
+        $columnIndex         =         $orderArray[0]['column'];  // This will let us know,
+        // which column index should be sorted
+        // 0 = id, 1 = name, 2 = email , 3 = created_at
+
+        $columnName         =         $columnNameArray[$columnIndex]['data']; // Here we will get column name,
+        // Base on the index we get
+
+        $columnSortOrder     =         $orderArray[0]['dir']; // This will get us order direction(ASC/DESC)
+        $searchValue         =         $searchArray['value']; // This is search value
+
+
+        $branch = Consignee::where('id', '>', 0);
+        $total = $branch->count();
+
+        $totalFilter = Consignee::where('id', '>', 0);
+        if (!empty($searchValue)) {
+            $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
+        }
+        $totalFilter = $totalFilter->count();
+
+
+        $arrData = Consignee::where('id', '>', 0) ;
+        $arrData = $arrData->skip($start)->take($rowPerPage);
+        $arrData = $arrData->orderBy($columnName, $columnSortOrder);
+
+        if (!empty($searchValue)) {
+            $arrData = $arrData->where('name', 'like', '%' . $searchValue . '%')->orwhere('phone', 'like', '%' . $searchValue . '%')->orwhere('email', 'like', '%' . $searchValue . '%');
+        }
+
+
+        $arrData = $arrData->get();
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $total,
+            "recordsFiltered" => $totalFilter,
+            "data" => $arrData,
+        );
+
+        return response()->json($response);
+    }
+
+    public function consignee_create(Request $request)
+    {
+        return view('backend.consignee_create');
+    }
+
+    public function consignee_store(Request $request)
+    {
+        $consigner= new Consignee;
+        $consigner->name=$request->name;
+        $consigner->phone=$request->phone;
+        $consigner->gstin=$request->gstin;
+        $consigner->full_address=$request->address;
+        $consigner->pincode=$request->pincode;
+        $consigner->save();
+
+
+        return redirect()->route('admin.consignee');
+
+    }
+
+    public function consignee_edit(Request $request,$id)
+    {
+        $consignee= Consignee::find($request->id);
+        return view('backend.consignee_edit',compact('consignee'));
+    }
+
+    public function consignee_update(Request $request)
+    {
+        $consigner= Consignee::find($request->id);
+        $consigner->name=$request->name;
+        $consigner->phone=$request->phone;
+        $consigner->gstin=$request->gstin;
+        $consigner->full_address=$request->address;
+        $consigner->pincode=$request->pincode;
+        $consigner->save();
+
+        return redirect()->route('admin.consignee');
     }
 
 }

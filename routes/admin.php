@@ -60,8 +60,23 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('pincode-edit/{id}', [PincodeController::class,'edit'])->name('admin_pincode.edit');
     Route::get('pincode-delete/{id}', [PincodeController::class,'delete'])->name('admin_pincode.delete');
 
+    Route::get('/consigner', [AdminController::class,'consigner'])->name('admin.consigner');
+    Route::get('get_consigner', [AdminController::class,'get_consigner'])->name('admin.get_consigner');
+    Route::get('/consigner/create', [AdminController::class, 'consigner_create'])->name('admin.consigner_create');
+    Route::post('/consigner/store', [AdminController::class, 'consigner_store'])->name('admin.consigner_store');
+    Route::get('/consigner/{id}', [AdminController::class, 'consigner_edit'])->name('admin.consigner_edit');
+    Route::post('/consigner/update', [AdminController::class, 'consigner_update'])->name('admin.consigner_update');
+
+    Route::get('/consignee', [AdminController::class,'consignee'])->name('admin.consignee');
+    Route::get('get_consignee', [AdminController::class,'get_consignee'])->name('admin.get_consignee');
+    Route::get('/consignee/create', [AdminController::class, 'consignee_create'])->name('admin.consignee_create');
+    Route::post('/consignee/store', [AdminController::class, 'consignee_store'])->name('admin.consignee_store');
+    Route::get('/consignee/{id}', [AdminController::class, 'consignee_edit'])->name('admin.consignee_edit');
+    Route::post('/consignee/update', [AdminController::class, 'consignee_update'])->name('admin.consignee_update');
+
 
     Route::resource('roles', RoleController::class);
     Route::resource('staff', StaffController::class);
+
 
 });
