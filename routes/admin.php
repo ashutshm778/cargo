@@ -66,6 +66,7 @@ Route::group(['middleware' => ['admin']], function() {
     Route::post('/consigner/store', [AdminController::class, 'consigner_store'])->name('admin.consigner_store');
     Route::get('/consigner/{id}', [AdminController::class, 'consigner_edit'])->name('admin.consigner_edit');
     Route::post('/consigner/update', [AdminController::class, 'consigner_update'])->name('admin.consigner_update');
+    Route::get('get_consigner_data', [AdminController::class,'get_consigner_data'])->name('admin.get_consigner_data');
 
     Route::get('/consignee', [AdminController::class,'consignee'])->name('admin.consignee');
     Route::get('get_consignee', [AdminController::class,'get_consignee'])->name('admin.get_consignee');
@@ -73,6 +74,7 @@ Route::group(['middleware' => ['admin']], function() {
     Route::post('/consignee/store', [AdminController::class, 'consignee_store'])->name('admin.consignee_store');
     Route::get('/consignee/{id}', [AdminController::class, 'consignee_edit'])->name('admin.consignee_edit');
     Route::post('/consignee/update', [AdminController::class, 'consignee_update'])->name('admin.consignee_update');
+    Route::get('get_consignee_data', [AdminController::class,'get_consignee_data'])->name('admin.get_consignee_data');
 
 
     Route::resource('roles', RoleController::class);

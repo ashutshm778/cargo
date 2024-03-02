@@ -213,9 +213,16 @@ class AdminController extends Controller
         $consigner->pincode=$request->pincode;
         $consigner->save();
 
-
+        if(!empty($request->from)){
+            return back();
+        }
         return redirect()->route('admin.consigner');
 
+    }
+
+    public function get_consigner_data(Request $request){
+        $consigner= Consignor::where('phone',$request->phone)->first();
+        return $consigner;
     }
 
     public function consigner_edit(Request $request,$id)
@@ -295,6 +302,12 @@ class AdminController extends Controller
         return response()->json($response);
     }
 
+
+    public function get_consignee_data(Request $request){
+        $consignee= Consignee::where('phone',$request->phone)->first();
+        return $consignee;
+    }
+
     public function consignee_create(Request $request)
     {
         return view('backend.consignee_create');
@@ -310,6 +323,9 @@ class AdminController extends Controller
         $consigner->pincode=$request->pincode;
         $consigner->save();
 
+        if(!empty($request->from)){
+            return back();
+        }
 
         return redirect()->route('admin.consignee');
 
@@ -333,5 +349,6 @@ class AdminController extends Controller
 
         return redirect()->route('admin.consignee');
     }
+
 
 }

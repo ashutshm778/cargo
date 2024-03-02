@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Milon\Barcode\DNS1D;
+use App\Models\Consignee;
+use App\Models\Consignor;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
 use App\Models\BookingProduct;
@@ -93,6 +95,33 @@ class BookingController extends Controller
     public function store(Request $request)
     {
        // dd($request->all());
+
+        if(empty($request->consignee_id)){
+            $consignee= new Consignee;
+            $consignee->name=$request->name;
+            $consignee->phone=$request->phone;
+            $consignee->gstin=$request->gstin;
+            $consignee->full_address=$request->address;
+            $consignee->pincode=$request->pincode;
+            $consignee->save();
+        }else{
+            $consignee= Consignee::find($request->consignee_id);
+        }
+
+
+        if(empty($request->consignor_id)){
+            $consigner= new Consignor;
+            $consigner->name=$request->name;
+            $consigner->phone=$request->phone;
+            $consigner->gstin=$request->gstin;
+            $consigner->full_address=$request->address;
+            $consigner->pincode=$request->pincode;
+            $consigner->save();
+        }else{
+            $consigner= Consignor::find($request->consignee_id);
+        }
+
+
         $input=$request->all();
         $booking=new Booking;
         $booking->branch_id=1;
@@ -102,11 +131,15 @@ class BookingController extends Controller
         $booking->from=$request->from;
         $booking->to=$request->to;
         $booking->date=$request->date;
-        $booking->consignor=$request->consignor;
-        $booking->consignee=$request->consignee;
-        $booking->consignor_gstin=$request->consignor_gstin;
-        $booking->consignee_gstin=$request->consignee_gstin;
-        $booking->consignee_gstin=$request->consignee_gstin;
+
+
+        $booking->consignor=$consigner->name;
+        $booking->consignee=$consignee->name;
+        $booking->consignor_gstin=$consigner->gstin;
+        $booking->consignee_gstin=$consignee->gstin;
+
+
+
         $booking->booking_no=$request->booking_no;
         $booking->insurance=$request->insurance;
         $booking->b_charges=$request->b_charges;
@@ -124,8 +157,9 @@ class BookingController extends Controller
             $booking_product->booking_id=$booking->id;
             $booking_product->no_of_pack=$value;
             $booking_product->product=$input['product'][$key];
+            $booking_product->weight=$input['unit'][$key];
             $booking_product->weight=$input['weight'][$key];
-            $booking_product->freight='To Pay';
+            $booking_product->weight=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
         }
@@ -205,9 +239,9 @@ class BookingController extends Controller
             $booking_product = BookingProduct::find($value);
             $booking_product->booking_id=$booking->id;
             $booking_product->no_of_pack=$value;
-            $booking_product->product=$input['product'][$key];
+            $booking_product->weight=$input['unit'][$key];
             $booking_product->weight=$input['weight'][$key];
-            $booking_product->freight='To Pay';
+            $booking_product->weight=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
         }

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('no_of_pack');
             $table->string('product');
             $table->string('weight');
-            $table->string('freight');
+            $table->string('unit');
+            $table->string('qty');
             $table->string('freight_charges');
             $table->timestamps();
         });
