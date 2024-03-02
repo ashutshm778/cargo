@@ -173,17 +173,12 @@
                         <ul class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-                                Jeans <span class="badge bg-success rounded-pill">25</span>
+                                Consigner <span class="badge bg-success rounded-pill">{{$total_consigner}}</span>
                             </li>
                             <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                T-Shirts <span class="badge bg-danger rounded-pill">10</span>
+                                Consignee <span class="badge bg-danger rounded-pill">{{$total_consignee}}</span>
                             </li>
-                            <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Shoes <span class="badge bg-primary rounded-pill">65</span>
-                            </li>
-                            <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -483,6 +478,8 @@
 
 
             // chart 2
+            var consigner="{{$total_consigner}}";
+            var consignee="{{$total_consignee}}";
 
             var ctx = document.getElementById("chart2").getContext('2d');
 
@@ -506,7 +503,7 @@
             var myChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ["Jeans", "T-Shirts", "Shoes", "Lingerie"],
+                    labels: ["Consigner", "Consignee"],
                     datasets: [{
                         backgroundColor: [
                             gradientStroke1,
@@ -520,8 +517,8 @@
                             gradientStroke3,
                             gradientStroke4
                         ],
-                        data: [25, 80, 25, 25],
-                        borderWidth: [1, 1, 1, 1]
+                        data: [consigner, consignee],
+                        borderWidth: [1, 1]
                     }]
                 },
                 options: {

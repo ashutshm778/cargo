@@ -25,7 +25,9 @@ class AdminController extends Controller
         $booking = Booking::get()->sum('total');
         $total_order = Booking::get()->count();
         $total_staff = Admin::where('id','>',0)->get()->count();
-        return view('backend.dashboard',compact('branch','booking','total_order','total_staff'));
+        $total_consigner=Consignor::get()->count();
+        $total_consignee=Consignee::get()->count();
+        return view('backend.dashboard',compact('branch','booking','total_order','total_staff','total_consigner','total_consignee'));
     }
 
     public function adminLogin()
