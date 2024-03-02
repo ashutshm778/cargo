@@ -69,7 +69,7 @@
 
             <div class="row">
                 <div class="col-12 col-lg-8 d-flex">
-                    <div class="card radius-10">
+                    {{-- <div class="card radius-10">
 
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -137,14 +137,14 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-12 col-lg-4 d-flex">
                     <div class="card radius-10 w-100">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <h6 class="mb-0">Trending Products</h6>
+                                    <h6 class="mb-0">Users</h6>
                                 </div>
                                 <div class="dropdown ms-auto">
                                     <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
@@ -253,7 +253,7 @@
 
                 </div>
 
-                <div class="col-12 col-lg-5 col-xl-4 d-flex">
+                {{-- <div class="col-12 col-lg-5 col-xl-4 d-flex">
                     <div class="card w-100 radius-10">
                         <div class="card-body">
                             <div class="card radius-10 border shadow-none">
@@ -302,10 +302,10 @@
 
                     </div>
 
-                </div>
-            </div><!--end row-->
+                </div> --}}
+            </div>
 
-            <div class="row row-cols-1 row-cols-lg-3">
+            {{-- <div class="row row-cols-1 row-cols-lg-3">
                 <div class="col d-flex">
                     <div class="card radius-10 w-100">
                         <div class="card-body">
@@ -406,7 +406,7 @@
                         </div><!--end row-->
                     </div>
                 </div>
-            </div><!--end row-->
+            </div><!--end row--> --}}
 
         </div>
     </div>
