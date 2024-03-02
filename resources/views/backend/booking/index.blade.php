@@ -17,7 +17,29 @@
                             </div>
                     </div>
                 </div>
+
                 <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="dates" id="daterange"
+                                        value="" placeholder="Select Date" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mb-3">
+                                    <select id='searchStatus' class="form-control">
+                                        <option value=''>-- Select Branch--</option>
+                                        @foreach(App\Models\Branch::all() as $branch)
+                                        <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
                     <div class="table-responsive">
                         <table class="table align-middle mb-0"  id="datatable" >
                             <thead>
@@ -45,7 +67,16 @@
     <!--end page wrapper -->
 @endsection
 @section('script')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script>
+        $('input[name="dates"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
 
         $(document).ready(function() {
             var dataTable = $('#datatable').DataTable({
@@ -68,9 +99,12 @@
                         var gender = $('#searchByGender').val();
                         var name = $('#searchByName').val();
 
+                        var daterange = $('#daterange').val();
+
                         // Append to data
                         data.searchByGender = gender;
                         data.searchByName = name;
+                        data.daterange = daterange;
                     }
                 },
                 'columns': [
@@ -111,6 +145,16 @@
             });
 
             $('#searchByGender').change(function() {
+                dataTable.draw();
+            });
+            $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format(
+                    'MM/DD/YYYY'));
+                dataTable.draw();
+            });
+
+            $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
                 dataTable.draw();
             });
         });
