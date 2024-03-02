@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Admin;
+use App\Models\Branch;
+use App\Models\Booking;
 use App\Models\Pincode;
 use App\Models\Consignee;
 use App\Models\Consignor;
@@ -18,7 +21,11 @@ class AdminController extends Controller
 
     public function dashboard(Request $request)
     {
-        return view('backend.dashboard');
+        $branch = Branch::get()->count();
+        $booking = Booking::get()->sum('total');
+        $total_order = Booking::get()->count();
+        $total_staff = Admin::where('id','>',0)->get()->count();
+        return view('backend.dashboard',compact('branch','booking','total_order','total_staff'));
     }
 
     public function adminLogin()
