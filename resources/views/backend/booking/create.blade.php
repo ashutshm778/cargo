@@ -108,7 +108,7 @@
                                     </td>
                                     <td>
                                         <label for="consignor">Consignee</label>
-                                        <input type="text" class="form-control" id="consignee" name="Consignee"
+                                        <input type="text" class="form-control" id="consignee" name="consignee"
                                             placeholder="Consignee" required>
                                             <input type="hidden" id="consignee_id" name="consignee_id" />
                                     </td>

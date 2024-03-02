@@ -94,15 +94,15 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
+        dd($request->all());
 
         if(empty($request->consignee_id)){
             $consignee= new Consignee;
-            $consignee->name=$request->name;
-            $consignee->phone=$request->phone;
-            $consignee->gstin=$request->gstin;
-            $consignee->full_address=$request->address;
-            $consignee->pincode=$request->pincode;
+            $consignee->name=$request->consignee;
+            $consignee->phone=$request->consignee_phone;
+            $consignee->gstin=$request->consignee_gstin;
+            $consignee->full_address='';
+            $consignee->pincode='';
             $consignee->save();
         }else{
             $consignee= Consignee::find($request->consignee_id);
@@ -111,11 +111,11 @@ class BookingController extends Controller
 
         if(empty($request->consignor_id)){
             $consigner= new Consignor;
-            $consigner->name=$request->name;
-            $consigner->phone=$request->phone;
-            $consigner->gstin=$request->gstin;
-            $consigner->full_address=$request->address;
-            $consigner->pincode=$request->pincode;
+            $consigner->name=$request->consignor;
+            $consigner->phone=$request->consignee_phone;
+            $consigner->gstin=$request->consignor_gstin;
+            $consigner->full_address='';
+            $consigner->pincode='';
             $consigner->save();
         }else{
             $consigner= Consignor::find($request->consignee_id);
