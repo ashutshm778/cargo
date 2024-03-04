@@ -130,8 +130,9 @@
                                                     <th>#</th>
                                                     <th>Number of Packages</th>
                                                     <th>Nature of Goods Said to contain</th>
+                                                    <th>Unit</th>
                                                     <th>Weight</th>
-                                                    <th>Freight</th>
+                                                    <th>Qty</th>
                                                     <th>Particulars</th>
                                                     <th>Amount</th>
 
@@ -153,10 +154,14 @@
                                                                 name="product[]"
                                                                 placeholder="Nature of Goods Said to contain"
                                                                 value="{{ $booking_product->product }}" required></td>
+                                                                <td> <input type="text" class="form-control" id="unit"
+                                                                    name="unit[]" placeholder="Enter Unit"  value="{{ $booking_product->unit }}"
+                                                                    required></td>
                                                         <td><input type="text" class="form-control" id="weight"
                                                                 name="weight[]" placeholder="Weight"
                                                                 value="{{ $booking_product->weight }}" required></td>
-                                                        <td>To Pay</td>
+                                                        <td><input type="text" class="form-control" id="qty"
+                                                                    name="qty[]" placeholder="Qty"  value="{{ $booking_product->qty }}" required></td>
                                                         <td>Frieght Charges</td>
                                                         <td><input type="number" class="form-control frieght_amount"
                                                                 name="frieght_charge[]" placeholder="Freight"
@@ -171,7 +176,7 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="5">Seal /Received above mentioned production in good
+                                                    <td colspan="6">Seal /Received above mentioned production in good
                                                         condition and correct measure.<br>
                                                         I/We declare that GST shall be payable by consignor/consignee</td>
                                                     <td colspan="1">Insurance</td>
@@ -181,7 +186,7 @@
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="5">I/We have not to claim or avail examption for value
+                                                    <td colspan="6">I/We have not to claim or avail examption for value
                                                         of goods & material.</td>
                                                     <td colspan="1">B. Charges</td>
                                                     <td><input type="number" class="form-control" id="b_charges"
@@ -190,7 +195,7 @@
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="5"></td>
+                                                    <td colspan="6"></td>
                                                     <td colspan="1">Other Charges</td>
                                                     <td><input type="number" class="form-control" id="other_charges"
                                                             name="other_charges" placeholder="Other Charges"
@@ -198,7 +203,7 @@
                                                             onchange="cal_total_amount()" required></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="5"></td>
+                                                    <td colspan="6"></td>
                                                     <td colspan="1">G.S.T</td>
                                                     <td><input type="number" class="form-control" id="gst"
                                                             name="tax" placeholder="Freight"
@@ -206,7 +211,7 @@
                                                             required></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="5"></td>
+                                                    <td colspan="6"></td>
                                                     <td colspan="1">Total</td>
                                                     <td><input type="number" class="form-control" id="total_amount"
                                                             name="total" placeholder="Freight"

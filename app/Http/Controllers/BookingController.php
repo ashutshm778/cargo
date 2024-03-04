@@ -159,9 +159,9 @@ class BookingController extends Controller
             $booking_product->booking_id=$booking->id;
             $booking_product->no_of_pack=$value;
             $booking_product->product=$input['product'][$key];
-            $booking_product->weight=$input['unit'][$key];
+            $booking_product->unit=$input['unit'][$key];
             $booking_product->weight=$input['weight'][$key];
-            $booking_product->weight=$input['qty'][$key];
+            $booking_product->qty=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
         }
@@ -216,6 +216,7 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)
     {
         $input=$request->all();
+       // dd($input);
         $booking->branch_id=1;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->from=$request->from;
@@ -241,9 +242,9 @@ class BookingController extends Controller
             $booking_product = BookingProduct::find($value);
             $booking_product->booking_id=$booking->id;
             $booking_product->no_of_pack=$value;
-            $booking_product->weight=$input['unit'][$key];
+            $booking_product->unit=$input['unit'][$key];
             $booking_product->weight=$input['weight'][$key];
-            $booking_product->weight=$input['qty'][$key];
+            $booking_product->qty=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
         }
