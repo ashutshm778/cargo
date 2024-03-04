@@ -224,7 +224,7 @@
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Status</td>
-                                            <td> <select class="form-control"  name="pincode" required>
+                                            <td> <select class="form-control"  name="status" required>
                                                 <option value="">Select Status</option>
                                                 <option value="paid">Paid</option>
                                                 <option value="unpaid">Unpaid</option>

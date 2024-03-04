@@ -33,7 +33,8 @@ return new class extends Migration
             $table->string('tax');
             $table->string('total');
             $table->string('status');
-            $table->string('description');
+            $table->string('payment_status');
+            $table->string('description')->nullable();
             $table->string('tracking_code')->unique();
             $table->timestamps();
         });

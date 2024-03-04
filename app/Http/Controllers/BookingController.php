@@ -94,7 +94,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+       // dd($request->all());
 
         if(empty($request->consignee_id)){
             $consignee= new Consignee;
@@ -133,6 +133,7 @@ class BookingController extends Controller
         $booking->date=$request->date;
 
 
+
         $booking->consignor=$consigner->name;
         $booking->consignee=$consignee->name;
         $booking->consignor_gstin=$consigner->gstin;
@@ -146,6 +147,7 @@ class BookingController extends Controller
         $booking->other_charges=$request->other_charges;
         $booking->tax=$request->tax;
         $booking->status='order_created';
+        $booking->payment_status=$request->status;
         $booking->value=$request->value;
         $booking->description=$request->description;
         $booking->total=$request->total;
