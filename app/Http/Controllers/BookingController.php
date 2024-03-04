@@ -152,7 +152,7 @@ class BookingController extends Controller
 
         $input=$request->all();
         $booking=new Booking;
-        $booking->branch_id=1;
+        $booking->branch_id=$request->branch_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->bill_no=$request->bill_no;
         $booking->tracking_code='TRACK'.rand(1111,9999);
@@ -262,7 +262,7 @@ class BookingController extends Controller
         $booking= Booking::find($id);
         $input=$request->all();
        // dd($input);
-        $booking->branch_id=1;
+        $booking->branch_id=$request->branch_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->from=$request->from;
         $booking->to=$request->to;
