@@ -61,6 +61,15 @@
                                                             role="alert">
                                                             <strong>{{ $errors->first('bill_no') }}</strong>
                                                         </span>
+                                                        <div class="mb-3">
+                                                            <label for="branch_id"> Branch </label>
+                                                            <select id='branch_id' class="form-control" required>
+                                                                <option value=''>-- Select Branch--</option>
+                                                                @foreach(App\Models\Branch::all() as $branch)
+                                                                <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </td>
                                                     <td colspan="2">
                                                         <div class="float-end float-end col-5 pr-0">
