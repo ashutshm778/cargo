@@ -9,7 +9,9 @@ use App\Models\Consignor;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
 use App\Models\BookingProduct;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -96,6 +98,15 @@ class BookingController extends Controller
     {
        // dd($request->all());
 
+       $validator =  Validator::make($request->all(), [
+        'booking_no' => 'required|unique:bookings',
+        'bill_no' => 'required|unique:bookings'
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    } else {
+
         if(empty($request->consignee_id)){
             $consignee= new Consignee;
             $consignee->name=$request->consignee;
@@ -112,7 +123,7 @@ class BookingController extends Controller
         if(empty($request->consignor_id)){
             $consigner= new Consignor;
             $consigner->name=$request->consignor;
-            $consigner->phone=$request->consignee_phone;
+            $consigner->phone=$request->consignor_phone;
             $consigner->gstin=$request->consignor_gstin;
             $consigner->full_address='';
             $consigner->pincode='';
@@ -176,6 +187,7 @@ class BookingController extends Controller
         $booking_log->status='order_created';
         $booking_log->description=$booking->description;
         $booking_log->save();
+    }
 
         return redirect()->route('booking.index')->with('success', 'Booking Added Successfully!');
 
@@ -213,8 +225,24 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $id)
     {
+
+        $validator = Validator::make($request->all(), [
+            'booking_no' => [
+                'required',
+                Rule::unique('bookings')->ignore($id),
+            ],
+            'bill_no' => [
+                'required',
+                Rule::unique('bookings')->ignore($id),
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+        $booking= Booking::find($id);
         $input=$request->all();
        // dd($input);
         $booking->branch_id=1;
@@ -247,6 +275,7 @@ class BookingController extends Controller
             $booking_product->qty=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
+        }
         }
 
         return redirect()->route('booking.index')->with('success', 'Booking Updated Successfully!');

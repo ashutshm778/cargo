@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pincode;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PincodeController extends Controller
 {
@@ -37,14 +38,39 @@ class PincodeController extends Controller
     public function store(Request $request)
     {
         if (!empty($request->id)) {
+
+            $validator =  Validator::make($request->all(), [
+                'pincode' => 'required|unique:pincodes',
+            ]);
+
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            } else {
+
+
             $pincode = Pincode::find($request->id);
+            $pincode->pincode = $request->pincode;
+            $pincode->city = $request->city;
+            $pincode->state = $request->state;
+            $pincode->save();
+            }
         } else {
-            $pincode = new Pincode;
+
+            $validator =  Validator::make($request->all(), [
+                'pincode' => 'required|unique:pincodes',
+            ]);
+
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            } else {
+                $pincode = new Pincode;
+                $pincode->pincode = $request->pincode;
+                $pincode->city = $request->city;
+                $pincode->state = $request->state;
+                $pincode->save();
+            }
         }
-        $pincode->pincode = $request->pincode;
-        $pincode->city = $request->city;
-        $pincode->state = $request->state;
-        $pincode->save();
+
 
         return redirect()->route('admin.pincode');
     }

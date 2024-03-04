@@ -214,6 +214,14 @@ class AdminController extends Controller
 
     public function consigner_store(Request $request)
     {
+        $validator =  Validator::make($request->all(), [
+            'phone' => 'required|unique:consignors',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
+
         $consigner= new Consignor;
         $consigner->name=$request->name;
         $consigner->phone=$request->phone;
@@ -225,6 +233,7 @@ class AdminController extends Controller
         if(!empty($request->from)){
             return back();
         }
+    }
         return redirect()->route('admin.consigner');
 
     }
@@ -324,6 +333,13 @@ class AdminController extends Controller
 
     public function consignee_store(Request $request)
     {
+        $validator =  Validator::make($request->all(), [
+            'phone' => 'required|unique:consignees',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
         $consigner= new Consignee;
         $consigner->name=$request->name;
         $consigner->phone=$request->phone;
@@ -335,6 +351,7 @@ class AdminController extends Controller
         if(!empty($request->from)){
             return back();
         }
+    }
 
         return redirect()->route('admin.consignee');
 

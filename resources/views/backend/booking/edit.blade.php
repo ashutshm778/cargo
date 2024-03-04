@@ -54,6 +54,11 @@
                                                         <input type="text" class="form-control col-5" id="bill_no"
                                                             name="bill_no" placeholder="Bill No"
                                                             value="{{ $booking->bill_no }}" required>
+                                                            <span
+                                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                                            role="alert">
+                                                            <strong>{{ $errors->first('bill_no') }}</strong>
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <div class="float-end float-end col-5 pr-0">
@@ -110,10 +115,15 @@
 
                                                 <tr>
                                                     <td>
-                                                        <label for="booking_no">Bill
+                                                        <label for="booking_no">Booking No
                                                             No.</label> <input type="text" class="form-control"
                                                             id="booking_no" name="booking_no" placeholder="Booking No"
                                                             value="{{ $booking->booking_no }}" required>
+                                                            <span
+                                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                                            role="alert">
+                                                            <strong>{{ $errors->first('booking_no') }}</strong>
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <label for="value">Value</label> <input type="text"

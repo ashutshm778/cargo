@@ -55,13 +55,18 @@
                                                     <td colspan="2">
                                                         <label for="bill_no"> G.R.No/Bill. No- </label>
                                                         <input type="text" class="form-control col-5" id="bill_no"
-                                                            name="bill_no" placeholder="Bill No" required>
+                                                            name="bill_no" placeholder="Bill No" value="{{ old('bill_no') }}" required>
+                                                            <span
+                                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                                            role="alert">
+                                                            <strong>{{ $errors->first('bill_no') }}</strong>
+                                                        </span>
                                                     </td>
                                                     <td colspan="2">
                                                         <div class="float-end float-end col-5 pr-0">
                                                             <label for="date">Date- </label>
                                                             <input type="date" class="form-control" id="date"
-                                                                name="date" placeholder="Date" required>
+                                                                name="date" value="{{ old('date') }}" placeholder="Date" required>
                                                     </td>
                                 </div>
                                 </tr>
@@ -89,13 +94,13 @@
                                         <input type="text" class="form-control" id="consignor_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
-                                            placeholder="Consignor Phone" name="consignor_phone" required>
+                                            placeholder="Consignor Phone" name="consignor_phone" required value="{{ old('consignor_phone') }}">
                                     </td>
                                     <td>
                                         <label for="consignor">Consignor</label>
                                         <input type="text" class="form-control" id="consignor" name="consignor"
-                                            placeholder="Consignor" required>
-                                            <input type="hidden" id="consignor_id" name="consignor_id" />
+                                            placeholder="Consignor" value="{{ old('consignor') }}" required >
+                                            <input type="hidden" id="consignor_id" name="consignor_id" value="{{ old('consignor_id') }}"/>
                                     </td>
                                     <td>
                                         <label for="consignee">Consignee Phone <a class="" data-toggle="modal"
@@ -104,13 +109,13 @@
                                         <input type="text" class="form-control" id="consignee_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
-                                            placeholder="Consignee Phone" name="consignee_phone" required>
+                                            placeholder="Consignee Phone" name="consignee_phone" required value="{{ old('consignee_phone') }}">
                                     </td>
                                     <td>
                                         <label for="consignor">Consignee</label>
                                         <input type="text" class="form-control" id="consignee" name="consignee"
-                                            placeholder="Consignee" required>
-                                            <input type="hidden" id="consignee_id" name="consignee_id" />
+                                            placeholder="Consignee" value="{{ old('consignee') }}" required>
+                                            <input type="hidden" id="consignee_id" name="consignee_id" value="{{ old('consignee_id') }}" />
                                     </td>
 
                                 </tr>
@@ -118,12 +123,12 @@
                                     <td colspan="2">
                                         <label for="consignor_gstin">GSTIN</label>
                                         <input type="text" class="form-control" id="consignor_gstin"
-                                            placeholder="Consignor GSTIN" name="consignor_gstin" required>
+                                            placeholder="Consignor GSTIN" name="consignor_gstin" value="{{ old('consignor_gstin') }}" required>
                                     </td>
                                     <td colspan="2">
                                         <label for="consignee_gstin">GSTIN</label> <input type="text"
                                             class="form-control" id="consignee_gstin" placeholder="Consignee GSTIN"
-                                            name="consignee_gstin" required>
+                                            name="consignee_gstin" required value="{{ old('consignee_gstin') }}">
                                     </td>
                                 </tr>
 
@@ -131,12 +136,17 @@
                                     <td colspan="2">
                                         <label for="booking_no">Bill No.</label><input type="text"
                                             class="form-control" id="booking_no" name="booking_no"
-                                            placeholder="Booking No" required>
+                                            placeholder="Booking No" value="{{ old('booking_no') }}" required>
+                                            <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                            role="alert">
+                                            <strong>{{ $errors->first('booking_no') }}</strong>
+                                        </span>
                                     </td>
                                     <td colspan="2">
                                         <label for="value">Value</label>
                                         <input type="text" class="form-control" id="value" name="value"
-                                            placeholder="Value" required>
+                                            placeholder="Value" value="{{ old('value') }}" required>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -562,8 +572,8 @@
                 }
             });
 
-            $("#consigner_phone").keyup(function() {
-                var phone = $('#consigner_phone').val();
+            $("#consignor_phone").keyup(function() {
+                var phone = $('#consignor_phone').val();
                 if (phone.length > 9) {
                     $.ajax({
                         type: "GET",
@@ -578,7 +588,7 @@
 
                             $('#consignor').val(response.name).prop('readOnly', true);
                             $('#consignor_gstin').val(response.gstin).prop('readOnly', true);
-                            $('#consigner_id').val(response.id);
+                            $('#consignor_id').val(response.id);
 
 
 
@@ -587,7 +597,7 @@
                 }else{
                             $('#consignor').val('').prop('readOnly', false);
                             $('#consignor_gstin').val('').prop('readOnly', false);
-                            $('#consigner_id').val('');
+                            $('#consignor_id').val('');
                 }
             });
         </script>
