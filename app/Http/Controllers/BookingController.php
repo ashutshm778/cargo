@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Booking;
 use Milon\Barcode\DNS1D;
 use App\Models\Consignee;
@@ -46,6 +47,12 @@ class BookingController extends Controller
         $columnSortOrder     =         $orderArray[0]['dir']; // This will get us order direction(ASC/DESC)
         $searchValue         =         $searchArray['value']; // This is search value
 
+        $dateRange = explode('-', $request->get('daterange'));
+
+        if (!empty($request->get('daterange'))) {
+            $start_date = Carbon::parse($dateRange[0])->toDateString();
+            $end_date = Carbon::parse($dateRange[1])->toDateString();
+        }
 
         $branch = Booking::where('id', '>', 0);
         $total = $branch->count();
@@ -53,6 +60,12 @@ class BookingController extends Controller
         $totalFilter = Booking::where('id', '>', 0);
         if (!empty($searchValue)) {
             $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
+        }
+        if (!empty($request->get('daterange'))) {
+            $totalFilter = $totalFilter->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date);
+        }
+        if (!empty($request->get('branch_id'))) {
+            $totalFilter = $totalFilter->where('branch_id', $request->get('branch_id'));
         }
         $totalFilter = $totalFilter->count();
 
@@ -64,8 +77,12 @@ class BookingController extends Controller
         if (!empty($searchValue)) {
             $arrData = $arrData->where('name', 'like', '%' . $searchValue . '%');
         }
-
-
+        if (!empty($request->get('daterange'))) {
+            $arrData = $arrData->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date);
+        }
+        if (!empty($request->get('branch_id'))) {
+            $arrData = $arrData->where('branch_id', $request->get('branch_id'));
+        }
         $arrData = $arrData->get();
 
         $response = array(

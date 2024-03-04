@@ -29,7 +29,7 @@
                             </td>
                             <td>
                                 <div class="mb-3">
-                                    <select id='searchStatus' class="form-control">
+                                    <select id='branch_id' class="form-control">
                                         <option value=''>-- Select Branch--</option>
                                         @foreach(App\Models\Branch::all() as $branch)
                                         <option value="{{$branch->id}}">{{$branch->name}}</option>
@@ -100,11 +100,13 @@
                         var name = $('#searchByName').val();
 
                         var daterange = $('#daterange').val();
+                        var branch_id = $('#branch_id').val();
 
                         // Append to data
                         data.searchByGender = gender;
                         data.searchByName = name;
                         data.daterange = daterange;
+                        data.branch_id = branch_id;
                     }
                 },
                 'columns': [
@@ -147,6 +149,11 @@
             $('#searchByGender').change(function() {
                 dataTable.draw();
             });
+
+            $('#branch_id').change(function() {
+                dataTable.draw();
+            });
+
             $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format(
                     'MM/DD/YYYY'));
