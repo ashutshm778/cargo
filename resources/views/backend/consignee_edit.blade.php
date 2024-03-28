@@ -37,9 +37,9 @@
                                 </span>
                             </div>
                             <div class="col-md-4">
-                                <label for="gstin" class="form-label">GSTIN<span>*</span></label>
+                                <label for="gstin" class="form-label">GSTIN</label>
                                 <input type="text" class="form-control" id="gstin" name="gstin" placeholder="GSTIN" value="{{$consignee->gstin}}"
-                                    required>
+                                    >
                                 <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                     role="alert">
                                     <strong>{{ $errors->first('gstin') }}</strong>

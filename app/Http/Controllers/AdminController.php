@@ -251,6 +251,13 @@ class AdminController extends Controller
 
     public function consigner_update(Request $request)
     {
+        $validator =  Validator::make($request->all(), [
+            'phone' => 'required|unique:consignors,phone,'.$request->id,
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
         $consigner= Consignor::find($request->id);
         $consigner->name=$request->name;
         $consigner->phone=$request->phone;
@@ -258,6 +265,7 @@ class AdminController extends Controller
         $consigner->full_address=$request->address;
         $consigner->pincode=$request->pincode;
         $consigner->save();
+        }
 
         return redirect()->route('admin.consigner');
     }
@@ -365,6 +373,12 @@ class AdminController extends Controller
 
     public function consignee_update(Request $request)
     {
+        $validator =  Validator::make($request->all(), [
+            'phone' => 'required|unique:consignees,phone,'.$request->id
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        } else {
         $consigner= Consignee::find($request->id);
         $consigner->name=$request->name;
         $consigner->phone=$request->phone;
@@ -372,6 +386,7 @@ class AdminController extends Controller
         $consigner->full_address=$request->address;
         $consigner->pincode=$request->pincode;
         $consigner->save();
+        }
 
         return redirect()->route('admin.consignee');
     }

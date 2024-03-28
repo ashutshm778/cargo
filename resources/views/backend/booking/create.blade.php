@@ -132,12 +132,12 @@
                                     <td colspan="2">
                                         <label for="consignor_gstin">GSTIN</label>
                                         <input type="text" class="form-control" id="consignor_gstin"
-                                            placeholder="Consignor GSTIN" name="consignor_gstin" value="{{ old('consignor_gstin') }}" required>
+                                            placeholder="Consignor GSTIN" name="consignor_gstin" value="{{ old('consignor_gstin') }}" >
                                     </td>
                                     <td colspan="2">
                                         <label for="consignee_gstin">GSTIN</label> <input type="text"
                                             class="form-control" id="consignee_gstin" placeholder="Consignee GSTIN"
-                                            name="consignee_gstin" required value="{{ old('consignee_gstin') }}">
+                                            name="consignee_gstin"  value="{{ old('consignee_gstin') }}">
                                     </td>
                                 </tr>
 
@@ -320,9 +320,9 @@
                                     </span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="gstin" class="form-label">GSTIN<span>*</span></label>
+                                    <label for="gstin" class="form-label">GSTIN</label>
                                     <input type="text" class="form-control" id="gstin" name="gstin"
-                                        placeholder="GSTIN" required>
+                                        placeholder="GSTIN" >
                                     <span
                                         style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                         role="alert">
@@ -385,9 +385,9 @@
                                 </span>
                             </div>
                             <div class="col-md-4">
-                                <label for="gstin" class="form-label">GSTIN<span>*</span></label>
+                                <label for="gstin" class="form-label">GSTIN</label>
                                 <input type="text" class="form-control" id="gstin" name="gstin"
-                                    placeholder="GSTIN" required>
+                                    placeholder="GSTIN" >
                                 <span
                                     style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                     role="alert">
