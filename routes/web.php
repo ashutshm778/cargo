@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 Route::get('/', [HomeController::class,'home'])->name('home');
 Route::view('about-us', 'frontend.about')->name('about');
-Route::view('track-order', 'frontend.track_order')->name('track_order');
+Route::get('track-order',[HomeController::class,'track_order'] )->name('track_order');
 Route::view('services', 'frontend.services')->name('services');
 Route::view('service-details', 'frontend.service_details')->name('service_detail');
 Route::view('contact-us', 'frontend.contact')->name('contact');

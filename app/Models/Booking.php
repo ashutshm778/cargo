@@ -89,4 +89,11 @@ class Booking extends Model
         return $this->hasmany(BookingProduct::class,'booking_id','id');
     }
 
+    public function booking_log()
+    {
+        return $this->hasmany(BookingLog::class,'booking_id','id');
+    }
+
+
+
 }
