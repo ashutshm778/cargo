@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('added_by');
             $table->string('bill_no')->unique();
             $table->string('date');
+            $table->string('edd');
             $table->string('from');
             $table->string('to');
             $table->string('consignor');

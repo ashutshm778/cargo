@@ -70,12 +70,20 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="float-end float-end col-5 pr-0">
+                                                        <div>
                                                         <label for="date">Date-</label>
-                                                        <input type="date" class="form-control" id="date"
+                                                        <input type="date" class="form-control col-5" id="date"
                                                             name="date" placeholder="Date" value="{{ $booking->date }}"
                                                             required>
                                                         </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="branch_id"> EDD -</label>
+                                                            <input type="date" class="form-control" id="edd"
+                                                            name="edd" placeholder="Date" value="{{ $booking->edd }}"
+                                                            required>
+                                                        </div>
+
                                                     </td>
                                                 </tr>
                                                 <tr>
