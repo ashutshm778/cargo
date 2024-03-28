@@ -159,7 +159,7 @@ class BookingController extends Controller
         $booking->from=$request->from;
         $booking->to=$request->to;
         $booking->date=$request->date;
-
+        $booking->edd=$request->date;
 
 
         $booking->consignor=$consigner->name;
