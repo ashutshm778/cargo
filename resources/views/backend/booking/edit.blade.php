@@ -241,7 +241,7 @@
                                                     <td colspan="6"></td>
                                                     <td colspan="1">Total</td>
                                                     <td><input type="number" class="form-control" id="total_amount"
-                                                            name="total" placeholder="Freight"
+                                                            name="total" placeholder="Total"
                                                             value="{{ $booking->total }}" readonly required></td>
                                                 </tr>
                                             </tfoot>

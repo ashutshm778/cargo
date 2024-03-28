@@ -246,7 +246,7 @@
                                             <td> <select class="form-control"  name="status" required>
                                                 <option value="">Select Status</option>
                                                 <option value="paid">Paid</option>
-                                                <option value="unpaid">Unpaid</option>
+                                                <option value="unpaid">To Pay</option>
                                             </select></td>
                                         </tr>
                                     </tfoot>

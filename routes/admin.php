@@ -53,6 +53,7 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('get_booking', [BookingController::class,'get_booking'])->name('admin.get_booking');
     Route::get('payment_receipt/{id}', [BookingController::class,'payment_receipt'])->name('admin.payment_receipt');
     Route::get('track_order/{id}', [BookingController::class,'track_order'])->name('admin.track_order');
+    Route::post('booking/status_update', [BookingController::class,'booking_status_update'])->name('admin.booking_status_update');
 
 
     Route::get('/pincode',[PincodeController::class,'index'])->name('admin.pincode');
