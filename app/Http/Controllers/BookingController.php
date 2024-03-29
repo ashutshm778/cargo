@@ -349,8 +349,9 @@ class BookingController extends Controller
 
     }
 
-    public function booking_barcode(){
-          return view('backend.booking.booking_barcode');
+    public function booking_barcode($id){
+          $booking_product=BookingProduct::find($id);
+          return view('backend.booking.booking_barcode',compact('booking_product'));
     }
 
 }

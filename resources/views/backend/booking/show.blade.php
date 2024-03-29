@@ -146,7 +146,7 @@
                                                 $barcode = $generator->getBarcode($booking_product->id, $generator::TYPE_CODE_128);
                                             @endphp --}}
                                             <tr>
-                                                <td><a href="{{route('admin.booking_barcode')}}">Download Barcode</a></td>
+                                                <td><a href="{{route('admin.booking_barcode',$booking_product->id)}}">Download Barcode</a></td>
                                                 <td>{{ $booking_product->no_of_pack }}</td>
                                                 <td>{{ $booking_product->product }}</td>
                                                 <td>{{$booking_product->unit}}</td>
