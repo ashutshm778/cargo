@@ -11,6 +11,7 @@ use App\Models\BookingLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -27,10 +28,15 @@ class HomeController extends Controller
         if ($valid->fails()) {
             return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
         } else {
-
             $data = Admin::where('email', $request->email)->first();
-            $data->access_token =  $data->createToken('MyApp')->plainTextToken;
-            return $data;
+            if(Hash::check( $data->password , $request->password ) )
+            {
+                $data->access_token =  $data->createToken('MyApp')->plainTextToken;
+                return $data;
+            }else{
+                $valid->getMessageBag()->add('password', 'Wrong Password');
+                return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
+            }
         }
     }
 
@@ -55,13 +61,17 @@ class HomeController extends Controller
     }
 
     public function get_booking(Request $request){
-        $booking = Booking::where('bill_no',$request->scanner_data)->with('booking_product')->first();
 
-        return response()->json([
-            'booking_data' => $booking,
-            'success' => true,
-            'status' => 200
-        ]);
+        $booking = Booking::where('bill_no',$request->scanner_data)->with('booking_product')->first();
+        if(!empty($booking->id)){
+            return response()->json([
+                'booking_data' => $booking,
+                'success' => true,
+                'status' => 200
+            ]);
+         }else{
+            return response()->json(['error' => 'Invalid Data', 'status' => '401'], 401);
+         }
     }
 
     public function booking_scan_update(Request $request){
