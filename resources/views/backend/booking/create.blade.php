@@ -167,8 +167,8 @@
                                             <th>Number of Packages</th>
                                             <th>Nature of Goods Said to contain</th>
                                             <th>Unit</th>
-                                            <th>Weight</th>
                                             <th>Qty</th>
+                                            <th>Weight (in kg)</th>
                                             <th>Particulars</th>
                                             <th>Amount</th>
 
@@ -188,10 +188,11 @@
                                             <td> <input type="text" class="form-control" id="unit"
                                                         name="unit[]" placeholder="Enter Unit"
                                                         required></td>
-                                            <td><input type="text" class="form-control" id="weight"
-                                                    name="weight[]" placeholder="Weight" required></td>
+
                                             <td><input type="text" class="form-control" id="qty"
                                                         name="qty[]" placeholder="Qty" required></td>
+                                            <td><input type="text" class="form-control" id="weight"
+                                                            name="weight[]" placeholder="Weight" required></td>
                                             <td>Frieght Charges</td>
                                             <td><input type="number" class="form-control frieght_amount"
                                                     name="frieght_charge[]" placeholder="Freight"

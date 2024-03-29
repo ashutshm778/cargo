@@ -33,6 +33,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('admin.mainifestation_list')}}">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Manifestation</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('admin.consigner')}}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>

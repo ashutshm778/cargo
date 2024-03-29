@@ -367,4 +367,78 @@ class BookingController extends Controller
           return view('backend.booking.booking_barcode',compact('booking_product','booking','barcode','booking_product_barcode'));
     }
 
+    public function mainifestation_list()
+    {
+        return view('backend.booking.mainifestation_list');
+    }
+
+    public function get_mainifestation_list(Request $request)
+    {
+
+        $draw                 =         $request->get('draw'); // Internal use
+        $start                =         $request->get("start"); // where to start next records for pagination
+        $rowPerPage           =         $request->get("length"); // How many recods needed per page for pagination
+
+        $orderArray           =         $request->get('order');
+        $columnNameArray      =         $request->get('columns'); // It will give us columns array
+
+        $searchArray          =         $request->get('search');
+        $columnIndex          =         $orderArray[0]['column'];  // This will let us know,
+        // which column index should be sorted
+        // 0 = id, 1 = name, 2 = email , 3 = created_at
+
+        $columnName         =         $columnNameArray[$columnIndex]['data']; // Here we will get column name,
+        // Base on the index we get
+
+        $columnSortOrder     =         $orderArray[0]['dir']; // This will get us order direction(ASC/DESC)
+        $searchValue         =         $searchArray['value']; // This is search value
+
+        $dateRange = explode('-', $request->get('daterange'));
+
+        if (!empty($request->get('daterange'))) {
+            $start_date = Carbon::parse($dateRange[0])->toDateString();
+            $end_date = Carbon::parse($dateRange[1])->toDateString();
+        }
+
+        $branch = Booking::where('id', '>', 0);
+        $total = $branch->count();
+
+        $totalFilter = Booking::where('id', '>', 0);
+        if (!empty($searchValue)) {
+            $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
+        }
+        if (!empty($request->get('daterange'))) {
+            $totalFilter = $totalFilter->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date);
+        }
+        if (!empty($request->get('branch_id'))) {
+            $totalFilter = $totalFilter->where('branch_id', $request->get('branch_id'));
+        }
+        $totalFilter = $totalFilter->count();
+
+
+        $arrData = Booking::where('id', '>', 0);
+        $arrData = $arrData->skip($start)->take($rowPerPage);
+        $arrData = $arrData->orderBy($columnName, $columnSortOrder);
+
+        if (!empty($searchValue)) {
+            $arrData = $arrData->where('name', 'like', '%' . $searchValue . '%');
+        }
+        if (!empty($request->get('daterange'))) {
+            $arrData = $arrData->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date);
+        }
+        if (!empty($request->get('branch_id'))) {
+            $arrData = $arrData->where('branch_id', $request->get('branch_id'));
+        }
+        $arrData = $arrData->get();
+
+        $response = array(
+            "draw" => intval($draw),
+            "recordsTotal" => $total,
+            "recordsFiltered" => $totalFilter,
+            "data" => $arrData,
+        );
+
+        return response()->json($response);
+    }
+
 }
