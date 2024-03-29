@@ -351,7 +351,10 @@ class BookingController extends Controller
 
     public function booking_barcode($id){
           $booking_product=BookingProduct::find($id);
-          return view('backend.booking.booking_barcode',compact('booking_product'));
+          $booking=Booking::find($booking_product->booking_id);
+          $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+          $barcode = $generator->getBarcode($booking->bill_no, $generator::TYPE_CODE_128);
+          return view('backend.booking.booking_barcode',compact('booking_product','booking','barcode'));
     }
 
 }
