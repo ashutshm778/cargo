@@ -349,4 +349,8 @@ class BookingController extends Controller
 
     }
 
+    public function booking_barcode(){
+          return view('backend.booking.booking_barcode');
+    }
+
 }
