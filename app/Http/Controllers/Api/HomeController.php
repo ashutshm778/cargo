@@ -29,7 +29,7 @@ class HomeController extends Controller
             return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
         } else {
             $data = Admin::where('email', $request->email)->first();
-            if(Hash::check( $data->password , $request->password ) )
+            if(Hash::check($request->password,$data->password ) )
             {
                 $data->access_token =  $data->createToken('MyApp')->plainTextToken;
                 return $data;
