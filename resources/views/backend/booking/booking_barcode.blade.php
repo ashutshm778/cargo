@@ -47,6 +47,7 @@
             <!--end breadcrumb-->
             <div class="card">
                 <div class="card-body">
+                    @foreach($booking_product_barcode as $key=>$b_p_barcode)
                     <div class="row">
                         <div class="col-4 m-auto mb-3">
                                 <div class="invoice">
@@ -54,35 +55,48 @@
                                         <table class="table table-sm table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td colspan="2" style="text-align: center">
-                                                        <img src="{{asset('frontend/assets/img/barcode.png')}}" alt="" style="width:150px">
-                                                        <p>246862761</p>
+                                                    <td colspan="2" style="text-align: center;margin:0 auto;">
+                                                     <span style="justify-content: center;display: flex;">{!!$barcode!!}</span>
+                                                        <p>{{$booking->bill_no}}</p>
                                                     </td>
-                                                    <td><p>LIBERTY SHOES</p>
-                                                        <p>100492 B2B</p>
+                                                    <td><p>{{$booking_product->product}}</p>
+
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>1234567890</td>
-                                                    <td></td>
-                                                    <td>1/1</td>
+                                                    <td colspan="2"></td>
+
+                                                    <td>1/{{$key+1}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2">Panipat_Risalu_P (Haryana)</td>
+                                                    <td colspan="2">
+                                                        <p>Consignee:</p>
+                                                        <p>{{$booking->consignee}}</p>
+                                                    </td>
+
                                                     <td>
-                                                        <p>MAWB:</p>
-                                                        <p>15150510385932</p>
+                                                        <p>Consignor:</p>
+                                                        <p>{{$booking->consignor}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3">
-                                                        <p>Liberty Shoes Limited, CENTRAL WAREHOUSE, PANIPAT, PANIPAT, City: Panipat, State: Haryana, PIN: 132103. PD: 01 Apr</p>
+                                                        @php
+                                                             $pincode_data_from=App\Models\Pincode::where('pincode',$booking->from)->first();
+                                                             $pincode_data_to=App\Models\Pincode::where('pincode',$booking->to)->first();
+                                                        @endphp
+                                                        <p>From : {{$pincode_data_from->pincode}},{{$pincode_data_from->city}},{{$pincode_data_from->state}}</p>
+                                                        <p>To : {{$pincode_data_to->pincode}},{{$pincode_data_to->city}},{{$pincode_data_to->state}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3" style="text-align: center">
-                                                        <img src="{{asset('frontend/assets/img/barcode.png')}}" alt="" style="width:150px">
-                                                        <p>246862761</p>
+                                                        @php
+                                                        $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                                                        $barcode = $generator->getBarcode($b_p_barcode->barcode, $generator::TYPE_CODE_128);
+                                                    @endphp
+                                                   <span style="justify-content: center;display: flex;"> {!!$barcode!!}</span>
+                                                   <span style="justify-content: center;display: flex;">{{$b_p_barcode->barcode}}</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -91,6 +105,7 @@
                                 </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
             <div class="toolbar no-print mb-3">

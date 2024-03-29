@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\BookingProduct;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use App\Models\BookingProductBarcode;
 use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
@@ -146,7 +147,7 @@ class BookingController extends Controller
             $consigner->pincode='';
             $consigner->save();
         }else{
-            $consigner= Consignor::find($request->consignee_id);
+            $consigner= Consignor::find($request->consignor_id);
         }
 
 
@@ -192,6 +193,14 @@ class BookingController extends Controller
             $booking_product->qty=$input['qty'][$key];
             $booking_product->freight_charges=$input['frieght_charge'][$key];
             $booking_product->save();
+
+            for($i=1;$i<=$value;$i++){
+                $booking_product_barcode=new BookingProductBarcode;
+                $booking_product_barcode->booking_product_id=$booking_product->id;
+                $booking_product_barcode->barcode=$booking->bill_no.$i;
+                $booking_product_barcode->save();
+            }
+
         }
 
         $booking_log=new BookingLog;
@@ -354,7 +363,8 @@ class BookingController extends Controller
           $booking=Booking::find($booking_product->booking_id);
           $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
           $barcode = $generator->getBarcode($booking->bill_no, $generator::TYPE_CODE_128);
-          return view('backend.booking.booking_barcode',compact('booking_product','booking','barcode'));
+          $booking_product_barcode=BookingProductBarcode::where('booking_product_id',$booking_product->id)->get();
+          return view('backend.booking.booking_barcode',compact('booking_product','booking','barcode','booking_product_barcode'));
     }
 
 }
