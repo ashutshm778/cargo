@@ -112,7 +112,7 @@
                                                         <label for="consignee">Consignee</label>
                                                         <input type="text" class="form-control" id="consignee"
                                                             placeholder="Consignee" name="consignee"
-                                                            value="{{ $booking->consignee }}" required>
+                                                            value="{{ $booking->consignee }}" >
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -120,13 +120,13 @@
                                                         <label for="consignor_gstin">GSTIN</label> <input type="text"
                                                             class="form-control" id="consignor_gstin"
                                                             placeholder="Consignor GSTIN" name="consignor_gstin"
-                                                            value="{{ $booking->consignor_gstin }}" required>
+                                                            value="{{ $booking->consignor_gstin }}" >
                                                     </td>
                                                     <td>
                                                         <label for="consignee_gstin">GSTIN</label> <input type="text"
                                                             class="form-control" id="consignee_gstin"
                                                             placeholder="Consignee GSTIN" name="consignee_gstin"
-                                                            value="{{ $booking->consignee_gstin }}" required>
+                                                            value="{{ $booking->consignee_gstin }}" >
                                                     </td>
                                                 </tr>
 
