@@ -132,24 +132,26 @@
                                                 <th>#</th>
                                                 <th>Number of Packages</th>
                                                 <th>Nature of Goods Said to contain</th>
+                                                <th>Unit</th>
                                                 <th>Weight</th>
-                                                <th>Freight</th>
+
                                                 <th>Particulars</th>
                                                 <th>Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($booking->booking_product as $key => $booking_product)
-                                            @php
+                                            {{-- @php
                                                 $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
                                                 $barcode = $generator->getBarcode($booking_product->id, $generator::TYPE_CODE_128);
-                                            @endphp
+                                            @endphp --}}
                                             <tr>
-                                                <td>{!! $barcode !!}</td>
+                                                <td>Download Barcode</td>
                                                 <td>{{ $booking_product->no_of_pack }}</td>
                                                 <td>{{ $booking_product->product }}</td>
+                                                <td>{{$booking_product->unit}}</td>
                                                 <td>{{ $booking_product->weight }}</td>
-                                                <td>TO PAY</td>
+
                                                 <td>Freight Charges</td>
                                                 <td>{{ $booking_product->freight_charges }}</td>
                                             </tr>
