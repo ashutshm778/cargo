@@ -20,9 +20,11 @@
                                         <div class="clearfix  delievery_status">
                                             <div class="status_cont">
                                                 <div class="status_check clearfix">
-                                                    <span class="status-css">Delivered On</span>
+                                                    <span class="status-css">Parcel Delivery Status</span>
                                                     <hr>
                                                     <div class="edd_info">
+                                                        <span class="SFProSemibold fs-16px"
+                                                        id="shipment_status_label">EDD:</span>
                                                         <span class="edd_day sfproBold fs-20px mb-0">{{ \Carbon\Carbon::parse($booking->edd)->format('D') }}</span>
                                                         <span class="edd_month sfproBold" id="edd_month">{{ \Carbon\Carbon::parse($booking->edd)->format('M') }}</span>
                                                         <strong class="edd_date SFProSemibold fs-107px mb-0">{{ \Carbon\Carbon::parse($booking->edd)->format('d') }}<span
@@ -68,12 +70,20 @@
                                                     </span>
                                                     <span class="fs-12px SFProMedium"><b>Location : </b>
                                                         <activity>
-                                                            @if($log->status == 'order_created')
+                                                            @if($log->status == 'order_created' ||  $log->status == 'ndr')
                                                             @php $pincode_data=App\Models\Pincode::where('pincode',$booking->from)->first(); @endphp
                                                             {{$pincode_data->pincode}},{{$pincode_data->city}},{{$pincode_data->state}}
                                                             @endif
                                                         </activity>
                                                     </span>
+                                                    @if(!empty($log->description))
+                                                    <br>
+                                                    <span class="fs-12px SFProMedium"><b>Remark : </b>
+                                                        <activity>
+                                                            {{$log->description}}
+                                                        </activity>
+                                                    </span>
+                                                    @endif
                                                     <!-- Delivered or RTO delivered -->
                                                     <!-- undelivered -->
                                                     <div class="date_info_wrap fs-12px SFProMedium">

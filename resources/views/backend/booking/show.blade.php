@@ -70,9 +70,9 @@
                                         <div class="col-9">
 
                                         </div>
-                                        <div class="col-3 mb-3">
+                                        <div class="col-3 mb-3 text-center">
                                            <p class="float-end "> {!! $barcode !!}
-                                            <span class="text-center">123456789</span>
+                                            <p >{{$booking->bill_no}}</p>
                                            </p>
                                         </div>
                                         <hr>

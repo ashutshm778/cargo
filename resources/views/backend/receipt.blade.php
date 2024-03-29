@@ -48,7 +48,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 m-auto mb-3">
                                 <div class="invoice">
                                     <main>
                                         <table class="table table-sm table-bordered">

@@ -319,5 +319,34 @@ class BookingController extends Controller
         $booking=Booking::find($id);
         return view('backend.track_order',compact('booking'));
     }
+    public function booking_status_model(Request $request){
+        $booking=Booking::find($request->id);
+        return view('backend.booking.status_model',compact('booking'));
+    }
+    public function booking_status_update(Request $request){
+        //dd($request->all());
+        $booking=Booking::find($request->id);
+        $booking->status=$request->status;
+        $booking->save();
+
+        $booking_log=new BookingLog;
+        $booking_log->booking_id=$booking->id;
+        $booking_log->branch_id=$booking->branch_id;
+        $booking_log->tracking_code=$booking->tracking_code;
+        $booking_log->user_id=$booking->added_by;
+        $booking_log->source='web';
+        $booking_log->action=$request->status;
+        $booking_log->status=$request->status;
+        if(!empty($request->remarks)){
+         $booking_log->description=$request->remarks;
+        }
+        if(!empty($request->remark)){
+            $booking_log->description=$request->remark;
+           }
+        $booking_log->save();
+
+        return redirect()->back();
+
+    }
 
 }
