@@ -44,7 +44,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $booking_log = BookingLog::where('user_id', Auth::guard('api')->user()->id)->get();
+        $booking_log = BookingLog::where('user_id', Auth::guard('api')->user()->id)->with('branch_data')->get();
         foreach($booking_log as $log){
             $log->branch_name=$log->branch_data->name;
         }
