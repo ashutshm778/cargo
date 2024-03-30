@@ -70,7 +70,9 @@
                                                     </span>
                                                     <span class="fs-12px SFProMedium"><b>Location : </b>
                                                         <activity>
-
+                                                            @if($log->status == 'order_created')
+                                                             Branch : {{$log->branch_data->name}},{{$log->branch_data->pincode}},{{$log->branch_data->city}},{{$log->branch_data->state}}
+                                                            @endif
                                                         </activity>
                                                     </span>
                                                     @if(!empty($log->description))
