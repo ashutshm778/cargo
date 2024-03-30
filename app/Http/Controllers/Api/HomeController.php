@@ -162,9 +162,12 @@ class HomeController extends Controller
             $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
             $booking = Booking::find($booking_product->booking_id);
             $booking_product_barcodes = BookingProductBarcode::where('booking_product_id', $booking_product_barcode->booking_product_id)->get();
-            $scan_barcodes = BookingPrductPackageBarcodeLog::where('booking_id', $booking->id)->where('branch_id', Auth::guard('api')->user()->branch_id)->where('booking_product_id', $booking_product->id)->where('user_id', Auth::guard('api')->user()->id)->get();
 
-            $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+            $booking_product_package_barcode_log = BookingPrductPackageBarcodeLog::where('booking_id', $booking->id)->where('branch_id', Auth::guard('api')->user()->branch_id)->where('booking_product_id', $booking_product->id)->where('booking_product_barcode_id',$booking_product_barcode->id)->where('user_id', Auth::guard('api')->user()->id)->first();
+            if(empty($booking_product_package_barcode_log->id)){
+                $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+            }
+
             $booking_product_package_barcode_log->booking_id = $booking->id;
             $booking_product_package_barcode_log->branch_id = Auth::guard('api')->user()->branch_id;
             $booking_product_package_barcode_log->booking_product_id = $booking_product->id;
@@ -177,6 +180,8 @@ class HomeController extends Controller
             $booking_product_package_barcode_log->description = 'barcode scan';
             $booking_product_package_barcode_log->save();
 
+
+            $scan_barcodes = BookingPrductPackageBarcodeLog::where('booking_id', $booking->id)->where('branch_id', Auth::guard('api')->user()->branch_id)->where('booking_product_id', $booking_product->id)->where('user_id', Auth::guard('api')->user()->id)->get();
             return response()->json([
                 'message' => 'Data Scan Successfully',
                 'booking_product_barcodes' => $booking_product_barcodes,
