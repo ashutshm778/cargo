@@ -120,6 +120,8 @@ class HomeController extends Controller
                 $booking_log->status = 'arrived';
                 $booking_log->description = $request->description;
                 $booking_log->save();
+            }else{
+                return response()->json(['error' => 'Package Already Dispatched', 'status' => '401'], 401);
             }
         }
 
