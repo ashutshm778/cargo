@@ -32,19 +32,19 @@ class HomeController extends Controller
             return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
         } else {
             $data = Admin::where('email', $request->email)->first();
-            if(Hash::check($request->password,$data->password ) )
-            {
+            if (Hash::check($request->password, $data->password)) {
                 $data->access_token =  $data->createToken('MyApp')->plainTextToken;
                 return $data;
-            }else{
+            } else {
                 $valid->getMessageBag()->add('password', 'Wrong Password');
                 return response()->json(['error' => $valid->errors(), 'status' => '401'], 401);
             }
         }
     }
 
-    public function home(){
-        $booking_log = BookingLog::where('user_id',Auth::guard('api')->user()->id)->get();
+    public function home()
+    {
+        $booking_log = BookingLog::where('user_id', Auth::guard('api')->user()->id)->get();
 
         return response()->json([
             'booking_log' => $booking_log,
@@ -53,8 +53,9 @@ class HomeController extends Controller
         ]);
     }
 
-    public function booking_log(){
-        $booking_log = BookingLog::where('user_id',Auth::guard('api')->user()->id)->get();
+    public function booking_log()
+    {
+        $booking_log = BookingLog::where('user_id', Auth::guard('api')->user()->id)->get();
 
         return response()->json([
             'booking_log' => $booking_log,
@@ -63,25 +64,27 @@ class HomeController extends Controller
         ]);
     }
 
-    public function get_booking(Request $request){
+    public function get_booking(Request $request)
+    {
 
-        $booking = Booking::where('bill_no',$request->scanner_data)->with('booking_product')->first();
-        if(!empty($booking->id)){
+        $booking = Booking::where('bill_no', $request->scanner_data)->with('booking_product')->first();
+        if (!empty($booking->id)) {
             return response()->json([
                 'booking_data' => $booking,
                 'success' => true,
                 'status' => 200
             ]);
-         }else{
+        } else {
             return response()->json(['error' => 'Invalid Data', 'status' => '401'], 401);
-         }
+        }
     }
 
-    public function booking_scan_update(Request $request){
-       // dd($request->all());
+    public function booking_scan_update(Request $request)
+    {
+        // dd($request->all());
 
-        $booking=Booking::find($request->booking_id);
-        if(($booking->status=='dispatched') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
+        $booking = Booking::find($request->booking_id);
+        if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
             return response()->json([
                 'message' => 'Package Already Dispatched',
                 'success' => true,
@@ -89,29 +92,29 @@ class HomeController extends Controller
             ]);
         }
 
-        if($booking->status=='dispatched'){
-            if(empty(BookingLog::where('branch_id',Auth::guard('api')->user()->branch_id)->where('tracking_code',$booking->tracking_code)->where('status','arrived')->first()->id)){
-                $booking_log=new BookingLog;
-                $booking_log->booking_id=$booking->id;
-                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
-                $booking_log->tracking_code=$booking->tracking_code;
-                $booking_log->user_id=Auth::guard('api')->user()->id;
-                $booking_log->source='app';
-                $booking_log->action='Package Arrived At';
-                $booking_log->status='arrived';
-                $booking_log->description=$request->description;
+        if ($booking->status == 'dispatched') {
+            if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
+                $booking_log = new BookingLog;
+                $booking_log->booking_id = $booking->id;
+                $booking_log->branch_id = Auth::guard('api')->user()->branch_id;
+                $booking_log->tracking_code = $booking->tracking_code;
+                $booking_log->user_id = Auth::guard('api')->user()->id;
+                $booking_log->source = 'app';
+                $booking_log->action = 'Package Arrived At';
+                $booking_log->status = 'arrived';
+                $booking_log->description = $request->description;
                 $booking_log->save();
             }
-            if(empty(BookingLog::where('branch_id',Auth::guard('api')->user()->branch_id)->where('tracking_code',$booking->tracking_code)->where('status','dispatched')->first()->id)){
-                $booking_log=new BookingLog;
-                $booking_log->booking_id=$booking->id;
-                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
-                $booking_log->tracking_code=$booking->tracking_code;
-                $booking_log->user_id=Auth::guard('api')->user()->id;
-                $booking_log->source='app';
-                $booking_log->action='Package Dispatched From';
-                $booking_log->status='dispatched';
-                $booking_log->description=$request->description;
+            if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'dispatched')->first()->id)) {
+                $booking_log = new BookingLog;
+                $booking_log->booking_id = $booking->id;
+                $booking_log->branch_id = Auth::guard('api')->user()->branch_id;
+                $booking_log->tracking_code = $booking->tracking_code;
+                $booking_log->user_id = Auth::guard('api')->user()->id;
+                $booking_log->source = 'app';
+                $booking_log->action = 'Package Dispatched From';
+                $booking_log->status = 'dispatched';
+                $booking_log->description = $request->description;
                 $booking_log->save();
             }
             return response()->json([
@@ -121,76 +124,75 @@ class HomeController extends Controller
             ]);
         }
 
-        if(($booking->status=='order_created') && (Auth::guard('api')->user()->branch_id==$booking->branch_id)){
+        if (($booking->status == 'order_created') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
 
-                $booking_log=new BookingLog;
-                $booking_log->booking_id=$booking->id;
-                $booking_log->branch_id=Auth::guard('api')->user()->branch_id;
-                $booking_log->tracking_code=$booking->tracking_code;
-                $booking_log->user_id=Auth::guard('api')->user()->id;
-                $booking_log->source='app';
-                $booking_log->action='Package Dispatched From';
-                $booking_log->status='dispatched';
-                $booking_log->description=$request->description;
-                $booking_log->save();
+            $booking_log = new BookingLog;
+            $booking_log->booking_id = $booking->id;
+            $booking_log->branch_id = Auth::guard('api')->user()->branch_id;
+            $booking_log->tracking_code = $booking->tracking_code;
+            $booking_log->user_id = Auth::guard('api')->user()->id;
+            $booking_log->source = 'app';
+            $booking_log->action = 'Package Dispatched From';
+            $booking_log->status = 'dispatched';
+            $booking_log->description = $request->description;
+            $booking_log->save();
 
-                $booking->status='dispatched';
-                $booking->save();
+            $booking->status = 'dispatched';
+            $booking->save();
 
-                return response()->json([
-                    'message' => 'Data Updated Successfully',
-                    'success' => true,
-                    'status' => 200
-                ]);
-
+            return response()->json([
+                'message' => 'Data Updated Successfully',
+                'success' => true,
+                'status' => 200
+            ]);
         }
         return response()->json([
             'message' => 'Package Is Not Dispatched By Origin',
             'success' => true,
             'status' => 422
-        ],422);
+        ], 422);
     }
 
-    public function product_package_barcode_scan(Request $request){
+    public function product_package_barcode_scan(Request $request)
+    {
 
 
-        $booking_product_barcode=BookingProductBarcode::where('barcode',$request->package_barcode)->first();
-        if(!empty($booking_product_barcode->id)){
-        $booking_product=BookingProduct::find($booking_product_barcode->booking_product_id);
-        $booking=Booking::find($booking_product->booking_id);
-        $booking_product_barcodes=BookingProductBarcode::where('booking_product_id',$booking_product_barcode->booking_product_id)->get();
-        $scan_barcodes=BookingPrductPackageBarcodeLog::where('booking_id',$booking->id)->where('branch_id',Auth::guard('api')->user()->branch_id)->where('booking_product_id',$booking_product->id)->where('user_id',Auth::guard('api')->user()->id)->get();
+        $booking_product_barcode = BookingProductBarcode::where('barcode', $request->package_barcode)->first();
+        if (!empty($booking_product_barcode->id)) {
+            $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+            $booking = Booking::find($booking_product->booking_id);
+            $booking_product_barcodes = BookingProductBarcode::where('booking_product_id', $booking_product_barcode->booking_product_id)->get();
+            $scan_barcodes = BookingPrductPackageBarcodeLog::where('booking_id', $booking->id)->where('branch_id', Auth::guard('api')->user()->branch_id)->where('booking_product_id', $booking_product->id)->where('user_id', Auth::guard('api')->user()->id)->get();
 
-        $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
-        $booking_product_package_barcode_log->booking_id=$booking->id;
-        $booking_product_package_barcode_log->branch_id=Auth::guard('api')->user()->branch_id;
-        $booking_product_package_barcode_log->booking_product_id=$booking_product->id;
-        $booking_product_package_barcode_log->booking_product_barcode_id=$booking_product_barcode->id;
-        $booking_product_package_barcode_log->user_id=Auth::guard('api')->user()->id;
-        $booking_product_package_barcode_log->tracking_code=$booking->tracking_code;
-        $booking_product_package_barcode_log->source='app';
-        $booking_product_package_barcode_log->action='barcode_scan';
-        $booking_product_package_barcode_log->status=1;
-        $booking_product_package_barcode_log->description='barcode scan';
-        $booking_product_package_barcode_log->save();
+            $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+            $booking_product_package_barcode_log->booking_id = $booking->id;
+            $booking_product_package_barcode_log->branch_id = Auth::guard('api')->user()->branch_id;
+            $booking_product_package_barcode_log->booking_product_id = $booking_product->id;
+            $booking_product_package_barcode_log->booking_product_barcode_id = $booking_product_barcode->id;
+            $booking_product_package_barcode_log->user_id = Auth::guard('api')->user()->id;
+            $booking_product_package_barcode_log->tracking_code = $booking->tracking_code;
+            $booking_product_package_barcode_log->source = 'app';
+            $booking_product_package_barcode_log->action = 'barcode_scan';
+            $booking_product_package_barcode_log->status = 1;
+            $booking_product_package_barcode_log->description = 'barcode scan';
+            $booking_product_package_barcode_log->save();
 
-        return response()->json([
-                        'message' => 'Data Updated Successfully',
-                        'booking_product_barcodes' => $booking_product_barcodes,
-                        'booking_product'=>$booking_product,
-                        'booking'=>$booking,
-                        'scan_barcodes'=>$scan_barcodes,
-                        'status' => 200
-                    ]);
-        }else{
+            return response()->json([
+                'message' => 'Data Scan Successfully',
+                'booking_product_barcodes' => $booking_product_barcodes,
+                'booking_product' => $booking_product,
+                'booking' => $booking,
+                'scan_barcodes' => $scan_barcodes,
+                'status' => 200
+            ]);
+        } else {
             return response()->json(['error' => 'Invalid Data', 'status' => '401'], 401);
         }
-
-            }
+    }
 
     public function getUserProfile(Request $request)
     {
-        $user_data = Admin::where('id', Auth::guard('api')->user()->id)->first(['name','email','branch_id']);
+        $user_data = Admin::where('id', Auth::guard('api')->user()->id)->first(['name', 'email', 'branch_id']);
 
         return response()->json([
             'user_data' => $user_data,
@@ -215,7 +217,7 @@ class HomeController extends Controller
                 $image->move($destinationPath, $name);
             }
 
-            Admin::where('id',Auth::guard('api')->user()->id)->update([
+            Admin::where('id', Auth::guard('api')->user()->id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
             ]);
@@ -226,5 +228,4 @@ class HomeController extends Controller
             ], 200);
         }
     }
-
 }
