@@ -82,16 +82,16 @@
                                 <tr>
                                     <td colspan="2">
                                         <label for="from">From- </label>
-                                        <select class="form-control" id="pincode_select_from" name="from"
-                                            data-placeholder="Please Select Pincodes..." required>
-                                            <option value="">Select Pincode</option>
+                                        <select class="form-control" id="branch_select_from" name="from"
+                                            data-placeholder="Please Select Branch..." required>
+                                            <option value="">Select Branch</option>
                                         </select>
                                     </td>
                                     <td colspan="2">
                                         <label for="to">To-</label>
-                                        <select class="form-control" id="pincode_select_to" name="to"
-                                            data-placeholder="Please Select Pincodes..." required>
-                                            <option value="">Select Pincode</option>
+                                        <select class="form-control" id="branch_select_to" name="to"
+                                            data-placeholder="Please Select Branch..." required>
+                                            <option value="">Select Branch</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -472,11 +472,11 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="{{ asset('backend/plugins/select2/js/select2-custom.js') }}"></script>
         <script>
-            $('#pincode_select_from').select2({
+            $('#branch_select_from').select2({
                 minimumInputLength: 3,
                 allowClear: true,
                 ajax: {
-                    url: '{{ route('admin_pincode.list') }}',
+                    url: '{{ route('admin_branch.list') }}',
                     dataType: 'json',
                     data: function(params) {
                         return {
@@ -492,11 +492,11 @@
 
                 }
             });
-            $('#pincode_select_to').select2({
+            $('#branch_select_to').select2({
                 minimumInputLength: 3,
                 allowClear: true,
                 ajax: {
-                    url: '{{ route('admin_pincode.list') }}',
+                    url: '{{ route('admin_branch.list') }}',
                     dataType: 'json',
                     data: function(params) {
                         return {

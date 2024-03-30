@@ -18,7 +18,7 @@
         @if(auth()->guard('admin')->user()->can('branch-list'))
         <li>
             <a href="{{route('branch.index')}}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon"><i class='bx bx-git-branch'></i>
                 </div>
                 <div class="menu-title">Branch</div>
             </a>
@@ -27,28 +27,28 @@
         @if(auth()->guard('admin')->user()->can('booking-list'))
         <li>
             <a href="{{route('booking.index')}}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
                 </div>
                 <div class="menu-title">Booking</div>
             </a>
         </li>
         <li>
             <a href="{{route('admin.mainifestation_list')}}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon"><i class='bx bx-list-check'></i>
                 </div>
                 <div class="menu-title">Manifestation</div>
             </a>
         </li>
         <li>
             <a href="{{route('admin.consigner')}}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon"><i class='bx bx-user'></i>
                 </div>
                 <div class="menu-title">Consigner</div>
             </a>
         </li>
         <li>
             <a href="{{route('admin.consignee')}}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon"><i class='bx bx-user-check'></i>
                 </div>
                 <div class="menu-title">Consignee</div>
             </a>
@@ -77,7 +77,7 @@
         </li>
         <li>
             <a href="{{route('admin.user_log')}}" aria-expanded="false">
-                <div class="parent-icon"><i class="bx bx-location-plus"></i>
+                <div class="parent-icon"><i class="bx bxs-user-detail"></i>
                 </div>
                 <div class="menu-title">User Log</div>
             </a>

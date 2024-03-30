@@ -25,35 +25,36 @@ class Admin extends Authenticatable
     protected static function boot()
     {
         parent::boot();
+        if(!app()->runningInConsole()){
+            static::created(function ($resource) {
+                ResourceLog::create([
+                    'resource_id' => $resource->id,
+                    'action' => 'created',
+                    'details' => 'Staff created with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'user_id' => auth()->guard("admin")->user()->id,
+                    'model'=>'Admin'
+                ]);
+            });
 
-        static::created(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'created',
-                'details' => 'Staff created with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
-                'user_id' => auth()->guard("admin")->user()->id,
-                'model'=>'Admin'
-            ]);
-        });
+            static::updated(function ($resource) {
+                ResourceLog::create([
+                    'resource_id' => $resource->id,
+                    'action' => 'updated',
+                    'details' => 'Staff updated with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'user_id' => auth()->guard("admin")->user()->id,
+                    'model'=>'Admin'
+                ]);
+            });
 
-        static::updated(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'updated',
-                'details' => 'Staff updated with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
-                'user_id' => auth()->guard("admin")->user()->id,
-                'model'=>'Admin'
-            ]);
-        });
-
-        static::deleted(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'deleted',
-                'details' => 'Staff deleted with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
-                'user_id' => auth()->guard("admin")->user()->id,
-                'model'=>'Admin'
-            ]);
-        });
+            static::deleted(function ($resource) {
+                ResourceLog::create([
+                    'resource_id' => $resource->id,
+                    'action' => 'deleted',
+                    'details' => 'Staff deleted with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'user_id' => auth()->guard("admin")->user()->id,
+                    'model'=>'Admin'
+                ]);
+            });
+         }
     }
 }

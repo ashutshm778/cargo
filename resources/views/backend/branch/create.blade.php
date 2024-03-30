@@ -79,6 +79,13 @@
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Address"
                                     required>
                             </div>
+                            <div class="col-md-4 mb-3 ">
+                                <label for="pincode" class="form-label">Serving Pincode</label>
+                                <select class="form-control" id="serving_pincode_select" name="serving_pincode[]"
+                                    data-placeholder="Please Select Pincodes..." onchange="get_pincode()" multiple required>
+                                    <option value="">Select Pincode</option>
+                                </select>
+                            </div>
                             <div class="col-12">
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -98,6 +105,27 @@
     <script src="{{ asset('backend/plugins/select2/js/select2-custom.js') }}"></script>
     <script>
         $('#pincode_select').select2({
+            minimumInputLength: 3,
+            allowClear: true,
+            ajax: {
+                url: '{{ route('admin_pincode.list') }}',
+                dataType: 'json',
+                data: function(params) {
+                    return {
+                        key: params.term // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+                    };
+                },
+                cache: true
+
+            }
+        });
+
+        $('#serving_pincode_select').select2({
             minimumInputLength: 3,
             allowClear: true,
             ajax: {

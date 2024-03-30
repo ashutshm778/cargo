@@ -143,6 +143,20 @@ class AdminController extends Controller
         return json_encode($data);
     }
 
+
+    public function branch_list(Request $request)
+    {
+        $branches = Branch::where('name', 'like', $request->key . '%')->get();
+
+        $data = array();
+
+        foreach ($branches as $branch) {
+            $data[] = array("id" => $branch->id, "text" => $branch->name);
+        }
+
+        return json_encode($data);
+    }
+
     public function get_pincode(Request $request)
     {
         $pincode = Pincode::where('status', 'active')->where('pincode', $request->pincode)->first();

@@ -26,6 +26,7 @@ Route::get('/login', [AdminController::class,'adminLogin'])->name('admin_login')
 
 Route::get('get_pincode', [AdminController::class,'get_pincode'])->name('admin.get_pincode');
 Route::get('pincode_list', [AdminController::class,'pincode_list'])->name('admin_pincode.list');
+Route::get('branch_list', [AdminController::class,'branch_list'])->name('admin_branch.list');
 
 
 

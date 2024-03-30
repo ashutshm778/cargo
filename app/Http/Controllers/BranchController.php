@@ -111,6 +111,7 @@ class BranchController extends Controller
         $branch->city = $request->city;
         $branch->pincode = $request->pincode;
         $branch->address = $request->address;
+        $branch->serving_pincode=json_encode($request->serving_pincode);
         $branch->save();
 
         return redirect()->route('branch.index')->with('success', 'Branch Added Successfully!');
@@ -152,7 +153,6 @@ class BranchController extends Controller
             'email' => 'required|unique:branches,email,'.$branch->id,
             'phone' => 'required',
         ]);
-
         $branch->name = $request->name;
         $branch->branch_code = $request->branch_code;
         $branch->phone = $request->phone;
@@ -162,6 +162,7 @@ class BranchController extends Controller
         $branch->city = $request->city;
         $branch->pincode = $request->pincode;
         $branch->address = $request->address;
+        $branch->serving_pincode=json_encode($request->serving_pincode);
         $branch->save();
 
         return redirect()->route('branch.index')->with('success', 'Branch Updated Successfully!');

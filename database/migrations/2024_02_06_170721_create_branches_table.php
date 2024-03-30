@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('pincode')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
+            $table->string('serving_pincode')->default('[]');
             $table->softDeletes();
             $table->timestamps();
         });
