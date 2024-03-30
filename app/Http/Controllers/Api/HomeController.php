@@ -83,18 +83,19 @@ class HomeController extends Controller
         // dd($request->all());
 
         $booking = Booking::find($request->booking_id);
-        // if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
-        //     return response()->json([
-        //         'message' => 'Package Already Dispatched',
-        //         'success' => true,
-        //         'status' => 200
-        //     ]);
-        // }
+        if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
+            return response()->json([
+                'message' => 'Package Already Dispatched',
+                'success' => true,
+                'status' => 200
+            ]);
+        }
 
         if ($booking->status == 'dispatched') {
             if ($request->is_dispatch==1) {
                 if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
 
+                    if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'dispatched')->first()->id)) {
                     $booking_log = new BookingLog;
                     $booking_log->booking_id = $booking->id;
                     $booking_log->branch_id = Auth::guard('api')->user()->branch_id;
@@ -106,8 +107,12 @@ class HomeController extends Controller
                     $booking_log->description = $request->description;
                     $booking_log->save();
                 }else{
-                    return response()->json(['error' => 'Package is not arrived in your branch', 'status' => '401'], 401);
+                    return response()->json(['error' => 'Package Already Dispatched', 'status' => '401'], 401);
+
                 }
+              }else{
+                return response()->json(['error' => 'Package is not arrived in your branch', 'status' => '401'], 401);
+              }
             }else{
             if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
                 $booking_log = new BookingLog;
