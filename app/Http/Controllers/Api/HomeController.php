@@ -83,16 +83,16 @@ class HomeController extends Controller
         // dd($request->all());
 
         $booking = Booking::find($request->booking_id);
-        if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
-            return response()->json([
-                'message' => 'Package Already Dispatched',
-                'success' => true,
-                'status' => 200
-            ]);
-        }
+        // if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
+        //     return response()->json([
+        //         'message' => 'Package Already Dispatched',
+        //         'success' => true,
+        //         'status' => 200
+        //     ]);
+        // }
 
         if ($booking->status == 'dispatched') {
-            if ($request->is_dispatch) {
+            if ($request->is_dispatch==1) {
                 if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
 
                     $booking_log = new BookingLog;
