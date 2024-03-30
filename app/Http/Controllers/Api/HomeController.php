@@ -94,7 +94,7 @@ class HomeController extends Controller
         if ($booking->status == 'dispatched') {
             if ($request->is_dispatch==1) {
 
-                if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
+                if (!empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'arrived')->first()->id)) {
 
                     if (empty(BookingLog::where('branch_id', Auth::guard('api')->user()->branch_id)->where('tracking_code', $booking->tracking_code)->where('status', 'dispatched')->first()->id)) {
                     $booking_log = new BookingLog;
