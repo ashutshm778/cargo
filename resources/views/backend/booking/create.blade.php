@@ -184,10 +184,16 @@
                                                     required></td>
                                             <td> <input type="text" class="form-control" id="product"
                                                     name="product[]" placeholder="Nature of Goods Said to contain"
-                                                    required></td>
-                                            <td> <input type="text" class="form-control" id="unit"
-                                                        name="unit[]" placeholder="Enter Unit"
-                                                        required></td>
+                                                    required>
+                                            </td>
+                                            <td>
+                                                <select class="form-control"  name="unit[]"  required>
+                                                  <option value="">Select Unit</option>
+                                                  @foreach(App\Models\Unit::all() as $unit)
+                                                   <option value="{{$unit->id}}">{{$unit->name}}</option>
+                                                  @endforeach
+                                                </select>
+                                            </td>
 
                                             <td><input type="text" class="form-control" id="qty"
                                                         name="qty[]" placeholder="Qty" required></td>
@@ -427,7 +433,7 @@
                 var addButton = $('.add_button'); //Add button selector
                 var wrapper = $('.field_wrapper'); //Input field wrapper
                 var fieldHTML =
-                    '<tr> <td><a class="btn btn-danger remove_button" ><i class="bx bxs-minus-square"></i></a> </td> <td class="text-left"><input type="text" class="form-control" id="no_of_pack" name="no_of_pack[]" placeholder="No Of Package" required></td> <td> <input type="text" class="form-control" id="product" name="product[]" placeholder="Nature of Goods Said to contain" required></td> <td><input type="text" class="form-control" id="weight" name="weight[]" placeholder="Weight" required></td> <td>To Pay</td> <td>Frieght Charges</td> <td><input type="text" class="form-control frieght_amount"  name="frieght_charge[]" placeholder="Freight" onchange="cal_total_amount()" value="0" required></td> </tr>'; //New input field html
+                    '<tr> <td><a class="btn btn-danger remove_button" ><i class="bx bxs-minus-square"></i></a> </td> <td class="text-left"><input type="text" class="form-control" id="no_of_pack" name="no_of_pack[]" placeholder="No Of Package" required></td> <td> <input type="text" class="form-control" id="product" name="product[]" placeholder="Nature of Goods Said to contain" required></td><td><select class="form-control"  name="unit[]"  required><option value="">Select Unit</option> @foreach(App\Models\Unit::all() as $unit) <option value="{{$unit->id}}">{{$unit->name}}</option>@endforeach </select><td><input type="text" class="form-control" id="weight" name="weight[]" placeholder="Weight" required></td> <td><input type="text" class="form-control" id="qty" name="qty[]" placeholder="Qty" required></td>  <td>Frieght Charges</td> <td><input type="text" class="form-control frieght_amount"  name="frieght_charge[]" placeholder="Freight" onchange="cal_total_amount()" value="0" required></td> </tr>'; //New input field html
                 var x = 1; //Initial field counter is 1
 
                 //Once add button is clicked
