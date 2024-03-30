@@ -155,6 +155,7 @@ class HomeController extends Controller
 
 
         $booking_product_barcode=BookingProductBarcode::where('barcode',$request->package_barcode)->first();
+        if(!empty($booking_product_barcode->id)){
         $booking_product=BookingProduct::find($booking_product_barcode->booking_product_id);
         $booking=Booking::find($booking_product->booking_id);
         $booking_product_barcodes=BookingProductBarcode::where('booking_product_id',$booking_product_barcode->booking_product_id)->get();
@@ -181,6 +182,9 @@ class HomeController extends Controller
                         'scan_barcodes'=>$scan_barcodes,
                         'status' => 200
                     ]);
+        }else{
+            return response()->json(['error' => 'Invalid Data', 'status' => '401'], 401);
+        }
 
             }
 
