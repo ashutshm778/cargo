@@ -51,7 +51,7 @@
 
     <!--start page wrapper -->
     <div class="page-wrapper">
-        <div class="page-content" id='printable_div_id'>
+        <div class="page-content" id='printableArea'>
             <!--end breadcrumb-->
             <div class="card">
                 <div class="card-body">
@@ -142,12 +142,9 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($booking->booking_product as $key => $booking_product)
-                                            {{-- @php
-                                                $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
-                                                $barcode = $generator->getBarcode($booking_product->id, $generator::TYPE_CODE_128);
-                                            @endphp --}}
+
                                             <tr>
-                                                <td><a href="{{route('admin.booking_barcode',$booking_product->id)}}">Download Barcode</a></td>
+                                                <td ><a href="{{route('admin.booking_barcode',$booking_product->id)}}" class="no-print">Download Barcode</a></td>
                                                 <td>{{ $booking_product->no_of_pack }}</td>
                                                 <td>{{ $booking_product->product }}</td>
                                                 <td>{{$booking_product->unit}}</td>
@@ -208,7 +205,7 @@
             </div>
             <div class="toolbar no-print mb-3">
                 <div class="text-end">
-                    <button type="button" class="btn btn-dark" onClick="printdiv('printable_div_id');"><i class="fa fa-print"></i>
+                    <button type="button" class="btn btn-dark" onClick="printDiv('printableArea');"><i class="fa fa-print"></i>
                         Print</button>
                 </div>
                 <hr />
@@ -218,5 +215,16 @@
     <!--end page wrapper -->
 @endsection
 @section('script')
+<script>
+    function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
 
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
 @endsection
