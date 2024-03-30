@@ -81,12 +81,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3">
-                                                        @php
-                                                             $pincode_data_from=App\Models\Pincode::where('pincode',$booking->from)->first();
-                                                             $pincode_data_to=App\Models\Pincode::where('pincode',$booking->to)->first();
-                                                        @endphp
-                                                        <p>From : {{$pincode_data_from->pincode}},{{$pincode_data_from->city}},{{$pincode_data_from->state}}</p>
-                                                        <p>To : {{$pincode_data_to->pincode}},{{$pincode_data_to->city}},{{$pincode_data_to->state}}</p>
+
+                                                        <p>From : {{$booking->branch_from->name}}</p>
+                                                        <p>To : {{$booking->branch_to->name}}</p>
                                                     </td>
                                                 </tr>
                                                 <tr>

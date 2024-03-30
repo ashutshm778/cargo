@@ -90,14 +90,14 @@
                                                     <td>
                                                         <label for="from">From-</label>
                                                         <input type="text" class="form-control" id="from"
-                                                            name="from" placeholder="From" value="{{ $booking->from }}"
-                                                            required>
+                                                            name="from" placeholder="From" value="{{ $booking->branch_from->name }}"
+                                                            required readonly>
                                                     </td>
                                                     <td>
                                                         <label for="to">To-</label>
                                                         <input type="text" class="form-control" id="to"
-                                                            name="to" placeholder="To" value="{{ $booking->to }}"
-                                                            required>
+                                                            name="to" placeholder="To" value="{{ $booking->branch_to->name }}"
+                                                            required readonly>
                                                     </td>
                                                 </tr>
 
@@ -106,13 +106,13 @@
                                                         <label for="consignor">Consignor</label>
                                                         <input type="text" class="form-control" id="consignor"
                                                             name="consignor" placeholder="Consignor"
-                                                            value="{{ $booking->consignor }}" required>
+                                                            value="{{ $booking->consignor }}" required readonly>
                                                     </td>
                                                     <td>
                                                         <label for="consignee">Consignee</label>
                                                         <input type="text" class="form-control" id="consignee"
                                                             placeholder="Consignee" name="consignee"
-                                                            value="{{ $booking->consignee }}" >
+                                                            value="{{ $booking->consignee }}" readonly>
                                                     </td>
                                                 </tr>
                                                 <tr>

@@ -94,6 +94,14 @@ class Booking extends Model
         return $this->hasmany(BookingLog::class,'booking_id','id');
     }
 
+    public function branch_from()
+    {
+        return $this->belongsTo(Branch::class,'from','id');
+    }
 
+    public function branch_to()
+    {
+        return $this->belongsTo(Branch::class,'to','id');
+    }
 
 }

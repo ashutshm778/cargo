@@ -87,8 +87,8 @@
                                                 <td>Destination- <b>{{$booking->to}}</b></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2">From- <b>{{$booking->from}}</b></td>
-                                                <td>To- <b>{{$booking->to}}</b></td>
+                                                <td colspan="2">From- <b>{{$booking->branch_from->name}}</b></td>
+                                                <td>To- <b>{{$booking->branch_to->name}}</b></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" style="padding: 0;">
