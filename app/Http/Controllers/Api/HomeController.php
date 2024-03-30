@@ -9,10 +9,13 @@ use App\Models\Admin;
 use App\Models\Booking;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
+use App\Models\BookingProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\BookingProductBarcode;
 use Illuminate\Support\Facades\Validator;
+use App\Models\BookingPrductPackageBarcodeLog;
 
 
 class HomeController extends Controller
@@ -147,6 +150,39 @@ class HomeController extends Controller
             'status' => 422
         ],422);
     }
+
+    public function product_package_barcode_scan(Request $request){
+
+
+        $booking_product_barcode=BookingProductBarcode::where('barcode',$request->package_barcode)->first();
+        $booking_product=BookingProduct::find($booking_product_barcode->booking_product_id);
+        $booking=Booking::find($booking_product->booking_id);
+        $booking_product_barcodes=BookingProductBarcode::where('booking_product_id',$booking_product_barcode->booking_product_id)->get();
+        $scan_barcodes=BookingPrductPackageBarcodeLog::where('booking_id',$booking->id)->where('branch_id',Auth::guard('api')->user()->branch_id)->where('booking_product_id',$booking_product->id)->where('user_id',Auth::guard('api')->user()->id)->get();
+
+        $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+        $booking_product_package_barcode_log->booking_id=$booking->id;
+        $booking_product_package_barcode_log->branch_id=Auth::guard('api')->user()->branch_id;
+        $booking_product_package_barcode_log->booking_product_id=$booking_product->id;
+        $booking_product_package_barcode_log->booking_product_barcode_id=$booking_product_barcode->id;
+        $booking_product_package_barcode_log->user_id=Auth::guard('api')->user()->id;
+        $booking_product_package_barcode_log->tracking_code=$booking->tracking_code;
+        $booking_product_package_barcode_log->source='app';
+        $booking_product_package_barcode_log->action='barcode_scan';
+        $booking_product_package_barcode_log->status=1;
+        $booking_product_package_barcode_log->description='barcode scan';
+        $booking_product_package_barcode_log->save();
+
+        return response()->json([
+                        'message' => 'Data Updated Successfully',
+                        'booking_product_barcodes' => $booking_product_barcodes,
+                        'booking_product'=>$booking_product,
+                        'booking'=>$booking,
+                        'scan_barcodes'=>$scan_barcodes,
+                        'status' => 200
+                    ]);
+
+            }
 
     public function getUserProfile(Request $request)
     {
