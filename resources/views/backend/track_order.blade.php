@@ -70,10 +70,7 @@
                                                     </span>
                                                     <span class="fs-12px SFProMedium"><b>Location : </b>
                                                         <activity>
-                                                            @if($log->status == 'order_created' ||  $log->status == 'ndr')
-                                                            @php $pincode_data=App\Models\Pincode::where('pincode',$booking->from)->first(); @endphp
-                                                            {{$pincode_data->pincode}},{{$pincode_data->city}},{{$pincode_data->state}}
-                                                            @endif
+
                                                         </activity>
                                                     </span>
                                                     @if(!empty($log->description))
