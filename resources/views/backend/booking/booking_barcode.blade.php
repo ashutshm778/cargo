@@ -43,7 +43,7 @@
 
     <!--start page wrapper -->
     <div class="page-wrapper">
-        <div class="page-content" id='printable_div_id'>
+        <div class="page-content" id='printableArea'>
             <!--end breadcrumb-->
             <div class="card">
                 <div class="card-body">
@@ -107,7 +107,7 @@
             </div>
             <div class="toolbar no-print mb-3">
                 <div class="text-end">
-                    <button type="button" class="btn btn-dark" onClick="printdiv('printable_div_id');"><i
+                    <button type="button" class="btn btn-dark" onclick="printDiv('printableArea')"><i
                             class="fa fa-print"></i>
                         Print</button>
                 </div>
@@ -118,4 +118,16 @@
     <!--end page wrapper -->
 @endsection
 @section('script')
+<script>
+    function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
 @endsection
