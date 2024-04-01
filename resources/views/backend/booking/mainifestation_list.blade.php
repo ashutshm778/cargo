@@ -135,10 +135,10 @@
                         data: 'consignee'
                     },
                     {
-                        data: 'from'
+                        data: 'branch_from.name'
                     },
                     {
-                        data: 'to'
+                        data: 'branch_to.name'
                     },
                     {
                         data: 'status'

@@ -56,16 +56,16 @@ class BookingController extends Controller
         }
 
         if(auth()->guard("admin")->user()->id==1){
-            $branch = Booking::where('id', '>', 0);
+            $branch = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
-            $branch = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id);
+            $branch = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id)->with(['branch_from','branch_to']);
         }
 
 
 
         $total = $branch->count();
         if(auth()->guard("admin")->user()->id==1){
-            $totalFilter = Booking::where('id', '>', 0);
+            $totalFilter = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
             $totalFilter = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id);
         }
@@ -81,11 +81,10 @@ class BookingController extends Controller
         $totalFilter = $totalFilter->count();
 
         if(auth()->guard("admin")->user()->id==1){
-            $arrData = Booking::where('id', '>', 0);
+            $arrData = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
-            $arrData = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id);
+            $arrData = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id)->with(['branch_from','branch_to']);
         }
-        $arrData = Booking::where('id', '>', 0);
         $arrData = $arrData->skip($start)->take($rowPerPage);
         $arrData = $arrData->orderBy($columnName, $columnSortOrder);
 
@@ -170,12 +169,23 @@ class BookingController extends Controller
         $booking->branch_id=$request->branch_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->bill_no=$request->bill_no;
-        $booking->tracking_code='TRACK'.rand(1111,9999);
+        $lastBooking = Booking::latest()->first(); // Retrieve the last entry from the database
+
+        if ($lastBooking) {
+            // Extract the serial part of the tracking code and increment it
+            $lastSerial = intval(substr($lastBooking->tracking_code, 5));
+            $newSerial = $lastSerial + 1;
+        } else {
+            // If no previous entry exists, start with 1111
+            $newSerial = 1111;
+        }
+        $booking->tracking_code='TRACK'.$newSerial;
+
         $booking->from=$request->from;
         $booking->to=$request->to;
         $booking->date=$request->date;
         $booking->edd=$request->date;
-
+        $booking->delivery_address=$request->delivery_address;
 
         $booking->consignor=$consigner->name;
         $booking->consignee=$consignee->name;
@@ -304,6 +314,7 @@ class BookingController extends Controller
         $booking->value=$request->value;
         $booking->description=$request->description;
         $booking->total=$request->total;
+        $booking->delivery_address=$request->delivery_address;
         $booking->save();
 
         foreach($input['booking_product_id'] as $key=>$value){
@@ -414,10 +425,17 @@ class BookingController extends Controller
             $end_date = Carbon::parse($dateRange[1])->toDateString();
         }
 
-        $branch = Booking::where('id', '>', 0);
+        if(auth()->guard("admin")->user()->id==1){
+            $branch = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
+        }else{
+          $branch = Booking::where('branch_id',Auth::guard('admin')->user()->branch_id);
+        }
         $total = $branch->count();
-
-        $totalFilter = Booking::where('id', '>', 0);
+        if(auth()->guard("admin")->user()->id==1){
+         $totalFilter = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
+        }else{
+            $totalFilter = Booking::where('id', '>', 0)->where('branch_id',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to']);
+        }
         if (!empty($searchValue)) {
             $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
         }
@@ -429,8 +447,11 @@ class BookingController extends Controller
         }
         $totalFilter = $totalFilter->count();
 
-
-        $arrData = Booking::where('id', '>', 0);
+        if(auth()->guard("admin")->user()->id==1){
+             $arrData = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
+        }else{
+            $arrData = Booking::where('id', '>', 0)->where('branch_id',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to']);
+        }
         $arrData = $arrData->skip($start)->take($rowPerPage);
         $arrData = $arrData->orderBy($columnName, $columnSortOrder);
 
@@ -489,16 +510,16 @@ class BookingController extends Controller
         }
 
         if(auth()->guard("admin")->user()->id==1){
-            $branch = Booking::where('id', '>', 0);
+            $branch = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
-          $branch = Booking::where('to',Auth::guard('admin')->user()->branch_id);
+          $branch = Booking::where('to',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to']);
         }
         $total = $branch->count();
 
         if(auth()->guard("admin")->user()->id==1){
-         $totalFilter = Booking::where('id', '>', 0);
+         $totalFilter = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
-         $totalFilter = Booking::where('to',Auth::guard('admin')->user()->branch_id);
+         $totalFilter = Booking::where('to',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to']);
         }
         if (!empty($searchValue)) {
             $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
@@ -512,9 +533,9 @@ class BookingController extends Controller
         $totalFilter = $totalFilter->count();
 
         if(auth()->guard("admin")->user()->id==1){
-            $arrData = Booking::where('id', '>', 0);
+            $arrData = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
         }else{
-             $arrData = Booking::where('to',Auth::guard('admin')->user()->branch_id);
+             $arrData = Booking::where('to',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to']);
         }
         $arrData = $arrData->skip($start)->take($rowPerPage);
         $arrData = $arrData->orderBy($columnName, $columnSortOrder);

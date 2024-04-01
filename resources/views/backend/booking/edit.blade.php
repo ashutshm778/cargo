@@ -89,7 +89,12 @@
                                                             name="edd" placeholder="Date" value="{{ $booking->edd }}"
                                                             required>
                                                         </div>
-
+                                                        <div class="mb-3">
+                                                            <label for="branch_id"> Delivery Address -</label>
+                                                            <input type="text" class="form-control" id="delivery_address"
+                                                            name="delivery_address" placeholder="Delivery Address" value="{{ $booking->delivery_address }}"
+                                                            required>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr>

@@ -141,10 +141,10 @@
                         data: 'consignee'
                     },
                     {
-                        data: 'from'
+                        data: 'branch_from.name'
                     },
                     {
-                        data: 'to'
+                        data: 'branch_to.name'
                     },
                     @if(auth()->guard('admin')->user()->canany(['booking-edit','booking-view']))   {
                         mRender: function(data, type, row) {

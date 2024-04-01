@@ -76,10 +76,18 @@
                                                         @endif
                                                     </td>
                                                     <td colspan="2">
-                                                        <div class="float-end float-end col-5 pr-0">
-                                                            <label for="date">Date- </label>
-                                                            <input type="date" class="form-control" id="date"
-                                                                name="date" value="{{ old('date') }}" placeholder="Date" required>
+                                                        <div>
+                                                            <label for="date">Date-</label>
+                                                            <input type="date" class="form-control col-5" id="date"
+                                                                name="date" placeholder="Date"
+                                                                required>
+                                                            </div>
+                                                        <div class="mb-3">
+                                                            <label for="branch_id"> Delivery Address -</label>
+                                                            <input type="text" class="form-control" id="delivery_address"
+                                                            name="delivery_address" placeholder="Delivery Address"
+                                                            required>
+                                                        </div>
                                                     </td>
                                 </div>
                                 </tr>
