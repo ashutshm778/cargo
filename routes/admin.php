@@ -58,8 +58,14 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('booking_status_model', [BookingController::class,'booking_status_model'])->name('admin.booking_status_model');
     Route::get('booking_barcode/{id}', [BookingController::class,'booking_barcode'])->name('admin.booking_barcode');
 
-    Route::get('mainifestation_list', [BookingController::class,'mainifestation_list'])->name('admin.mainifestation_list');
+    Route::get('mainifestation', [BookingController::class,'mainifestation_list'])->name('admin.mainifestation');
     Route::get('get_mainifestation_list', [BookingController::class,'get_mainifestation_list'])->name('admin.get_mainifestation_list');
+
+    Route::get('bookinglog', [BookingController::class,'booking_log'])->name('admin.bookinglog');
+    Route::get('get_booking_log', [BookingController::class,'get_booking_log'])->name('admin.get_booking_log');
+
+    Route::get('delivery', [BookingController::class,'delivery'])->name('admin.delivery');
+    Route::get('get_delivery', [BookingController::class,'get_delivery'])->name('admin.get_delivery');
 
     Route::get('/pincode',[PincodeController::class,'index'])->name('admin.pincode');
     Route::post('pincode/update-status', [PincodeController::class, 'updatePincodeStatus'])->name('admin_pincode.update_status');

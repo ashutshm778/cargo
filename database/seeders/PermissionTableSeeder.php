@@ -41,6 +41,19 @@ class PermissionTableSeeder extends Seeder
             'staff-edit',
             'staff-delete',
             'staff-view',
+            'consigner-list',
+            'consigner-create',
+            'consigner-edit',
+            'consigner-delete',
+            'consigner-view',
+            'consignee-list',
+            'consignee-create',
+            'consignee-edit',
+            'consignee-delete',
+            'consignee-view',
+            'mainifestation-list',
+            'bookinglog-list',
+            'delivery-list',
         ];
 
 

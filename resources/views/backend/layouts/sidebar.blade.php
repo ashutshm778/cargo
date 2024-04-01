@@ -32,13 +32,35 @@
                 <div class="menu-title">Booking</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('bookinglog-list'))
         <li>
-            <a href="{{route('admin.mainifestation_list')}}">
+            <a href="{{route('admin.bookinglog')}}">
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
+                </div>
+                <div class="menu-title">Booking Log</div>
+            </a>
+        </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('delivery-list'))
+        <li>
+            <a href="{{route('admin.delivery')}}">
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
+                </div>
+                <div class="menu-title">Delivery</div>
+            </a>
+        </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('mainifestation-list'))
+        <li>
+            <a href="{{route('admin.mainifestation')}}">
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
                 </div>
                 <div class="menu-title">Manifestation</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('consigner-list'))
         <li>
             <a href="{{route('admin.consigner')}}">
                 <div class="parent-icon"><i class='bx bx-user'></i>
@@ -46,6 +68,8 @@
                 <div class="menu-title">Consigner</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('consignee-list'))
         <li>
             <a href="{{route('admin.consignee')}}">
                 <div class="parent-icon"><i class='bx bx-user-check'></i>
