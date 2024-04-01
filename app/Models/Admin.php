@@ -57,4 +57,9 @@ class Admin extends Authenticatable
             });
          }
     }
+
+    public function branch_data()
+    {
+        return $this->belongsTo(Branch::class,'branch_id','id');
+    }
 }

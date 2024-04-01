@@ -27,6 +27,7 @@
                                         value="" placeholder="Select Date" />
                                 </div>
                             </td>
+                            @if(auth()->guard("admin")->user()->id==1)
                             <td>
                                 <div class="mb-3">
                                     <select id='branch_id' class="form-control">
@@ -37,7 +38,7 @@
                                     </select>
                                 </div>
                             </td>
-
+                            @endif
                         </tr>
                     </table>
                     <div class="table-responsive">
@@ -152,7 +153,7 @@
                             var viewUrl = "{{ route('booking.show', ':id') }}".replace(':id', id);
                             var payment_receiptUrl = "{{ route('admin.payment_receipt', ':id') }}".replace(':id', id);
                             var trackOrdertUrl = "{{ route('admin.track_order', ':id') }}".replace(':id', id);
-                            return '<div class="d-flex order-actions">@if(auth()->guard("admin")->user()->can("booking-edit"))<a href="'+editUrl+'" class="me-2" title="Edit"><i class="bx bxs-edit"></i></a>@endif @if(auth()->guard("admin")->user()->can("booking-view"))<a href="'+viewUrl+'" class="me-2" title="View"><i class="bx bxs-show"></i></a>@endif<a href="'+payment_receiptUrl+'" class="me-2" title="Payment Receipt"><i class="bx bx-money"></i></a><a href="'+trackOrdertUrl+'" class="me-2" title="Track Order"><i class="bx bx-map"></i></a><a href="#" onclick="open_status_model('+row.id+')" class="me-2" title="Change Status"><i class="bx bx-pin" ></i></a> </div>'
+                            return '<div class="d-flex order-actions">@if(auth()->guard("admin")->user()->can("booking-edit"))<a href="'+editUrl+'" class="me-2" title="Edit"><i class="bx bxs-edit"></i></a>@endif @if(auth()->guard("admin")->user()->can("booking-view"))<a href="'+viewUrl+'" class="me-2" title="View"><i class="bx bxs-show"></i></a>@endif<a href="'+payment_receiptUrl+'" class="me-2" title="Payment Receipt"><i class="bx bx-money"></i></a><a href="'+trackOrdertUrl+'" class="me-2" title="Track Order"><i class="bx bx-map"></i></a></div>'
                         }
                     }
                     @endif

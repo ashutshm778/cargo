@@ -61,12 +61,19 @@
                                                         </span>
                                                         <div class="mb-3">
                                                             <label for="branch_id"> Branch </label>
-                                                            <select id='branch_id' name="branch_id" class="form-control" required>
-                                                                <option value=''>-- Select Branch--</option>
-                                                                @foreach(App\Models\Branch::all() as $branch)
-                                                                <option value="{{$branch->id}}" @if($booking->branch_id==$branch->id) {{'selected'}} @endif>{{$branch->name}}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            @if(auth()->guard("admin")->user()->id==1)
+                                                                <div class="mb-3">
+                                                                    <label for="branch_id"> Branch </label>
+                                                                    <select id='branch_id' name="branch_id" class="form-control" required>
+                                                                        <option value=''>-- Select Branch--</option>
+                                                                        @foreach(App\Models\Branch::all() as $branch)
+                                                                        <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            @else
+                                                              <input type="hidden" name="branch_id" value="{{auth()->guard("admin")->user()->branch_id}}" />
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>

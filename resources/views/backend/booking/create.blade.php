@@ -61,6 +61,7 @@
                                                             role="alert">
                                                             <strong>{{ $errors->first('bill_no') }}</strong>
                                                         </span>
+                                                        @if(auth()->guard("admin")->user()->id==1)
                                                         <div class="mb-3">
                                                             <label for="branch_id"> Branch </label>
                                                             <select id='branch_id' name="branch_id" class="form-control" required>
@@ -70,6 +71,9 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                        @else
+                                                            <input type="hidden" name="branch_id" value="{{auth()->guard("admin")->user()->branch_id}}" />
+                                                        @endif
                                                     </td>
                                                     <td colspan="2">
                                                         <div class="float-end float-end col-5 pr-0">
@@ -82,10 +86,16 @@
                                 <tr>
                                     <td colspan="2">
                                         <label for="from">From- </label>
+                                        @if(auth()->guard("admin")->user()->id==1)
                                         <select class="form-control" id="branch_select_from" name="from"
                                             data-placeholder="Please Select Branch..." required>
                                             <option value="">Select Branch</option>
                                         </select>
+                                        @else
+                                        <select class="form-control"  name="from"  required>
+                                         <option value="{{auth()->guard("admin")->user()->branch_id}}" selected >{{auth()->guard("admin")->user()->branch_data->name}}</option>
+                                        </select>
+                                        @endif
                                     </td>
                                     <td colspan="2">
                                         <label for="to">To-</label>
