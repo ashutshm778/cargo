@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Booking extends Model
 {
@@ -45,6 +46,10 @@ class Booking extends Model
                 'user_id' => auth()->guard("admin")->user()->id,
                 'model'=>'Booking'
             ]);
+        });
+
+        static::addGlobalScope('business', function (Builder $builder) {
+            $builder->where('branch_id',Auth::user()->branch_id);
         });
 
       }
@@ -103,5 +108,7 @@ class Booking extends Model
     {
         return $this->belongsTo(Branch::class,'to','id');
     }
+
+
 
 }
