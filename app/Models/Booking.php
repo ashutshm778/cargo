@@ -48,12 +48,6 @@ class Booking extends Model
             ]);
         });
 
-        if(auth()->guard("admin")->user()->id!=1){
-            static::addGlobalScope('booking', function (Builder $builder) {
-                $builder->where('branch_id',auth()->guard("admin")->user()->branch_id);
-            });
-        }
-
       }
 
     }
