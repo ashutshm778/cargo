@@ -477,14 +477,14 @@ class BookingController extends Controller
         if(auth()->guard("admin")->user()->id==1){
             $branch = Booking::where('id', '>', 0);
         }else{
-          $branch = Booking::where('id', '>', 0)->where('to',Auth::guard('admin')->user()->branch_id);
+          $branch = Booking::where('to',3);
         }
         $total = $branch->count();
 
         if(auth()->guard("admin")->user()->id==1){
          $totalFilter = Booking::where('id', '>', 0);
         }else{
-         $totalFilter = Booking::where('id', '>', 0)->where('to',Auth::guard('admin')->user()->branch_id);
+         $totalFilter = Booking::where('to',3);
         }
         if (!empty($searchValue)) {
             $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
@@ -500,7 +500,7 @@ class BookingController extends Controller
         if(auth()->guard("admin")->user()->id==1){
             $arrData = Booking::where('id', '>', 0);
         }else{
-             $arrData = Booking::where('id', '>', 0)->where('to',Auth::guard('admin')->user()->branch_id);
+             $arrData = Booking::where('to',3);
         }
         $arrData = $arrData->skip($start)->take($rowPerPage);
         $arrData = $arrData->orderBy($columnName, $columnSortOrder);
