@@ -517,7 +517,7 @@ class BookingController extends Controller
 
     public function booking_log()
     {
-        return view('backend.booking.delivery');
+        return view('backend.booking.log');
     }
 
     public function get_booking_log(Request $request)
