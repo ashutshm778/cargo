@@ -66,7 +66,7 @@
                                                                     <select id='branch_id' name="branch_id" class="form-control" required>
                                                                         <option value=''>-- Select Branch--</option>
                                                                         @foreach(App\Models\Branch::all() as $branch)
-                                                                        <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                                                        <option value="{{$branch->id}}" @if($booking->branch_id==$branch->id) selected @endif>{{$branch->name}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
