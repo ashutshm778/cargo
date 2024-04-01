@@ -110,7 +110,7 @@
                 "ordering": true,
                 //'searching': false, // Remove default Search Control
                 'ajax': {
-                    'url': '{{ route('admin.get_booking') }}',
+                    'url': '{{ route('admin.get_delivery') }}',
                     'data': function(data) {
                         // Read values
                         var gender = $('#searchByGender').val();
