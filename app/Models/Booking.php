@@ -54,39 +54,6 @@ class Booking extends Model
 
       }
 
-      if(!empty(auth()->guard("api")->user()->id)){
-
-        static::created(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'created',
-                'details' => 'Booking created with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
-                'user_id' => auth()->guard("api")->user()->id,
-                'model'=>'Booking'
-            ]);
-        });
-
-        static::updated(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'updated',
-                'details' => 'Booking updated with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
-                'user_id' => auth()->guard("api")->user()->id,
-                'model'=>'Booking'
-            ]);
-        });
-
-        static::deleted(function ($resource) {
-            ResourceLog::create([
-                'resource_id' => $resource->id,
-                'action' => 'deleted',
-                'details' => 'Booking deleted with ID ' . $resource->id .' by user  '.auth()->guard("api")->user()->name,
-                'user_id' => auth()->guard("api")->user()->id,
-                'model'=>'Booking'
-            ]);
-        });
-
-      }
     }
 
     public function booking_product()
