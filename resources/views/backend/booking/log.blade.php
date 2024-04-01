@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Booking List</h6>
+                            <h6 class="mb-0">Booking Log List</h6>
                         </div>
                         <div class="ms-auto">@if(auth()->guard("admin")->user()->can("booking-create"))
                             <a href="{{ route('booking.create') }}"
