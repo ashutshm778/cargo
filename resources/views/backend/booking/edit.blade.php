@@ -60,8 +60,8 @@
                                                             <strong>{{ $errors->first('bill_no') }}</strong>
                                                         </span>
                                                         <div class="mb-3">
-                                                            <label for="branch_id"> Branch </label>
                                                             @if(auth()->guard("admin")->user()->id==1)
+                                                            <label for="branch_id"> Branch </label>
                                                                 <div class="mb-3">
                                                                     <label for="branch_id"> Branch </label>
                                                                     <select id='branch_id' name="branch_id" class="form-control" required>
