@@ -15,6 +15,15 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        @if(auth()->guard('admin')->user()->can('pincode-list'))
+        <li>
+            <a href="{{route('admin.pincode')}}" aria-expanded="false">
+                <div class="parent-icon"><i class="bx bx-location-plus"></i>
+                </div>
+                <div class="menu-title">Pincode</div>
+            </a>
+        </li>
+        @endif
         @if(auth()->guard('admin')->user()->can('branch-list'))
         <li>
             <a href="{{route('branch.index')}}">
@@ -78,15 +87,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('pincode-list'))
-        <li>
-            <a href="{{route('admin.pincode')}}" aria-expanded="false">
-                <div class="parent-icon"><i class="bx bx-location-plus"></i>
-                </div>
-                <div class="menu-title">Pincode</div>
-            </a>
-        </li>
-        @endif
+
         @if(auth()->guard('admin')->user()->canany(['roles-list', 'staff-list']))
         <li>
             <a href="javascript:;" class="has-arrow">
