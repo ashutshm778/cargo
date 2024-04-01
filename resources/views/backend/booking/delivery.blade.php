@@ -9,11 +9,7 @@
                         <div>
                             <h6 class="mb-0">Booking Delivery List</h6>
                         </div>
-                        <div class="ms-auto">@if(auth()->guard("admin")->user()->can("booking-create"))
-                            <a href="{{ route('booking.create') }}"
-                                class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Add New
-                                Booking</a>
-                                @endif
+                        <div class="ms-auto">
                             </div>
                     </div>
                 </div>
@@ -27,6 +23,7 @@
                                         value="" placeholder="Select Date" />
                                 </div>
                             </td>
+                            @if(auth()->guard("admin")->user()->id==1)
                             <td>
                                 <div class="mb-3">
                                     <select id='branch_id' class="form-control">
@@ -37,7 +34,7 @@
                                     </select>
                                 </div>
                             </td>
-
+                            @endif
                         </tr>
                     </table>
                     <div class="table-responsive">
