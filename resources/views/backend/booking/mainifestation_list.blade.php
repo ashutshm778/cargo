@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Booking List</h6>
+                            <h6 class="mb-0">Manifestation List</h6>
                         </div>
                         <div class="ms-auto">
                             </div>
@@ -141,7 +141,12 @@
                         data: 'branch_to.name'
                     },
                     {
-                        data: 'status'
+
+                        mRender: function(data, type, row) {
+                            var status = row.status;
+                            return status.replace(/_/g , " ");
+                        }
+
                     }
                 ]
             });
