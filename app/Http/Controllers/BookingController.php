@@ -547,11 +547,10 @@ class BookingController extends Controller
             $start_date = Carbon::parse($dateRange[0])->toDateString();
             $end_date = Carbon::parse($dateRange[1])->toDateString();
         }
-
-        $branch = Booking::where('id', '>', 0)->where('to',Auth::guard('admin')->user()->branch_id);
+        $branch =  BookingLog::with(['branch_data','booking_data']);
         $total = $branch->count();
 
-        $totalFilter = Booking::where('id', '>', 0);
+        $totalFilter = BookingLog::where('id', '>', 0);
         if (!empty($searchValue)) {
             $totalFilter = $totalFilter->where('name', 'like', '%' . $searchValue . '%');
         }
@@ -564,7 +563,7 @@ class BookingController extends Controller
         $totalFilter = $totalFilter->count();
 
 
-        $arrData = Booking::where('id', '>', 0);
+        $arrData = BookingLog::where('id', '>', 0)->with(['branch_data','booking_data']);
         $arrData = $arrData->skip($start)->take($rowPerPage);
         $arrData = $arrData->orderBy($columnName, $columnSortOrder);
 
