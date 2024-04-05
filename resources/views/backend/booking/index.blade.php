@@ -127,8 +127,7 @@
                         data.branch_id = branch_id;
                     }
                 },
-                'columns': [
-                    {
+                'columns': [{
                         data: 'created_at',
                         render: function(data, type, row) {
                             const d = Date.parse(data);
@@ -148,7 +147,6 @@
                             '0'); // Convert to 12-hour format
                             return `${day}-${month}-${year} ${formattedHours}:${minutes} ${amPm}`;
                         }
-                    }
                     },
                     {
                         data: 'tracking_code'
