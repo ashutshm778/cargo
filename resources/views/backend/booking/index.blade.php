@@ -129,7 +129,27 @@
                 },
                 'columns': [
                     {
-                        data: 'created_at'
+                        {
+                        data: 'created_at',
+                        render: function(data, type, row) {
+                            const d = Date.parse(data);
+                            var nd = new Date(d);
+                            const year = nd.getFullYear();
+                            const month = (nd.getMonth() + 1).toString().padStart(2,
+                            '0'); // Adding 1 to the month and padding with zeros if needed
+                            const day = nd.getDate().toString().padStart(2,
+                            '0'); // Padding with zeros if needed
+                            const hours = nd.getHours().toString().padStart(2,
+                            '0'); // Adding hours and padding with zeros if needed
+                            const minutes = nd.getMinutes().toString().padStart(2,
+                            '0'); // Adding minutes and padding with zeros if needed
+                            const seconds = nd.getSeconds().toString().padStart(2, '0');
+                            const amPm = hours >= 12 ? 'PM' : 'AM';
+                            const formattedHours = (hours % 12 || 12).toString().padStart(2,
+                            '0'); // Convert to 12-hour format
+                            return `${day}-${month}-${year} ${formattedHours}:${minutes} ${amPm}`;
+                        }
+                    }
                     },
                     {
                         data: 'tracking_code'
