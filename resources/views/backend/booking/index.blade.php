@@ -45,7 +45,7 @@
                         <table class="table align-middle mb-0"  id="datatable" >
                             <thead>
                                 <tr>
-
+                                    <th>Date</th>
                                     <th>Tracking Code</th>
                                     <th>Bill No</th>
                                     <th>Consignor</th>
@@ -128,6 +128,9 @@
                     }
                 },
                 'columns': [
+                    {
+                        data: 'created_at'
+                    },
                     {
                         data: 'tracking_code'
                     },
