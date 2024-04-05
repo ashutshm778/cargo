@@ -84,11 +84,7 @@ class HomeController extends Controller
 
         $booking = Booking::find($request->booking_id);
         if (($booking->status == 'dispatched') && (Auth::guard('api')->user()->branch_id == $booking->branch_id)) {
-            return response()->json([
-                'message' => 'Package Already Dispatched',
-                'success' => true,
-                'status' => 200
-            ]);
+            return response()->json(['error' => 'Package Already Dispatched', 'status' => '401'], 401);
         }
 
         if ($booking->status == 'dispatched') {
@@ -165,11 +161,8 @@ class HomeController extends Controller
                 return response()->json(['error' => 'Created Order Can not be Arrived.', 'status' => '401'], 401);
             }
         }
-        return response()->json([
-            'message' => 'Package Is Not Dispatched By Origin',
-            'success' => true,
-            'status' => 422
-        ], 422);
+        return response()->json(['error' => 'Package Is Not Dispatched By Origin', 'status' => '401'], 401);
+
     }
 
     public function product_package_barcode_scan(Request $request)
