@@ -74,7 +74,7 @@ class HomeController extends Controller
                 'status' => 200
             ]);
         } else {
-            return response()->json(['error' => 'Invalid Data', 'status' => '401'], 401);
+            return response()->json(['error' => 'Please Scan Barcode', 'status' => '401'], 401);
         }
     }
 

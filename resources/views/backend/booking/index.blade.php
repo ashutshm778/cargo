@@ -129,7 +129,6 @@
                 },
                 'columns': [
                     {
-                        {
                         data: 'created_at',
                         render: function(data, type, row) {
                             const d = Date.parse(data);
