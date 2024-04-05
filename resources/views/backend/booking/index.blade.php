@@ -109,6 +109,7 @@
                 "sPaginationType": "full_numbers",
                 "iDisplayLength": 10,
                 "ordering": true,
+                "order": [[0, 'desc']],
                 //'searching': false, // Remove default Search Control
                 'ajax': {
                     'url': '{{ route('admin.get_booking') }}',
