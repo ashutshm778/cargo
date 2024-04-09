@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +13,7 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', [HomeController::class,'home'])->name('home');
 Route::view('about-us', 'frontend.about')->name('about');
 Route::get('track-order',[HomeController::class,'track_order'] )->name('track_order');
