@@ -5,7 +5,9 @@
   <!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="app-url" content="{{ getBaseURL() }}">
+	<meta name="file-base-url" content="{{ getFileBaseURL() }}">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('backend/images/favicon-32x32.png') }}" type="image/png"/>
 	<!--plugins-->
@@ -31,7 +33,10 @@
     <link rel="stylesheet" href="{{ asset('sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/vendors.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/aiz-core.css') }}">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var AIZ = AIZ || {};
+    </script>
 	<title>Cargo Admin | Dashboard</title>
     @livewireStyles
 
