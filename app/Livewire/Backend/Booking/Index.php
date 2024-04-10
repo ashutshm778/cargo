@@ -4,9 +4,15 @@ namespace App\Livewire\Backend\Booking;
 
 use App\Models\Booking;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Index extends Component
 {
+    use AuthorizesRequests;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         if(auth()->guard("admin")->user()->id==1){
