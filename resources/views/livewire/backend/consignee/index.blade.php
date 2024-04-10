@@ -55,6 +55,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$list->links()}}
                 </div>
             </div>
         </div>

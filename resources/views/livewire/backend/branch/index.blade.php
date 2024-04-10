@@ -49,6 +49,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$branches->links()}}
                 </div>
             </div>
         </div>
