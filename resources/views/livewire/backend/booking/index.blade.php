@@ -63,6 +63,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$bookings->links()}}
                 </div>
             </div>
         </div>
