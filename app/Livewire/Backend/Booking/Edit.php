@@ -144,6 +144,8 @@ class Edit extends Component
         $consigner->full_address = $this->address;
         $consigner->pincode = $this->pincode;
         $consigner->save();
+
+        $this->closeConsginee();
     }
 
     public function consigner_store()
@@ -160,6 +162,8 @@ class Edit extends Component
         $consigner->full_address = $this->address;
         $consigner->pincode = $this->pincode;
         $consigner->save();
+
+        $this->closeConsginer();
     }
 
     public function resetInputFields()

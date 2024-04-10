@@ -42,9 +42,11 @@
                         </div>
                         <div class="col-md-4 mb-3 ">
                             <label for="pincode" class="form-label">Pincode</label>
-                            <select class="form-control" id="pincode_select2" wire:model="pincode"
-                                data-placeholder="Please Select Pincodes..."  required>
+                            <select class="form-control" id="pincode_select2" wire:model="pincode" required>
                                 <option value="">Select Pincode</option>
+                                @foreach(App\Models\Pincode::all() as $pincode)
+                                    <option value="{{$pincode->pincode}}">{{$pincode->pincode}}</option>
+                                    @endforeach
                             </select>
                         </div>
                         <div class="col-md-4">
