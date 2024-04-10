@@ -33,6 +33,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{$resource_logs->links()}}
                 </div>
             </div>
         </div>
