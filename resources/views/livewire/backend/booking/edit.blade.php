@@ -30,7 +30,7 @@
                                                         <label for="bill_no"> G.R.No/Bill. No- </label>
                                                         <input type="text" class="form-control col-5" id="bill_no"
                                                             wire:model="bill_no" placeholder="Bill No"
-                                                            value="{{ old('bill_no') }}" required>
+                                                            value="{{ old('bill_no') }}" readonly required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                                             role="alert">
@@ -39,7 +39,7 @@
                                                         @if (auth()->guard('admin')->user()->id == 1)
                                                             <div class="mb-3">
                                                                 <label for="branch_id"> Branch </label>
-                                                                <select id='branch_id' wire:model="branch_id" class="form-control"
+                                                                <select id='branch_id' wire:model="branch_id" class="form-control" readonly
                                                                     required>
                                                                     <option value=''>-- Select Branch--</option>
                                                                     @foreach (App\Models\Branch::all() as $branch)
@@ -73,7 +73,7 @@
                                         <label for="branch_select_from">From- </label>
                                         @if (auth()->guard('admin')->user()->id == 1)
                                             <select class="form-control" id="branch_select_from" wire:model="from"
-                                                required>
+                                            readonly  required>
                                                 <option value=''>-- Select Branch--</option>
                                                 @foreach (App\Models\Branch::all() as $branch)
                                                     <option value="{{ $branch->id }}">
@@ -90,7 +90,7 @@
                                     <td colspan="2">
                                         <label for="branch_select_to">To-</label>
                                         <select class="form-control" id="branch_select_to" wire:model="to"
-                                             required>
+                                        readonly  required>
                                             <option value=''>-- Select Branch--</option>
                                             @foreach (App\Models\Branch::all() as $branch)
                                                 <option value="{{ $branch->id }}">
@@ -154,7 +154,7 @@
                                     <td colspan="2">
                                         <label for="booking_no">Bill No.</label><input type="text"
                                             class="form-control" id="booking_no" wire:model="booking_no"
-                                            placeholder="Booking No" value="{{ old('booking_no') }}" required>
+                                            placeholder="Booking No" value="{{ old('booking_no') }}" readonly required>
                                         <span
                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                             role="alert">
@@ -172,8 +172,7 @@
                                 <table class="table table-borderd">
                                     <thead>
                                         <tr>
-                                            <th># <i
-                                                class="bx bxs-plus-square"></i></a></th>
+                                            <th>#</th>
                                             <th>Number of Packages</th>
                                             <th>Nature of Goods Said to contain</th>
                                             <th>Unit</th>
@@ -195,7 +194,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-left"><input type="text" class="form-control"
-                                                    id="no_of_pack" wire:model="no_of_pack.{{ $key }}" placeholder="No Of Package"
+                                                    id="no_of_pack" wire:model="no_of_pack.{{ $key }}" placeholder="No Of Package" readonly
                                                     required></td>
                                             <td> <input type="text" class="form-control" id="product"
                                                     wire:model="product.{{ $key }}" placeholder="Nature of Goods Said to contain"
@@ -287,7 +286,7 @@
                                 </main>
                                 <div class="col-12">
                                     <div class="">
-                                        <button type="button" class="btn btn-primary" wire:click="store()">Add</button>
+                                        <button type="button" class="btn btn-primary" wire:click="update()">Update</button>
                                     </div>
                                 </div>
                             </div>

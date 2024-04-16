@@ -1,4 +1,5 @@
 <div>
+
     <div class="page-wrapper">
         <div class="page-content">
             <div class="card radius-10">
@@ -65,9 +66,12 @@
                             </div>
                             <div class="col-md-4 mb-3 ">
                                 <label for="pincode" class="form-label">Pincode</label>
-                                <select class="form-control" id="pincode_select" wire:model="pincode"
-                                    data-placeholder="Please Select Pincodes..." onchange="get_pincode()" >
-                                    <option value="">Select Pincode</option>
+                                <select class="form-control" id="pincode" wire:model="pincode" wire:change="getPincodeData()">
+                                    <option value=''>-- Select Pincode--</option>
+                                    @foreach (App\Models\Pincode::all() as $pincode)
+                                        <option value="{{ $pincode->pincode }}">
+                                            {{ $pincode->pincode }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3 ">
@@ -87,14 +91,17 @@
                             </div>
                             <div class="col-md-4 mb-3 ">
                                 <label for="pincode" class="form-label">Serving Pincode</label>
-                                <select class="form-control" id="serving_pincode_select" wire:model="serving_pincode"
-                                    data-placeholder="Please Select Pincodes..."  multiple >
-                                    <option value="">Select Pincode</option>
+                                <select class="form-control" id="serving_pincode" wire:model="serving_pincode" multiple>
+                                    <option value=''>Select Pincode</option>
+                                    @foreach (App\Models\Pincode::all() as $pincode)
+                                        <option value="{{ $pincode->pincode }}">
+                                            {{ $pincode->pincode }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12">
                                 <div class="">
-                                    <button type="button" wire:click="store()" class="btn btn-primary">Update</button>
+                                    <button type="button" wire:click="update()" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </form>
@@ -103,4 +110,5 @@
             </div>
         </div>
     </div>
+
 </div>

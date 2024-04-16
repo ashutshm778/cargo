@@ -142,7 +142,7 @@
                                         @foreach ($booking->booking_product as $key => $booking_product)
 
                                         <tr>
-                                            <td ><a href="#" class="no-print">Download Barcode</a></td>
+                                            <td ><a href="{{route('booking.barcode',$booking_product->id)}}" class="no-print" wire:navigate >Download Barcode</a></td>
                                             <td>{{ $booking_product->no_of_pack }}</td>
                                             <td>{{ $booking_product->product }}</td>
                                             <td>{{$booking_product->unit}}</td>

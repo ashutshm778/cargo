@@ -101,7 +101,6 @@
     @foreach (['error', 'warning', 'success', 'info'] as $msg)
      @if (Session::has($msg))
          <script>
-
              $(function() {
                  var Toast = Swal.mixin({
                      toast: true,

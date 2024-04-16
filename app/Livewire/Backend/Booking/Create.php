@@ -218,7 +218,9 @@ class Create extends Component
         $booking->delivery_address=$this->delivery_address;
 
         $booking->consignor=$consigner->name;
+        $booking->consignor_phone=$consigner->phone;
         $booking->consignee=$consignee->name;
+        $booking->consignee_phone=$consignee->phone;
         $booking->consignor_gstin=$consigner->gstin;
         $booking->consignee_gstin=$consignee->gstin;
 
@@ -240,7 +242,7 @@ class Create extends Component
 
             $booking_product = new BookingProduct;
             $booking_product->booking_id=$booking->id;
-            $booking_product->no_of_pack=$value;
+            $booking_product->no_of_pack=$this->no_of_pack[$key];
             $booking_product->product=$this->product[$key];
             $booking_product->unit=$this->unit[$key];
             $booking_product->weight=$this->weight[$key];

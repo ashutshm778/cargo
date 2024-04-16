@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Branch;
 
 use App\Models\Branch;
+use App\Models\Pincode;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -15,6 +16,9 @@ class Create extends Component
 
     public $name,$branch_code,$phone,$email,$gst,$state,$city,$pincode,$address;
     public $serving_pincode=[];
+
+
+
 
     public function render()
     {
@@ -43,6 +47,12 @@ class Create extends Component
 
         $this->redirect('/admin/branch', navigate: true);
 
+    }
+
+    public function getPincodeData(){
+        $pincode =Pincode::where('pincode', $this->pincode)->first();
+        $this->state= $pincode->state;
+        $this->city= $pincode->city;
     }
 
 }

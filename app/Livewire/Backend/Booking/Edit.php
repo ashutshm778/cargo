@@ -6,8 +6,11 @@ use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Consignee;
 use App\Models\Consignor;
+use App\Models\BookingLog;
 use Livewire\WithPagination;
+use App\Models\BookingProduct;
 use Illuminate\Support\Facades\Auth;
+use App\Models\BookingProductBarcode;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Edit extends Component
@@ -36,7 +39,7 @@ class Edit extends Component
     function mount($id)
     {
         $this->edit($id);
-        $this->hidden_id=$id;
+
     }
 
     public function add($i)
@@ -66,7 +69,7 @@ class Edit extends Component
 
     public function edit($id)
     {
-
+        $this->hidden_id=$id;
         $booking=Booking::find($id);
         $this->bill_no=$booking->bill_no;
         $this->branch_id=$booking->branch_id;
@@ -76,9 +79,14 @@ class Edit extends Component
         $this->delivery_address=$booking->delivery_address;
 
         $this->consignor=$booking->consignor;
+        $this->consignor_phone=$booking->consignor_phone;
         $this->consignee=$booking->consignee;
+        $this->consignee_phone=$booking->consignee_phone;
         $this->consignor_gstin=$booking->consignor_gstin;
         $this->consignee_gstin=$booking->consignee_gstin;
+
+        $this->consignee_id=Consignee::where('phone',$booking->consignee_phone)->first()->id;
+        $this->consigner_id=Consignor::where('phone',$booking->consignor_phone)->first()->id;
 
 
 
@@ -206,8 +214,8 @@ class Edit extends Component
     public function update(){
 
         $this->validate([
-            'booking_no' => 'required|unique:bookings',
-            'bill_no' => 'required|unique:bookings'
+            'booking_no' => 'required|unique:bookings,id,'.$this->hidden_id,
+
         ]);
 
 
@@ -238,21 +246,13 @@ class Edit extends Component
 
 
         $input=$this->all();
-        $booking=new Booking;
+        $booking=Booking::find($this->hidden_id);
         $booking->branch_id=$this->branch_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->bill_no=$this->bill_no;
         $lastBooking = Booking::latest()->first(); // Retrieve the last entry from the database
 
-        if ($lastBooking) {
-            // Extract the serial part of the tracking code and increment it
-            $lastSerial = intval(substr($lastBooking->tracking_code, 5));
-            $newSerial = $lastSerial + 1;
-        } else {
-            // If no previous entry exists, start with 1111
-            $newSerial = 1111;
-        }
-        $booking->tracking_code='TRACK'.$newSerial;
+
 
         $booking->from=$this->from;
         $booking->to=$this->to;
@@ -261,56 +261,39 @@ class Edit extends Component
         $booking->delivery_address=$this->delivery_address;
 
         $booking->consignor=$consigner->name;
+        $booking->consignor_phone=$consigner->phone;
         $booking->consignee=$consignee->name;
+        $booking->consignee_phone=$consigner->phone;
         $booking->consignor_gstin=$consigner->gstin;
         $booking->consignee_gstin=$consignee->gstin;
 
 
 
-        $booking->booking_no=$this->booking_no;
+
         $booking->insurance=$this->insurance;
         $booking->b_charges=$this->b_charges;
         $booking->other_charges=$this->other_charges;
         $booking->tax=$this->tax;
-        $booking->status='order_created';
+
         $booking->payment_status=$this->status;
         $booking->value=$this->value;
         // $booking->description=$this->description;
         $booking->total=$this->total;
         $booking->save();
 
-        foreach ($this->qty as $key => $value) {
+        foreach ($booking->booking_product as $key => $value) {
 
-            $booking_product = new BookingProduct;
+            $booking_product =BookingProduct::find($value->id);
             $booking_product->booking_id=$booking->id;
-            $booking_product->no_of_pack=$value;
+            $booking_product->no_of_pack=$this->no_of_pack[$key];
             $booking_product->product=$this->product[$key];
             $booking_product->unit=$this->unit[$key];
             $booking_product->weight=$this->weight[$key];
-            $booking_product->qty=$value;
+            $booking_product->qty=$this->qty[$key];
             $booking_product->freight_charges=$this->frieght_charge[$key];
             $booking_product->save();
 
-            for($i=1;$i<=$value;$i++){
-                $booking_product_barcode=new BookingProductBarcode;
-                $booking_product_barcode->booking_product_id=$booking_product->id;
-                $booking_product_barcode->barcode=$booking->bill_no.$i;
-                $booking_product_barcode->status=0;
-                $booking_product_barcode->save();
-            }
-
         }
-
-        $booking_log=new BookingLog;
-        $booking_log->booking_id=$booking->id;
-        $booking_log->branch_id=$booking->branch_id;
-        $booking_log->tracking_code=$booking->tracking_code;
-        $booking_log->user_id=$booking->added_by;
-        $booking_log->source='web';
-        $booking_log->action='Order Created';
-        $booking_log->status='order_created';
-        $booking_log->description=$booking->description;
-        $booking_log->save();
 
         $this->redirect('/admin/booking', navigate: true);
     }

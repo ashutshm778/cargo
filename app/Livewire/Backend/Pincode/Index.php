@@ -39,6 +39,9 @@ class Index extends Component
         $pincode->save();
 
         $this->resetInputFields();
+        session()->flash('success', 'Pincode successfully store.');
+        $this->redirect('/admin/pincode', navigate: true);
+
     }
 
     public function resetInputFields(){
@@ -73,11 +76,15 @@ class Index extends Component
         $pincode->save();
 
         $this->resetInputFields();
+        session()->flash('success', 'Pincode successfully updated.');
+        $this->redirect('/admin/pincode', navigate: true);
     }
 
     public function delete($id){
         $pincode =Pincode::find($id);
         $pincode->delete();
+        session()->flash('error', 'Pincode successfully deleted.');
+        $this->redirect('/admin/pincode', navigate: true);
     }
 
 

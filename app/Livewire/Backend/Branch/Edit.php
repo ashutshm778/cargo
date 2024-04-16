@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Branch;
 
 use App\Models\Branch;
+use App\Models\Pincode;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -39,6 +40,7 @@ class Edit extends Component
         $this->city =  $branch->city;
         $this->pincode = $branch->pincode;
         $this->address = $branch->address ;
+        $this->serving_pincode= json_decode($branch->serving_pincode);
     }
 
     public function update(){
@@ -49,7 +51,7 @@ class Edit extends Component
             'email' => 'required|unique:branches,id,'.$this->hidden_id,
             'phone' => 'required',
         ]);
-        $branch = Branch::find($this->id);
+        $branch = Branch::find($this->hidden_id);
         $branch->name = $this->name;
         $branch->branch_code = $this->branch_code;
         $branch->phone = $this->phone;
@@ -64,6 +66,12 @@ class Edit extends Component
 
         $this->redirect('/admin/branch', navigate: true);
 
+    }
+
+    public function getPincodeData(){
+        $pincode =Pincode::where('pincode', $this->pincode)->first();
+        $this->state= $pincode->state;
+        $this->city= $pincode->city;
     }
 
 }
