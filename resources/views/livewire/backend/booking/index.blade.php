@@ -23,23 +23,23 @@
                     <div class="row">
                         <div class="col-2">
                             @if (auth()->guard('admin')->user()->id == 1)
-                            <select id='branch' wire:model="branch" class="form-control">
-                                <option value=''>-- Select Branch--</option>
-                                @foreach (App\Models\Branch::all() as $branch)
-                                    <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                @endforeach
-                            </select>
+                                <select id='branch' wire:model="branch" class="form-control">
+                                    <option value=''>-- Select Branch--</option>
+                                    @foreach (App\Models\Branch::all() as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @endforeach
+                                </select>
                             @endif
                         </div>
                         <div class="col-2">
-                            <input type="text" class="form-control" id="date_range"
-                            placeholder="Select Date" />
+                            <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
                         <div class="col-6">
 
                         </div>
                         <div class="col-2 mb-3">
-                              <input type="search" wire:model.live="search" class="form-control form-control-sm" placeholder="Type To Search"  />
+                            <input type="search" wire:model.live="search" class="form-control form-control-sm"
+                                placeholder="Type To Search" />
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -70,14 +70,17 @@
                                             <div class="d-flex order-actions">
                                                 @if (auth()->guard('admin')->user()->can('booking-edit'))
                                                     <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
-                                                        title="Edit" wire:navigate ><i class="bx bxs-edit"></i></a>
+                                                        title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
                                                     @endif @if (auth()->guard('admin')->user()->can('booking-view'))
-                                                        <a href="{{route('booking.show',$booking->id)}}" class="me-2" title="View" wire:navigate ><i
+                                                        <a href="{{ route('booking.show', $booking->id) }}"
+                                                            class="me-2" title="View" wire:navigate><i
                                                                 class="bx bxs-show"></i></a>
                                                     @endif
-                                                    <a href="{{route('booking.payment_receipt',$booking->id)}}" class="me-2" title="Payment Receipt" wire:navigate ><i
+                                                    <a href="{{ route('booking.payment_receipt', $booking->id) }}"
+                                                        class="me-2" title="Payment Receipt" wire:navigate><i
                                                             class="bx bx-money"></i></a>
-                                                    <a href="{{route('booking.track_order',$booking->id)}}" class="me-2" title="Track Order" wire:navigate ><i
+                                                    <a href="{{ route('booking.track_order', $booking->id) }}"
+                                                        class="me-2" title="Track Order" wire:navigate><i
                                                             class="bx bx-map"></i></a>
                                             </div>
                                         </td>
@@ -86,16 +89,15 @@
                             </tbody>
                         </table>
                     </div>
-                    {{$bookings->links()}}
+                    {{ $bookings->links() }}
                 </div>
             </div>
         </div>
 
         @push('scripts')
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-        <script>
-
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+            <script>
                 $(document).ready(function() {
                     $('#date_range').daterangepicker({
                         locale: {
@@ -111,11 +113,10 @@
                 });
 
                 $('#branch').on('change', function(e) {
-                let elementName = $(this).attr('id');
-                var data = $(this).val();
-                @this.set(elementName, data);
-            });
-
+                    let elementName = $(this).attr('id');
+                    var data = $(this).val();
+                    @this.set(elementName, data);
+                });
             </script>
-         @endpush
+        @endpush
     </div>

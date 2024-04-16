@@ -1,4 +1,6 @@
 <div>
+    <script src="https://unpkg.com/bootstrap@3.3.2/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <div class="page-wrapper">
         <div class="page-content">
             <div class="card radius-10">
@@ -13,28 +15,28 @@
                 </div>
 
                 <div class="card-body">
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" name="dates" id="daterange"
-                                        value="" placeholder="Select Date" />
-                                </div>
-                            </td>
+                    <div class="row">
+                        <div class="col-2">
                             @if (auth()->guard('admin')->user()->id == 1)
-                                <td>
-                                    <div class="mb-3">
-                                        <select id='branch_id' class="form-control">
-                                            <option value=''>-- Select Branch--</option>
-                                            @foreach (App\Models\Branch::all() as $branch)
-                                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </td>
+                                <select id='branch' wire:model="branch" class="form-control">
+                                    <option value=''>-- Select Branch--</option>
+                                    @foreach (App\Models\Branch::all() as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @endforeach
+                                </select>
                             @endif
-                        </tr>
-                    </table>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-2 mb-3">
+                            <input type="search" wire:model.live="search" class="form-control form-control-sm"
+                                placeholder="Type To Search" />
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table align-middle mb-0" id="datatable">
                             <thead>
@@ -90,4 +92,29 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#date_range').daterangepicker({
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            });
+
+            $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+                // Update Livewire properties when dates are selected
+                @this.set('startDate', picker.startDate.format('YYYY-MM-DD'));
+                @this.set('endDate', picker.endDate.format('YYYY-MM-DD'));
+            });
+        });
+
+        $('#branch').on('change', function(e) {
+            let elementName = $(this).attr('id');
+            var data = $(this).val();
+            @this.set(elementName, data);
+        });
+    </script>
+@endpush
 </div>

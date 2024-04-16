@@ -13,10 +13,24 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $search;
+
+    public function updatedSearch(){
+        $this->resetPage();
+    }
+
+    public function applySearch($query){
+        $search=$this->search;
+        return $this->search===''?$query:$query->where(function ($q) use ($search) {
+            $q->where('name','like','%'.$search.'%');
+        });
+    }
+
     public function render()
     {
         $list = Consignor::where('id', '>', 0);
-        $list=$list->paginate(10);
+        $query = $this->applySearch($list);
+        $list=$query->paginate(10);
         return view('livewire.backend.consignee.index',compact('list'));
     }
 }

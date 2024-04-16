@@ -15,28 +15,28 @@
                 </div>
 
                 <div class="card-body">
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" id="date_range"
-                                        placeholder="Select Date" />
-                                </div>
-                            </td>
+                    <div class="row">
+                        <div class="col-2">
                             @if (auth()->guard('admin')->user()->id == 1)
-                                <td>
-                                    <div class="mb-3">
-                                        <select id='branch_id' wire:model="branch" class="form-control">
-                                            <option value=''>-- Select Branch--</option>
-                                            @foreach (App\Models\Branch::all() as $branch)
-                                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </td>
+                                <select id='branch' wire:model="branch" class="form-control">
+                                    <option value=''>-- Select Branch--</option>
+                                    @foreach (App\Models\Branch::all() as $branch)
+                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @endforeach
+                                </select>
                             @endif
-                        </tr>
-                    </table>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
+                        </div>
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-2 mb-3">
+                            <input type="search" wire:model.live="search" class="form-control form-control-sm"
+                                placeholder="Type To Search" />
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table align-middle mb-0" id="datatable">
                             <thead>
@@ -54,30 +54,30 @@
                             </thead>
                             <tbody>
 
-                                @foreach($booking_logs as $key => $data)
-                                <tr>
-                                    <td>
-                                        {{$data->tracking_code}}
-                                    </td>
-                                    <td>
-                                        {{$data->booking_id}}
-                                    </td>
-                                    <td>
-                                        {{$data->branch_data->name}}
-                                    </td>
-                                    <td>
-                                        {{$data->source}}
-                                    </td>
-                                    <td>
-                                        {{$data->action}}
-                                    </td>
-                                    <td>
-                                        {{$data->status}}
-                                    </td>
-                                    <td>
-                                        {{$data->description}}
-                                    </td>
-                                </tr>
+                                @foreach ($booking_logs as $key => $data)
+                                    <tr>
+                                        <td>
+                                            {{ $data->tracking_code }}
+                                        </td>
+                                        <td>
+                                            {{ $data->booking_id }}
+                                        </td>
+                                        <td>
+                                            {{ $data->branch_data->name }}
+                                        </td>
+                                        <td>
+                                            {{ $data->source }}
+                                        </td>
+                                        <td>
+                                            {{ $data->action }}
+                                        </td>
+                                        <td>
+                                            {{ $data->status }}
+                                        </td>
+                                        <td>
+                                            {{ $data->description }}
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                             </tbody>
@@ -89,24 +89,27 @@
 
     </div>
     @push('scripts')
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <script>
-
-                $(document).ready(function() {
-                    $('#date_range').daterangepicker({
-                        locale: {
-                            format: 'YYYY-MM-DD'
-                        }
-                    });
-
-                    $('#date_range').on('apply.daterangepicker', function(ev, picker) {
-                        // Update Livewire properties when dates are selected
-                        @this.set('startDate', picker.startDate.format('YYYY-MM-DD'));
-                        @this.set('endDate', picker.endDate.format('YYYY-MM-DD'));
-                    });
+            $(document).ready(function() {
+                $('#date_range').daterangepicker({
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
                 });
 
-            </script>
+                $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+                    // Update Livewire properties when dates are selected
+                    @this.set('startDate', picker.startDate.format('YYYY-MM-DD'));
+                    @this.set('endDate', picker.endDate.format('YYYY-MM-DD'));
+                });
+            });
+            $('#branch').on('change', function(e) {
+                    let elementName = $(this).attr('id');
+                    var data = $(this).val();
+                    @this.set(elementName, data);
+                });
+        </script>
     @endpush
 </div>
