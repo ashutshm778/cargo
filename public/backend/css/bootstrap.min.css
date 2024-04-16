@@ -2163,7 +2163,9 @@ progress {
 }
 
 .table>thead {
-    vertical-align: bottom
+    color: #fff;
+    vertical-align: bottom;
+    background: #333;
 }
 
 .table-group-divider {
@@ -5011,7 +5013,7 @@ fieldset:disabled .btn {
 }
 
 .card-header {
-    padding: 10px 15px;
+    padding: 12px 15px;
     margin-bottom: 0;
     color: var(--bs-card-cap-color);
     background-color: var(--bs-card-cap-bg);

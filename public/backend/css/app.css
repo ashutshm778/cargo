@@ -1458,10 +1458,12 @@ form select.error:focus {
 }
 
 
-
+h6 {
+    font-weight: 600;
+}
 .radius-10 {
 
-	border-radius: 10px
+	border-radius: 0
 
 }
 
