@@ -17,7 +17,7 @@
 	{{-- <link href="{{ asset('backend/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet"/> --}}
 	<!-- loader-->
 	<link href="{{ asset('backend/css/pace.min.css') }}" rel="stylesheet"/>
-	<script src="{{ asset('backend/js/pace.min.js') }}"></script>
+
 	<!-- Bootstrap CSS -->
 	<link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('backend/css/bootstrap-extended.css') }}" rel="stylesheet">
@@ -33,7 +33,12 @@
     <link rel="stylesheet" href="{{ asset('sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/vendors.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/aiz-core.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="{{ asset('backend/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('img_css/js/vendors.js') }}"></script>
+    <script src="{{ asset('img_css/js/aiz-core.js') }}"></script>
+    <script src="{{ asset('backend/js/pace.min.js') }}"></script>
+
     <script>
         var AIZ = AIZ || {};
     </script>
@@ -68,9 +73,7 @@
      <!-- ./wrapper -->
 	<script src="{{ asset('backend/js/bootstrap.bundle.min.js')}}"></script>
 	<!--plugins-->
-	<script src="{{ asset('backend/js/jquery.min.js')}}"></script>
-    <script src="{{ asset('img_css/js/vendors.js') }}"></script>
-    <script src="{{ asset('img_css/js/aiz-core.js') }}"></script>
+
 
 	<script src="{{ asset('backend/plugins/simplebar/js/simplebar.min.js')}}"></script>
 	{{-- <script src="{{ asset('backend/plugins/metismenu/js/metisMenu.min.js')}}"></script> --}}

@@ -1875,7 +1875,7 @@ textarea.form-control {
 .form-check {
 	position: relative;
 	display: block;
-	padding-left: 1.25rem
+	/* padding-left: 1.25rem */
 }
 
 .form-check-input {
