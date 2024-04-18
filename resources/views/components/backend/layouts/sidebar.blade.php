@@ -96,7 +96,7 @@
                 <div class="menu-title">Role & Permission</div>
             </a>
             <ul>
-                <li> <a href="#" wire:navigate ><i class='bx bx-radio-circle'></i>Role</a></li>
+                <li> <a href="{{route('admin.role')}}" wire:navigate ><i class='bx bx-radio-circle'></i>Role</a></li>
                 <li> <a href="#" wire:navigate ><i class='bx bx-radio-circle'></i>Staff</a></li>
             </ul>
         </li>

@@ -33,15 +33,15 @@
     <link rel="stylesheet" href="{{ asset('sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/vendors.css') }}">
     <link rel="stylesheet" href="{{ asset('img_css/css/aiz-core.css') }}">
-
+    <script>
+        var AIZ = AIZ || {};
+    </script>
     <script src="{{ asset('backend/js/jquery.min.js')}}"></script>
     <script src="{{ asset('img_css/js/vendors.js') }}"></script>
     <script src="{{ asset('img_css/js/aiz-core.js') }}"></script>
     <script src="{{ asset('backend/js/pace.min.js') }}"></script>
 
-    <script>
-        var AIZ = AIZ || {};
-    </script>
+
 	<title>Cargo Admin | Dashboard</title>
     @livewireStyles
 
