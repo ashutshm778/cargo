@@ -31,7 +31,8 @@
                                         <td>
                                             <div class="d-flex order-actions">
                                                 @if(auth()->guard("admin")->user()->can("roles-edit"))   <a href="{{ route('admin.role_edit',$data->id) }}" class="me-2" wire:navigate><i class="bx bxs-edit"></i></a> @endif
-                                                {{-- <a href="{{ route('roles.show',$data->id) }}" class=""><i class="bx bxs-show"></i></a></div> --}}
+                                                @if(auth()->guard("admin")->user()->can("roles-edit"))  <a href="#" class="me-2" wire:click="delete('{{$data->id}}')"><i class="bx bxs-trash"></i></a> @endif
+                                            </div>
                                         </td>
                                         @endif
                                     </tr>

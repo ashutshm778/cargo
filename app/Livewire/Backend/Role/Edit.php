@@ -25,12 +25,15 @@ class Edit extends Component
     public function edit($id){
 
         $data = Role::find($this->hidden_id);
-        $permission =  DB::table('role_has_permissions')->where('role_id',$this->hidden_id)->get()->pluck('permission_id');
+        // $permissions =  DB::table('role_has_permissions')->where('role_id',$this->hidden_id)->get()->pluck('permission_id');
 
 
-        foreach($permission as $p){
-            $this->permission[$p]=$p;
-        }
+        // foreach($permissions as $p){
+        //     $this->permission[$p]=$p;
+        // }
+
+        $permission_id = DB::table('role_has_permissions')->where('role_id', $id)->pluck('permission_id')->toArray();
+        $this->permission = $permission_id;
 
         $this->name = explode('_',$data->name)[0];
 
@@ -53,9 +56,9 @@ class Edit extends Component
         try {
             $role = Role::find($this->hidden_id);
             $role->name = $this->name;
-            $role->guard_name='admin';
+             $role->guard_name='admin';
             $role->save();
-            $role->syncPermissions($this->permission);
+            $role->syncPermissions(array_map('intval', $this->permission));
 
 
 

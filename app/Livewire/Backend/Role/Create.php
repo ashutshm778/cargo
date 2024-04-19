@@ -35,7 +35,7 @@ class Create extends Component
             $role->guard_name='admin';
             $role->save();
 
-            $role->syncPermissions($this->permission);
+            $role->syncPermissions(array_map('intval', $this->permission));
 
             session()->flash('success', 'Role successfully store.');
             $this->redirect('/admin/role', navigate: true);

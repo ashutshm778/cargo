@@ -43,7 +43,7 @@
                                             @php $permissions = Spatie\Permission\Models\Permission::where('parent_name', $parent->parent_name)->get(); @endphp
                                             @foreach ($permissions as $value)
                                                 <div class="icheck-danger">
-                                                    <input type="checkbox" wire:model="permission.{{$value->id}}" id="roles_{{$value->name}}" value="{{$value->id}}">
+                                                    <input type="checkbox" wire:model="permission" id="roles_{{$value->name}}" value="{{$value->id}}">
                                                     <label for="roles_{{$value->name}}">{{ucwords(str_replace('-', ' ',$value->name))}}</label>
                                                 </div>
                                             @endforeach
