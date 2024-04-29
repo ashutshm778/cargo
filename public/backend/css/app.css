@@ -13,7 +13,6 @@ File: app.css
 */
 
 
-
 body {
 
 	font-size: 14px;
@@ -4230,13 +4229,15 @@ input::placeholder {
 
 .user-img {
 
-	width: 42px;
+	width: 110px;
 
 	height: 42px;
 
 	border-radius: 50%;
 
 	border: 0 solid #e5e5e5;
+
+    margin-right: 20px;
 
 	padding: 0;
 

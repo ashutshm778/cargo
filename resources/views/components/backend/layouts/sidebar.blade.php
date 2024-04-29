@@ -3,9 +3,11 @@
         <div>
             <img src="{{ asset('frontend/assets/img/favicon.png') }}" class="logo-icon" alt="logo icon" style="width: 72px;">
         </div>
+
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
      </div>
+
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>

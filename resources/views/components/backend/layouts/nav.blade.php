@@ -38,21 +38,17 @@
                     </li>
                 </ul>
             </div>
-            <div class="user-box dropdown px-3">
+            <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ asset('frontend/assets/img/favicon.png') }}" class="user-img" alt="user avatar">
-                    <div class="user-info">
+                    {{-- <div class="user-info">
                         <p class="user-name mb-0">{{Auth::guard('admin')->user()->name}}</p>
 
+                    </div> --}}
+                    <div class="user-info">
+                        @livewire('Backend.Auth.Logout')
                     </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-
-                    <li>
-                        <div class="dropdown-divider mb-0"></div>
-                    </li>
-                    @livewire('Backend.Auth.Logout')
-                </ul>
             </div>
         </nav>
     </div>
