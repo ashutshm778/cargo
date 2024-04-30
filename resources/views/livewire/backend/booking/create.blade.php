@@ -86,6 +86,9 @@
                                                     {{ auth()->guard('admin')->user()->branch_data->name }}</option>
                                             </select>
                                         @endif
+                                        <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('from') }}</strong>
+                                        </span>
                                     </td>
                                     <td colspan="2">
                                         <label for="branch_select_to">To-</label>
@@ -97,6 +100,9 @@
                                                     {{ $branch->name }}</option>
                                             @endforeach
                                         </select>
+                                        <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('to') }}</strong>
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>

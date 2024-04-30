@@ -168,7 +168,9 @@ class Create extends Component
 
         $this->validate([
             'booking_no' => 'required|unique:bookings',
-            'bill_no' => 'required|unique:bookings'
+            'bill_no' => 'required|unique:bookings',
+            'from' => 'required',
+            'to' => 'required'
         ]);
 
 
