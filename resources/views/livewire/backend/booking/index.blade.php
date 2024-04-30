@@ -89,7 +89,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $bookings->links() }}
+                   2
                 </div>
             </div>
         </div>

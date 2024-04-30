@@ -88,6 +88,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $deliveries->links() }}
                 </div>
             </div>
         </div>

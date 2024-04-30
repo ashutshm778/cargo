@@ -83,6 +83,7 @@
                             </tbody>
                         </table>
                     </div>
+                    {{ $booking_logs->links() }}
                 </div>
             </div>
         </div>
