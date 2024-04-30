@@ -81,7 +81,7 @@
                                     <tbody>
                                         <tr>
                                             <td>G.R.No/Bill. No- <b>{{$booking->bill_no}}</b></td>
-                                            <td>Date- <b>05/01/2024</b> {{$booking->date}}</td>
+                                            <td>Date- <b> {{$booking->date}}</b></td>
                                             <td>Destination- <b>{{$booking->to}}</b></td>
                                         </tr>
                                         <tr>
