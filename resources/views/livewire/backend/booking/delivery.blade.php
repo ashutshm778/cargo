@@ -78,7 +78,7 @@
                                                     <a href="{{ route('booking.track_order', $booking->id) }}"
                                                         class="me-2" title="Track Order" wire:navigate><i
                                                             class="bx bx-map"></i></a>
-                                                    <a href="#" onclick="open_status_model('{{$booking->id}}')"
+                                                    <a href="#" wire:click="openConsginee('{{$booking->id}}')"
                                                         class="me-2" title="Change Status"><i
                                                             class="bx bx-pin"></i></a>
                                             </div>
@@ -92,6 +92,9 @@
                 </div>
             </div>
         </div>
+
+        @include('livewire.backend.booking.delivery_status_modal')
+
     </div>
     @push('scripts')
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -117,5 +120,32 @@
             @this.set(elementName, data);
         });
     </script>
+
+
+<script>
+    Livewire.on('showDeliveryStatus', () => {
+        $('#delivery_status').modal('show');
+    });
+
+    Livewire.on('hideDeliveryStatus', () => {
+        $('#delivery_status').modal('hide');
+    });
+
+    function status_remark() {
+            var booking_status = $('#status').val();
+            if (booking_status == 'ndr') {
+                $('#remark_ndr').show();
+                $('#remark_delivery').hide();
+            }
+            if (booking_status == 'delivered') {
+                $('#remark_ndr').hide();
+                $('#remark_delivery').show();
+            }
+
+        }
+
+</script>
+
+
 @endpush
 </div>
