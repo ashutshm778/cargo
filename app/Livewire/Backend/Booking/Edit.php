@@ -215,6 +215,11 @@ class Edit extends Component
 
         $this->validate([
             'booking_no' => 'required|unique:bookings,id,'.$this->hidden_id,
+            'bill_no' => 'required|unique:bookings,id,'.$this->hidden_id,
+            'from' => 'required',
+            'to' => 'required',
+            'consignor_phone' => 'required',
+            'consignee_phone' => 'required'
 
         ]);
 
