@@ -148,16 +148,20 @@ class Create extends Component
 
     public function get_consignee_details(){
         $consignee= Consignee::where('phone',$this->consignee_phone)->first();
+        if(!empty($consignee->id)){
         $this->consignee=$consignee->name;
         $this->consignee_gstin=$consignee->gstin;
         $this->consignee_id=$consignee->id;
+        }
     }
 
     public function get_consigner_details(){
         $consigner= Consignor::where('phone',$this->consignor_phone)->first();
+        if(!empty($consigner->id)){
         $this->consignor=$consigner->name;
         $this->consignor_gstin=$consigner->gstin;
         $this->consigner_id=$consigner->id;
+        }
     }
 
     public function store(){
