@@ -39,7 +39,7 @@
                                                         @if (auth()->guard('admin')->user()->id == 1)
                                                             <div class="mb-3">
                                                                 <label for="branch_id"> Branch </label>
-                                                                <select id='branch_id' wire:model="branch_id" class="form-control" readonly
+                                                                <select id='branch_id' wire:model="branch_id" class="form-control" disabled
                                                                     required>
                                                                     <option value=''>-- Select Branch--</option>
                                                                     @foreach (App\Models\Branch::all() as $branch)
@@ -73,7 +73,7 @@
                                         <label for="branch_select_from">From- </label>
                                         @if (auth()->guard('admin')->user()->id == 1)
                                             <select class="form-control" id="branch_select_from" wire:model="from"
-                                            readonly  required>
+                                            disabled  required>
                                                 <option value=''>-- Select Branch--</option>
                                                 @foreach (App\Models\Branch::all() as $branch)
                                                     <option value="{{ $branch->id }}">
@@ -93,7 +93,7 @@
                                     <td colspan="2">
                                         <label for="branch_select_to">To-</label>
                                         <select class="form-control" id="branch_select_to" wire:model="to"
-                                        readonly  required>
+                                        disabled  required>
                                             <option value=''>-- Select Branch--</option>
                                             @foreach (App\Models\Branch::all() as $branch)
                                                 <option value="{{ $branch->id }}">
