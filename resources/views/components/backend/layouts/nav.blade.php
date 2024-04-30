@@ -39,7 +39,7 @@
                 </ul>
             </div>
             <div class="user-box ">
-                <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="d-flex align-items-center nav-link gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ asset('frontend/assets/img/favicon.png') }}" class="user-img" alt="user avatar">
                 </a>
                     {{-- <div class="user-info">
