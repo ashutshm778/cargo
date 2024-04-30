@@ -170,7 +170,9 @@ class Create extends Component
             'booking_no' => 'required|unique:bookings',
             'bill_no' => 'required|unique:bookings',
             'from' => 'required',
-            'to' => 'required'
+            'to' => 'required',
+            'consignor_phone' => 'required',
+            'consignee_phone' => 'required'
         ]);
 
 

@@ -115,6 +115,9 @@
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
                                             placeholder="Consignor Phone" wire:model="consignor_phone" wire:change="get_consigner_details()" required
                                             value="{{ old('consignor_phone') }}">
+                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                <strong>{{ $errors->first('to') }}</strong>
+                                            </span>
                                     </td>
                                     <td>
                                         <label for="consignor">Consignor</label>
@@ -132,6 +135,9 @@
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
                                             placeholder="Consignee Phone" wire:model="consignee_phone" wire:change="get_consignee_details()" required
                                             value="{{ old('consignee_phone') }}">
+                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                <strong>{{ $errors->first('to') }}</strong>
+                                            </span>
                                     </td>
                                     <td>
                                         <label for="consignor">Consignee</label>
