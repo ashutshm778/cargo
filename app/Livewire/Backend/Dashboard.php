@@ -45,8 +45,8 @@ foreach($month_numbers as $key => $month_number)
     $sale = Booking::whereMonth('created_at','=', $month_number)->whereYear('created_at', '=', $years[$key])->get()->sum('total');
     array_push($total_sale,$sale);
 
-    $booking = Booking::whereMonth('created_at','=', $month_number)->whereYear('created_at', '=', $years[$key])->get()->count();
-    array_push($total_booking,$booking);
+    $bookings = Booking::whereMonth('created_at','=', $month_number)->whereYear('created_at', '=', $years[$key])->get()->count();
+    array_push($total_booking,$bookings);
 
 }
 
