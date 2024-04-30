@@ -268,7 +268,7 @@ class Edit extends Component
         $booking->consignor=$consigner->name;
         $booking->consignor_phone=$consigner->phone;
         $booking->consignee=$consignee->name;
-        $booking->consignee_phone=$consigner->phone;
+        $booking->consignee_phone=$consignee->phone;
         $booking->consignor_gstin=$consigner->gstin;
         $booking->consignee_gstin=$consignee->gstin;
 
