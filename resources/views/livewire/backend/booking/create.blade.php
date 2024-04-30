@@ -116,7 +116,7 @@
                                             placeholder="Consignor Phone" wire:model="consignor_phone" wire:change="get_consigner_details()" required
                                             value="{{ old('consignor_phone') }}">
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('to') }}</strong>
+                                                <strong>{{ $errors->first('consignor_phone') }}</strong>
                                             </span>
                                     </td>
                                     <td>
@@ -136,7 +136,7 @@
                                             placeholder="Consignee Phone" wire:model="consignee_phone" wire:change="get_consignee_details()" required
                                             value="{{ old('consignee_phone') }}">
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('to') }}</strong>
+                                                <strong>{{ $errors->first('consignee_phone') }}</strong>
                                             </span>
                                     </td>
                                     <td>
