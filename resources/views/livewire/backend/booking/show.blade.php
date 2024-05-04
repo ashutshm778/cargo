@@ -70,7 +70,7 @@
 
                                     </div>
                                     <div class="col-3">
-                                        <p> <b>GST No:</b> 1234567890</p>
+                                        {{-- <p> <b>GST No:</b> 1234567890</p> --}}
                                        </div>
                                        <div class="col-6"></div>
                                        <div class="col-3 mb-3 text-center">
