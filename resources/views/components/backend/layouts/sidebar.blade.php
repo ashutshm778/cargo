@@ -109,6 +109,13 @@
                 <div class="menu-title">User Log</div>
             </a>
         </li>
+        <li>
+            <a href="{{route('admin.branch_report')}}" aria-expanded="false">
+                <div class="parent-icon"><i class="bx bxs-user-detail"></i>
+                </div>
+                <div class="menu-title">Branch Report</div>
+            </a>
+        </li>
         @endif
     </ul>
     <!--end navigation-->

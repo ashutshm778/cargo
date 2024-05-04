@@ -61,4 +61,6 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('staff/create', App\Livewire\Backend\Staff\Create::class)->name('admin.staff_create');
     Route::get('staff/edit/{id}', App\Livewire\Backend\Staff\Edit::class)->name('admin.staff_edit');
 
+    Route::get('branch_report', App\Livewire\Backend\Report\BranchReport::class)->name('admin.branch_report');
+
 });
