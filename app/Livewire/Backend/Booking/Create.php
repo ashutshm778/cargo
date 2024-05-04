@@ -246,15 +246,15 @@ class Create extends Component
         $booking->total=$this->total;
         $booking->save();
 
-        foreach ($this->qty as $key => $value) {
+        foreach ($this->no_of_pack as $key => $value) {
 
             $booking_product = new BookingProduct;
             $booking_product->booking_id=$booking->id;
-            $booking_product->no_of_pack=$this->no_of_pack[$key];
+            $booking_product->no_of_pack=$value;
             $booking_product->product=$this->product[$key];
             $booking_product->unit=$this->unit[$key];
             $booking_product->weight=$this->weight[$key];
-            $booking_product->qty=$value;
+            $booking_product->qty=$this->qty[$key];
             $booking_product->freight_charges=$this->frieght_charge[$key];
             $booking_product->save();
 
