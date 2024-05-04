@@ -52,6 +52,7 @@
                                     <th>Consignee</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th>Date</th>
                                     @if (auth()->guard('admin')->user()->canany(['booking-edit', 'booking-view']))
                                         <th>Action</th>
                                     @endif
@@ -66,6 +67,7 @@
                                         <td>{{ $booking->consignee }}</td>
                                         <td>{{ $booking->branch_from->name }}</td>
                                         <td>{{ $booking->branch_to->name }}</td>
+                                        <td>{{ $booking->date }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
                                                 @if (auth()->guard('admin')->user()->can('booking-edit'))

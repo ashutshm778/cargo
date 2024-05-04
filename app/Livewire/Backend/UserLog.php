@@ -15,7 +15,7 @@ class UserLog extends Component
 
     public function render()
     {
-        $resource_logs = ResourceLog::where('id', '>', 0);
+        $resource_logs = ResourceLog::where('id', '>', 0)->orderBy('id','desc');
         $resource_logs=$resource_logs->paginate(15);
         return view('livewire.backend.user-log',compact('resource_logs'));
     }

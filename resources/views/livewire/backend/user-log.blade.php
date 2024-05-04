@@ -14,11 +14,11 @@
                         <table class="table align-middle mb-0"  id="datatable" >
                             <thead>
                                 <tr>
-
                                     <th>Detail</th>
                                     <th>Action</th>
                                     <th>User</th>
                                     <th>Model</th>
+                                    <th>Created At</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,6 +28,7 @@
                                         <td>{{$log->action}}</td>
                                         <td>{{$log->user->name}}</td>
                                         <td>{{$log->model}}</td>
+                                        <td>{{$log->created_at}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
