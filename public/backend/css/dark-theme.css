@@ -437,8 +437,8 @@ html.dark-theme .list-group-item {
 html.dark-theme .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #008cff;
-    border-color: #008cff;
+    background-color: #541545;
+    border-color: #541545;
 }
 
 html.dark-theme .list-group-item:hover {

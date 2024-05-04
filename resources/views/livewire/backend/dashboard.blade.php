@@ -291,7 +291,7 @@
                 color: '#009efb',
                 regionStyle: {
                     initial: {
-                        fill: '#008cff'
+                        fill: '#541545'
                     }
                 },
                 markerStyle: {

@@ -1,27 +1,27 @@
 $(function() {
     "use strict";
 
-        
+
 	// chart 1
 	var ctx = document.getElementById('chart1').getContext('2d');
 
 
   var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-		          gradientStroke1.addColorStop(0, 'rgba(255, 255, 0, 0.5)');  
-		          gradientStroke1.addColorStop(1, 'rgba(233, 30, 99, 0.0)'); 
+		          gradientStroke1.addColorStop(0, 'rgba(255, 255, 0, 0.5)');
+		          gradientStroke1.addColorStop(1, 'rgba(233, 30, 99, 0.0)');
 
 		      var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-		          gradientStroke2.addColorStop(0, '#ffff00');  
-		          gradientStroke2.addColorStop(1, '#e91e63'); 
+		          gradientStroke2.addColorStop(0, '#ffff00');
+		          gradientStroke2.addColorStop(1, '#e91e63');
 
 
 		      var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
-		          gradientStroke3.addColorStop(0, 'rgba(0, 114, 255, 0.5)');  
-		          gradientStroke3.addColorStop(1, 'rgba(0, 200, 255, 0.0)'); 
+		          gradientStroke3.addColorStop(0, 'rgba(0, 114, 255, 0.5)');
+		          gradientStroke3.addColorStop(1, 'rgba(0, 200, 255, 0.0)');
 
 		      var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
-		          gradientStroke4.addColorStop(0, '#0072ff');  
-		          gradientStroke4.addColorStop(1, '#00c8ff'); 
+		          gradientStroke4.addColorStop(0, '#0072ff');
+		          gradientStroke4.addColorStop(1, '#00c8ff');
 
 
 	var myChart = new Chart(ctx, {
@@ -36,7 +36,7 @@ $(function() {
 					target: 'origin',
 					above: gradientStroke1,   // Area will be red above the origin
 					//below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
-				  }, 
+				  },
         pointRadius :"0",
         pointHoverRadius:"0",
         tension: 0.4,
@@ -49,7 +49,7 @@ $(function() {
 					target: 'origin',
 					above: gradientStroke3,   // Area will be red above the origin
 					//below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
-				  }, 
+				  },
         pointRadius :"0",
         pointHoverRadius:"0",
         tension: 0.4,
@@ -97,12 +97,12 @@ $(function() {
 
 
   // chart 2
-	 
+
   var ctx = document.getElementById('chart2').getContext('2d');
 
   var gradientStroke = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke.addColorStop(0, '#ee0979');  
-      gradientStroke.addColorStop(1, '#ff6a00'); 
+      gradientStroke.addColorStop(0, '#ee0979');
+      gradientStroke.addColorStop(1, '#ff6a00');
 
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -137,12 +137,12 @@ $(function() {
         }
       }
     }
-  }); 
+  });
 
 
 
- // chart 3 
-	
+ // chart 3
+
  Morris.Donut({
   element: 'chart3',
   data: [{
@@ -157,21 +157,21 @@ $(function() {
     value: 20
   }],
   resize: true,
-  colors:['#008cff', '#15ca20', '#fd3550']
+  colors:['#541545', '#15ca20', '#fd3550']
 });
 
 
 
 
 	// chart 4
-	
+
 	$('#chart4').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,7,9,5,4,8,7,10,9,5,8,7,9,5,4], {
     type: 'bar',
     height: '25',
     barWidth: '2',
     resize: true,
     barSpacing: '2',
-    barColor: '#008cff'
+    barColor: '#541545'
 });
 
 
@@ -198,7 +198,7 @@ $('#chart6').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,
     barColor: '#15ca20'
 });
 
-// chart 7	
+// chart 7
 
 $('#chart7').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,7,9,5,4,8,7,10,9,5,8,7,9,5,4], {
     type: 'bar',
@@ -209,7 +209,7 @@ $('#chart7').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,
     barColor: '#ff9700'
 });
 
-// chart 8	
+// chart 8
 
 $('#chart8').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,7,9,5,4,8,7,10,9,5,8,7,9,5,4], {
     type: 'bar',
@@ -220,7 +220,7 @@ $('#chart8').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,
     barColor: '#0dceec'
 });
 
-// chart 9	
+// chart 9
 
 $('#chart9').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,7,9,5,4,8,7,10,9,5,8,7,9,5,4], {
     type: 'bar',
@@ -237,12 +237,12 @@ $('#chart9').sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8,6,4,5,8,7,10,9,5,8,
 var ctx = document.getElementById('chart10').getContext('2d');
 
 var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-        gradientStroke1.addColorStop(0, 'rgb(255 65 108 / 30%)');  
-        gradientStroke1.addColorStop(1, 'rgba(255 75 43 / 0%)'); 
+        gradientStroke1.addColorStop(0, 'rgb(255 65 108 / 30%)');
+        gradientStroke1.addColorStop(1, 'rgba(255 75 43 / 0%)');
 
     var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-        gradientStroke2.addColorStop(0, '#ff416c');  
-        gradientStroke2.addColorStop(1, '#ff4b2b'); 
+        gradientStroke2.addColorStop(0, '#ff416c');
+        gradientStroke2.addColorStop(1, '#ff4b2b');
 
 
 
@@ -253,12 +253,12 @@ var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
         datasets: [{
               label: 'Facebook',
               data: [5, 30, 16, 23, 8, 14, 2],
-             
+
         fill: {
           target: 'origin',
           above: gradientStroke1,   // Area will be red above the origin
           //below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
-          }, 
+          },
               tension: 0.4,
               pointRadius :"0",
               borderColor: [
@@ -301,12 +301,12 @@ var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
 var ctx = document.getElementById('chart11').getContext('2d');
 
 var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-        gradientStroke1.addColorStop(0, 'rgba(255, 255, 0, 0.5)');  
-        gradientStroke1.addColorStop(1, 'rgba(233, 30, 99, 0.0)'); 
+        gradientStroke1.addColorStop(0, 'rgba(255, 255, 0, 0.5)');
+        gradientStroke1.addColorStop(1, 'rgba(233, 30, 99, 0.0)');
 
     var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-        gradientStroke2.addColorStop(0, '#ffff00');  
-        gradientStroke2.addColorStop(1, '#e91e63'); 
+        gradientStroke2.addColorStop(0, '#ffff00');
+        gradientStroke2.addColorStop(1, '#e91e63');
 
 
 
@@ -317,12 +317,12 @@ var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
         datasets: [{
               label: 'Facebook',
               data: [5, 30, 16, 23, 8, 14, 2],
-             
+
         fill: {
           target: 'origin',
           above: gradientStroke1,   // Area will be red above the origin
           //below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
-          }, 
+          },
               tension: 0.4,
               pointRadius :"0",
               borderColor: [
@@ -358,20 +358,20 @@ var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
      }
     });
 
-  
 
-// chart 12    
+
+// chart 12
 
 var ctx = document.getElementById('chart12').getContext('2d');
 
-     
+
 var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
-    gradientStroke3.addColorStop(0, 'rgb(0 176 155 / 40%)');  
-    gradientStroke3.addColorStop(1, 'rgb(150 201 61 / 0%)'); 
+    gradientStroke3.addColorStop(0, 'rgb(0 176 155 / 40%)');
+    gradientStroke3.addColorStop(1, 'rgb(150 201 61 / 0%)');
 
 var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
-    gradientStroke4.addColorStop(0, '#00b09b');  
-    gradientStroke4.addColorStop(1, '#00b09b'); 
+    gradientStroke4.addColorStop(0, '#00b09b');
+    gradientStroke4.addColorStop(1, '#00b09b');
 
 
      var myChart = new Chart(ctx, {
@@ -385,7 +385,7 @@ var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
          target: 'origin',
          above: gradientStroke3,   // Area will be red above the origin
          //below: 'rgb(21 202 32 / 100%)'   // And blue below the origin
-         }, 
+         },
                tension: 0.4,
                pointRadius :"0",
                borderColor: [
@@ -423,7 +423,7 @@ var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
 
 
 
-	  
+
 // worl map
 
 jQuery('#dashboard-map').vectorMap(
@@ -437,7 +437,7 @@ jQuery('#dashboard-map').vectorMap(
       color: '#009efb',
       regionStyle : {
           initial : {
-            fill : '#008cff'
+            fill : '#541545'
           }
         },
       markerStyle: {
@@ -455,7 +455,7 @@ jQuery('#dashboard-map').vectorMap(
       markers : [{
           latLng : [21.00, 78.00],
           name : 'Lorem Ipsum Dollar'
-        
+
         }],
       hoverOpacity: null,
       normalizeFunction: 'linear',
@@ -463,12 +463,11 @@ jQuery('#dashboard-map').vectorMap(
       selectedColor: '#c9dfaf',
       selectedRegions: [],
       showTooltip: true,
-  });	  
-      
-  
-	
-	  
+  });
+
+
+
+
 
 });
-      
-	  
+

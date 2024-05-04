@@ -125,7 +125,7 @@ a {
 
 	letter-spacing: 1px;
 
-	color: #008cff;
+	color: #541545;
 
 }
 
@@ -137,7 +137,7 @@ a {
 
 	cursor: pointer;
 
-	color: #008cff
+	color: #541545
 
 }
 
@@ -441,15 +441,11 @@ a {
 .sidebar-wrapper .metismenu a:active,
 
 .sidebar-wrapper .metismenu a:focus,
-
 .sidebar-wrapper .metismenu a:hover {
-
-	color: #008cff;
-
+	color: #541545;
     text-decoration: none;
-
-    background-color: rgb(0 140 255 / 5%);
-
+    background-color: rgb(84 21 69 / 9%);
+    border-left: 5px solid;
 }
 
 
@@ -688,7 +684,7 @@ a {
 
 	right: 12px;
 
-	background-color: #008cff;
+	background-color: #541545;
 
 	z-index: 5
 
@@ -1084,7 +1080,7 @@ a {
 
 .fm-menu .list-group a:hover {
 
-	background: #008cff;
+	background: #541545;
 
 	color: #fff;
 
@@ -1462,7 +1458,7 @@ h6 {
 }
 .radius-10 {
 
-	border-radius: 0
+	border-radius: 6px
 
 }
 
@@ -1895,7 +1891,7 @@ h6 {
 
 	margin-top: 0;
 
-	color: #008cff
+	color: #541545
 
 }
 
@@ -1925,7 +1921,7 @@ h6 {
 
 	padding-left: 6px;
 
-	border-left: 6px solid #008cff;
+	border-left: 6px solid #541545;
 
 	background: #e7f2ff;
 
@@ -1970,9 +1966,9 @@ h6 {
 
 	white-space: nowrap;
 
-	font-weight: 400;
+	font-weight: 600;
 
-	font-size: 16px
+	font-size: 15px
 
 }
 
@@ -1984,7 +1980,7 @@ h6 {
 
 	font-weight: 400;
 
-	color: #008cff;
+	color: #541545;
 
 	font-size: 1.2em
 
@@ -2012,7 +2008,7 @@ h6 {
 
 	font-size: 1.6em;
 
-	background: #008cff */
+	background: #541545 */
 
 }
 
@@ -2028,7 +2024,7 @@ h6 {
 
 .invoice table .total {
 
-	/* background: #008cff;
+	/* background: #541545;
 
 	color: #fff */
 
@@ -2054,7 +2050,7 @@ h6 {
 
 	padding: 10px 20px;
 
-	font-size: 1.2em;
+	font-size:14px;
 
 
 }
@@ -2071,11 +2067,11 @@ h6 {
 
 .invoice table tfoot tr:last-child td {
 /*
-	color: #008cff;
+	color: #541545;
 
 	font-size: 1.4em;
 
-	border-top: 1px solid #008cff */
+	border-top: 1px solid #541545 */
 
 }
 
@@ -2399,7 +2395,7 @@ h6 {
 
 .chat-tab-menu .nav-pills .show>.nav-link {
 
-	color: #008cff;
+	color: #541545;
 
 	background-color: rgb(0 123 255 / 0%)
 
@@ -3697,7 +3693,7 @@ h6 {
 
 .btn-inverse-primary {
 
-	color: #008cff;
+	color: #541545;
 
     background-color: rgba(0, 140, 255, 0.18);
 
@@ -3709,7 +3705,7 @@ h6 {
 
 .btn-inverse-primary:hover {
 
-	color: #008cff;
+	color: #541545;
 
     background-color: rgba(0, 140, 255, 0.18);
 
@@ -3721,7 +3717,7 @@ h6 {
 
 .btn-inverse-primary:focus {
 
-	color: #008cff;
+	color: #541545;
 
     background-color: rgba(0, 140, 255, 0.18);
 
@@ -4181,7 +4177,7 @@ input::placeholder {
 
 	background-color: #f2f9ff;
 
-    color: #008cff;
+    color: #541545;
 
 }
 
@@ -4473,7 +4469,7 @@ input::placeholder {
 
 	background-color: rgb(0 140 255 / 12%);
 
-    color: #008cff;
+    color: #541545;
 
     padding: 2px 8px;
 
@@ -4931,7 +4927,7 @@ input::placeholder {
 
 	font-size: 24px;
 
-	background: #008cff;
+	background: #541545;
 
 	box-shadow: 0 .3rem .6rem rgba(0, 0, 0, .13);
 

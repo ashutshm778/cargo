@@ -9,8 +9,9 @@
 
         .invoice table td,
         .invoice table th {
-        padding: 10px 15px;
+        padding: 2px 5px;
         border-bottom: 1px solid #eee;
+        font-size: 13px;
         }
 
         .table-bordered td,
@@ -30,10 +31,13 @@
             .table th {
                 border-top: 0;
             }
-
+            .invoice table th {
+            font-weight: 600;
+            font-size: 13px;
+}
             .invoice table td,
             .invoice table th {
-                padding: 10px 15px;
+                padding: 5px 10px;
                 border-bottom: 1px solid #eee;
             }
 
@@ -65,14 +69,15 @@
                                         <p>Phone :9335542484,8887790443,9335642484</p>
 
                                     </div>
-                                    <div class="col-9">
-
-                                    </div>
-                                    <div class="col-3 mb-3 text-center">
-                                       <p class="float-end "> {!! $barcode !!}
-                                        <p >{{$booking->bill_no}}</p>
-                                       </p>
-                                    </div>
+                                    <div class="col-3">
+                                        <p> <b>GST No:</b> 1234567890</p>
+                                       </div>
+                                       <div class="col-6"></div>
+                                       <div class="col-3 mb-3 text-center">
+                                          <p class="float-end "> {!! $barcode !!}
+                                           <p >{{$booking->bill_no}}</p>
+                                          </p>
+                                       </div>
                                     <hr>
                                 </div>
                             </header>
