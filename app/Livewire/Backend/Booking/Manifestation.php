@@ -74,6 +74,6 @@ class Manifestation extends Component
         $query = $this->applySearch($bookings);
         $bookings=$query->get()->pluck('id');
 
-        return Excel::download(new BookingMExport($bookings), 'booking-report.xlsx');
+        return Excel::download(new BookingMExport($bookings), 'booking_m-report.xlsx');
     }
 }
