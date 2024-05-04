@@ -14,7 +14,7 @@ class HomeController extends Controller
     }
 
     public function track_order(Request $request){
-        $booking=Booking::where('tracking_code',$request->tracking_code)->first();
+        $booking=Booking::where('bill_no',$request->tracking_code)->first();
         return view('frontend.track_order',compact('booking'));
     }
 

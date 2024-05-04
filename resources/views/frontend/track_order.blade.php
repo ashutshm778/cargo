@@ -94,27 +94,34 @@
                                     <div class="delievery_list_wrap clearfix" >
                                         <ul>
                                             @foreach($booking->booking_log as $log)
-                                                <li>
-                                                    <span class="fs-12px SFProMedium"><b>Activity : </b>
-                                                        <activity>{{$log->action}}</activity>
-                                                    </span>
-                                                    <span class="fs-12px SFProMedium"><b>Location : </b>
-                                                        <activity>
-                                                            @if($log->status == 'order_created')
-                                                            @php $pincode_data=App\Models\Pincode::where('pincode',$booking->from)->first(); @endphp
-                                                            {{$pincode_data->pincode}},{{$pincode_data->city}},{{$pincode_data->state}}
-                                                            @endif
-                                                        </activity>
-                                                    </span>
-                                                    <!-- Delivered or RTO delivered -->
-                                                    <!-- undelivered -->
-                                                    <div class="date_info_wrap fs-12px SFProMedium">
-                                                        <span class="date">{{ \Carbon\Carbon::parse($log->created_at)->format('d M') }}</span>
-                                                        <span class="time">{{ \Carbon\Carbon::parse($log->created_at)->format('h:i A') }}</span>
-                                                    </div>
-                                                    <i class="circle_icon"></i>
-                                                </li>
-                                                @endforeach
+                                            <li>
+                                                <span class="fs-12px SFProMedium"><b>Activity : </b>
+                                                    <activity>{{$log->action}}</activity>
+                                                </span>
+                                                <span class="fs-12px SFProMedium"><b>Location : </b>
+                                                    <activity>
+                                                        @if($log->status == 'order_created' || $log->status == 'arrived' || $log->status == 'dispatched')
+                                                         Branch : {{$log->branch_data->name}},{{$log->branch_data->pincode}},{{$log->branch_data->city}},{{$log->branch_data->state}}
+                                                        @endif
+                                                    </activity>
+                                                </span>
+                                                @if(!empty($log->description))
+                                                <br>
+                                                <span class="fs-12px SFProMedium"><b>Remark : </b>
+                                                    <activity>
+                                                        {{$log->description}}
+                                                    </activity>
+                                                </span>
+                                                @endif
+                                                <!-- Delivered or RTO delivered -->
+                                                <!-- undelivered -->
+                                                <div class="date_info_wrap fs-12px SFProMedium">
+                                                    <span class="date">{{ \Carbon\Carbon::parse($log->created_at)->format('d M') }}</span>
+                                                    <span class="time">{{ \Carbon\Carbon::parse($log->created_at)->format('h:i A') }}</span>
+                                                </div>
+                                                <i class="circle_icon"></i>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>

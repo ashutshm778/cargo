@@ -31,9 +31,9 @@ class Manifestation extends Component
     public function render()
     {
         if(auth()->guard("admin")->user()->id==1){
-            $bookings = Booking::where('id', '>', 0)->with(['branch_from','branch_to']);
+            $bookings = Booking::where('id', '>', 0)->with(['branch_from','branch_to'])->orderBy('id','desc');
         }else{
-            $bookings = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id)->with(['branch_from','branch_to']);
+            $bookings = Booking::where('id', '>', 0)->where('branch_id',auth()->guard("admin")->user()->branch_id)->with(['branch_from','branch_to'])->orderBy('id','desc');
         }
         if($this->branch){
             $bookings=$bookings->where('branch_id',$this->branch);
