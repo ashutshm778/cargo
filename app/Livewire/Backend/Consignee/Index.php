@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Backend\Consignee;
 
+use App\Models\Consignee;
 use Livewire\Component;
-use App\Models\Consignor;
 use Livewire\WithPagination;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -28,7 +28,7 @@ class Index extends Component
 
     public function render()
     {
-        $list = Consignor::where('id', '>', 0);
+        $list = Consignee::where('id', '>', 0);
         $query = $this->applySearch($list);
         $list=$query->paginate(10);
         return view('livewire.backend.consignee.index',compact('list'));
