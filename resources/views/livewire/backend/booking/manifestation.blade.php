@@ -48,6 +48,7 @@
                                     <th>Consignee</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th>Date</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -60,6 +61,7 @@
                                     <td>{{ $booking->consignee }}</td>
                                     <td>{{ $booking->branch_from->name }}</td>
                                     <td>{{ $booking->branch_to->name }}</td>
+                                    <td>{{ $booking->date }}</td>
                                     <td>
                                        {{$booking->status}}
                                     </td>
