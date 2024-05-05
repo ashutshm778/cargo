@@ -49,8 +49,15 @@
                                                                 </select>
                                                             </div>
                                                         @else
-                                                            <input type="hidden" wire:model="branch_id"
-                                                                value="{{ auth()->guard('admin')->user()->branch_id }}" />
+                                                        <div class="mb-3">
+                                                            <label for="branch_id"> Branch </label>
+                                                            <select id='branch_id' wire:model="branch_id" class="form-control"
+                                                                required>
+                                                                <option value=''>-- Select Branch--</option>
+                                                                <option value="{{ auth()->guard('admin')->user()->branch_id }}" selected>
+                                                                {{ auth()->guard('admin')->user()->branch_data->name }}</option>
+                                                                </select>
+                                                        </div>
                                                         @endif
                                                     </td>
                                                     <td colspan="2">
