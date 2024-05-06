@@ -28,7 +28,7 @@
                                                 <tr>
                                                     <td colspan="2">
                                                         <label for="bill_no"> G.R.No/Bill. No- </label>
-                                                        <input type="text" class="form-control col-5" id="bill_no"
+                                                        <input type="text" class="form-control col-5 mb-3" id="bill_no"
                                                             wire:model="bill_no" placeholder="Bill No"
                                                             value="{{ old('bill_no') }}" readonly required>
                                                         <span
@@ -38,7 +38,7 @@
                                                         </span>
                                                         @if (auth()->guard('admin')->user()->id == 1)
                                                             <div class="mb-3">
-                                                                <label for="branch_id"> Branch </label>
+                                                                <label for="branch_id"> Branch- </label>
                                                                 <select id='branch_id' wire:model="branch_id" class="form-control" disabled
                                                                     required>
                                                                     <option value=''>-- Select Branch--</option>
@@ -63,7 +63,7 @@
                                                     <td colspan="2">
                                                         <div>
                                                             <label for="date">Date-</label>
-                                                            <input type="date" class="form-control col-5" id="date"
+                                                            <input type="date" class="form-control col-5 mb-3" id="date"
                                                                 wire:model="date" placeholder="Date" required>
                                                         </div>
                                                         <div class="mb-3">
@@ -196,7 +196,7 @@
                                             <th>Nature of Goods Said to contain</th>
                                             <th>Unit</th>
                                             <th>Qty</th>
-                                            <th>Weight (in kg)</th>
+                                            <th>Wgt (in kg)</th>
                                             <th>Particulars</th>
                                             <th>Amount</th>
 
@@ -216,7 +216,7 @@
                                                     id="no_of_pack" wire:model="no_of_pack.{{ $key }}" placeholder="No Of Package" readonly
                                                     required></td>
                                             <td> <input type="text" class="form-control" id="product"
-                                                    wire:model="product.{{ $key }}" placeholder="Nature of Goods Said to contain"
+                                                    wire:model="product.{{ $key }}"
                                                     required>
                                             </td>
                                             <td>
@@ -228,13 +228,12 @@
                                                 </select>
                                             </td>
 
-                                            <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $key }}"
-                                                    placeholder="Qty" required></td>
+                                            <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $key }}" required></td>
                                             <td><input type="text" class="form-control" id="weight"
-                                                    wire:model="weight.{{ $key }}" placeholder="Weight" required></td>
+                                                    wire:model="weight.{{ $key }}" required></td>
                                             <td>Frieght Charges</td>
                                             <td><input type="number" class="form-control frieght_amount"
-                                                    wire:model="frieght_charge.{{ $key }}" placeholder="Freight"
+                                                    wire:model="frieght_charge.{{ $key }}"
                                                     wire:change="cal_total_amount()" value="0" required></td>
 
                                         </tr>
@@ -247,7 +246,7 @@
                                                 I/We declare that GST shall be payable by consignor/consignee</td>
                                             <td colspan="1">Insurance</td>
                                             <td><input type="number" class="form-control" id="insurance"
-                                                    wire:model="insurance" placeholder="Freight" value="0"
+                                                    wire:model="insurance" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
@@ -255,28 +254,27 @@
                                                 of goods & material.</td>
                                             <td colspan="1">B. Charges</td>
                                             <td><input type="number" class="form-control" id="b_charges"
-                                                    wire:model="b_charges" placeholder="Freight" value="0"
+                                                    wire:model="b_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Other Charges</td>
                                             <td><input type="number" class="form-control" id="other_charges"
-                                                    wire:model="other_charges" placeholder="Other Charges" value="0"
+                                                    wire:model="other_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">G.S.T</td>
-                                            <td><input type="number" class="form-control" id="gst" wire:model="tax"
-                                                    placeholder="Freight" value="0"  wire:change="cal_total_amount()"
+                                            <td><input type="number" class="form-control" id="gst" wire:model="tax" value="0"  wire:change="cal_total_amount()"
                                                     required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Total</td>
                                             <td><input type="number" class="form-control" id="total_amount"
-                                                    wire:model="total" placeholder="Freight" value="0" readonly
+                                                    wire:model="total" value="0" readonly
                                                     required></td>
                                         </tr>
                                         <tr>

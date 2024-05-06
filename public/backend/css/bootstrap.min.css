@@ -472,7 +472,8 @@ tr {
 }
 
 label {
-    display: inline-block
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 button {
@@ -2165,7 +2166,7 @@ progress {
 .table>thead {
     color: #fff;
     vertical-align: bottom;
-    background: #333;
+    background: #8d1e7c;
 }
 
 .table-group-divider {

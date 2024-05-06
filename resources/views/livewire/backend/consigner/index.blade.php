@@ -22,10 +22,10 @@
                         <div class="col-2">
 
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
 
                         </div>
-                        <div class="col-2 mb-3">
+                        <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
                                 placeholder="Type To Search" />
                         </div>

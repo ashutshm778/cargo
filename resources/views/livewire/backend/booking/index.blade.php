@@ -34,10 +34,10 @@
                         <div class="col-2">
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
-                        <div class="col-6">
+                        <div class="col-5">
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
                         </div>
-                        <div class="col-2 mb-3">
+                        <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
                                 placeholder="Type To Search" />
                         </div>

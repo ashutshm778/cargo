@@ -15,9 +15,9 @@
                     </div>
                     <div class="card-body">
                         <div class="form-body">
-                            <form class="row g-4" method="post" action="#">
+                            <form class="row" method="post" action="#">
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="fullname" class="form-label">Name<span>*</span></label>
                                     <input type="text" class="form-control" id="fullname" wire:model="name" placeholder="Name"
                                         required>
@@ -25,7 +25,7 @@
                                 </div>
 
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="mobile_no" class="form-label">Phone<span>*</span></label>
                                     <input type="text" class="form-control" id="phone" wire:model="phone"
                                         placeholder="Mobile No." required>
@@ -34,7 +34,7 @@
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="gstin" class="form-label">GSTIN</label>
                                     <input type="text" class="form-control" id="gstin" wire:model="gstin" placeholder="GSTIN"
                                         >
@@ -43,7 +43,7 @@
                                         <strong>{{ $errors->first('gstin') }}</strong>
                                     </span>
                                 </div>
-                                <div class="col-md-4 mb-3 ">
+                                <div class="col-md-4 mb-3">
                                     <label for="pincode" class="form-label">Pincode</label>
                                     <select class="form-control" id="pincode_select" wire:model="pincode" required>
                                         <option value="">Select Pincode</option>
@@ -52,7 +52,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="address" class="form-label">Address<span>*</span></label>
                                     <input type="text" class="form-control" id="address" wire:model="address" placeholder="Address"
                                         required>

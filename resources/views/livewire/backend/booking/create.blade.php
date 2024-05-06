@@ -28,7 +28,7 @@
                                                 <tr>
                                                     <td colspan="2">
                                                         <label for="bill_no"> G.R.No/Bill. No- </label>
-                                                        <input type="text" class="form-control col-5" id="bill_no"
+                                                        <input type="text" class="form-control col-5 mb-3" id="bill_no"
                                                             wire:model="bill_no" placeholder="Bill No"
                                                             value="{{ old('bill_no') }}" required>
                                                         <span
@@ -38,7 +38,7 @@
                                                         </span>
                                                         @if (auth()->guard('admin')->user()->id == 1)
                                                             <div class="mb-3">
-                                                                <label for="branch_id"> Branch </label>
+                                                                <label for="branch_id"> Branch- </label>
                                                                 <select id='branch_id' wire:model="branch_id" class="form-control"
                                                                     required>
                                                                     <option value=''>-- Select Branch--</option>
@@ -50,7 +50,7 @@
                                                             </div>
                                                         @else
                                                         <div class="mb-3">
-                                                            <label for="branch_id"> Branch </label>
+                                                            <label for="branch_id"> Branch-</label>
                                                             <select id='branch_id' wire:model="branch_id" class="form-control"
                                                                 required>
                                                                 <option value=''>-- Select Branch--</option>
@@ -63,7 +63,7 @@
                                                     <td colspan="2">
                                                         <div>
                                                             <label for="date">Date-</label>
-                                                            <input type="date" class="form-control col-5" id="date"
+                                                            <input type="date" class="form-control col-5  mb-3" id="date"
                                                                 wire:model="date" placeholder="Date" required>
                                                         </div>
                                                         <div class="mb-3">
@@ -115,7 +115,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="consignee">Consignor Phone <a class="" data-toggle="modal"
+                                        <label for="consignee">Consignor Phone- <a class="" data-toggle="modal"
                                                 data-target="#exampleModal2" style="font-size: 20px;"><i
                                                     class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
                                         <input type="text" class="form-control" id="consignor_phone"
@@ -128,14 +128,14 @@
                                             </span>
                                     </td>
                                     <td>
-                                        <label for="consignor">Consignor</label>
+                                        <label for="consignor">Consignor-</label>
                                         <input type="text" class="form-control" id="consignor" wire:model="consignor"
                                             placeholder="Consignor" value="{{ old('consignor') }}" required>
                                         <input type="hidden" id="consignor_id" wire:model="consignor_id"
                                             value="{{ old('consignor_id') }}" />
                                     </td>
                                     <td>
-                                        <label for="consignee">Consignee Phone <a class="" data-toggle="modal"
+                                        <label for="consignee">Consignee Phone- <a class="" data-toggle="modal"
                                                 data-target="#exampleModal" style="font-size: 20px;"><i
                                                     class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
                                         <input type="text" class="form-control" id="consignee_phone"
@@ -148,7 +148,7 @@
                                             </span>
                                     </td>
                                     <td>
-                                        <label for="consignor">Consignee</label>
+                                        <label for="consignor">Consignee-</label>
                                         <input type="text" class="form-control" id="consignee" wire:model="consignee"
                                             placeholder="Consignee" value="{{ old('consignee') }}" required>
                                         <input type="hidden" id="consignee_id" wire:model="consignee_id"
@@ -158,13 +158,13 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <label for="consignor_gstin">GSTIN</label>
+                                        <label for="consignor_gstin">GSTIN-</label>
                                         <input type="text" class="form-control" id="consignor_gstin"
                                             placeholder="Consignor GSTIN" wire:model="consignor_gstin"
                                             value="{{ old('consignor_gstin') }}">
                                     </td>
                                     <td colspan="2">
-                                        <label for="consignee_gstin">GSTIN</label> <input type="text"
+                                        <label for="consignee_gstin">GSTIN-</label> <input type="text"
                                             class="form-control" id="consignee_gstin" placeholder="Consignee GSTIN"
                                             wire:model="consignee_gstin" value="{{ old('consignee_gstin') }}">
                                     </td>
@@ -172,7 +172,7 @@
 
                                 <tr>
                                     <td colspan="2">
-                                        <label for="booking_no">Bill No.</label><input type="text"
+                                        <label for="booking_no">Bill No.-</label><input type="text"
                                             class="form-control" id="booking_no" wire:model="booking_no"
                                             placeholder="Booking No" value="{{ old('booking_no') }}" required>
                                         <span
@@ -182,7 +182,7 @@
                                         </span>
                                     </td>
                                     <td colspan="2">
-                                        <label for="value">Value</label>
+                                        <label for="value">Value-</label>
                                         <input type="text" class="form-control" id="value" wire:model="value"
                                             placeholder="Value" value="{{ old('value') }}" required>
                                     </td>
@@ -192,15 +192,17 @@
                                 <table class="table table-borderd">
                                     <thead>
                                         <tr>
-                                            <th># <a class="btn btn-primary add_button"  wire:click.prevent="add({{ $i }})" ><i
-                                                class="bx bxs-plus-square"></i></a></th>
-                                            <th>Number of Packages</th>
+                                            <th>
+                                                <a class="ad-btn add_button"  wire:click.prevent="add({{ $i }})"><i
+                                                class="bx bxs-plus-square"></i></a>
+                                            </th>
+                                            <th style="width:10%;">No. of Packet</th>
                                             <th>Nature of Goods Said to contain</th>
-                                            <th>Unit</th>
-                                            <th>Qty</th>
-                                            <th>Weight (in kg)</th>
+                                            <th style="width: 15%">Unit</th>
+                                            <th style="width: 15%">Qty</th>
+                                            <th>Wgt (in kg)</th>
                                             <th>Particulars</th>
-                                            <th>Amount</th>
+                                            <th style="width: 15%;">Amount</th>
 
                                         </tr>
                                     </thead>
@@ -209,17 +211,16 @@
                                         <tr>
                                             <td>
                                                 @if($key!=0)
-                                                <span class="btn btn-outline-danger btn-sm removeBtn" data-toggle=""
+                                                <span class="rmv-btn removeBtn" data-toggle=""
                                                 wire:click.prevent="remove({{ $key }},{{ $value }})"><i
                                                 class="bx bxs-minus-square"></i></span>
                                                 @endif
                                             </td>
                                             <td class="text-left"><input type="text" class="form-control"
-                                                    id="no_of_pack" wire:model="no_of_pack.{{ $key }}" placeholder="No Of Package"
+                                                    id="no_of_pack" wire:model="no_of_pack.{{ $key }}"
                                                     required></td>
                                             <td> <input type="text" class="form-control" id="product"
-                                                    wire:model="product.{{ $key }}" placeholder="Nature of Goods Said to contain"
-                                                    required>
+                                                    wire:model="product.{{ $key }}" required>
                                             </td>
                                             <td>
                                                 <select class="form-control" wire:model="unit.{{ $key }}" required>
@@ -231,12 +232,12 @@
                                             </td>
 
                                             <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $key }}"
-                                                    placeholder="Qty" required></td>
+                                                     required></td>
                                             <td><input type="text" class="form-control" id="weight"
-                                                    wire:model="weight.{{ $key }}" placeholder="Weight" required></td>
+                                                    wire:model="weight.{{ $key }}" required></td>
                                             <td>Frieght Charges</td>
                                             <td><input type="number" class="form-control frieght_amount"
-                                                    wire:model="frieght_charge.{{ $key }}" placeholder="Freight"
+                                                    wire:model="frieght_charge.{{ $key }}"
                                                     wire:change="cal_total_amount()" value="0" required></td>
 
                                         </tr>
@@ -249,7 +250,7 @@
                                                 I/We declare that GST shall be payable by consignor/consignee</td>
                                             <td colspan="1">Insurance</td>
                                             <td><input type="number" class="form-control" id="insurance"
-                                                    wire:model="insurance" placeholder="Freight" value="0"
+                                                    wire:model="insurance" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
@@ -257,28 +258,28 @@
                                                 of goods & material.</td>
                                             <td colspan="1">B. Charges</td>
                                             <td><input type="number" class="form-control" id="b_charges"
-                                                    wire:model="b_charges" placeholder="Freight" value="0"
+                                                    wire:model="b_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Other Charges</td>
                                             <td><input type="number" class="form-control" id="other_charges"
-                                                    wire:model="other_charges" placeholder="Other Charges" value="0"
+                                                    wire:model="other_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">G.S.T</td>
                                             <td><input type="number" class="form-control" id="gst" wire:model="tax"
-                                                    placeholder="Freight" value="0"  wire:change="cal_total_amount()"
+                                                   value="0"  wire:change="cal_total_amount()"
                                                     required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Total</td>
                                             <td><input type="number" class="form-control" id="total_amount"
-                                                    wire:model="total" placeholder="Freight" value="0" readonly
+                                                    wire:model="total" value="0" readonly
                                                     required></td>
                                         </tr>
                                         <tr>

@@ -12,9 +12,9 @@
                 </div>
                 <div class="card-body">
                     <div class="form-body">
-                        <form class="row g-4">
+                        <form class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="fullname" class="form-label">Name<span>*</span></label>
                                 <input type="text" class="form-control" id="fullname" wire:model="name" placeholder="Name"
                                     >
@@ -24,7 +24,7 @@
                                         </span>
                                         @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="branch_code" class="form-label">Branch Code<span>*</span></label>
                                 <input type="text" class="form-control" id="branch_code" wire:model="branch_code" placeholder="Branch Code"
                                     >
@@ -34,7 +34,7 @@
                                         </span>
                                         @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="email" class="form-label">Email<span>*</span></label>
                                 <input type="email" class="form-control" id="email" wire:model="email" placeholder="Email"
                                     >
@@ -44,7 +44,7 @@
                                     </span>
                                     @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="mobile_no" class="form-label">Phone<span>*</span></label>
                                 <input type="text" class="form-control" id="phone" wire:model="phone"
                                     placeholder="Mobile No." >
@@ -54,7 +54,7 @@
                                     </span>
                                     @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="gst" class="form-label">GSTIN</label>
                                 <input type="text" class="form-control" id="gst" wire:model="gst" placeholder="GSTIN"
                                     >
@@ -64,7 +64,7 @@
                                     </span>
                                     @enderror
                             </div>
-                            <div class="col-md-4 mb-3 ">
+                            <div class="col-md-4 mb-3">
                                 <label for="pincode" class="form-label">Pincode</label>
                                 <select class="form-control" id="pincode" wire:model="pincode" wire:change="getPincodeData()">
                                     <option value=''>-- Select Pincode--</option>
@@ -74,22 +74,22 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3 ">
+                            <div class="col-md-4 mb-3">
                                 <label for="city" class="form-label">City</label>
                                 <input type="text" class="form-control" id="city" placeholder="City" wire:model="city"
                                     readonly>
                             </div>
-                            <div class="col-md-4 mb-3 ">
+                            <div class="col-md-4 mb-3">
                                 <label for="state" class="form-label">State</label>
                                 <input type="text" class="form-control" id="state" placeholder="State" wire:model="state"
                                     readonly>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="address" class="form-label">Address<span>*</span></label>
                                 <input type="text" class="form-control" id="address" wire:model="address" placeholder="Address"
                                     >
                             </div>
-                            <div class="col-md-4 mb-3 ">
+                            <div class="col-md-4 mb-3">
                                 <label for="pincode" class="form-label">Serving Pincode</label>
                                 <select class="form-control" id="serving_pincode" wire:model="serving_pincode" multiple>
                                     <option value=''>Select Pincode</option>

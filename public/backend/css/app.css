@@ -1956,11 +1956,14 @@ h6 {
 .invoice table td,
 
 .invoice table th {
-	padding: 15px;
+	padding: 10px;
 	border-bottom: 1px solid #eee
 }
 
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+}
 
 .invoice table th {
 
@@ -1968,7 +1971,7 @@ h6 {
 
 	font-weight: 600;
 
-	font-size: 15px
+	font-size: 14px
 
 }
 
@@ -2047,8 +2050,6 @@ h6 {
 	border-bottom: none;
 
 	white-space: nowrap;
-
-	padding: 10px 20px;
 
 	font-size:14px;
 
@@ -4225,7 +4226,7 @@ input::placeholder {
 
 .user-img {
 
-	width: 110px;
+	width: 60px;
 
 	height: 42px;
 
@@ -5692,4 +5693,17 @@ input::placeholder {
     {
         display: none !important;
     }
+}
+
+.ad-btn{
+    background: #541545;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+.rmv-btn{
+    background: #d10505;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
 }

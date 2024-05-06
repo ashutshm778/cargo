@@ -19,8 +19,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2"></div>
-                        <div class="col-8"></div>
-                        <div class="col-2 mb-3">
+                        <div class="col-7"></div>
+                        <div class="col-3 mb-3">
                               <input type="search" wire:model.live="search" class="form-control form-control-sm" placeholder="Type To Search"  />
                         </div>
                     </div>
