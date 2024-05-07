@@ -30,7 +30,9 @@
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
                         <div class="col-5">
-
+                            @if(count($booking_id) > 0)
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="openDeliveryBoy()" >Assign Delivery Boy</a>
+                            @endif
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
@@ -56,7 +58,7 @@
                             <tbody>
                                 @foreach ($deliveries as $booking)
                                     <tr>
-                                        <th>@if(empty($booking->assign_to))<input type="checkbox" id="booking_id.{{$booking->id}}"  wire:model="booking_id.{{$booking->id}}" value="{{$booking->id}}" />@else Already Assign @endif </th>
+                                        <th>@if(empty($booking->assign_to))<input type="checkbox" id="booking_id.{{$booking->id}}"  wire:model.live="booking_id" value="{{$booking->id}}" />@else Already Assign @endif </th>
                                         <td>{{ $booking->tracking_code }}</td>
                                         <td>{{ $booking->bill_no }}</td>
                                         <td>{{ $booking->consignor }}</td>
@@ -93,6 +95,7 @@
         </div>
 
         @include('livewire.backend.booking.delivery_status_modal')
+        @include('livewire.backend.booking.assign_delivery_boy_modal')
 
     </div>
     @push('scripts')
@@ -128,6 +131,14 @@
 
             Livewire.on('hideDeliveryStatus', () => {
                 $('#delivery_status').modal('hide');
+            });
+
+            Livewire.on('showDeliveryBoy', () => {
+                $('#assign_delivery_boy').modal('show');
+            });
+
+            Livewire.on('hideDeliveryBoy', () => {
+                $('#assign_delivery_boy').modal('hide');
             });
 
             function status_remark() {
