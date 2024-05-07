@@ -22,13 +22,14 @@
                     <ul class="navbar-nav menu-open text-end">
                     <li><a href="/">Home</a></li>
                         <li><a href="{{route('about')}}">About Us</a></li>
-                        <li class="menu-item-has-children">
+                        <li><a href="{{route('services')}}">Service</a></li>
+                        {{-- <li class="menu-item-has-children">
                             <a href="#">Services</a>
                             <ul class="sub-menu">
                                 <li><a href="{{route('services')}}">Service</a></li>
                                 <li><a href="{{route('service_detail')}}">Service Details</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                     </ul>
                 </div>

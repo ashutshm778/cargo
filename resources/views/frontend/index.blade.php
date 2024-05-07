@@ -406,7 +406,7 @@
                         <div class="icon">
                             <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
                         </div>
-                        <p>Very well organized operations, modern warehouses are very neat & clean. My heartiest congratulation to OM Team.</p>
+                        <p>Very well organized operations, modern warehouses are very neat & clean. My heartiest congratulation to Prashant Cargo & Logistics.</p>
                         <div class="client-wrap">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
@@ -423,7 +423,7 @@
                         <div class="icon">
                             <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
                         </div>
-                        <p>Very well organized operations, modern warehouses are very neat & clean. My heartiest congratulation to OM Team.</p>
+                        <p>Good and nice packaging with delivery in minimal duration, having good responsibility</p>
                         <div class="client-wrap">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
