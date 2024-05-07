@@ -44,6 +44,7 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('delivery', App\Livewire\Backend\Booking\Delivery::class)->name('admin.delivery');
     Route::get('mainifestation', App\Livewire\Backend\Booking\Manifestation::class)->name('admin.mainifestation');
     Route::get('booking/barcode/{id}', App\Livewire\Backend\Booking\BookingBarcode::class)->name('booking.barcode');
+    Route::get('assign_delivery', App\Livewire\Backend\Booking\AssignDelivery::class)->name('admin.assign_delivery');
 
     Route::get('consigner', App\Livewire\Backend\Consigner\Index::class)->name('admin.consigner');
     Route::get('consigner/create', App\Livewire\Backend\Consigner\Create::class)->name('admin.consigner_create');

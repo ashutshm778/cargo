@@ -62,6 +62,15 @@
             </a>
         </li>
         @endif
+        @if(auth()->guard('admin')->user()->can('delivery-list'))
+        <li>
+            <a href="{{route('admin.assign_delivery')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
+                </div>
+                <div class="menu-title">Assigned Delivery</div>
+            </a>
+        </li>
+        @endif
         @if(auth()->guard('admin')->user()->can('mainifestation-list'))
         <li>
             <a href="{{route('admin.mainifestation')}}" wire:navigate>

@@ -71,7 +71,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Branch::class,'to','id');
     }
-
+    public function assign_staff()
+    {
+        return $this->belongsTo(Admin::class,'assign_to','id');
+    }
 
 
 }
