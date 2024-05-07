@@ -64,10 +64,7 @@
                                         <td>{{ $booking->assign_staff->name }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
-                                                @if (auth()->guard('admin')->user()->can('booking-edit'))
-                                                <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
-                                                    title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
-                                                    @endif
+
                                                 <a href="{{ route('booking.show', $booking->id) }}" class="me-2"
                                                     title="View" wire:navigate><i class="bx bxs-show"></i></a>
 

@@ -35,7 +35,7 @@ class AssignDelivery extends Component
         if(auth()->guard("admin")->user()->id==1){
             $deliveries = Booking::where('id', '>', 0)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
         }else{
-          $deliveries = Booking::where('to',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
+          $deliveries = Booking::where('assign_to',Auth::guard('admin')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
         }
         if($this->branch){
             $deliveries=$deliveries->where('branch_id',$this->branch);
