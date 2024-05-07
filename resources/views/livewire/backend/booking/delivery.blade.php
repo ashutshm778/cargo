@@ -41,21 +41,22 @@
                         <table class="table align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
-
+                                    <th>Assign</th>
                                     <th>Tracking Code</th>
                                     <th>Bill No</th>
                                     <th>Consignor</th>
                                     <th>Consignee</th>
                                     <th>From</th>
                                     <th>To</th>
-                                    @if (auth()->guard('admin')->user()->canany(['booking-edit', 'booking-view']))
-                                        <th>Action</th>
-                                    @endif
+
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($deliveries as $booking)
                                     <tr>
+                                        <th>@if(empty($booking->assign_to))<input type="checkbox" id="booking_id.{{$booking->id}}"  wire:model="booking_id.{{$booking->id}}" value="{{$booking->id}}" />@else Already Assign @endif </th>
                                         <td>{{ $booking->tracking_code }}</td>
                                         <td>{{ $booking->bill_no }}</td>
                                         <td>{{ $booking->consignor }}</td>
@@ -65,22 +66,20 @@
                                         <td>
                                             <div class="d-flex order-actions">
                                                 @if (auth()->guard('admin')->user()->can('booking-edit'))
-                                                    <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
-                                                        title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
-                                                    @endif @if (auth()->guard('admin')->user()->can('booking-view'))
-                                                        <a href="{{ route('booking.show', $booking->id) }}"
-                                                            class="me-2" title="View" wire:navigate><i
-                                                                class="bx bxs-show"></i></a>
+                                                <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
+                                                    title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
                                                     @endif
-                                                    <a href="{{ route('booking.payment_receipt', $booking->id) }}"
-                                                        class="me-2" title="Payment Receipt" wire:navigate><i
-                                                            class="bx bx-money"></i></a>
-                                                    <a href="{{ route('booking.track_order', $booking->id) }}"
-                                                        class="me-2" title="Track Order" wire:navigate><i
-                                                            class="bx bx-map"></i></a>
-                                                    <a href="#" wire:click="openConsginee('{{$booking->id}}')"
-                                                        class="me-2" title="Change Status"><i
-                                                            class="bx bx-pin"></i></a>
+                                                <a href="{{ route('booking.show', $booking->id) }}" class="me-2"
+                                                    title="View" wire:navigate><i class="bx bxs-show"></i></a>
+
+                                                <a href="{{ route('booking.payment_receipt', $booking->id) }}"
+                                                    class="me-2" title="Payment Receipt" wire:navigate><i
+                                                        class="bx bx-money"></i></a>
+                                                <a href="{{ route('booking.track_order', $booking->id) }}"
+                                                    class="me-2" title="Track Order" wire:navigate><i
+                                                        class="bx bx-map"></i></a>
+                                                <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
+                                                    class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -97,55 +96,52 @@
 
     </div>
     @push('scripts')
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#date_range').daterangepicker({
-                locale: {
-                    format: 'YYYY-MM-DD'
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#date_range').daterangepicker({
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                });
+
+                $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+                    // Update Livewire properties when dates are selected
+                    @this.set('startDate', picker.startDate.format('YYYY-MM-DD'));
+                    @this.set('endDate', picker.endDate.format('YYYY-MM-DD'));
+                });
+            });
+
+            $('#branch').on('change', function(e) {
+                let elementName = $(this).attr('id');
+                var data = $(this).val();
+                @this.set(elementName, data);
+            });
+        </script>
+
+
+        <script>
+            Livewire.on('showDeliveryStatus', () => {
+                $('#delivery_status').modal('show');
+            });
+
+            Livewire.on('hideDeliveryStatus', () => {
+                $('#delivery_status').modal('hide');
+            });
+
+            function status_remark() {
+                var booking_status = $('#status').val();
+                if (booking_status == 'ndr') {
+                    $('#remark_ndr').show();
+                    $('#remark_delivery').hide();
                 }
-            });
+                if (booking_status == 'delivered') {
+                    $('#remark_ndr').hide();
+                    $('#remark_delivery').show();
+                }
 
-            $('#date_range').on('apply.daterangepicker', function(ev, picker) {
-                // Update Livewire properties when dates are selected
-                @this.set('startDate', picker.startDate.format('YYYY-MM-DD'));
-                @this.set('endDate', picker.endDate.format('YYYY-MM-DD'));
-            });
-        });
-
-        $('#branch').on('change', function(e) {
-            let elementName = $(this).attr('id');
-            var data = $(this).val();
-            @this.set(elementName, data);
-        });
-    </script>
-
-
-<script>
-    Livewire.on('showDeliveryStatus', () => {
-        $('#delivery_status').modal('show');
-    });
-
-    Livewire.on('hideDeliveryStatus', () => {
-        $('#delivery_status').modal('hide');
-    });
-
-    function status_remark() {
-            var booking_status = $('#status').val();
-            if (booking_status == 'ndr') {
-                $('#remark_ndr').show();
-                $('#remark_delivery').hide();
             }
-            if (booking_status == 'delivered') {
-                $('#remark_ndr').hide();
-                $('#remark_delivery').show();
-            }
-
-        }
-
-</script>
-
-
-@endpush
+        </script>
+    @endpush
 </div>

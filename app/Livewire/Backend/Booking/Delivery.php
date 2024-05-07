@@ -18,6 +18,7 @@ class Delivery extends Component
 
     public $search,$branch,$startDate,$endDate;
     public $deivery_status_id,$status,$remark;
+    public $booking_id=[];
 
     public function updatedSearch(){
         $this->resetPage();
