@@ -1218,7 +1218,7 @@ ul {
 }
 
 .pd-bottom-90 {
-  padding-bottom: 90px;
+  padding-bottom: 60px;
 }
 
 .pd-bottom-100 {
@@ -1529,12 +1529,12 @@ ul {
 
 .navbar-area {
   z-index: 99;
-  position: absolute;
+  position: relative;
   width: 100%;
 }
 .navbar-area .nav-container {
   background-color: transparent;
-  padding: 17px 0px;
+  padding: 12px 0px;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
@@ -1545,7 +1545,7 @@ ul {
 .navbar-area .nav-container .navbar-collapse .navbar-nav {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: center !important;
 }
 .navbar-area .nav-container .navbar-collapse .navbar-nav li {
   display: inline-block;
@@ -1735,9 +1735,9 @@ ul {
 
 .navbar-area-2 {
   padding: 0;
-  margin-top: 10px;
+  margin-top: 0;
 }
-.navbar-area-2:after {
+/* .navbar-area-2:after {
   content: "";
   position: absolute;
   right: 0;
@@ -1749,17 +1749,21 @@ ul {
   background-size: 100% 100%;
   background-position: 0px 0px;
   background-repeat: no-repeat;
-}
+} */
 .navbar-area-2 .logo {
-    position: absolute;
+    /* position: absolute;
     left: 50px;
-    top: -10px;
+    top: -10px; */
 }
 .navbar-area-2 .logo .logo-2 {
   display: none;
 }
 .navbar-area-2 .nav-container {
-  padding: 26px 0px 17px;
+  /* padding: 26px 0px 17px; */
+}
+.navbar-area-2 .nav-container .logo {
+    display: block;
+    width: 250px;
 }
 .navbar-area-2.sticky-active .nav-container .logo {
   position: initial;
@@ -1863,7 +1867,7 @@ ul {
 .nav-right-part .btn {
   color: #fff;
   padding: 0 20px;
-  border-radius: 30px;
+  border-radius: 6px;
 }
 .nav-right-part a {
   margin-left: 30px;
@@ -2021,7 +2025,7 @@ ul {
 
 @media only screen and (max-width: 991px) {
   .navbar-area .nav-container {
-    padding: 15px;
+    padding: 12px;
   }
 
   .nav-right-part {
@@ -2879,7 +2883,7 @@ ul {
   overflow: hidden;
 }
 .banner-area-1 .banner-inner {
-  padding: 175px 0 150px;
+  padding: 125px 0 110px;
   position: relative;
 }
 .banner-area-1 .banner-inner:after {
@@ -3109,7 +3113,7 @@ ul {
 .about-inner-wrap .section-title .content {
   margin-top: 10px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--heading-color);
   line-height: 30px;
@@ -3228,7 +3232,7 @@ ul {
 
 /*******why-choose-us-area********/
 .wcu-area {
-  padding: 330px 0 227px;
+  padding: 60px 0 150px;
 }
 .wcu-area .img-1 {
   position: absolute;
@@ -3245,7 +3249,7 @@ ul {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding-bottom: 168px;
+  padding-bottom: 60px;
 }
 
 .single-wcu-wrap {
@@ -3327,9 +3331,6 @@ ul {
 .fact-counter-area {
   border-top: 5px solid var(--main-color);
   padding: 39px 45px 11px;
-  -webkit-transform: translate(0px, -114px);
-          transform: translate(0px, -114px);
-  margin-bottom: -114px;
 }
 
 .single-fact-wrap {
@@ -3342,7 +3343,7 @@ ul {
   position: absolute;
   right: -15px;
   top: 50%;
-  height: 140px;
+  height: 175px;
   width: 4px;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
@@ -3521,11 +3522,11 @@ ul {
   position: absolute;
 }
 .team-slider .owl-nav .owl-prev {
-  left: -90px;
+  left: -25px;
 }
 .team-slider .owl-nav .owl-next {
   position: absolute;
-  right: -90px;
+  right: -25px;
 }
 
 /*******call-to-contact-area********/
@@ -3634,11 +3635,11 @@ ul {
   position: absolute;
 }
 .testimonial-slider .owl-nav .owl-prev {
-  left: -90px;
+  left: -25px;
 }
 .testimonial-slider .owl-nav .owl-next {
   position: absolute;
-  right: -90px;
+  right: -25px;
 }
 
 .single-testimonial-wrap {
@@ -3680,7 +3681,8 @@ ul {
           flex: none;
 }
 .single-testimonial-wrap .client-wrap .thumb img {
-  width: auto;
+    width: 60px;
+    border-radius: 30px;
 }
 .single-testimonial-wrap .client-wrap .details h5 {
   font-weight: 700;
@@ -4335,11 +4337,11 @@ ul {
   color: var(--main-color);
 }
 .single-service-wrap .thumb {
-  margin: 0 30px;
+  /* margin: 0 30px; */
   position: relative;
   z-index: 0;
 }
-.single-service-wrap .thumb:after {
+/* .single-service-wrap .thumb:after {
   position: absolute;
   content: "";
   width: 0px;
@@ -4368,7 +4370,7 @@ ul {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   z-index: -1;
-}
+} */
 .single-service-wrap .thumb img {
   width: 100%;
 }

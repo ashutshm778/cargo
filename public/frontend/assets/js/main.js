@@ -182,7 +182,7 @@
             navText: ['<img src="frontend/assets/img/icon/left-arrow.png"/>','<img src="frontend/assets/img/icon/right-arrow.png"/>'],
             responsive : {
                 769 : {
-                    items: 3,
+                    items: 4,
                 },
                 577 : {
                     items: 2,

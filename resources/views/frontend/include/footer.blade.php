@@ -50,7 +50,7 @@
                             <img src="{{ asset('frontend/assets/img/logo.png')}}" alt="img">
                         </div>
                         <div class="details">
-                            <p>Quickly supply alternative strategic theme areas vis-a-vis B2C mindshare. Objectively repurpose stand-alone synergy via user-centric architectures.</p>
+                            <p>Prashant Cargo & Logistics is one of the renowned service provider for packing and moving of goods. We are one of the known names in packers and movers industry.</p>
                             <ul class="social-media style-border mb-3">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
