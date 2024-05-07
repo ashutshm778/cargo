@@ -87,6 +87,7 @@
         </div>
 
         @include('livewire.backend.booking.delivery_status_modal')
+        @include('livewire.backend.booking.delivery_boy_status_modal')
 
     </div>
     @push('scripts')
