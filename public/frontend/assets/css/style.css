@@ -4306,7 +4306,7 @@ ul {
   margin-bottom: 40px;
 }
 .service-area.style-2 .single-service-wrap .details {
-  padding: 40px 29px 30px;
+  padding: 20px 20px 10px;
 }
 
 .single-service-wrap {
@@ -4372,7 +4372,8 @@ ul {
   z-index: -1;
 } */
 .single-service-wrap .thumb img {
-  width: 100%;
+    width: 100%;
+    height: 260px;
 }
 .single-service-wrap .thumb .icon {
   height: 70px;
@@ -4404,14 +4405,15 @@ ul {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   line-height: 31px;
+  text-align: center;
 }
 .single-service-wrap .details p {
   line-height: 26px;
-  border-bottom: 1px solid rgba(8, 12, 36, 0.15);
-  padding-bottom: 17px;
+  /* border-bottom: 1px solid rgba(8, 12, 36, 0.15);
+  padding-bottom: 17px; */
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .single-service-wrap .details .btn-wrap .read-more-text {
   display: -webkit-box;

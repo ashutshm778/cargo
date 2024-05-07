@@ -45,11 +45,16 @@
                             <div class="section-title mb-0">
                                 <h4 class="subtitle">ABOUT US</h4>
                                 <h2 class="title">WELCOME PRASHANT CARGO & LOGISTICS</h2>
-                                <p class="content left-line">Prashant  Cargo & Logistics is one of the renowned service provider for packing and moving of goods. We are one of the known names in packers and movers industry. We work for domestic markets. Our aim is to provide maximum customer satisfaction. We always honour your commitments.</p>
-                                <p>We are also engaged into lifting of heavy materials and placing them on trailers. We also engage into activities like LCV, FTL, trucks and trailers.</p>
-                                <p></p>
-                                <div class="btn-wrap">
-                                    <a class="btn btn-base" href="#">ABOUT MORE</a>
+                                <p class="content left-line">Prashant Cargo & Logistics is your trusted logistics partner dedicated to delivering smiles across India. With our headquarters in Varanasi and zonal office in Delhi, we have earned a strong reputation for reliability, trust, and exceptional service.</p>
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <ul class="list-inner-wrap mb-mb-0 mb-3 mb-lg-3 mb-xl-0">
+                                            <li><img src="{{ asset('frontend/assets/img/icon/check.png')}}" alt="img">Free Pickup from Your Doorstep</li>
+                                            <li><img src="{{ asset('frontend/assets/img/icon/check.png')}}" alt="img">Send Food, Liquid, Madicin, Household, etc.</li>
+                                            <li><img src="{{ asset('frontend/assets/img/icon/check.png')}}" alt="img">Online Courier Tracking Feature.</li>
+                                            <li><img src="{{ asset('frontend/assets/img/icon/check.png')}}" alt="img">Easy & Fast online Booking Process</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,8 +94,8 @@
     </div>
     <!-- about area end -->
 
-      <!-- testimonial area start -->
-      <div class="testimonial-area pd-top-115 pd-bottom-120"  style="background: url({{ asset('frontend/assets/img/service/bg.png')}});">
+    <!-- testimonial area start -->
+    <div class="testimonial-area pd-top-115 pd-bottom-120"  style="background: url({{ asset('frontend/assets/img/service/bg.png')}});">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -106,7 +111,9 @@
                         <div class="icon">
                             <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
                         </div>
-                        <p>I am highly impressed with the professionalism and passion of people in this warehouse. I am also equally impressed with the "5S" principles followed in material storage. I am proud of you all. Keep it up.</p>
+                        <p>Amazing Courier service by Prashant Cargo & Logistics and on-time delivery.<br>
+                            Best customer support and are always available to help out.<br>
+                            I would highly recommend Prashant Cargo & Logistics and definitely use it for my couriers in the future too.</p>
                         <div class="client-wrap">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
@@ -123,7 +130,7 @@
                         <div class="icon">
                             <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
                         </div>
-                        <p>Very well organized operations, modern warehouses are very neat & clean. My heartiest congratulation to Prashant Cargo & Logistics.</p>
+                        <p>Most prompt and best courier service given to me by Prashant Cargo & Logistics Delhi. My important documents reached at my home in Kolkatta in the next 2 days only. Thanks to their punctual and speedy courier service. I’d always take services and refer my friends for a wonderful and hassle-free courier delivery service.</p>
                         <div class="client-wrap">
                             <div class="thumb">
                                 <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
@@ -131,23 +138,6 @@
                             <div class="details">
                                 <h5>Ankit Singh</h5>
                                 <p>Prayagraj</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-wrap">
-                        <div class="icon">
-                            <img src="{{ asset('frontend/assets/img/testimonial/quote.png')}}" alt="img">
-                        </div>
-                        <p>Good and nice packaging with delivery in minimal duration, having good responsibility.</p>
-                        <div class="client-wrap">
-                            <div class="thumb">
-                                <img src="{{ asset('frontend/assets/img/testimonial/3.png')}}" alt="img">
-                            </div>
-                            <div class="details">
-                                <h5>Abhishek Patel</h5>
-                                <p>Delhi</p>
                             </div>
                         </div>
                     </div>
@@ -164,8 +154,7 @@
                 <div class="col-lg-7">
                     <div class="section-title text-center">
                         <h4 class="subtitle">HAPPY CLIENTS</h4>
-                        <h2 class="title">TRUSTED BY OUR
-                            365,000 CLIENTS</h2>
+                        <h2 class="title">TRUSTED OUR CLIENTS</h2>
                     </div>
                 </div>
             </div>
