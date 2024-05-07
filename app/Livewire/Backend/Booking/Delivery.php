@@ -19,6 +19,7 @@ class Delivery extends Component
     public $search,$branch,$startDate,$endDate;
     public $deivery_status_id,$status,$remark;
     public $booking_id=[];
+    public $delivery_boy_id;
 
     public function updatedSearch(){
         $this->resetPage();
@@ -98,6 +99,26 @@ class Delivery extends Component
         $booking_log->save();
 
         $this->hideDeliveryStatus();
+    }
+
+    public function openDeliveryBoy()
+    {
+        $this->dispatch('showDeliveryBoy');
+    }
+
+    public function hideDeliveryvBoy()
+    {
+        $this->resetInputFields();
+        $this->dispatch('hideDeliveryBoy');
+    }
+
+    public function assign_delivery_boy(){
+            $booking_list = Booking::whereIn('id',$this->booking_id)->get();
+            foreach($booking_list as $booking){
+                $booking->assign_to = $this->delivery_boy_id;
+                $booking->save();
+            }
+            $this->hideDeliveryvBoy();
     }
 
 }
