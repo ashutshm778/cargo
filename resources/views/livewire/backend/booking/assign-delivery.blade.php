@@ -74,8 +74,6 @@
                                                 <a href="{{ route('booking.track_order', $booking->id) }}"
                                                     class="me-2" title="Track Order" wire:navigate><i
                                                         class="bx bx-map"></i></a>
-                                                <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
-                                                    class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
                                             </div>
                                         </td>
                                     </tr>
