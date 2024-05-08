@@ -35,4 +35,7 @@ Route::post('login', [HomeController::class, 'login']);
     Route::get('get_profile', [HomeController::class, 'getUserProfile']);
     Route::post('update_profile', [HomeController::class, 'updateUserProfile']);
 
+    Route::get('get_assign_delivery', [HomeController::class, 'get_assign_delivery']);
+    Route::post('assign_delivery_status_update', [HomeController::class, 'assign_delivery_status_update']);
+
 });

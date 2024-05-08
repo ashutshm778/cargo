@@ -245,4 +245,21 @@ class HomeController extends Controller
             ], 200);
         }
     }
+
+    public function get_assign_delivery(Request $request)
+    {
+
+        $booking =  Booking::where('assign_to',Auth::guard('api')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc')->get();
+
+            return response()->json([
+                'assign_list' => $booking,
+                'success' => true,
+                'status' => 200
+            ]);
+
+    }
+
+    public function assign_delivery_status_update(){
+
+    }
 }
