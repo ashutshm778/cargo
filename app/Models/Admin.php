@@ -65,9 +65,4 @@ class Admin extends Authenticatable
         return $this->belongsTo(Branch::class, 'branch_id', 'id');
     }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'admin_permissions');
-    }
-
 }
