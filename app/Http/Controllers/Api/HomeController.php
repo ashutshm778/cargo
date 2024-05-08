@@ -35,7 +35,7 @@ class HomeController extends Controller
             if (Hash::check($request->password, $data->password)) {
                 $data->access_token =  $data->createToken('MyApp')->plainTextToken;
                 $data->roles = $data->roles->first();
-                $data->permissions = $data->roles->first()->permissions;
+                $data->permissions = $data->permissions;
                 return $data;
             } else {
                 $valid->getMessageBag()->add('password', 'Wrong Password');
