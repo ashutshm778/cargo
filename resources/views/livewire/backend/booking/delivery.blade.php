@@ -71,9 +71,9 @@
                                                 <a href="{{ route('booking.show', $booking->id) }}" class="me-2"
                                                     title="View" wire:navigate><i class="bx bxs-show"></i></a>
 
-                                                <a href="{{ route('booking.payment_receipt', $booking->id) }}"
+                                                {{-- <a href="{{ route('booking.payment_receipt', $booking->id) }}"
                                                     class="me-2" title="Payment Receipt" wire:navigate><i
-                                                        class="bx bx-money"></i></a>
+                                                        class="bx bx-money"></i></a> --}}
                                                 <a href="{{ route('booking.track_order', $booking->id) }}"
                                                     class="me-2" title="Track Order" wire:navigate><i
                                                         class="bx bx-map"></i></a>
