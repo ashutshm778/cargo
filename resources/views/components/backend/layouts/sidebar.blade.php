@@ -118,6 +118,8 @@
                 <div class="menu-title">User Log</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('branch-report'))
         <li>
             <a href="{{route('admin.branch_report')}}" aria-expanded="false">
                 <div class="parent-icon"><i class="bx bxs-user-detail"></i>
