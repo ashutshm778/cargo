@@ -3,36 +3,38 @@
 namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Contracts\Permission;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens,HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guard = 'admin';
     protected $fillable = [
-        'name', 'email', 'password','branch_id',
+        'name', 'email', 'password', 'branch_id',
     ];
     protected $hidden = [
-      'password', 'remember_token',
+        'password', 'remember_token',
     ];
+
 
 
     protected static function boot()
     {
         parent::boot();
-        if(!app()->runningInConsole()){
+        if (!app()->runningInConsole()) {
             static::created(function ($resource) {
                 ResourceLog::create([
                     'resource_id' => $resource->id,
                     'action' => 'created',
-                    'details' => 'Staff created with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'details' => 'Staff created with ID ' . $resource->id . ' by user  ' . auth()->guard("admin")->user()->name,
                     'user_id' => auth()->guard("admin")->user()->id,
-                    'model'=>'Admin'
+                    'model' => 'Admin'
                 ]);
             });
 
@@ -40,9 +42,9 @@ class Admin extends Authenticatable
                 ResourceLog::create([
                     'resource_id' => $resource->id,
                     'action' => 'updated',
-                    'details' => 'Staff updated with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'details' => 'Staff updated with ID ' . $resource->id . ' by user  ' . auth()->guard("admin")->user()->name,
                     'user_id' => auth()->guard("admin")->user()->id,
-                    'model'=>'Admin'
+                    'model' => 'Admin'
                 ]);
             });
 
@@ -50,16 +52,21 @@ class Admin extends Authenticatable
                 ResourceLog::create([
                     'resource_id' => $resource->id,
                     'action' => 'deleted',
-                    'details' => 'Staff deleted with ID ' . $resource->id .' by user  '.auth()->guard("admin")->user()->name,
+                    'details' => 'Staff deleted with ID ' . $resource->id . ' by user  ' . auth()->guard("admin")->user()->name,
                     'user_id' => auth()->guard("admin")->user()->id,
-                    'model'=>'Admin'
+                    'model' => 'Admin'
                 ]);
             });
-         }
+        }
     }
 
     public function branch_data()
     {
-        return $this->belongsTo(Branch::class,'branch_id','id');
+        return $this->belongsTo(Branch::class, 'branch_id', 'id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
     }
 }
