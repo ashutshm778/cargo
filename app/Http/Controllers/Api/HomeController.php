@@ -265,6 +265,7 @@ class HomeController extends Controller
         $booking=Booking::find($request->booking_id);
         if(!empty($booking->id)){
         $booking->status=$request->status;
+        $booking->status_updated_by_b=1;
         $booking->save();
 
         $booking_log=new BookingLog;

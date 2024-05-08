@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('payment_status');
             $table->string('description')->nullable();
+            $table->boolean('status_updated_by_b')->default(0);
             $table->string('tracking_code')->unique();
             $table->timestamps();
         });

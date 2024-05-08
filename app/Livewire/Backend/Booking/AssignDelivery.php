@@ -79,6 +79,7 @@ class AssignDelivery extends Component
         //dd($request->all());
         $booking=Booking::find($this->deivery_status_id);
         $booking->status=$this->status;
+        $booking->status_updated_by_b=1;
         $booking->save();
 
         $booking_log=new BookingLog;
