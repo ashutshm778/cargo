@@ -74,8 +74,15 @@
                                                 <a href="{{ route('booking.track_order', $booking->id) }}"
                                                     class="me-2" title="Track Order" wire:navigate><i
                                                         class="bx bx-map"></i></a> --}}
-                                                 <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
+                                                        @if(auth()->guard("admin")->user()->id==1)
+                                                  <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
                                                     class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
+                                                    @else
+                                                     @if($booking->status_updated_by_b==0)
+                                                      <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
+                                                        class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
+                                                     @endif
+                                                    @endif
                                             </div>
                                         </td>
                                     </tr>
