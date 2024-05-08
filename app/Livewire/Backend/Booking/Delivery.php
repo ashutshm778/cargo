@@ -86,7 +86,7 @@ class Delivery extends Component
 
         $booking_log=new BookingLog;
         $booking_log->booking_id=$booking->id;
-        $booking_log->branch_id= Auth::guard('api')->user()->branch_id;
+        $booking_log->branch_id= Auth::guard('admin')->user()->branch_id;
         $booking_log->tracking_code=$booking->tracking_code;
         $booking_log->user_id=auth()->guard("admin")->user()->id;
         $booking_log->source='web';

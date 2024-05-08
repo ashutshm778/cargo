@@ -259,7 +259,33 @@ class HomeController extends Controller
 
     }
 
-    public function assign_delivery_status_update(){
+    public function assign_delivery_status_update(Request $request){
 
+        $booking=Booking::find($request->booking_id);
+        if(!empty($booking->id)){
+        $booking->status=$request->status;
+        $booking->save();
+
+        $booking_log=new BookingLog;
+        $booking_log->booking_id=$booking->id;
+        $booking_log->branch_id= Auth::guard('api')->user()->branch_id;
+        $booking_log->tracking_code=$booking->tracking_code;
+        $booking_log->user_id=auth()->guard("api")->user()->id;
+        $booking_log->source='app';
+        $booking_log->action=$request->status;
+        $booking_log->status=$request->status;
+        if(!empty($request->remarks)){
+         $booking_log->description=$request->remarks;
+        }
+        $booking_log->save();
+
+        return response()->json([
+            'message' => 'Status Updated Successfully',
+            'status' => '200'
+        ], 200);
+
+     }else{
+        return response()->json(['error' => 'Invalid Id', 'status' => '401'], 401);
+     }
     }
 }
