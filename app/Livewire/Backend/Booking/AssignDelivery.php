@@ -83,7 +83,7 @@ class AssignDelivery extends Component
 
         $booking_log=new BookingLog;
         $booking_log->booking_id=$booking->id;
-        $booking_log->branch_id=$booking->branch_id;
+        $booking_log->branch_id= Auth::guard('api')->user()->branch_id;
         $booking_log->tracking_code=$booking->tracking_code;
         $booking_log->user_id=$booking->added_by;
         $booking_log->source='web';

@@ -86,7 +86,7 @@ class Delivery extends Component
 
         $booking_log=new BookingLog;
         $booking_log->booking_id=$booking->id;
-        $booking_log->branch_id=$booking->branch_id;
+        $booking_log->branch_id= Auth::guard('api')->user()->branch_id;
         $booking_log->tracking_code=$booking->tracking_code;
         $booking_log->user_id=auth()->guard("admin")->user()->id;
         $booking_log->source='web';
@@ -120,12 +120,12 @@ class Delivery extends Component
 
                 $booking_log=new BookingLog;
                 $booking_log->booking_id=$booking->id;
-                $booking_log->branch_id=$booking->branch_id;
+                $booking_log->branch_id= Auth::guard('api')->user()->branch_id;
                 $booking_log->tracking_code=$booking->tracking_code;
                 $booking_log->user_id=auth()->guard("admin")->user()->id;
                 $booking_log->source='web';
-                $booking_log->action='out for delivery';
-                $booking_log->status='out for delivery';
+                $booking_log->action='Out For Delivery';
+                $booking_log->status='out_for_delivery';
                 if(!empty($this->remarks)){
                  $booking_log->description='delivery boy assign for this order';
                 }

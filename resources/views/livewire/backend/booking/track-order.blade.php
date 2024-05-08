@@ -68,7 +68,7 @@
                                                     </span>
                                                     <span class="fs-12px SFProMedium"><b>Location : </b>
                                                         <activity>
-                                                            @if($log->status == 'order_created' || $log->status == 'arrived' || $log->status == 'dispatched')
+                                                            @if($log->status == 'order_created' || $log->status == 'arrived' || $log->status == 'dispatched' || $log->status == 'out_for_delivery')
                                                              Branch : {{$log->branch_data->name}},{{$log->branch_data->pincode}},{{$log->branch_data->city}},{{$log->branch_data->state}}
                                                             @endif
                                                         </activity>
