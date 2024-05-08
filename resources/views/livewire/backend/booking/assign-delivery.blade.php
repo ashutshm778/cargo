@@ -81,7 +81,9 @@
                                                      @if($booking->status_updated_by_b==0)
                                                       <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
                                                         class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
-                                                     @endif
+                                                      @else
+                                                      {[$booking->status]}
+                                                      @endif
                                                     @endif
                                             </div>
                                         </td>
