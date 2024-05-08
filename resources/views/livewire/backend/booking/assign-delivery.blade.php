@@ -114,8 +114,6 @@
                 @this.set(elementName, data);
             });
         </script>
-
-
         <script>
             Livewire.on('showDeliveryStatus', () => {
                 $('#delivery_status').modal('show');
