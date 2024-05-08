@@ -82,7 +82,7 @@
                                                       <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
                                                         class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
                                                       @else
-                                                      {[$booking->status]}
+                                                      {{$booking->status}}
                                                       @endif
                                                     @endif
                                             </div>
