@@ -54,6 +54,7 @@ class PermissionTableSeeder extends Seeder
             'mainifestation-list',
             'bookinglog-list',
             'delivery-list',
+            'delivery-assign-list',
         ];
 
 

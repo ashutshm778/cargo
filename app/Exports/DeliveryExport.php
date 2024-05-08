@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromArray;
 
-class BookingMExport implements FromCollection, WithMapping, WithHeadings
+class DeliveryExport implements FromCollection, WithMapping, WithHeadings
 {
     protected $bookings;
 
@@ -35,7 +35,7 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
             'from',
             'to',
             'date',
-            'status'
+            'assigned'
         ];
     }
 
@@ -44,8 +44,12 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
     */
     public function map($data): array
     {
-
+        $is_assign='no';
+        if(!empty($data->assign_to)){
+            $is_assign='yes';
+        }
         return [
+
             $data->tracking_code,
             $data->bill_no,
             $data->consignor,
@@ -53,8 +57,7 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
             $data->branch_from->name,
             $data->branch_to->name,
             $data->date,
-            $data->status,
-
+            $is_assign,
         ];
 
 

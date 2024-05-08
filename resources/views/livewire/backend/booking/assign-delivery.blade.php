@@ -30,7 +30,7 @@
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
                         <div class="col-5">
-
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
@@ -74,6 +74,8 @@
                                                 <a href="{{ route('booking.track_order', $booking->id) }}"
                                                     class="me-2" title="Track Order" wire:navigate><i
                                                         class="bx bx-map"></i></a>
+                                                 <a href="#" wire:click="openConsginee('{{ $booking->id }}')"
+                                                    class="me-2" title="Change Status"><i class="bx bx-pin"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -114,7 +116,7 @@
                 @this.set(elementName, data);
             });
         </script>
-        <script>
+          <script>
             Livewire.on('showDeliveryStatus', () => {
                 $('#delivery_status').modal('show');
             });

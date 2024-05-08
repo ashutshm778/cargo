@@ -4,14 +4,14 @@ namespace  App\Exports;
 
 
 
-use App\Models\Booking;
+use App\Models\BookingLog;
+use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromArray;
 
-class BookingMExport implements FromCollection, WithMapping, WithHeadings
+class BookingLogExport implements FromCollection, WithMapping, WithHeadings
 {
     protected $bookings;
 
@@ -22,20 +22,19 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
 
     public function collection()
     {
-        return Booking::whereIn('id', $this->bookings)->with(['branch_from','branch_to'])->get();
+        return BookingLog::whereIn('id', $this->bookings)->with(['branch_data','booking_data'])->get();
     }
 
     public function headings(): array
     {
         return [
             'tracking_code',
-            'bill_no',
-            'consignor',
-            'consignee',
-            'from',
-            'to',
-            'date',
-            'status'
+            'booking_bill_no',
+            'branch',
+            'source',
+            'status',
+            'action',
+            'description'
         ];
     }
 
@@ -47,13 +46,12 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
 
         return [
             $data->tracking_code,
-            $data->bill_no,
-            $data->consignor,
-            $data->consignee,
-            $data->branch_from->name,
-            $data->branch_to->name,
-            $data->date,
+            $data->booking_data->bill_no,
+            $data->branch_data->name,
+            $data->source,
+            $data->action,
             $data->status,
+            $data->description,
 
         ];
 

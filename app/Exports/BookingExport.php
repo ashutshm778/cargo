@@ -22,7 +22,7 @@ class BookingExport implements FromCollection, WithMapping, WithHeadings
 
     public function collection()
     {
-        return Booking::whereIn('id', $this->bookings)->get();
+        return Booking::whereIn('id', $this->bookings)->with(['branch_from','branch_to'])->get();
     }
 
     public function headings(): array

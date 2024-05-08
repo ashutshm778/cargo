@@ -30,6 +30,7 @@
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
                         <div class="col-5">
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
                             @if(count($booking_id) > 0)
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="openDeliveryBoy()" >Assign Delivery Boy</a>
                             @endif
@@ -50,7 +51,6 @@
                                     <th>Consignee</th>
                                     <th>From</th>
                                     <th>To</th>
-
                                     <th>Action</th>
 
                                 </tr>
@@ -67,10 +67,7 @@
                                         <td>{{ $booking->branch_to->name }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
-                                                @if (auth()->guard('admin')->user()->can('booking-edit'))
-                                                <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
-                                                    title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
-                                                    @endif
+
                                                 <a href="{{ route('booking.show', $booking->id) }}" class="me-2"
                                                     title="View" wire:navigate><i class="bx bxs-show"></i></a>
 

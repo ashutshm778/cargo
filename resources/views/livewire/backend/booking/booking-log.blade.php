@@ -30,7 +30,7 @@
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
                         <div class="col-5">
-
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
@@ -43,7 +43,7 @@
                                 <tr>
 
                                     <th>Tracking Code</th>
-                                    <th>Booking Id</th>
+                                    <th>Booking Bill No</th>
                                     <th>Branch</th>
                                     <th>Source</th>
                                     <th>Status</th>
@@ -60,7 +60,7 @@
                                             {{ $data->tracking_code }}
                                         </td>
                                         <td>
-                                            {{ $data->booking_id }}
+                                            {{ $data->booking_data->bill_no }}
                                         </td>
                                         <td>
                                             {{ $data->branch_data->name }}
