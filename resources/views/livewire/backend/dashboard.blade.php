@@ -161,6 +161,7 @@
             @endif
         </div>
     </div>
+
     @push('scripts')
         @if (auth()->guard('admin')->user()->id == 1)
             <script>
