@@ -45,8 +45,7 @@
                             <thead>
                                 <tr>
                                     <th>Assign</th>
-                                    <th>Tracking Code</th>
-                                    <th>Bill No</th>
+                                    <th>AWB No / Tracking No</th>
                                     <th>Consignor</th>
                                     <th>Consignee</th>
                                     <th>From</th>
@@ -59,7 +58,6 @@
                                 @foreach ($deliveries as $booking)
                                     <tr>
                                         <th>@if(empty($booking->assign_to))<input type="checkbox" id="booking_id.{{$booking->id}}"  wire:model.live="booking_id" value="{{$booking->id}}" />@else Already Assign @endif </th>
-                                        <td>{{ $booking->tracking_code }}</td>
                                         <td>{{ $booking->bill_no }}</td>
                                         <td>{{ $booking->consignor }}</td>
                                         <td>{{ $booking->consignee }}</td>

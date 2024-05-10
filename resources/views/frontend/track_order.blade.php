@@ -33,8 +33,8 @@
                                     <div class="widget widget_subscribe">
                                         <div class="single-subscribe-inner">
 
-                                            <input type="text" name="bill_no" placeholder="Enter Bill No." value="{{request('bill_no')}}" required>
-                                            <button type="submit" class="btn btn-base" href="#">Bill No <i class="fa fa-paper-plane"></i></button>
+                                            <input type="text" name="bill_no" placeholder="Enter AWB No / Tracking No." value="{{request('bill_no')}}" required>
+                                            <button type="submit" class="btn btn-base" href="#"> AWB No / Tracking No <i class="fa fa-paper-plane"></i></button>
 
                                         </div>
                                     </div>

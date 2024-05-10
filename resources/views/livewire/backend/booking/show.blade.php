@@ -66,7 +66,7 @@
                                         <h2 class="fw-bold">PRASHANT CARGO & LOGISTICS</h2>
                                         <h6 class="fw-bold">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
                                             VARANASI-221005</h6>
-                                        <p>Phone :9335542484,8887790443,9335642484</p>
+                                        <p>Phone :8887790443</p>
 
                                     </div>
                                     <div class="col-3">
@@ -85,7 +85,7 @@
                                 <table class="table table-sm table-bordereds">
                                     <tbody>
                                         <tr>
-                                            <td>G.R.No/Bill. No- <b>{{$booking->bill_no}}</b></td>
+                                            <td>AWB No / Tracking No- <b>{{$booking->bill_no}}</b></td>
                                             <td>Date- <b> {{$booking->date}}</b></td>
                                             <td>Destination- <b>{{$booking->to}}</b></td>
                                         </tr>

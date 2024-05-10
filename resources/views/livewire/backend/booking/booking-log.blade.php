@@ -42,8 +42,7 @@
                             <thead>
                                 <tr>
 
-                                    <th>Tracking Code</th>
-                                    <th>Booking Bill No</th>
+                                    <th>AWB No / Tracking No</th>
                                     <th>Branch</th>
                                     <th>Source</th>
                                     <th>Status</th>
@@ -56,9 +55,6 @@
 
                                 @foreach ($booking_logs as $key => $data)
                                     <tr>
-                                        <td>
-                                            {{ $data->tracking_code }}
-                                        </td>
                                         <td>
                                             {{ $data->booking_data->bill_no }}
                                         </td>

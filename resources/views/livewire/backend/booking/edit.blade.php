@@ -14,7 +14,7 @@
                                                 <h2 class="fw-bold">PRASHANT CARGO & LOGISTICS</h2>
                                                 <h6 class="fw-bold">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
                                                     VARANASI-221005</h6>
-                                                <p>Phone :9335542484,8887790443,9335642484</p>
+                                                <p>Phone :8887790443</p>
                                                 <hr>
                                             </div>
 
@@ -27,9 +27,9 @@
                                             <tbody>
                                                 <tr>
                                                     <td colspan="2">
-                                                        <label for="bill_no"> G.R.No/Bill. No- </label>
+                                                        <label for="bill_no"> AWB No / Tracking No- </label>
                                                         <input type="text" class="form-control col-5 mb-3" id="bill_no"
-                                                            wire:model="bill_no" placeholder="Bill No"
+                                                            wire:model="bill_no" placeholder="AWB No/Tracking No"
                                                             value="{{ old('bill_no') }}" readonly required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"

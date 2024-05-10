@@ -46,8 +46,7 @@
                         <table class="table align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
-                                    <th>Tracking Code</th>
-                                    <th>Bill No</th>
+                                    <th>AWB No / Tracking No</th>
                                     <th>Consignor</th>
                                     <th>Consignee</th>
                                     <th>From</th>
@@ -61,7 +60,6 @@
                             <tbody>
                                 @foreach ($bookings as $booking)
                                     <tr>
-                                        <td>{{ $booking->tracking_code }}</td>
                                         <td>{{ $booking->bill_no }}</td>
                                         <td>{{ $booking->consignor }}</td>
                                         <td>{{ $booking->consignee }}</td>
