@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-lg-7 col-md-8">
                             <div class="banner-inner style-white">
-                                <h1 class="b-animate-2 title">FAST & RELIABLE COURIER SERVICES</h1>
+                                <h1 class="b-animate-2 title">FAST & RELIABLE LOGISTICS SERVICES</h1>
                                 <p class="b-animate-3 content">Prashant Cargo & Logistics is a leading courier service company providing fast and reliable delivery services.</p>
                                 <div class="btn-wrap">
                                     <a class="btn btn-base b-animate-4" href="#"> Explore All Services</a>

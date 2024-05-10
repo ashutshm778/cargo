@@ -33,6 +33,7 @@ class Create extends Component
     public $inputs = [];
     public $consigner_id,$consignee_id;
     public $bill_no;
+    public $eway_bill_no;
 
     function mount()
     {
@@ -175,6 +176,12 @@ class Create extends Component
             'consignee_phone' => 'required'
         ]);
 
+        if($this->value >= 50000){
+
+            $this->validate([
+                'eway_bill_no' => 'required'
+            ]);
+        }
 
         if(empty($this->consignee_id)){
             $consignee= new Consignee;
@@ -224,7 +231,7 @@ class Create extends Component
         $booking->date=$this->date;
         $booking->edd=$this->date;
         $booking->delivery_address=$this->delivery_address;
-
+        $booking->eway_bill_no=$this->eway_bill_no;
         $booking->consignor=$consigner->name;
         $booking->consignor_phone=$consigner->phone;
         $booking->consignee=$consignee->name;

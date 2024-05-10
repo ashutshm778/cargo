@@ -35,7 +35,8 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
             'from',
             'to',
             'date',
-            'status'
+            'status',
+            'eway_bill_no'
         ];
     }
 
@@ -54,7 +55,7 @@ class BookingMExport implements FromCollection, WithMapping, WithHeadings
             $data->branch_to->name,
             $data->date,
             $data->status,
-
+            $data->eway_bill_no,
         ];
 
 

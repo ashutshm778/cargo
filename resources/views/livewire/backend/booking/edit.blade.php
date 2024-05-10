@@ -186,6 +186,18 @@
                                             placeholder="Value" value="{{ old('value') }}" required>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label for="eway_bill_no">Eway Bill No.-</label><input type="text"
+                                            class="form-control" id="eway_bill_no" wire:model="eway_bill_no"
+                                            placeholder="Booking No" value="{{ old('eway_bill_no') }}" required>
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                            role="alert">
+                                            <strong>{{ $errors->first('eway_bill_no') }}</strong>
+                                        </span>
+                                    </td>
+                                </tr>
                                 </tbody>
                                 </table>
                                 <table class="table table-borderd">

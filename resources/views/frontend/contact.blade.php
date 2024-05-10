@@ -79,8 +79,7 @@
                                     <i class="fa fa-phone-alt"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>+91-1234567890</p>
-                                    <p>+91-1234567890</p>
+                                    <p>+91-8887790443</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +90,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>info.info@prashantcargo.com</p>
-                                    <p>info.info@prashantcargo.com</p>
+                                    <p>info@prashantcargo.com</p>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +101,9 @@
                                     <i class="fa fa-map-marker-alt"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>Varanasi, Uttar Pradesh</p>
-                                    <p>India</p>
+                                    <p>S-21/123-1, SUBHASH NAGAR MALDAHIYA,
+                                    </p>
+                                    <p>CANTT,VARANASI-221005</p>
                                 </div>
                             </div>
                         </div>

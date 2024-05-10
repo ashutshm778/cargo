@@ -49,7 +49,7 @@
                         <img src="{{ asset('frontend/assets/img/service/1.png')}}" alt="img">
                     </div>
                     <div class="details">
-                        <h5>Domestic Courier Services</h5>
+                        <h5>Domestic Courier and logistics Services</h5>
                     </div>
                 </div>
             </div>
