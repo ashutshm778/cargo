@@ -22,7 +22,7 @@
     <!-- breadcrumb end -->
 
     <!-- about area start -->
-    <div class="about-area pd-top-115 pd-bottom-90">
+    <div class="about-area pd-top-115 pd-bottom-80">
         <div class="container">
             <div class="about-area-inner">
                 <div class="row">
@@ -62,29 +62,50 @@
                 </div>
             </div>
         </div>
-            <!--fact-area start-->
+    <!--fact-area start-->
     <div class="container pd-top-115">
-        <div class="fact-counter-area" style="background: url({{ asset('frontend/assets/img/fact/bg.png')}});">
+        <div class="fact-counter-area">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
                     <div class="single-fact-wrap">
-                        <h2><span class="counter">4500</span>+</h2>
-                        <h5>Shipment Delivered</h5>
-                        <p>Yay, packages delivered! That means someone sent you something special, like a present or something you ordered.</p>
+                        <img src="{{ asset('frontend/assets/img/ShipmentsDay.png')}}" alt="Counter Image">
+                        <h2><span class="counter">1</span>L+/Month</h2>
+                        <h5>Shipments/Day</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
                     <div class="single-fact-wrap">
+                        <img src="{{ asset('frontend/assets/img/Hubs.png')}}" alt="Counter Image">
                         <h2><span class="counter">20</span>+</h2>
-                        <h5>Our Branches</h5>
-                        <p>"Our branches" are like the different parts of a tree. Imagine a big tree with lots of branches spreading out in different directions.</p>
+                        <h5>Hubs</h5>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-fact-wrap after-none">
-                        <h2><span class="counter">15</span>K+</h2>
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
+                    <div class="single-fact-wrap">
+                        <img src="{{ asset('frontend/assets/img/PinCodes.png')}}" alt="Counter Image">
+                        <h2><span class="counter">1000</span>+</h2>
+                        <h5>Pin Codes</h5>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
+                    <div class="single-fact-wrap">
+                        <img src="{{ asset('frontend/assets/img/FieldServiceRepresentatives.png')}}" alt="Counter Image">
+                        <h2><span class="counter">100</span>+</h2>
+                        <h5>Team</h5>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
+                    <div class="single-fact-wrap">
+                        <img src="{{ asset('frontend/assets/img/branch.png')}}" alt="Counter Image">
+                        <h2><span class="counter">5</span>+</h2>
+                        <h5>Branches </h5>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 gx-2 col-6">
+                    <div class="single-fact-wrap">
+                        <img src="{{ asset('frontend/assets/img/customer-satisfaction.png')}}" alt="Counter Image">
+                        <h2><span class="counter">1</span>M+</h2>
                         <h5>Happy Customer</h5>
-                        <p>A "happy customer" is someone who feels really good about something they bought or experienced.</p>
                     </div>
                 </div>
             </div>
@@ -151,47 +172,91 @@
     <div class="partner-area pd-top-90 pd-bottom-120">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-7">
+                <div class="col-lg-10">
                     <div class="section-title text-center">
-                        <h4 class="subtitle">HAPPY CLIENTS</h4>
-                        <h2 class="title">TRUSTED OUR CLIENTS</h2>
+                        <h4 class="subtitle">OUR BRANDS</h4>
+                        <h2 class="title">WE ARE THE FIRST PREFERENCE OF LEADING GLOBAL BRANDS</h2>
                     </div>
                 </div>
             </div>
             <div class="partner-slider owl-carousel">
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/1.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/reliance.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/2.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/adidas.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/3.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/flipkart.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/4.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/boat.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/5.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/lic.jpg')}}" alt="img">
                     </div>
                 </div>
                 <div class="item">
                     <div class="thumb">
-                        <img src="{{ asset('frontend/assets/img/partner/6.png')}}" alt="img">
+                        <img src="{{ asset('frontend/assets/img/brand/first-cry.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/zara.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/cliq.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/Souled-Store.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/meesho.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/m-caffeine.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/purple.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/samsung.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/wow.jpg')}}" alt="img">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="{{ asset('frontend/assets/img/brand/au.jpg')}}" alt="img">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--partner-area end-->
-
     @endsection

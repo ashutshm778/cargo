@@ -30,6 +30,7 @@
                                 <li><a href="{{route('service_detail')}}">Service Details</a></li>
                             </ul>
                         </li> --}}
+                        <li><a href="{{route('career')}}">Career</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                     </ul>
                 </div>
@@ -42,3 +43,73 @@
         </nav>
     </header>
     <!-- navbar end -->
+    <div class="enquiryBtn"><a class="btn btn-base" data-bs-toggle="modal" data-bs-target="#myModal1">Franchise Enquiry <i class="fa fa-envelope" aria-hidden="true"></i></a></div>
+
+    <div class="modal fade show" id="myModal1" >
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Franchise Business Enquiry Form!</h5>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="contact-form text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single-input-inner">
+                                    <label><i class="fa fa-user"></i></label>
+                                    <input type="text" placeholder="Full Name*" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input-inner">
+                                    <label><i class="fa fa-building"></i></label>
+                                    <input type="text" placeholder="Company Name*" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input-inner">
+                                    <label><i class="fas fa-calculator"></i></label>
+                                    <input type="text" placeholder=" Phone*" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input-inner">
+                                    <label><i class="fa fa-envelope"></i></label>
+                                    <input type="text" placeholder="Email*" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-select-inner">
+                                    <label><i class="far fa-file-alt"></i></label>
+                                    <select class="single-select">
+                                        <option>Check the services you’re interested in</option>
+                                        <option value="B2B">B2B</option>
+                                        <option value="B2C">B2C</option>
+                                        <option value="Cross-Border Logistics">Cross-Border Logistics</option>
+                                        <option value="3rd Party Logistics (3PL)">3rd Party Logistics (3PL)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input-inner">
+                                    <label><i class="fa fa-map-marker"></i></label>
+                                    <input type="text" placeholder="Location(s) for which you are interested in our services:" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="single-input-inner">
+                                    <label><i class="fas fa-pencil-alt"></i></label>
+                                    <textarea placeholder="Enter about your service requirement details"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <a class="btn btn-base" href="#"> ENQUIRY NOW
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+        </div>
+    </div>
+        </div>
+    </div>

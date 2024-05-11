@@ -938,7 +938,7 @@ ul {
     ## Breadcumb
 ------------------------------------------*/
 .breadcrumb-area {
-  padding:175px 0 40px;
+  padding: 80px 0 50px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -1214,7 +1214,7 @@ ul {
 }
 
 .pd-bottom-80 {
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 
 .pd-bottom-90 {
@@ -1563,7 +1563,7 @@ ul {
 }
 .navbar-area .nav-container .navbar-collapse .navbar-nav li + li {
   margin-left: 15px;
-  padding: 6px;
+  /* padding: 6px; */
 }
 .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children {
   position: relative;
@@ -2575,11 +2575,10 @@ ul {
 .single-input-inner input {
   width: 100%;
   height: 60px;
-  border: 0;
+  border: 1px solid #ddd;
   border-radius: 0px;
   padding: 0 40px;
   font-size: 14px;
-  background: rgba(8, 12, 36, 0.06);
   color: var(--paragraph-color);
 }
 .single-input-inner input::-webkit-input-placeholder {
@@ -2598,17 +2597,16 @@ ul {
   color: var(--paragraph-color);
 }
 .single-input-inner input:active, .single-input-inner input:focus, .single-input-inner input:hover {
-  border: 0;
+  /* border: 0; */
 }
 .single-input-inner textarea {
   width: 100%;
-  border: 0;
-  height: 160px;
+  height: 100px;
   border-radius: 0px;
   padding: 17px 40px;
-  background: rgba(8, 12, 36, 0.06);
   color: var(--paragraph-color);
   margin-bottom: -8px;
+  border: 1px solid #ddd;
 }
 .single-input-inner textarea::-webkit-input-placeholder {
   color: var(--paragraph-color);
@@ -2707,6 +2705,7 @@ ul {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  border: 1px solid #ddd;
 }
 .single-select-inner label {
   font-weight: 400;
@@ -2727,7 +2726,6 @@ ul {
   border-radius: 0px;
   font-size: 14px;
   color: var(--paragraph-color);
-  background: rgba(8, 12, 36, 0.06);
   padding: 0 30px 0 40px;
 }
 .single-select-inner .single-select::-webkit-input-placeholder {
@@ -3329,16 +3327,23 @@ ul {
 }
 
 .fact-counter-area {
-  border-top: 5px solid var(--main-color);
-  padding: 39px 45px 11px;
+  /* border-top: 5px solid var(--main-color);
+  padding: 39px 45px 11px; */
 }
 
 .single-fact-wrap {
-  position: relative;
-  margin-bottom: 30px;
-  padding-left: 15px;
+    position: relative;
+    margin-bottom: 15px;
+    padding: 20px 15px 10px;
+    text-align: center;
+    background: rgb(244, 244, 244);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
-.single-fact-wrap:after {
+.single-fact-wrap img{
+    width: 60px;
+}
+/* .single-fact-wrap:after {
   content: "";
   position: absolute;
   right: -15px;
@@ -3348,18 +3353,20 @@ ul {
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
   background: var(--main-color);
-}
+} */
 .single-fact-wrap h2 {
   color: var(--main-color);
   font-weight: 700;
-  font-size: 44px;
-  line-height: 57px;
+  font-size: 24px;
+  line-height: 25px;
+  margin-top: 10px;
   margin-bottom: 8px;
+  text-align: center;
 }
 .single-fact-wrap h5 {
-  line-height: 31px;
-  color: #fff;
-  margin-bottom: 10px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    font-size: 15px;
 }
 .single-fact-wrap p {
   line-height: 26px;
@@ -3846,10 +3853,11 @@ ul {
 .partner-slider .thumb img {
   width: auto;
   margin: auto;
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1);
+  /* -webkit-filter: grayscale(1);
+          filter: grayscale(1); */
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  box-shadow: rgba(0, 0, 0, 0.125) 0px 0px 4px;
 }
 .partner-slider .owl-nav {
   display: none;
@@ -4018,6 +4026,7 @@ ul {
 .contact-information-wrap {
   background: var(--main-color);
   padding: 29px 40px 40px;
+  height: 100%;
 }
 .contact-information-wrap h3 {
   border-bottom: 2px solid #fff;
@@ -6045,4 +6054,22 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+.enquiryBtn {
+    position: relative;
+}
+.enquiryBtn a {
+    position: fixed;
+    top: 45%;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    transform: rotate(90deg);
+    z-index: 1024;
+    right: -76px;
+    font-size: 15px;
+    padding: 5px 10px !important;
+    letter-spacing: 1px;
+}
+.dds p{
+    color: #fff;
 }
