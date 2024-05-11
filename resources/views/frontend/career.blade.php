@@ -61,8 +61,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="" style="justify-content: left;display: flex;">Applied Post</label>
                                     <div class="single-select-inner">
-                                        <label><i class="far fa-file-alt"></i></label>
                                         <select class="single-select">
                                             <option>Choose Post</option>
                                             <option value="operation">Operation</option>
@@ -74,9 +74,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="" style="justify-content: left;display: flex;">Resume</label>
                                     <div class="single-input-inner">
-                                        <label><i class="fa fa-file-o"></i></label>
-                                        <input type="file" name="resume">
+                                        <input type="file" value="Upload Resume" name="resume" style="padding: 14px 20px;">
                                     </div>
                                 </div>
                                 <div class="col-12">
