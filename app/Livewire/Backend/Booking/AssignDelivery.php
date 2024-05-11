@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AssigneDeliveryExport;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+
 class AssignDelivery extends Component
 {
 
@@ -120,5 +121,11 @@ class AssignDelivery extends Component
         $bookings=$query->get()->pluck('id');
 
         return Excel::download(new AssigneDeliveryExport($bookings), 'assigned_delivery-report.xlsx');
+    }
+
+    public function gerarate_pdf(){
+
+
+
     }
 }
