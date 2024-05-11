@@ -34,36 +34,42 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <form class="contact-form text-center">
+                        <form method="post" action="{{route('career_save')}}" class="contact-form text-center" enctype="multipart/form-data">
+                            @csrf
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                <strong>Success!</strong> {{ $message }}
+                                </div>
+                            @endif
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="single-input-inner">
                                         <label><i class="fa fa-user"></i></label>
-                                        <input type="text" placeholder="Full Name*" required>
+                                        <input type="text" placeholder="Full Name*" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-input-inner">
                                         <label><i class="fa fa-building"></i></label>
-                                        <input type="text" placeholder="Company Name*" required>
+                                        <input type="text" placeholder="Company Name*" name="company_name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-input-inner">
                                         <label><i class="fas fa-calculator"></i></label>
-                                        <input type="text" placeholder=" Phone*" required>
+                                        <input type="text" placeholder=" Phone*" name="phone" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="single-input-inner">
                                         <label><i class="fa fa-envelope"></i></label>
-                                        <input type="text" placeholder="Email*" required>
+                                        <input type="text" placeholder="Email*" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" style="justify-content: left;display: flex;">Applied Post</label>
                                     <div class="single-select-inner">
-                                        <select class="single-select">
+                                        <select class="single-select" name="post_name">
                                             <option>Choose Post</option>
                                             <option value="operation">Operation</option>
                                             <option value="sales-&-marketing">Sales & Marketing</option>
@@ -76,18 +82,18 @@
                                 <div class="col-md-6">
                                     <label for="" style="justify-content: left;display: flex;">Resume</label>
                                     <div class="single-input-inner">
-                                        <input type="file" value="Upload Resume" name="resume" style="padding: 14px 20px;">
+                                        <input type="file" value="Upload Resume" name="resume" accept="application/pdf" style="padding: 14px 20px;">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="single-input-inner">
                                         <label><i class="fas fa-pencil-alt"></i></label>
-                                        <textarea placeholder="Enter about your service requirement details"></textarea>
+                                        <textarea placeholder="About..." name="message"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <a class="btn btn-base" href="#"> Submit <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    </a>
+                                    <button class="btn btn-base"> Submit <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
