@@ -64,4 +64,6 @@ Route::group(['middleware' => ['admin']], function() {
 
     Route::get('branch_report', App\Livewire\Backend\Report\BranchReport::class)->name('admin.branch_report');
 
+
+
 });
