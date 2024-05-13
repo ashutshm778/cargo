@@ -24,6 +24,9 @@ Route::get('login', App\Livewire\Backend\Auth\Login::class)->name('login');
 
 
 Route::group(['middleware' => ['admin']], function() {
+
+
+
     Route::get('dashboard', App\Livewire\Backend\Dashboard::class)->name('admin.dashboard');
     Route::get('user_log', App\Livewire\Backend\UserLog::class)->name('admin.user_log');
 
