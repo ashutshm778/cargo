@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('post_name')->nullable();
             $table->string('resume')->nullable();
             $table->string('status')->nullable();
+            $table->string('message')->nullable();
+
             $table->timestamps();
         });
     }
