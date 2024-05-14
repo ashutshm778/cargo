@@ -67,6 +67,10 @@ Route::group(['middleware' => ['admin']], function() {
 
     Route::get('branch_report', App\Livewire\Backend\Report\BranchReport::class)->name('admin.branch_report');
 
+    Route::get('contact_us', App\Livewire\Backend\ContactUs\Index::class)->name('admin.contact_us');
+    Route::get('carrer', App\Livewire\Backend\Career\Index::class)->name('admin.carrer');
+    Route::get('frenchies', App\Livewire\Backend\Frenchie\Index::class)->name('admin.frenchies');
+
 
 
 });

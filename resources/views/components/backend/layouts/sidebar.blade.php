@@ -127,6 +127,27 @@
                 <div class="menu-title">Branch Report</div>
             </a>
         </li>
+        <li>
+            <a href="{{route('admin.contact_us')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-git-branch'></i>
+                </div>
+                <div class="menu-title">Contact Us</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('admin.carrer')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-git-branch'></i>
+                </div>
+                <div class="menu-title">Carrer</div>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('admin.frenchies')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-git-branch'></i>
+                </div>
+                <div class="menu-title">Frenchies</div>
+            </a>
+        </li>
         @endif
     </ul>
     <!--end navigation-->
