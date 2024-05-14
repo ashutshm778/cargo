@@ -21,6 +21,7 @@ class PermissionTableSeeder extends Seeder
             'branch-edit',
             'branch-delete',
             'branch-view',
+            'branch-report',
             'booking-list',
             'booking-create',
             'booking-edit',
@@ -54,7 +55,10 @@ class PermissionTableSeeder extends Seeder
             'mainifestation-list',
             'bookinglog-list',
             'delivery-list',
-            'delivery-assign-list',
+            'delivery_assign-list',
+            'conatct_us-list',
+            'carrer-list',
+            'frenchies-list',
         ];
 
 

@@ -127,6 +127,8 @@
                 <div class="menu-title">Branch Report</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('contact_us-list'))
         <li>
             <a href="{{route('admin.contact_us')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-git-branch'></i>
@@ -134,6 +136,8 @@
                 <div class="menu-title">Contact Us</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('career-list'))
         <li>
             <a href="{{route('admin.carrer')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-git-branch'></i>
@@ -141,6 +145,8 @@
                 <div class="menu-title">Carrer</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('frenchies-list'))
         <li>
             <a href="{{route('admin.frenchies')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-git-branch'></i>
