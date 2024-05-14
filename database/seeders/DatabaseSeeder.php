@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        $this->call(PermissionTableSeeder::class);
+
+
         $user = \App\Models\Admin::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
