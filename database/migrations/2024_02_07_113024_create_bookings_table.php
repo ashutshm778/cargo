@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('edd')->nullable();
             $table->string('from')->nullable();
             $table->string('to')->nullable();
-            $table->string('delivery_address')->unique();
+            $table->string('delivery_address');
             $table->string('consignor')->nullable();
             $table->string('consignee')->nullable();
             $table->string('consignor_gstin')->nullable();

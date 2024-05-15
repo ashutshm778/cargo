@@ -92,8 +92,8 @@ font-size: 1.2em
                                                 <td>DRS No: DKNP3A2405021636<br>
                                                 <img src="" alt="">
                                                 </td>
-                                                <td>Date/Time: 04/04/24<br></td>
-                                                <td>DelBoy- Amit Kumar<br></td>
+                                                <td>Date/Time: {{date('d-m-y H:i')}}<br></td>
+                                                <td>DelBoy- {{$delivery_boy->name}}<br></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -107,16 +107,24 @@ font-size: 1.2em
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($list as $booking)
                                             <tr>
-                                                <td></td>
-                                                <td>Pcs: 1</td>
-                                                <td>SHILPA KAPOOR <br>
-                                                    PODAR INTERNATIONAL KOLHAPUR,<br>
-                                                    ADMINISTRATION. GAT <br>
-                                                    7506280443
+                                                @php
+                                                    $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                                                    $barcode = $generator->getBarcode($booking->bill_no, $generator::TYPE_CODE_128);
+                                                @endphp
+                                                <td>
+                                                    <span style="justify-content: center;display: flex;"> {!!$barcode!!}</span>
+                                                    <span style="justify-content: center;display: flex;">{{$booking->bill_no}}</span>
+                                                </td>
+                                                <td>Pcs: {{count($booking->booking_product)}}</td>
+                                                <td>{{ $booking->consignee }} <br>
+                                                  {{$booking->delivery_address}},<br>
+                                                    {{$booking->consignee_phone}}
                                                 </td>
                                                 <td></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </main>

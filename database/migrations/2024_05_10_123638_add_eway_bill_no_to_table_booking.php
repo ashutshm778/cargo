@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->string('eway_bill_no')->after('payment_status');
+            $table->string('eway_bill_no')->after('payment_status')->nullable();
         });
     }
 

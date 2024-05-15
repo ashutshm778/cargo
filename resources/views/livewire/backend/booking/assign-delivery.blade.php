@@ -18,10 +18,10 @@
                     <div class="row">
                         <div class="col-2">
                             @if (auth()->guard('admin')->user()->id == 1)
-                                <select id='branch' wire:model="branch" class="form-control">
-                                    <option value=''>-- Select Branch--</option>
-                                    @foreach (App\Models\Branch::all() as $branch)
-                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                <select id='delivery_boy_id' wire:model.live="delivery_boy_id" class="form-control">
+                                    <option value=''>-- Select Delivey Boy--</option>
+                                    @foreach(Spatie\Permission\Models\Role::where('name', 'Delivery Boy')->first()->users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             @endif
@@ -31,7 +31,9 @@
                         </div>
                         <div class="col-5">
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
-                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="downloadPdf()">PDF</a>
+                            @if($delivery_boy_id)
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="downloadPdf({{$delivery_boy_id}})">PDF</a>
+                            @endif
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"

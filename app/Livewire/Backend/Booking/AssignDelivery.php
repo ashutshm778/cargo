@@ -3,15 +3,16 @@
 namespace App\Livewire\Backend\Booking;
 
 use Carbon\Carbon;
+use App\Models\Admin;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\BookingLog;
 use Livewire\WithPagination;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AssigneDeliveryExport;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class AssignDelivery extends Component
@@ -23,6 +24,7 @@ class AssignDelivery extends Component
 
     public $search,$branch,$startDate,$endDate;
     public $deivery_status_id,$status,$remark;
+    public $delivery_boy_id;
 
     public function updatedSearch(){
         $this->resetPage();
@@ -42,8 +44,8 @@ class AssignDelivery extends Component
         }else{
           $deliveries = Booking::where('assign_to',Auth::guard('admin')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
         }
-        if($this->branch){
-            $deliveries=$deliveries->where('branch_id',$this->branch);
+        if($this->delivery_boy_id){
+            $deliveries=$deliveries->where('assign_to',$this->delivery_boy_id);
          }
          if($this->startDate && $this->endDate)
          {
@@ -124,10 +126,11 @@ class AssignDelivery extends Component
         return Excel::download(new AssigneDeliveryExport($bookings), 'assigned_delivery-report.xlsx');
     }
 
-    public function downloadPdf()
+    public function downloadPdf($delivery_boy_id)
     {
-        $data=[];
-        $pdf = Pdf::loadView('livewire.backend.booking.pdf',compact('data'));
+        $list= Booking::where('id', '>', 0)->with(['branch_from','branch_to'])->where('assign_to',$delivery_boy_id)->orderBy('id','desc')->get();
+        $delivery_boy=Admin::find($delivery_boy_id);
+        $pdf = Pdf::loadView('livewire.backend.booking.pdf',compact('list','delivery_boy'));
         return response()->streamDownload(function () use($pdf) {
             echo  $pdf->stream();
         }, 'drs.pdf');
