@@ -14,6 +14,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+
+
+Route::get('/admin', function () {
+    return redirect()->route('login');
+});
+
 Route::get('/', [HomeController::class,'home'])->name('home');
 Route::view('about-us', 'frontend.about')->name('about');
 Route::get('track-order',[HomeController::class,'track_order'] )->name('track_order');
