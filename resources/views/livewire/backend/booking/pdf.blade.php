@@ -93,7 +93,7 @@ font-size: 1.2em
                                                 <img src="" alt="">
                                                 </td>
                                                 <td>Date/Time: {{date('d-m-y H:i')}}<br></td>
-                                                <td>DelBoy- {{$delivery_boy->name}}<br></td>
+                                                <td>DelBoy- {{$delivery_boy->name}}<br>Branch- {{$delivery_boy->branch_data->name}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
