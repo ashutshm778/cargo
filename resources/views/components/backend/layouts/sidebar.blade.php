@@ -62,7 +62,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('delivery-assign-list'))
+        @if(auth()->guard('admin')->user()->can('delivery_assign-list'))
         <li>
             <a href="{{route('admin.assign_delivery')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
