@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AssigneDeliveryExport;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class AssignDelivery extends Component
@@ -123,9 +124,12 @@ class AssignDelivery extends Component
         return Excel::download(new AssigneDeliveryExport($bookings), 'assigned_delivery-report.xlsx');
     }
 
-    public function gerarate_pdf(){
-
-
-
+    public function downloadPdf()
+    {
+        $data=[];
+        $pdf = Pdf::loadView('livewire.backend.booking.pdf',compact('data'));
+        return response()->streamDownload(function () use($pdf) {
+            echo  $pdf->stream();
+        }, 'drs.pdf');
     }
 }

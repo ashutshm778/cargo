@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-5">
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
-                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="gerarate_pdf()">PDF</a>
+                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="downloadPdf()">PDF</a>
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+
 class Delivery extends Component
 {
     use AuthorizesRequests;
@@ -157,5 +158,7 @@ class Delivery extends Component
 
         return Excel::download(new DeliveryExport($bookings), 'delivery-list.xlsx');
     }
+
+
 
 }
