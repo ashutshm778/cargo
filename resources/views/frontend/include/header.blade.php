@@ -32,6 +32,7 @@
                         </li> --}}
                         <li><a href="{{route('career')}}">Career</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
+                        <li style="border-bottom: 1px solid #541545;"><a href="#" style="color: #541545;">Staff Login</a></li>
                     </ul>
                 </div>
                 <div class="nav-right-part nav-right-part-desktop">
