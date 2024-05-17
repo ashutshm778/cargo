@@ -90,15 +90,13 @@
                             </div>
                         </div>
                         <div class="single-contact-info-wrap mb-0">
-                            <h6>Office Location:</h6>
+                            <h6>Main Office:</h6>
                             <div class="media">
                                 <div class="icon" style="background: #565969;">
                                     <i class="fa fa-map-marker-alt"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>S-21/123-1, SUBHASH NAGAR MALDAHIYA,
-                                    </p>
-                                    <p>CANTT,VARANASI-221005</p>
+                                    <p>S-21/123-1, Subhash Nagar Maldahiya, Cantt, Varanasi-221005</p>
                                 </div>
                             </div>
                         </div>

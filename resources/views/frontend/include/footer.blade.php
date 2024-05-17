@@ -10,8 +10,7 @@
                             </div>
                             <div class="details">
                                 <h6>OFFICE ADDRESS:</h6>
-                                <p>Varanasi, Uttar Pradesh</p>
-                                <p>India</p>
+                                <p>S-21/123-1, Subhash Nagar Maldahiya, Cantt, Varanasi-221005</p>
                             </div>
                         </div>
                     </div>
@@ -22,8 +21,8 @@
                             </div>
                             <div class="details">
                                 <h6>CONTACT US:</h6>
-                                <p>info.info@prashantcargo.com</p>
-                                <p>+91-1234567890</p>
+                                <p>info@prashantcargo.com</p>
+                                <p>+91-8887790443</p>
                             </div>
                         </div>
                     </div>
@@ -33,9 +32,8 @@
                                 <img src="{{ asset('frontend/assets/img/icon/clock.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h6>WORKING HOURS:</h6>
-                                <p>Weekdays - Mon-Fri:  8am-21pm</p>
-                                <p>Weekend - Sat & Sun:  Closed</p>
+                                <h6>OUR BRANCHES:</h6>
+                                <p>Varanasi, Lucknow, Gorakhpur, Patna City, Patna Junction</p>
                             </div>
                         </div>
                     </div>
@@ -64,11 +62,11 @@
                     <div class="widget widget_nav_menu">
                         <h4 class="widget-title">USEFULL LINKS</h4>
                         <ul>
-                            <li><a href="#"><i class="fa fa-arrow-right"></i> About Us</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-right"></i> Services</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-right"></i> Portfolio</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-right"></i> Blog</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-right"></i> Contact Us</a></li>
+                            <li><a href="{{route('about')}}"><i class="fa fa-arrow-right"></i> About Us</a></li>
+                            <li><a href="{{route('services')}}"><i class="fa fa-arrow-right"></i> Services</a></li>
+                            <li><a href="{{route('career')}}"><i class="fa fa-arrow-right"></i> Career</a></li>
+                            <li><a href="{{route('contact')}}"><i class="fa fa-arrow-right"></i> Contact Us</a></li>
+                            <li><a href="{{route('login')}}"><i class="fa fa-arrow-right"></i> Staff Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +93,7 @@
             <div class="row">
                 <div class="col-lg-6 text-lg-start text-center">
                     <div class="copyright-area">
-                        <p>© 2024 All right reserved. Developed By <a href="https://techuptechnologies.com/">Techup Technologies</a></p>
+                        <p>© 2024 All right reserved. Developed By <a href="https://techuptechnologies.com/logistic-courier-transport-booking-and-tracking-management-software/">Techup Technologies</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-lg-end text-center">

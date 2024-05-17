@@ -21,7 +21,7 @@
     </div>
     <!-- breadcrumb end -->
     <!-- about area start -->
-    <div class="about-area pd-top-115 pd-bottom-120">
+    <div class="about-area pd-top-115 ">
         <div class="container">
             <div class="contact-area mg-top-50 mb-120">
                 <div class="row g-0 justify-content-center">
