@@ -6,17 +6,6 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-footer-top">
                             <div class="icon">
-                                <img src="{{ asset('frontend/assets/img/icon/map-marker.png')}}" alt="img">
-                            </div>
-                            <div class="details">
-                                <h6>OFFICE ADDRESS:</h6>
-                                <p>S-21/123-1, Subhash Nagar Maldahiya, Cantt, Varanasi-221005</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-footer-top">
-                            <div class="icon">
                                 <img src="{{ asset('frontend/assets/img/icon/phone.png')}}" alt="img">
                             </div>
                             <div class="details">
@@ -27,12 +16,23 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="single-footer-top after-none">
+                        <div class="single-footer-top">
                             <div class="icon">
-                                <img src="{{ asset('frontend/assets/img/icon/clock.png')}}" alt="img">
+                                <img src="{{ asset('frontend/assets/img/icon/map-marker.png')}}" alt="img">
                             </div>
                             <div class="details">
-                                <h6>OUR BRANCHES:</h6>
+                                <h6>MAIN OFFICE:</h6>
+                                <p>S-21/123-1, Subhash Nagar Maldahiya, Cantt, Varanasi-221005</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-top after-none">
+                            <div class="icon">
+                                <img src="{{ asset('frontend/assets/img/icon/map-marker.png')}}" alt="img">
+                            </div>
+                            <div class="details">
+                                <h6>BRANCH OFFICE:</h6>
                                 <p>Varanasi, Lucknow, Gorakhpur, Patna City, Patna Junction</p>
                             </div>
                         </div>
