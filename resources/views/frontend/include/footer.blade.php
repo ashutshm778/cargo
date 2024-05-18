@@ -115,6 +115,9 @@
     </div>
     <!-- back to top area end -->
 
+    <div class="download_apk hidden-xs">
+        <a href="{{ asset('frontend/assets/img/app-release.apk')}}" target="_blank"> <img src="{{ asset('frontend/assets/img/download.png')}}"> </a>
+    </div>
 
     <!-- all plugins here -->
     <script src="{{ asset('frontend/assets/js/vendor.js')}}"></script>

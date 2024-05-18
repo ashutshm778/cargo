@@ -1867,7 +1867,7 @@ ul {
 .nav-right-part .btn {
   color: #fff;
   padding: 0 20px;
-  border-radius: 6px;
+  border-radius: 36px;
 }
 .nav-right-part a {
   margin-left: 30px;
@@ -6072,4 +6072,17 @@ input[type=number] {
 }
 .dds p{
     color: #fff;
+}
+.download_apk {
+    width: 200px;
+    position: fixed;
+    margin-right: 10px;
+    right: 10px;
+    margin-bottom: 1px;
+    bottom: 10px;
+    z-index: 9;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: example1;
+    z-index: 9999;
 }
