@@ -17,6 +17,7 @@ class Edit extends Component
     public $name,$branch_code,$phone,$email,$gst,$state,$city,$pincode,$address;
     public $serving_pincode=[];
     public $hidden_id;
+    public $type;
 
     function mount($id)
     {
@@ -41,6 +42,7 @@ class Edit extends Component
         $this->pincode = $branch->pincode;
         $this->address = $branch->address ;
         $this->serving_pincode= json_decode($branch->serving_pincode);
+        $this->type=$branch->type;
     }
 
     public function update(){
@@ -62,6 +64,7 @@ class Edit extends Component
         $branch->pincode = $this->pincode;
         $branch->address = $this->address;
         $branch->serving_pincode=json_encode($this->serving_pincode);
+        $branch->type=$this->type;
         $branch->save();
 
         $this->redirect('/admin/branch', navigate: true);

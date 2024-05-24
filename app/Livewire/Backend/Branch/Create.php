@@ -16,6 +16,7 @@ class Create extends Component
 
     public $name,$branch_code,$phone,$email,$gst,$state,$city,$pincode,$address;
     public $serving_pincode=[];
+    public $type;
 
 
 
@@ -43,6 +44,7 @@ class Create extends Component
         $branch->pincode = $this->pincode;
         $branch->address = $this->address;
         $branch->serving_pincode=json_encode($this->serving_pincode);
+        $branch->type=$this->type;
         $branch->save();
 
         $this->redirect('/admin/branch', navigate: true);
