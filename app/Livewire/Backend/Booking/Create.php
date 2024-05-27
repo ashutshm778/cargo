@@ -173,7 +173,8 @@ class Create extends Component
             'from' => 'required',
             'to' => 'required',
             'consignor_phone' => 'required',
-            'consignee_phone' => 'required'
+            'consignee_phone' => 'required',
+            'status' => 'required',
         ]);
 
         if($this->value >= 50000){

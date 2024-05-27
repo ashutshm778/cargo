@@ -301,7 +301,13 @@
                                                     <option value="">Select Status</option>
                                                     <option value="paid">Paid</option>
                                                     <option value="unpaid">To Pay</option>
-                                                </select></td>
+                                                </select>
+                                                <span
+                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                                role="alert">
+                                                <strong>{{ $errors->first('status') }}</strong>
+                                            </span>
+                                        </td>
                                         </tr>
                                     </tfoot>
                                 </table>
