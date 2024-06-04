@@ -17,8 +17,7 @@ class Create extends Component
     public function store(){
 
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignees',
+            'name' => 'required|unique:consignees',
         ]);
 
         $consigner = new Consignee;

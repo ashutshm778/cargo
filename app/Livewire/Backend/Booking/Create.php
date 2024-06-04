@@ -38,6 +38,11 @@ class Create extends Component
     function mount()
     {
         $this->add(1);
+        $this->date = date('Y-m-d');
+        if(auth()->guard('admin')->user()->id != 1){
+            $this->branch_id = auth()->guard('admin')->user()->branch_id;
+            $this->from = auth()->guard('admin')->user()->branch_id;
+        }
     }
 
     public function add($i)
@@ -91,8 +96,8 @@ class Create extends Component
     public function consignee_store()
     {
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignees',
+            'name' => 'required|unique:consignees',
+
         ]);
 
         $consigner = new Consignee;
@@ -109,8 +114,7 @@ class Create extends Component
     public function consigner_store()
     {
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignors',
+            'name' => 'required|unique:consignors',
         ]);
 
         $consigner = new Consignor;
@@ -148,7 +152,7 @@ class Create extends Component
     }
 
     public function get_consignee_details(){
-        $consignee= Consignee::where('phone',$this->consignee_phone)->first();
+        $consignee= Consignee::where('name',$this->consignee)->first();
         if(!empty($consignee->id)){
         $this->consignee=$consignee->name;
         $this->consignee_gstin=$consignee->gstin;
@@ -157,7 +161,7 @@ class Create extends Component
     }
 
     public function get_consigner_details(){
-        $consigner= Consignor::where('phone',$this->consignor_phone)->first();
+        $consigner= Consignor::where('name',$this->consignor)->first();
         if(!empty($consigner->id)){
         $this->consignor=$consigner->name;
         $this->consignor_gstin=$consigner->gstin;
@@ -168,12 +172,12 @@ class Create extends Component
     public function store(){
 
         $this->validate([
-            'booking_no' => 'required|unique:bookings',
+            'booking_no' => 'unique:bookings',
             'bill_no' => 'required|unique:bookings',
             'from' => 'required',
             'to' => 'required',
-            'consignor_phone' => 'required',
-            'consignee_phone' => 'required',
+            'consignee' => 'required',
+            'consignor' => 'required',
             'status' => 'required',
         ]);
 

@@ -142,8 +142,7 @@ class Edit extends Component
     public function consignee_store()
     {
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignees',
+            'name' => 'required|unique:consignees',
         ]);
 
         $consigner = new Consignee;
@@ -160,8 +159,7 @@ class Edit extends Component
     public function consigner_store()
     {
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignors',
+            'name' => 'required|unique:consignors',
         ]);
 
         $consigner = new Consignor;
@@ -215,12 +213,13 @@ class Edit extends Component
     public function update(){
 
         $this->validate([
-            'booking_no' => 'required|unique:bookings,id,'.$this->hidden_id,
+            'booking_no' => 'unique:bookings,id,'.$this->hidden_id,
             'bill_no' => 'required|unique:bookings,id,'.$this->hidden_id,
             'from' => 'required',
             'to' => 'required',
-            'consignor_phone' => 'required',
-            'consignee_phone' => 'required'
+            'consignee' => 'required',
+            'consignor' => 'required',
+            'status' => 'required',
 
         ]);
 

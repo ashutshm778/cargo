@@ -150,7 +150,7 @@
                                             <td ><a href="{{route('booking.barcode',$booking_product->id)}}" class="no-print" wire:navigate >Download Barcode</a></td>
                                             <td>{{ $booking_product->no_of_pack }}</td>
                                             <td>{{ $booking_product->product }}</td>
-                                            <td>{{$booking_product->unit}}</td>
+                                            <td>{{$booking_product->unitData->name}}</td>
                                             <td>{{$booking_product->qty}}</td>
                                             <td>{{ $booking_product->weight }}</td>
 

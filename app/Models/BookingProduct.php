@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class BookingProduct extends Model
 {
     use HasFactory;
+
+    public function unitData()
+    {
+        return $this->belongsTo(Unit::class, 'unit', 'id');
+    }
 }

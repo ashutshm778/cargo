@@ -34,8 +34,7 @@ class Edit extends Component
     public function update(){
 
         $this->validate([
-            'name' => 'required',
-            'phone' => 'required|unique:consignees,id,'.$this->hidden_id,
+            'name' => 'required|unique:consignees,id,'.$this->hidden_id,
         ]);
 
         $consigner = Consignee::find($this->hidden_id);
