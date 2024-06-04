@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('consignors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('full_address');
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->string('pincode');
             $table->string('gstin')->nullable();
             $table->timestamps();
