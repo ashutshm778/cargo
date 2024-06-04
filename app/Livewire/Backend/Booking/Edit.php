@@ -306,7 +306,7 @@ class Edit extends Component
 
         }
 
-        $this->redirect('/admin/booking', navigate: true);
+        $this->redirect('/admin/booking/show/'.$booking->id, navigate: true);
     }
 
 }

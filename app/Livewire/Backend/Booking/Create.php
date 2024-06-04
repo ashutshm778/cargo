@@ -291,6 +291,6 @@ class Create extends Component
         $booking_log->description=$booking->description;
         $booking_log->save();
 
-        $this->redirect('/admin/booking', navigate: true);
+        $this->redirect('/admin/booking/show/'.$booking->id, navigate: true);
     }
 }
