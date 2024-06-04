@@ -115,7 +115,9 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="consignor">Consignor-</label>
+                                        <label for="consignor">Consignor- <a class="" data-toggle="modal"
+                                            data-target="#exampleModal2" style="font-size: 20px;"><i
+                                                class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
                                         <input type="text" class="form-control" id="consignor" wire:model="consignor"
                                             placeholder="Consignor" value="{{ old('consignor') }}" wire:change="get_consigner_details()" required>
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
@@ -125,9 +127,7 @@
                                             value="{{ old('consignor_id') }}" />
                                     </td>
                                     <td>
-                                        <label for="consignee">Consignor Phone- <a class="" data-toggle="modal"
-                                                data-target="#exampleModal2" style="font-size: 20px;"><i
-                                                    class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
+                                        <label for="consignee">Consignor Phone- </label>
                                         <input type="text" class="form-control" id="consignor_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
@@ -138,7 +138,9 @@
                                             </span>
                                     </td>
                                     <td>
-                                        <label for="consignor">Consignee-</label>
+                                        <label for="consignor">Consignee-<a class="" data-toggle="modal"
+                                            data-target="#exampleModal" style="font-size: 20px;"><i
+                                                class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
                                         <input type="text" class="form-control" id="consignee" wire:model="consignee"
                                             placeholder="Consignee" value="{{ old('consignee') }}" wire:change="get_consignee_details()"  required>
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
@@ -149,9 +151,7 @@
                                     </td>
 
                                     <td>
-                                        <label for="consignee">Consignee Phone- <a class="" data-toggle="modal"
-                                                data-target="#exampleModal" style="font-size: 20px;"><i
-                                                    class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
+                                        <label for="consignee">Consignee Phone- </label>
                                         <input type="text" class="form-control" id="consignee_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
