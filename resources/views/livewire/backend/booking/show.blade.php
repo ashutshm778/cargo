@@ -228,7 +228,7 @@
         </div>
         <div class="toolbar no-print mb-3">
             <div class="text-end">
-                <button type="button" class="btn btn-dark" onClick="printDiv('printableArea');"><i class="fa fa-print"></i>
+                <button type="button" id="print_button" class="btn btn-dark" onClick="printDiv('printableArea');"><i class="fa fa-print"></i>
                     Print</button>
             </div>
             <hr />
@@ -246,5 +246,9 @@
 
      document.body.innerHTML = originalContents;
 }
+
+$(document).ready(function(){
+  $("#print_button").trigger("click");
+});
 </script>
 </div>
