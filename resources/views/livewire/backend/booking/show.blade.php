@@ -188,6 +188,11 @@
                                             <td colspan="1">Total</td>
                                             <td>{{$booking->total}}</td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="6"></td>
+                                            <td colspan="1">Status</td>
+                                            <td>{{$booking->payment_status}}</td>
+                                        </tr>
                                     </tfoot>
                                 </table>
                                 <table style="border:0; margin-bottom:0;">
