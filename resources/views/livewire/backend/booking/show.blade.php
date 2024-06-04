@@ -1,7 +1,20 @@
 <div>
     <style>
+        hr {
+            opacity: 1;
+            margin-top: 0;
+        }
+            .invoice table tfoot td {
+                border-bottom: 1px solid #000;
+            }
+            .table-bordered {
+             border: 1px solid #000;
+            }
         @media print
         {
+            .table-bordered {
+             border: 1px solid #000;
+            }
         .table td,
         .table th {
         border-top: 0;
@@ -10,13 +23,13 @@
         .invoice table td,
         .invoice table th {
         padding: 2px 5px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #000;
         font-size: 13px;
         }
 
         .table-bordered td,
         .table-bordered th {
-        border: 1px solid #eee;
+        border: 1px solid #000;
         }
 
         .table-bordereds td,
@@ -38,12 +51,12 @@
             .invoice table td,
             .invoice table th {
                 padding: 5px 10px;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid #000;
             }
 
             .table-bordered td,
             .table-bordered th {
-                border: 1px solid #eee;
+                border: 1px solid #000;
             }
 
             .table-bordereds td,
@@ -73,20 +86,22 @@
                                         {{-- <p> <b>GST No:</b> 1234567890</p> --}}
                                        </div>
                                        <div class="col-6"></div>
-                                       <div class="col-3 mb-3 text-center">
+                                       <div class="col-3 text-center">
                                           <p class="float-end "> {!! $barcode !!}
                                            <p >{{$booking->bill_no}}</p>
                                           </p>
                                        </div>
-                                    <hr>
-                                </div>
+                                    </div>
+                                    <table>
+                                        <hr>
+                                    </table>
                             </header>
                             <main>
                                 <table class="table table-sm table-bordereds">
                                     <tbody>
                                         <tr>
                                             <td>AWB No / Tracking No- <b>{{$booking->bill_no}}</b></td>
-                                            <td>Date- <b> {{$booking->date}}</b></td>
+                                            <td>Date- <b> {{date('d-m-Y',strtotime($booking->date))}}</b></td>
                                             <td>Destination- <b>{{$booking->branch_to->name}}</b></td>
                                         </tr>
                                         <tr>
@@ -106,15 +121,12 @@
                                                         <tr>
                                                             <td style="width: 50%; border:0;padding: 5px 15px;">
                                                                 GSTIN <b style="text-align:end;">:
-                                                                    {{$booking->consignor_gstin}}</b></td>
+                                                                    {{$booking->consignor_gstin}}</b>
+                                                                </td>
                                                             <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                GSTIN <b>: {{$booking->consignee_gstin}}</b></td>
+                                                                GSTIN<b>: {{$booking->consignee_gstin}}</b></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td style="width: 50%; border:0;padding: 5px 15px;">
-                                                                Description <b style="text-align:end;">: 3911</b>
-                                                            </td>
-                                                            <td style="width: 50%; border:0;padding: 5px 15px;">
+
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -191,7 +203,10 @@
                                         <tr>
                                             <td colspan="6"></td>
                                             <td colspan="1">Status</td>
-                                            <td>{{$booking->payment_status}}</td>
+                                            <td>
+                                                @if($booking->payment_status=='paid'){{$booking->payment_status}}@endif
+                                                @if($booking->payment_status=='unpaid'){{'To Pay'}}@endif
+                                            </td>
                                         </tr>
                                     </tfoot>
                                 </table>
