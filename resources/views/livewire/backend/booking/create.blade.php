@@ -2,7 +2,7 @@
     <div class="page-wrapper">
         <div class="page-content" id='printable_div_id'>
             <!--end breadcrumb-->
-            <form method="POST" action="#">
+            <form method="POST" action="#" autocomplete="off">
                 <div class="card">
                     <div class="card-body">
                         <div class="table table-bordered">
