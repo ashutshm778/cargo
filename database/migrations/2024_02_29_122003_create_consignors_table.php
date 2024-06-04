@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('full_address');
-            $table->string('phone');
-            $table->string('pincode');
+            $table->string('phone')->nullable();
+            $table->string('pincode')->nullable();
             $table->string('gstin')->nullable();
             $table->timestamps();
         });
