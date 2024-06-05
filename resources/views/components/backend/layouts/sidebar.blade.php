@@ -107,26 +107,7 @@
         </li>
         @endif
 
-        @if(auth()->guard('admin')->user()->canany(['roles-list', 'staff-list']))
-        <li>
-            <a href="javascript:;" class="has-arrow" >
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Role & Permission</div>
-            </a>
-            <ul>
-                <li> <a href="{{route('admin.role')}}" wire:navigate ><i class='bx bx-radio-circle'></i>Role</a></li>
-                <li> <a href="{{route('admin.staff')}}" wire:navigate ><i class='bx bx-radio-circle'></i>Staff</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{route('admin.user_log')}}" aria-expanded="false">
-                <div class="parent-icon"><i class="bx bxs-user-detail"></i>
-                </div>
-                <div class="menu-title">User Log</div>
-            </a>
-        </li>
-        @endif
+
         @if(auth()->guard('admin')->user()->can('branch-report'))
         <li>
             <a href="{{route('admin.branch_report')}}" aria-expanded="false">
@@ -162,6 +143,27 @@
                 <div class="menu-title">Frenchies</div>
             </a>
         </li>
+        @endif
+        <li>
+            <a href="{{route('admin.user_log')}}" aria-expanded="false">
+                <div class="parent-icon"><i class="bx bxs-user-detail"></i>
+                </div>
+                <div class="menu-title">User Log</div>
+            </a>
+        </li>
+        @if(auth()->guard('admin')->user()->canany(['roles-list', 'staff-list']))
+        <li>
+            <a href="javascript:;" class="has-arrow" >
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Role & Permission</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('admin.role')}}" wire:navigate ><i class='bx bx-radio-circle'></i>Role</a></li>
+                <li> <a href="{{route('admin.staff')}}" wire:navigate ><i class='bx bx-radio-circle'></i>Staff</a></li>
+            </ul>
+        </li>
+
         @endif
     </ul>
     <!--end navigation-->

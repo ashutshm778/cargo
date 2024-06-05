@@ -14,8 +14,7 @@
                         <form class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="from" class="form-label">From<span>*</span></label>
-                                <input type="text" class="form-control" id="from" wire:model="from" placeholder="From"
-                                    >
+                                <input type="text" class="form-control" id="from" wire:model="from" placeholder="From" readonly>
                                     @error('from')
                                         <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;" role="alert">
                                             <strong>{{ $message }}</strong>

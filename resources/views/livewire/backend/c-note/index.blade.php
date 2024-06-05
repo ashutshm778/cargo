@@ -32,9 +32,10 @@
                                     <th>Sr No</th>
                                     <th>From</th>
                                     <th>To</th>
-                                    @if (auth()->guard('admin')->user()->canany(['branch-edit', 'branch-view']))
+                                    <th>Differance</th>
+                                    {{-- @if (auth()->guard('admin')->user()->canany(['branch-edit', 'branch-view']))
                                         <th>Action</th>
-                                    @endif
+                                    @endif --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,13 +44,14 @@
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $data->from }}</td>
                                         <td>{{ $data->to }}</td>
-                                        <td>
+                                        <td>{{ $data->to - $data->from }}</td>
+                                        {{-- <td>
                                             <div class="d-flex order-actions">
                                                 @if (auth()->guard('admin')->user()->can('branch-edit'))
-                                                    <a href="{{route('admin.c_note_edit',$data->id)}}" class="me-2"><i class="bx bxs-edit"></i></a>
+                                                    <a href="{{route('admin.c_note_edit',$data->id)}}" class="me-2"><i class="bx bxs-trash"></i></a>
                                                 @endif
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
