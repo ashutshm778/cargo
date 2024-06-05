@@ -83,9 +83,15 @@
                                 <table class="table table-sm table-bordereds">
                                     <tbody>
                                         <tr>
+<<<<<<< HEAD
                                             <td style="font-size:20px;color:#000;">AWB No / Tracking No- <b>{{$booking->bill_no}}</b></td>
                                             <td style="font-size:20px;color:#000;">Date- <b> {{date('d-m-Y',strtotime($booking->date))}}</b></td>
                                             <td style="font-size:20px;color:#000;">Destination- <b>{{$booking->branch_to->name}}</b></td>
+=======
+                                            <td>AWB No / Tracking No- <b>{{$booking->bill_no}}</b></td>
+                                            <td>Date- <b> {{date('d-m-Y',strtotime($booking->date))}}</b></td>
+                                            <td>Destination- <b>{{$booking->delivery_address}}</b></td>
+>>>>>>> b6645330fc2dac2c6fae79699120dbfa02ad3071
                                         </tr>
                                         <tr>
                                             <td style="font-size:20px;color:#000;" colspan="2">From- <b>{{$booking->branch_from->name}}</b></td>
@@ -195,9 +201,15 @@
                                 <table style="border:0; margin-bottom:0;">
                                     <tbody>
                                         <tr>
+<<<<<<< HEAD
                                             <td style="border: 0;font-size:16px;color:#000;">Consignee's Signature with Ruber Stamp</td>
                                             <td style="border: 0;text-align: right;font-size:16px;color:#000;"><b
                                                     style="text-align:left;font-size:16px;color:#000;">PRINCE</b> <br> For Prashant Cargo &
+=======
+                                            <td style="border: 0;">Consignee's Signature with Ruber Stamp</td>
+                                            <td style="border: 0;text-align: right;"><b
+                                                    style="text-align:left;"></b> <br> For Prashant Cargo &
+>>>>>>> b6645330fc2dac2c6fae79699120dbfa02ad3071
                                                 Logistics</td>
                                         </tr>
                                     </tbody>
