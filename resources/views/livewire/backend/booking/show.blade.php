@@ -81,7 +81,7 @@
                                         <tr>
                                             <td>AWB No / Tracking No- <b>{{$booking->bill_no}}</b></td>
                                             <td>Date- <b> {{date('d-m-Y',strtotime($booking->date))}}</b></td>
-                                            <td>Destination- <b>{{$booking->branch_to->name}}</b></td>
+                                            <td>Destination- <b>{{$booking->delivery_address}}</b></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">From- <b>{{$booking->branch_from->name}}</b></td>
