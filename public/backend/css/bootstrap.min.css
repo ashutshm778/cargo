@@ -2164,9 +2164,7 @@ progress {
 }
 
 .table>thead {
-    color: #fff;
     vertical-align: bottom;
-    background: #8d1e7c;
 }
 
 .table-group-divider {

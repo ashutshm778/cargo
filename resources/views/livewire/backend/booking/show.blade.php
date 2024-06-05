@@ -10,48 +10,19 @@
             .table-bordered {
              border: 1px solid #000;
             }
-        @media print
-        {
-            .table-bordered {
-             border: 1px solid #000;
-            }
-        .table td,
-        .table th {
-        border-top: 0;
-        }
-
-        .invoice table td,
-        .invoice table th {
-        padding: 2px 5px;
-        border-bottom: 1px solid #000;
-        font-size: 13px;
-        }
-
-        .table-bordered td,
-        .table-bordered th {
-        border: 1px solid #000;
-        }
-
-        .table-bordereds td,
-        .table-bordereds th {
-        border: 0;
-        }
-        body {
-            background: #fff;
-        }
-        }
             .table td,
             .table th {
                 border-top: 0;
             }
             .invoice table th {
             font-weight: 600;
-            font-size: 13px;
+            font-size: 15px !important;
 }
             .invoice table td,
             .invoice table th {
                 padding: 5px 10px;
-                border-bottom: 1px solid #000;
+                border-bottom: 1px solid #000 !important;
+                font-weight: 600;
             }
 
             .table-bordered td,
@@ -63,6 +34,15 @@
             .table-bordereds th {
                 border: 0;
             }
+
+            @media print {
+            .invoice table td,
+            .invoice table th {
+                padding: 5px 10px !important;
+                border-bottom: 1px solid #000 !important;
+                font-weight: 600 !important;
+            }
+            }
         </style>
 
 <div class="page-wrapper">
@@ -71,7 +51,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="table table-bordered">
-                    <div id="invoice">
                         <div class="invoice">
                             <header>
                                 <div class="row">
@@ -222,7 +201,6 @@
                                 </table>
                             </main>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
