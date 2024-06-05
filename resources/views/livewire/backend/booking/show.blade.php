@@ -162,8 +162,6 @@
             document.body.innerHTML = originalContents;
         }
 
-        $(document).ready(function() {
-            $("#print_button").trigger("click");
-        });
+
     </script>
 </div>
