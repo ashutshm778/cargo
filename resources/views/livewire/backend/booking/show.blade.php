@@ -1,12 +1,4 @@
 <div>
-    <style>
-        .abs p{
-            margin-bottom: 0;
-        }
-        body {
-            font-size: 15px;
-        }
-    </style>
     <div class="page-wrapper">
         <div class="page-content" id='printableArea'>
             <!--end breadcrumb-->
@@ -14,20 +6,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <h2 class="fw-bold">PRASHANT CARGO & LOGISTICS</h2>
-                            <h6 class="fw-bold" style="white-space: nowrap;">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
+                            <h4 class="fw-bold mb-1">PRASHANT CARGO & LOGISTICS</h4>
+                            <h6 class="fw-bold mb-0" style="white-space: nowrap;">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
                                 VARANASI-221005</h6>
-                            <p class="mb-0">Phone :8887790443</p>
+                            <b class="mb-0">Phone :8887790443</b>
 
-                        </div>
-                        <div class="col-3">
-                            {{-- <p> <b>GST No:</b> 1234567890</p> --}}
-                        </div>
-                        <div class="col-6"></div>
-                        <div class="col-3 text-center abs" style="margin-top: -30px;">
-                            <p class="float-end mb-0"> {!! $barcode !!}
-                            <p class="mb-0">{{ $booking->bill_no }}</p>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -35,16 +18,19 @@
                     <table class="table table-sm table-bordered mt-1 mb-0">
                         <tbody>
                             <tr>
-                                <td>AWB No / Tracking No- <b>{{ $booking->bill_no }}</b></td>
-                                <td>Date- <b> {{ date('d-m-Y', strtotime($booking->date)) }}</b></td>
-                                <td>Destination- <b>{{ $booking->branch_to->name }}</b></td>
+                                <td style="vertical-align: middle;">AWB No. <b>{{ $booking->bill_no }}</b></td>
+                                <td style="vertical-align: middle;">Date- <b> {{ date('d-m-Y', strtotime($booking->date)) }}</b></td>
+                                <td style="vertical-align: middle;">Destination- <b>{{ $booking->branch_to->name }}</b></td>
+                                <td class="abs text-center"><p class="float-end mb-0"> {!! $barcode !!}
+                                    <p class="mb-0">{{ $booking->bill_no }}</p>
+                                    </p></td>
                             </tr>
                             <tr>
-                                <td colspan="2">From- <b>{{ $booking->branch_from->name }}</b></td>
+                                <td colspan="3">From- <b>{{ $booking->branch_from->name }}</b></td>
                                 <td>To- <b>{{ $booking->branch_to->name }}</b></td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <table class="mb-0" style="border:0;width:100%;">
                                         <tbody>
                                             <tr>
@@ -106,38 +92,33 @@
                                     <td>{{ $booking_product->freight_charges }}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="6">Seal /Received above mentioned production in good
+                            <tr class="ftsz">
+                                <td rowspan="6" colspan="6"><p>Seal /Received above mentioned production in good
                                     condition and correct measure.<br>
-                                    I/We declare that GST shall be payable by consignor/consignee</td>
+                                    I/We declare that GST shall be payable by consignor/consignee</p>
+                                   <p> I/We have not to claim or avail examption for value
+                                    of goods & material.</p>
+                                </td>
                                 <td colspan="1">Insurance</td>
                                 <td>{{ $booking->insurance }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6">I/We have not to claim or avail examption for value
-                                    of goods & material.</td>
                                 <td colspan="1">B. Charges</td>
                                 <td>{{ $booking->b_charges }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
                                 <td colspan="1">Other Charges</td>
                                 <td>{{ $booking->other_charges }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
                                 <td colspan="1">G.S.T</td>
-                                <td>{{ $booking->tax }}</td>
+                                <td colspan="1">{{ $booking->tax }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
                                 <td colspan="1">Total</td>
                                 <td>{{ $booking->total }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6"></td>
                                 <td colspan="1">Status</td>
                                 <td>
                                     @if ($booking->payment_status == 'paid')
@@ -148,7 +129,7 @@
                                     @endif
                                 </td>
                             </tr>
-                        </tfoot>
+                        </tbody>
                     </table>
                     <table class="table table-bordered" style="margin-bottom:0;width: 100%;">
                         <tbody>
