@@ -35,6 +35,14 @@
             </a>
         </li>
         @endif
+
+        <li>
+            <a href="{{route('admin.c_note')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-user-check'></i>
+                </div>
+                <div class="menu-title">C-Note</div>
+            </a>
+        </li>
         @if(auth()->guard('admin')->user()->can('booking-list'))
         <li>
             <a href="{{route('admin.booking')}}" wire:navigate>
