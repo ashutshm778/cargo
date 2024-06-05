@@ -21,13 +21,9 @@
 	<!-- Bootstrap CSS -->
 	<link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('backend/css/bootstrap-extended.css') }}" rel="stylesheet">
-	{{-- <link href="../../../../fonts.googleapis.com/css276c7.css?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"> --}}
+	<link href="../../../../fonts.googleapis.com/css276c7.css?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="{{ asset('backend/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('backend/css/icons.css') }}" rel="stylesheet">
-	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="{{ asset('backend/css/dark-theme.css') }}"/>
-	<link rel="stylesheet" href="{{ asset('backend/css/semi-dark.css') }}"/>
-	<link rel="stylesheet" href="{{ asset('backend/css/header-colors.css') }}"/>
     <link rel="stylesheet" href="{{ asset('backend/plugins/notifications/css/lobibox.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/datatable/css/dataTables.bootstrap5.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
