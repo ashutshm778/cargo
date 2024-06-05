@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/notifications/css/lobibox.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/datatable/css/dataTables.bootstrap5.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('img_css/css/vendors.css') }}">
-    <link rel="stylesheet" href="{{ asset('img_css/css/aiz-core.css') }}">
     <script>
         var AIZ = AIZ || {};
     </script>
