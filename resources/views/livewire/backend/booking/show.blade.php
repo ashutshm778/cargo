@@ -194,7 +194,7 @@
                                         <tr>
                                             <td style="border: 0;">Consignee's Signature with Ruber Stamp</td>
                                             <td style="border: 0;text-align: right;"><b
-                                                    style="text-align:left;">PRINCE</b> <br> For Prashant Cargo &
+                                                    style="text-align:left;"></b> <br> For Prashant Cargo &
                                                 Logistics</td>
                                         </tr>
                                     </tbody>
