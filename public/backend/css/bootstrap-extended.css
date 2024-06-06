@@ -1,6 +1,6 @@
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    color: #32393f
+    color: #000
 }
 
 a {
@@ -334,13 +334,13 @@ a {
 	color: #f8f9fa!important
 }
 .text-dark {
-	color: #212529!important
+	color: #000!important
 }
 .text-white {
 	color: #fff!important
 }
 .text-body {
-	color: #212529!important
+	color: #000!important
 }
 .text-muted {
 	color: #6c757d!important
@@ -428,19 +428,19 @@ a {
 
 
 .form-check-dark .form-check-input:checked {
-	background-color: #212529;
-	border-color: #212529
+	background-color: #000;
+	border-color: #000
 }
 
 .form-check-dark .form-check-input[type=checkbox]:indeterminate {
-	background-color: #212529;
-	border-color: #212529;
+	background-color: #000;
+	border-color: #000;
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e")
 }
 
 
 .form-check-dark .form-check-input:focus {
-	border-color: #212529;
+	border-color: #000;
 	outline: 0;
 	box-shadow: 0 0 0 .25rem rgba(33, 37, 41, 0.25)
 }
