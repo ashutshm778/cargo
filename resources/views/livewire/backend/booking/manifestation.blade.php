@@ -47,12 +47,12 @@
                         </div> --}}
                         <div class="col-3 mb-3">
                             MFNo:
-                            <input type="text" wire:model.live="mf_no" class="form-control " />
+                            <input type="text" id="mf_no" wire:model.live="mf_no" class="form-control " />
                         </div>
 
                         <div class="col-3 mb-3">
                             AWB No:
-                            <input type="text" wire:model.live="awb_no" wire.change="add_fields()" class="form-control " />
+                            <input type="text" id="awb_no" wire:model.live="awb_no"  wire:keyup="add_fields()" class="form-control " />
                         </div>
                     </div>
                     <div class="table-responsive">
