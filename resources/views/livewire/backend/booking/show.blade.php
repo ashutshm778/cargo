@@ -144,13 +144,17 @@
                         </tbody>
                     </table>
                 </main>
-
-            <div class="toolbar no-print mb-3 mt-4">
-                <div class="text-end">
-                    <button type="button" id="print_button" class="btn btn-dark"
-                        onClick="printDiv('printableArea');"><i class="fa fa-print"></i>
-                        Print</button>
+            <div class="toolbar no-print mb-3">
+                <div class="">
+                   <a href="{{route('booking.create')}}"  wire:navigate > <button type="button" class="btn btn-dark" ><i class="fa fa-print"></i>
+                        Add New</button> </a>
+                        <div class="float-end">
+                            <button type="button" id="print_button" class="btn btn-dark"
+                                onClick="printDiv('printableArea');"><i class="fa fa-print"></i>
+                                Print</button>
+                        </div>
                 </div>
+
             </div>
         </div>
     </div>
