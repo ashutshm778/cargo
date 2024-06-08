@@ -72,7 +72,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach($awb_no_list as $awb_no)
+                                    @php $booking=App\Models\Booking::where('bill_no',$awb_no)->first(); @endphp
+                                    <tr>
+                                        <td>{{date('Y-m-d')}}</td>
+                                        <td>{{date('H:i:s')}}</td>
+                                        <td>{{$booking->branch_from->name}}</td>
+                                        <td>{{$booking->branch_to->name}}</td>
+                                        <td>{{$booking->bill_no }}</td>
+                                        <td>{{$mf_no}}</td>
+                                        <td>{{$booking->booking_product->sum('weight')}}</td>
+                                        <td>{{$booking->value}}</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
