@@ -116,8 +116,8 @@ class Edit extends Component
         $this->consignor_gstin=$booking->consignor_gstin;
         $this->consignee_gstin=$booking->consignee_gstin;
 
-        $this->consignee_id=Consignee::where('phone',$booking->consignee_phone)->first()->id;
-        $this->consigner_id=Consignor::where('phone',$booking->consignor_phone)->first()->id;
+        $this->consignee_id=Consignee::where('name',$booking->consignee)->first()->id;
+        $this->consigner_id=Consignor::where('name',$booking->consignor)->first()->id;
 
 
 
@@ -229,15 +229,15 @@ class Edit extends Component
     }
 
     public function get_consignee_details(){
-        $consignee= Consignee::where('phone',$this->consignee_phone)->first();
-        $this->consignee=$consignee->name;
+        $consignee= Consignee::where('name',$this->consignee)->first();
+        $this->consignee_phone=$consignee->phone;
         $this->consignee_gstin=$consignee->gstin;
         $this->consignee_id=$consignee->id;
     }
 
     public function get_consigner_details(){
-        $consigner= Consignor::where('phone',$this->consignor_phone)->first();
-        $this->consignor=$consigner->name;
+        $consigner= Consignor::where('name',$this->consignor)->first();
+        $this->consignor_phone=$consigner->phone;
         $this->consignor_gstin=$consigner->gstin;
         $this->consigner_id=$consigner->id;
     }
