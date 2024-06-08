@@ -17,10 +17,13 @@ class Manifestation extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $search,$branch,$startDate,$endDate,$mf_no;
+    public $search,$branch,$startDate,$endDate,$mf_no,$awb_no;
+
+    public $awb_no_list=[];
 
     function mount(){
-        $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.uniqid();
+        $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
+        $this->branch=auth()->guard("admin")->user()->branch_id;
     }
 
     public function updatedSearch(){
@@ -80,4 +83,11 @@ class Manifestation extends Component
 
         return Excel::download(new BookingMExport($bookings), 'booking_m-report.xlsx');
     }
+
+    public function add_fields(){
+
+        array_push($this->awb_no_list,$this->awb_no);
+        $this->awb_no='';
+    }
+
 }

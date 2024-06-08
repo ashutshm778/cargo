@@ -19,7 +19,7 @@ class Edit extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $branch_id, $delivery_address, $from, $to, $consignor_phone, $consignor, $consignee_phone, $consignee, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date;
+    public $branch_id, $delivery_address, $from, $to, $consignor_phone, $consignee_phone, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date;
     public $no_of_pack = [];
     public $product = [];
     public $unit = [];
@@ -36,11 +36,41 @@ class Edit extends Component
     public $hidden_id;
     public $eway_bill_no;
 
+    public $consignor= '';
+    public $consignors = [];
+
+    public $consignee='';
+    public $consignees = [];
+
 
     function mount($id)
     {
         $this->edit($id);
 
+    }
+
+    public function updatedConsignor()
+    {
+
+        // Check if the search query contains at least two words
+        if (strlen($this->consignor)>=2) {
+            // Fetch consignors from the database based on the search query
+            $this->consignors = Consignor::where('name', 'like', '%' . $this->consignor . '%')->get();
+        } else {
+            $this->consignors = [];
+        }
+    }
+
+    public function updatedConsignee()
+    {
+
+        // Check if the search query contains at least two words
+        if (strlen($this->consignee)>=2) {
+            // Fetch consignors from the database based on the search query
+            $this->consignees = Consignee::where('name', 'like', '%' . $this->consignee . '%')->get();
+        } else {
+            $this->consignees = [];
+        }
     }
 
     public function add($i)
@@ -143,6 +173,7 @@ class Edit extends Component
     {
         $this->validate([
             'name' => 'required|unique:consignees',
+
         ]);
 
         $consigner = new Consignee;
@@ -172,6 +203,7 @@ class Edit extends Component
 
         $this->closeConsginer();
     }
+
 
     public function resetInputFields()
     {

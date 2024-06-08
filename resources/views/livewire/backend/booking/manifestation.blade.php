@@ -17,8 +17,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
-
-                                <select id='branch' wire:model="branch" class="form-control">
+                                From:
+                                <select id='branch' wire:model="branch" class="form-control" disabled>
                                     <option value=''>-- Select Branch--</option>
                                     @foreach (App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -27,13 +27,32 @@
 
                         </div>
                         <div class="col-2">
+                            Date:
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
+                        <div class="col-2">
+                            To:
+                            <select id='branch' wire:model="branch_to" class="form-control">
+                                <option value=''>-- Select Branch--</option>
+                                @foreach (App\Models\Branch::all() as $branch)
+                                @if($branch->id!=auth()->guard("admin")->user()->branch_id)
+                                    <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
+
+                    </div>
                         {{-- <div class="col-5">
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
                         </div> --}}
                         <div class="col-3 mb-3">
+                            MFNo:
                             <input type="text" wire:model.live="mf_no" class="form-control " />
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            AWB No:
+                            <input type="text" wire:model.live="awb_no" wire.change="add_fields()" class="form-control " />
                         </div>
                     </div>
                     <div class="table-responsive">

@@ -114,44 +114,58 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="consignee">Consignor Phone <a class="" data-toggle="modal"
-                                                data-target="#exampleModal2" style="font-size: 20px;"><i
-                                                    class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
+                                        <label for="consignor">Consignor- <a class="" data-toggle="modal"
+                                            data-target="#exampleModal2" style="font-size: 20px;"><i
+                                                class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
+                                        <input type="text" class="form-control" id="consignor" list="consignor-list" wire:model.live="consignor"
+                                            placeholder="Consignor"  wire:change="get_consigner_details()" required>
+                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                <strong>{{ $errors->first('consignor') }}</strong>
+                                            </span>
+                                            <datalist class="data_search" id="consignor-list">
+                                                @foreach($consignors as $consignor_data)
+                                                    <option value="{{ $consignor_data->name }}">{{ $consignor_data->name }}</option>
+                                                @endforeach
+                                            </datalist>
+
+                                    </td>
+                                    <td>
+                                        <label for="consignee">Consignor Phone- </label>
                                         <input type="text" class="form-control" id="consignor_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
-                                            placeholder="Consignor Phone" wire:model="consignor_phone" wire:change="get_consigner_details()" required
+                                            placeholder="Consignor Phone" wire:model="consignor_phone"  required
                                             value="{{ old('consignor_phone') }}">
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                                 <strong>{{ $errors->first('consignor_phone') }}</strong>
                                             </span>
                                     </td>
                                     <td>
-                                        <label for="consignor">Consignor</label>
-                                        <input type="text" class="form-control" id="consignor" wire:model="consignor"
-                                            placeholder="Consignor" value="{{ old('consignor') }}" required>
-                                        <input type="hidden" id="consignor_id" wire:model="consignor_id"
-                                            value="{{ old('consignor_id') }}" />
+                                        <label for="consignor">Consignee-<a class="" data-toggle="modal"
+                                            data-target="#exampleModal" style="font-size: 20px;"><i
+                                                class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
+                                        <input type="text" class="form-control" id="consignee" wire:model.live="consignee" list="consignee-list"
+                                            placeholder="Consignee"  wire:change="get_consignee_details()"  required>
+                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                <strong>{{ $errors->first('consignee') }}</strong>
+                                            </span>
+                                            <datalist class="data_search" id="consignee-list">
+                                                @foreach($consignees as $consignee_data)
+                                                    <option value="{{ $consignee_data->name }}">{{ $consignee_data->name }}</option>
+                                                @endforeach
+                                            </datalist>
                                     </td>
+
                                     <td>
-                                        <label for="consignee">Consignee Phone <a class="" data-toggle="modal"
-                                                data-target="#exampleModal" style="font-size: 20px;"><i
-                                                    class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
+                                        <label for="consignee">Consignee Phone- </label>
                                         <input type="text" class="form-control" id="consignee_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
-                                            placeholder="Consignee Phone" wire:model="consignee_phone" wire:change="get_consignee_details()" required
+                                            placeholder="Consignee Phone" wire:model="consignee_phone" required
                                             value="{{ old('consignee_phone') }}">
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                                 <strong>{{ $errors->first('consignee_phone') }}</strong>
                                             </span>
-                                    </td>
-                                    <td>
-                                        <label for="consignor">Consignee</label>
-                                        <input type="text" class="form-control" id="consignee" wire:model="consignee"
-                                            placeholder="Consignee" value="{{ old('consignee') }}" required>
-                                        <input type="hidden" id="consignee_id" wire:model="consignee_id"
-                                            value="{{ old('consignee_id') }}" />
                                     </td>
 
                                 </tr>
