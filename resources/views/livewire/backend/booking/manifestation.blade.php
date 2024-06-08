@@ -87,7 +87,11 @@
                                         <td>{{$booking->value}}</td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
+                                        <td>
+                                            <span class="rmv-btn removeBtn" data-toggle=""
+                                            wire:click.prevent="remove('{{$booking->bill_no}}')"><i
+                                            class="bx bxs-minus-square"></i></span>
+                                        </td>
                                     </tr>
                                     @endif
                                 @endforeach
