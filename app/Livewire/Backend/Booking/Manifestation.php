@@ -87,8 +87,10 @@ class Manifestation extends Component
     public function add_fields(){
         $booking=Booking::where('bill_no',$this->awb_no)->first();
         if(!empty($booking->id)){
-          array_push($this->awb_no_list,$this->awb_no);
-          $this->awb_no='';
+            if(!in_array($this->awb_no,$this->awb_no_list)){
+              array_push($this->awb_no_list,$this->awb_no);
+              $this->awb_no='';
+            }
         }
 
     }
