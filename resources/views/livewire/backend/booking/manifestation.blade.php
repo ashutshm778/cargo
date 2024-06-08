@@ -17,57 +17,47 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
-                            @if (auth()->guard('admin')->user()->id == 1)
+
                                 <select id='branch' wire:model="branch" class="form-control">
                                     <option value=''>-- Select Branch--</option>
                                     @foreach (App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                     @endforeach
                                 </select>
-                            @endif
+
                         </div>
                         <div class="col-2">
                             <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
                         </div>
-                        <div class="col-5">
+                        {{-- <div class="col-5">
                             <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
-                        </div>
+                        </div> --}}
                         <div class="col-3 mb-3">
-                            <input type="search" wire:model.live="search" class="form-control form-control-sm"
-                                placeholder="Type To Search" />
+                            <input type="text" wire:model.live="mf_no" class="form-control " />
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
-
+                                    <th>Entry Date</th>
+                                    <th>Entry Time</th>
+                                    <th>Origin Hub</th>
+                                    <th>Destination</th>
                                     <th>AWB No / Tracking No</th>
-                                    <th>Consignor</th>
-                                    <th>Consignee</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
+                                    <th>MFNo</th>
+                                    <th>Weight</th>
+                                    <th>Value</th>
+                                    <th>Eway No</th>
+                                    <th>Enter By</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bookings as $booking)
-                                <tr>
-                                    <td>{{ $booking->bill_no }}</td>
-                                    <td>{{ $booking->consignor }}</td>
-                                    <td>{{ $booking->consignee }}</td>
-                                    <td>{{ $booking->branch_from->name }}</td>
-                                    <td>{{ $booking->branch_to->name }}</td>
-                                    <td>{{ $booking->date }}</td>
-                                    <td>
-                                       {{$booking->status}}
-                                    </td>
-                                </tr>
-                            @endforeach
+
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>

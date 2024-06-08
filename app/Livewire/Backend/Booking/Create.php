@@ -326,8 +326,7 @@ class Create extends Component
     }
 
     public function get_c_no_details(){
-
-        $c_note_details=CNoteDetail::where('c_no')->first();
+        $c_note_details=CNoteDetail::where('c_no',$this->bill_no)->first();
         if(!empty($c_note_details->id)){
             if($c_note_details->assign_type=='branch'){
                 $this->branch_id = $c_note_details->assign_to;
