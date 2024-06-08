@@ -137,7 +137,7 @@
                         <tbody>
                             <tr>
                                 <td style="border-top: 1px solid transparent;">Consignee's Signature with Ruber Stamp</td>
-                                <td style="text-align: right;border-top: 1px solid transparent;"><b style="text-align:left;">PRINCE</b> <br> For Prashant
+                                <td style="text-align: right;border-top: 1px solid transparent;"> <br> For Prashant
                                     Cargo &
                                     Logistics</td>
                             </tr>
