@@ -85,7 +85,6 @@ class Manifestation extends Component
     }
 
     public function add_fields(){
-        dd(1);
         array_push($this->awb_no_list,$this->awb_no);
         $this->awb_no='';
     }
