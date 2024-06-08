@@ -89,8 +89,8 @@ class Manifestation extends Component
         if(!empty($booking->id)){
             if(!in_array($this->awb_no,$this->awb_no_list)){
               array_push($this->awb_no_list,$this->awb_no);
-              $this->awb_no='';
             }
+            $this->awb_no='';
         }
 
     }
