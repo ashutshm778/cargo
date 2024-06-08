@@ -69,6 +69,7 @@
                                     <th>Value</th>
                                     <th>Eway No</th>
                                     <th>Enter By</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,6 +85,7 @@
                                         <td>{{$mf_no}}</td>
                                         <td>{{$booking->booking_product->sum('weight')}}</td>
                                         <td>{{$booking->value}}</td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
