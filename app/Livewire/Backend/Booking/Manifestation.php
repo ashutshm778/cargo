@@ -85,10 +85,12 @@ class Manifestation extends Component
     }
 
     public function add_fields(){
-        if(!empty($this->awb_no)){
+        $booking=Booking::where('bill_no',$this->awb_no)->first();
+        if(!empty($booking->id)){
           array_push($this->awb_no_list,$this->awb_no);
+          $this->awb_no='';
         }
-        $this->awb_no='';
+
     }
 
 }

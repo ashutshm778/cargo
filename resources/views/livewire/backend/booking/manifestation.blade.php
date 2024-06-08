@@ -74,6 +74,7 @@
                             <tbody>
                                 @foreach($awb_no_list as $awb_no)
                                     @php $booking=App\Models\Booking::where('bill_no',$awb_no)->first(); @endphp
+                                    @if(!empty($booking->id))
                                     <tr>
                                         <td>{{date('Y-m-d')}}</td>
                                         <td>{{date('H:i:s')}}</td>
@@ -86,6 +87,7 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
