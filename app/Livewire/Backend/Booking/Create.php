@@ -19,7 +19,7 @@ class Create extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $branch_id, $delivery_address, $from, $to, $consignor_phone, $consignor, $consignee_phone, $consignee, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date;
+    public $branch_id, $delivery_address, $from, $to, $consignor_phone,  $consignee_phone, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date;
     public $no_of_pack = [];
     public $product = [];
     public $unit = [];
@@ -35,6 +35,12 @@ class Create extends Component
     public $bill_no;
     public $eway_bill_no;
 
+    public $consignor= '';
+    public $consignors = [];
+
+    public $consignee='';
+    public $consignees = [];
+
     function mount()
     {
         $this->add(1);
@@ -42,6 +48,30 @@ class Create extends Component
         if(auth()->guard('admin')->user()->id != 1){
             $this->branch_id = auth()->guard('admin')->user()->branch_id;
             $this->from = auth()->guard('admin')->user()->branch_id;
+        }
+    }
+
+    public function updatedConsignor()
+    {
+
+        // Check if the search query contains at least two words
+        if (strlen($this->consignor)>=2) {
+            // Fetch consignors from the database based on the search query
+            $this->consignors = Consignor::where('name', 'like', '%' . $this->consignor . '%')->get();
+        } else {
+            $this->consignors = [];
+        }
+    }
+
+    public function updatedConsignee()
+    {
+
+        // Check if the search query contains at least two words
+        if (strlen($this->consignee)>=2) {
+            // Fetch consignors from the database based on the search query
+            $this->consignees = Consignee::where('name', 'like', '%' . $this->consignee . '%')->get();
+        } else {
+            $this->consignees = [];
         }
     }
 

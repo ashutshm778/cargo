@@ -118,13 +118,17 @@
                                         <label for="consignor">Consignor- <a class="" data-toggle="modal"
                                             data-target="#exampleModal2" style="font-size: 20px;"><i
                                                 class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
-                                        <input type="text" class="form-control" id="consignor" wire:model="consignor"
-                                            placeholder="Consignor" value="{{ old('consignor') }}" wire:change="get_consigner_details()" required>
+                                        <input type="text" class="form-control" id="consignor" list="consignor-list" wire:model.live="consignor"
+                                            placeholder="Consignor"  wire:change="get_consigner_details()" required>
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                                 <strong>{{ $errors->first('consignor') }}</strong>
                                             </span>
-                                        <input type="hidden" id="consignor_id" wire:model="consignor_id"
-                                            value="{{ old('consignor_id') }}" />
+                                            <datalist class="data_search" id="consignor-list">
+                                                @foreach($consignors as $consignor_data)
+                                                    <option value="{{ $consignor_data->name }}">{{ $consignor_data->name }}</option>
+                                                @endforeach
+                                            </datalist>
+
                                     </td>
                                     <td>
                                         <label for="consignee">Consignor Phone- </label>
@@ -141,13 +145,16 @@
                                         <label for="consignor">Consignee-<a class="" data-toggle="modal"
                                             data-target="#exampleModal" style="font-size: 20px;"><i
                                                 class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
-                                        <input type="text" class="form-control" id="consignee" wire:model="consignee"
-                                            placeholder="Consignee" value="{{ old('consignee') }}" wire:change="get_consignee_details()"  required>
+                                        <input type="text" class="form-control" id="consignee" wire:model.live="consignee" list="consignee-list"
+                                            placeholder="Consignee"  wire:change="get_consignee_details()"  required>
                                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                                 <strong>{{ $errors->first('consignee') }}</strong>
                                             </span>
-                                        <input type="hidden" id="consignee_id" wire:model="consignee_id"
-                                            value="{{ old('consignee_id') }}" />
+                                            <datalist class="data_search" id="consignee-list">
+                                                @foreach($consignees as $consignee_data)
+                                                    <option value="{{ $consignee_data->name }}">{{ $consignee_data->name }}</option>
+                                                @endforeach
+                                            </datalist>
                                     </td>
 
                                     <td>
