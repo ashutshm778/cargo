@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 use App\Models\BookingProduct;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BookingProductBarcode;
+use App\Models\CNoteDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Create extends Component
@@ -323,4 +324,17 @@ class Create extends Component
 
         $this->redirect('/admin/booking/show/'.$booking->id, navigate: true);
     }
+
+    public function get_c_no_details(){
+
+        $c_note_details=CNoteDetail::where('c_no')->first();
+        if(!empty($c_note_details->id)){
+            if($c_note_details->assign_type=='branch'){
+                $this->branch_id = $c_note_details->assign_to;
+                $this->from = $c_note_details->assign_to;
+            }
+        }
+
+    }
+
 }

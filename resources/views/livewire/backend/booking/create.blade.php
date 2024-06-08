@@ -31,7 +31,7 @@
                                                         <label for="bill_no"> AWB No / Tracking No- </label>
                                                         <input type="text" class="form-control col-5 mb-3" id="bill_no"
                                                             wire:model="bill_no" placeholder="AWB No/Tracking No"
-                                                            value="{{ old('bill_no') }}" required>
+                                                            wire:change="get_c_no_details()" required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                                             role="alert">
