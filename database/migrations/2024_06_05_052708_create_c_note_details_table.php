@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('c_no');
             $table->string('assign_type');
             $table->string('assign_to');
+            $table->string('assign_no');
+            $table->string('status');
             $table->timestamps();
         });
     }

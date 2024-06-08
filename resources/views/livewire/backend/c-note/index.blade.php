@@ -32,7 +32,8 @@
                                     <th>Sr No</th>
                                     <th>From</th>
                                     <th>To</th>
-                                    <th>Differance</th>
+                                    <th>Total</th>
+                                    <th>Left</th>
                                     @if (auth()->guard('admin')->user()->canany(['branch-edit', 'branch-view']))
                                         <th>Action</th>
                                     @endif
@@ -44,11 +45,12 @@
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $data->from }}</td>
                                         <td>{{ $data->to }}</td>
-                                        <td>{{ $data->to - $data->from }}</td>
+                                        <td>{{ count($data->c_note_detail_data) }}</td>
+                                        <td>{{ count($data->c_note_detail_data->whereNull('assign_to')) }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
                                                 @if (auth()->guard('admin')->user()->can('branch-edit'))
-                                                    <a href="{{route('admin.c_note_edit',$data->id)}}" class="me-2">+</a>
+                                                    <a href="{{route('admin.c_note_assign',$data->id)}}" class="me-2">+</a>
                                                 @endif
                                             </div>
                                         </td>
