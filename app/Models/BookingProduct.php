@@ -13,4 +13,9 @@ class BookingProduct extends Model
     {
         return $this->belongsTo(Unit::class, 'unit', 'id');
     }
+
+    public function bookingData()
+    {
+        return $this->belongsTo(Booking::class, 'booking_id', 'id');
+    }
 }

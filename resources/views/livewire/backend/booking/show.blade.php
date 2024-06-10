@@ -21,7 +21,7 @@
                                 <td style="vertical-align: middle;">AWB No. <b>{{ $booking->bill_no }}</b></td>
                                 <td style="vertical-align: middle;">Date- <b>
                                         {{ date('d-m-Y', strtotime($booking->date)) }}</b></td>
-                                <td style="vertical-align: middle;">Destination- <b>{{ $booking->delivery_address }}</b>
+                                <td style="vertical-align: middle;">Destination- <b style="text-wrap:wrap;">{{ $booking->delivery_address }}</b>
                                 </td>
                                 <td class="abs text-center">
                                     <p class="float-end mb-0"> {!! $barcode !!}

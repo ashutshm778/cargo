@@ -5,9 +5,13 @@ namespace App\Livewire\Backend\Booking;
 use Carbon\Carbon;
 use App\Models\Booking;
 use Livewire\Component;
+use App\Models\Manifest;
 use Livewire\WithPagination;
+use App\Models\BookingProduct;
 use App\Exports\BookingMExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\BookingProductBarcode;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Manifestation extends Component
@@ -17,13 +21,18 @@ class Manifestation extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $search,$branch,$startDate,$endDate,$mf_no,$awb_no;
+    public $search,$branch,$date,$mf_no,$awb_no,$branch_to;
 
     public $awb_no_list=[];
+    public $total_barcode_to_scan=[];
+    public $scan_barcode=[];
+    public $not_scan_barcode=[];
+    public $message='';
 
     function mount(){
         $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
         $this->branch=auth()->guard("admin")->user()->branch_id;
+        $this->date=date('Y-m-d');
     }
 
     public function updatedSearch(){
@@ -85,20 +94,91 @@ class Manifestation extends Component
     }
 
     public function add_fields(){
-        $booking=Booking::where('bill_no',$this->awb_no)->first();
-        if(!empty($booking->id)){
-            if(!in_array($this->awb_no,$this->awb_no_list)){
-              array_push($this->awb_no_list,$this->awb_no);
-            }
-            $this->awb_no='';
-        }
+        $booking_product_barcode = BookingProductBarcode::where('barcode', $this->awb_no)->first();
 
+        if (!empty($booking_product_barcode->id)) {
+            $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+            $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->first();
+            if(!empty($booking->id)){
+                if(!in_array($this->awb_no,$this->awb_no_list)){
+                array_push($this->awb_no_list,$this->awb_no);
+                }
+                $this->awb_no='';
+            }
+        }
+        $this->forward();
     }
 
     public function remove($value)
     {
         $key=array_keys($this->awb_no_list, $value, true);
         unset($this->awb_no_list[$key[0]]);
+        $this->total_barcode_to_scan=[];
+        $this->scan_barcode=[];
+        $this->not_scan_barcode=[];
+
+
+        $this->forward();
+
+    }
+
+    public function forward(){
+
+        foreach($this->awb_no_list as $data){
+            $bookingProductBarcode=BookingProductBarcode::where('barcode',$data)->first();
+            foreach(BookingProductBarcode::where('booking_product_id',$bookingProductBarcode->booking_product_id)->get() as $bookingProduct){
+            if(!in_array($bookingProduct->barcode,$this->total_barcode_to_scan)){
+                array_push($this->total_barcode_to_scan,$bookingProduct->barcode);
+                }
+            }
+            if(!in_array($data,$this->scan_barcode)){
+                array_push($this->scan_barcode,$data);
+            }
+         }
+
+         $this->not_scan_barcode = array_diff($this->total_barcode_to_scan, $this->scan_barcode);
+         if(count($this->not_scan_barcode)==0){
+           $this->message='';
+         }
+    }
+
+    public function store(){
+        $this->message='';
+        $this->forward();
+        $this->validate([
+            'branch_to' => 'required',
+            'date' => 'required',
+        ]);
+        if(count($this->not_scan_barcode)==0){
+        foreach($this->scan_barcode as $data){
+
+            $bookingProductBarcode=BookingProductBarcode::where('barcode',$data)->first();
+
+            if(empty(Manifest::where('packet',$bookingProductBarcode->barcode)->first()->id)){
+                $manifest=new Manifest;
+                $manifest->entry_date=date('Y-m-d');
+                $manifest->entry_time=date('H:i:s');
+                $manifest->packet=$bookingProductBarcode->barcode;
+                $manifest->origin=$bookingProductBarcode->bookingProductData->bookingData->from;
+                $manifest->awb_no=$bookingProductBarcode->bookingProductData->bookingData->to;
+                $manifest->mf_no=$this->mf_no;
+                $manifest->weight=$bookingProductBarcode->bookingProductData->weight;
+                $manifest->value=$bookingProductBarcode->bookingProductData->bookingData->value;
+                $manifest->eway_no='';
+                $manifest->enter_by='';
+                $manifest->forward_from=$this->branch;
+                $manifest->forward_to=$this->branch_to;
+                $manifest->date=$this->date;
+                $manifest->save();
+            }
+
+        }
+
+        $this->redirect('/admin/mainifestation', navigate: true);
+       }else{
+            $this->message='Please Scan All Left Barcode';
+       }
+
     }
 
 }
