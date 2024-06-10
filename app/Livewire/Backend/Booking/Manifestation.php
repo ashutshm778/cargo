@@ -97,7 +97,6 @@ class Manifestation extends Component
 
     public function remove($value)
     {
-
         $key=array_keys($this->awb_no_list, $value, true);
         unset($this->awb_no_list[$key[0]]);
     }
