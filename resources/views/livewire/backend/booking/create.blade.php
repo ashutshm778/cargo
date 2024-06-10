@@ -6,7 +6,7 @@
             <form method="POST" action="#" autocomplete="off">
                 <div class="card">
                     <div class="card-body">
-                        <div class="table table-bordered">
+                        <div class="table custom-brder">
                             <div id="invoice">
                                 <div class="invoice">
                                     <header>
@@ -16,12 +16,9 @@
                                                 <h6 class="fw-bold">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
                                                     VARANASI-221005</h6>
                                                 <p>Phone :8887790443</p>
-                                                <hr>
                                             </div>
-
                                         </div>
                                     </header>
-
                                     @csrf
                                     <main>
                                         <table class="table table-sm">
@@ -326,6 +323,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                <hr/>
                                 <table style="border:0; margin-bottom:0;">
                                     <tbody>
                                         <tr>

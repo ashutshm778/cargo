@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table align-middle mb-0" id="datatable">
+                        <table class="table custom-brder align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
 

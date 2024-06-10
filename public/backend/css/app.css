@@ -5707,3 +5707,9 @@ input::placeholder {
     border-radius: 5px;
     padding: 10px;
 }
+.custom-brder {
+    border-collapse: collapse;
+   }
+   .custom-brder td, th {
+    border: var(--bs-border-width) solid var(--bs-border-color);
+ }
