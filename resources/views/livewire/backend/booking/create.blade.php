@@ -1,5 +1,5 @@
 <div>
-
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet">
     <div class="page-wrapper">
         <div class="page-content" id='printable_div_id'>
             <!--end breadcrumb-->
@@ -13,8 +13,8 @@
                                         <div class="row">
                                             <div class="col-12 text-center">
                                                 <h2 class="fw-bold">PRASHANT CARGO & LOGISTICS</h2>
-                                                <h6 class="fw-bold">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
-                                                    VARANASI-221005</h6>
+                                                <h5 class="fw-bold">S-21/123-1, SUBHASH NAGAR MALDAHIYA CANTT,
+                                                    VARANASI-221005</h5>
                                                 <p>Phone :8887790443</p>
                                             </div>
                                         </div>
@@ -216,15 +216,15 @@
                                 <table class="table table-borderd">
                                     <thead>
                                         <tr>
-                                            <th>
+                                            {{-- <th>
                                                 <a class="ad-btn add_button"  wire:click.prevent="add({{ $i }})"><i
                                                 class="bx bxs-plus-square"></i></a>
-                                            </th>
+                                            </th> --}}
                                             <th style="width:10%;">No. of Packet</th>
                                             <th>Nature of Goods Said to contain</th>
                                             <th style="width: 15%">Unit</th>
                                             <th style="width: 15%">Qty</th>
-                                            <th>Wgt (in kg)</th>
+                                            <th>Total Wgt (in kg)</th>
                                             <th>Particulars</th>
                                             <th style="width: 15%;">Amount</th>
 
@@ -233,21 +233,21 @@
                                     <tbody class="field_wrapper">
                                         @foreach ($inputs as $key => $value)
                                         <tr>
-                                            <td>
+                                            {{-- <td>
                                                 @if($key!=0)
                                                 <span class="rmv-btn removeBtn" data-toggle=""
                                                 wire:click.prevent="remove({{ $key }},{{ $value }})"><i
                                                 class="bx bxs-minus-square"></i></span>
                                                 @endif
-                                            </td>
+                                            </td> --}}
                                             <td class="text-left"><input type="text" class="form-control"
-                                                    id="no_of_pack" wire:model="no_of_pack.{{ $key }}"
+                                                    id="no_of_pack" wire:model="no_of_pack.{{ $value }}"
                                                     required></td>
                                             <td> <input type="text" class="form-control" id="product"
-                                                    wire:model="product.{{ $key }}" required>
+                                                    wire:model="product.{{ $value }}" required>
                                             </td>
                                             <td>
-                                                <select class="form-control" wire:model="unit.{{ $key }}" required>
+                                                <select class="form-control" wire:model="unit.{{ $value }}" required>
                                                     <option value="">Select Unit</option>
                                                     @foreach (App\Models\Unit::all() as $unit)
                                                         <option value="{{ $unit->id }}">{{ $unit->name }}</option>
@@ -255,59 +255,70 @@
                                                 </select>
                                             </td>
 
-                                            <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $key }}"
+                                            <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $value }}"
                                                      required></td>
                                             <td><input type="text" class="form-control" id="weight"
-                                                    wire:model="weight.{{ $key }}" required></td>
+                                                    wire:model="weight.{{ $value }}" readonly required></td>
                                             <td>Frieght Charges</td>
                                             <td><input type="number" class="form-control frieght_amount"
-                                                    wire:model="frieght_charge.{{ $key }}"
+                                                    wire:model="frieght_charge.{{ $value }}"
                                                     wire:change="cal_total_amount()" value="0" required></td>
 
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    <tfoot >
                                         <tr>
-                                            <td colspan="6">Seal /Received above mentioned production in good
-                                                condition and correct measure.<br>
-                                                I/We declare that GST shall be payable by consignor/consignee</td>
-                                            <td colspan="1">Insurance</td>
-                                            <td><input type="number" class="form-control" id="insurance"
-                                                    wire:model="insurance" value="0"
-                                                    wire:change="cal_total_amount()" required></td>
+                                            <td colspan="5">
+                                                <input id="tags"  name="tags" value="{{ implode(',', $tags) }}" hidden>
+                                                <div wire:ignore>
+                                                <input type="text" class="form-control" id="tag-input" placeholder="Add Weight">
+                                                </div>
+                                                @error('tags') <span class="error">{{ $message }}</span> @enderror
+                                            </td>
+                                                 <td colspan="1">Insurance</td>
+                                                 <td><input type="number" class="form-control" id="insurance"
+                                                         wire:model="insurance" value="0"
+                                                         wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="6">I/We have not to claim or avail examption for value
-                                                of goods & material.</td>
-                                            <td colspan="1">B. Charges</td>
+
+                                            <td colspan="5">Seal /Received above mentioned production in good
+                                                condition and correct measure.<br>
+                                                I/We declare that GST shall be payable by consignor/consignee</td>
+                                                <td colspan="1">B. Charges</td>
                                             <td><input type="number" class="form-control" id="b_charges"
                                                     wire:model="b_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
+
                                         </tr>
                                         <tr>
-                                            <td colspan="6"></td>
-                                            <td colspan="1">Other Charges</td>
-                                            <td><input type="number" class="form-control" id="other_charges"
-                                                    wire:model="other_charges" value="0"
-                                                    wire:change="cal_total_amount()" required></td>
+                                            <td colspan="5">I/We have not to claim or avail examption for value
+                                                of goods & material.</td>
+                                                <td colspan="1">Other Charges</td>
+                                                <td><input type="number" class="form-control" id="other_charges"
+                                                        wire:model="other_charges" value="0"
+                                                        wire:change="cal_total_amount()" required></td>
+
                                         </tr>
                                         <tr>
-                                            <td colspan="6"></td>
+                                            <td colspan="5"></td>
                                             <td colspan="1">G.S.T</td>
                                             <td><input type="number" class="form-control" id="gst" wire:model="tax"
                                                    value="0"  wire:change="cal_total_amount()"
                                                     required></td>
+
                                         </tr>
+
                                         <tr>
-                                            <td colspan="6"></td>
+                                            <td colspan="5"></td>
                                             <td colspan="1">Total</td>
                                             <td><input type="number" class="form-control" id="total_amount"
                                                     wire:model="total" value="0" readonly
                                                     required></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="6"></td>
+                                            <td colspan="5"></td>
                                             <td colspan="1">Status</td>
                                             <td> <select class="form-control" wire:model="status" required>
                                                     <option value="">Select Status</option>
@@ -354,8 +365,10 @@
 
     @include('livewire.backend.booking.consignor_modal')
 
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
     @push('scripts')
     <script>
+
         Livewire.on('showConignee', () => {
             $('#conignee').modal('show');
         });
@@ -370,6 +383,36 @@
 
         Livewire.on('hideConsigner', () => {
             $('#consigner').modal('hide');
+        });
+
+         $(document).ready(function() {
+
+            const tagInput = document.querySelector('#tag-input');
+            const hiddenInput = document.querySelector('#tags');
+            const tagify = new Tagify(tagInput, {
+                validate: function(tag) {
+                    return /^-?\d+$/.test(tag.value); // Ensure tag is a number
+                },
+                duplicates: true // Allow duplicates
+            });
+
+            tagify.on('add', (e) => {
+                if (!/^-?\d+$/.test(e.detail.data.value)) {
+                    tagify.removeTag(e.detail.data.value);
+                } else {
+                    @this.set('tags', tagify.value.map(tag => tag.value));
+                }
+            });
+
+            tagify.on('remove', () => {
+                @this.set('tags', tagify.value.map(tag => tag.value));
+            });
+
+            Livewire.on('inputUpdated', (tags) => {
+                tagify.loadOriginalValues(tags);
+            });
+
+            tagify.addTags(@this.get('tags'));
         });
     </script>
 

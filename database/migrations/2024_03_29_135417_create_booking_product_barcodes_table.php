@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('booking_product_id');
             $table->string('barcode');
             $table->string('status');
+            $table->string('weight');
             $table->timestamps();
         });
     }

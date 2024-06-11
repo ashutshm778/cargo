@@ -42,15 +42,39 @@ class Create extends Component
     public $consignee='';
     public $consignees = [];
 
+    public $tags = [];
+
     function mount()
     {
-        $this->add(1);
+        $this->no_of_pack[1]=1;
+        $this->weight[1]=0;
+        $this->add($this->i);
         $this->date = date('Y-m-d');
         if(auth()->guard('admin')->user()->id != 1){
             $this->branch_id = auth()->guard('admin')->user()->branch_id;
             $this->from = auth()->guard('admin')->user()->branch_id;
         }
     }
+
+    public function rules()
+    {
+        return [
+            'tags' => 'required|array|min:' . $this->no_of_pack[1]. '|max:' . $this->no_of_pack[1],
+            'tags.*' => 'string|max:255',
+        ];
+    }
+
+    public function updatedTags()
+    {
+        $this->validate();
+        $total=0;
+        foreach($this->tags as $tag){
+           $total = $total+$tag;
+        }
+        $this->weight[1]=$total;
+    }
+
+
 
     public function updatedConsignor()
     {
@@ -81,6 +105,7 @@ class Create extends Component
         $i = $i + 1;
         $this->i = $i;
         array_push($this->inputs, $i);
+
     }
 
     public function remove($i, $value)
@@ -201,9 +226,8 @@ class Create extends Component
     }
 
     public function store(){
-
+        $this->updatedTags();
         $this->validate([
-            'booking_no' => 'unique:bookings',
             'bill_no' => 'required|unique:bookings',
             'from' => 'required',
             'to' => 'required',
@@ -296,18 +320,23 @@ class Create extends Component
             $booking_product->no_of_pack=$value;
             $booking_product->product=$this->product[$key];
             $booking_product->unit=$this->unit[$key];
-            $booking_product->weight=$this->weight[$key];
             $booking_product->qty=$this->qty[$key];
             $booking_product->freight_charges=$this->frieght_charge[$key];
             $booking_product->save();
 
+            $total_weight=0;
             for($i=1;$i<=$value;$i++){
                 $booking_product_barcode=new BookingProductBarcode;
                 $booking_product_barcode->booking_product_id=$booking_product->id;
                 $booking_product_barcode->barcode=$booking->bill_no.$i;
+                $booking_product_barcode->weight=$this->tags[$i-1];
                 $booking_product_barcode->status=0;
                 $booking_product_barcode->save();
+                $total_weight=$total_weight+$this->tags[$i-1];
             }
+
+            $booking_product->weight=$total_weight;
+            $booking_product->save();
 
         }
 

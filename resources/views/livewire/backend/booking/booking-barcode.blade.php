@@ -64,7 +64,7 @@
                                             <tr>
                                                 <td colspan="2"></td>
 
-                                                <td>1/{{$key+1}}</td>
+                                                <td>{{$key+1}}/{{count($booking_product_barcode)}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
@@ -82,6 +82,7 @@
 
                                                     <p>From : {{$booking->branch_from->name}}</p>
                                                     <p>To : {{$booking->branch_to->name}}</p>
+                                                    <p>Weight : {{$b_p_barcode->weight}} Kg</p>
                                                 </td>
                                             </tr>
                                             <tr>

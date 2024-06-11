@@ -28,6 +28,8 @@ class Manifestation extends Component
     public $scan_barcode=[];
     public $not_scan_barcode=[];
     public $message='';
+    public $date_array=[];
+    public $time_array=[];
 
     function mount(){
         $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
@@ -102,6 +104,9 @@ class Manifestation extends Component
             if(!empty($booking->id)){
                 if(!in_array($this->awb_no,$this->awb_no_list)){
                 array_push($this->awb_no_list,$this->awb_no);
+                array_push($this->date_array,date('Y-m-d'));
+                array_push($this->time_array,date('H:i:s'));
+
                 }
                 $this->awb_no='';
             }
@@ -150,20 +155,19 @@ class Manifestation extends Component
             'date' => 'required',
         ]);
         if(count($this->not_scan_barcode)==0){
-        foreach($this->scan_barcode as $data){
+        foreach($this->scan_barcode as $key=> $data){
 
             $bookingProductBarcode=BookingProductBarcode::where('barcode',$data)->first();
 
             if(empty(Manifest::where('packet',$bookingProductBarcode->barcode)->first()->id)){
                 $manifest=new Manifest;
-                $manifest->entry_date=date('Y-m-d');
-                $manifest->entry_time=date('H:i:s');
+                $manifest->entry_date=$this->date_array[$key];
+                $manifest->entry_time=$this->time_array[$key];
                 $manifest->packet=$bookingProductBarcode->barcode;
                 $manifest->origin=$bookingProductBarcode->bookingProductData->bookingData->from;
                 $manifest->awb_no=$bookingProductBarcode->bookingProductData->bookingData->to;
                 $manifest->mf_no=$this->mf_no;
-                $manifest->weight=$bookingProductBarcode->bookingProductData->weight;
-                $manifest->value=$bookingProductBarcode->bookingProductData->bookingData->value;
+                $manifest->weight=$bookingProductBarcode->weight;
                 $manifest->eway_no='';
                 $manifest->enter_by='';
                 $manifest->forward_from=$this->branch;
