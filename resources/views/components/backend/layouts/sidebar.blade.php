@@ -101,6 +101,13 @@
                 <div class="menu-title">Shipment In Scan</div>
             </a>
         </li>
+        <li>
+            <a href="{{route('admin.shipment_summary')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-list-check'></i>
+                </div>
+                <div class="menu-title">Shipment List</div>
+            </a>
+        </li>
         @endif
         @if(auth()->guard('admin')->user()->can('consigner-list'))
         <li>

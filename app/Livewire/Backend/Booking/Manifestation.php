@@ -102,7 +102,7 @@ class Manifestation extends Component
 
         if (!empty($booking_product_barcode->id)) {
             $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
-            $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->first();
+            $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->where('to','!=',auth()->guard("admin")->user()->branch_id)->first();
             if(!empty($booking->id)){
                 if(!in_array($this->awb_no,$this->awb_no_list)){
                 array_push($this->awb_no_list,$this->awb_no);
@@ -112,7 +112,7 @@ class Manifestation extends Component
                 }
                 $this->awb_no='';
             }
-            $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->first();
+            $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->where('destination','!=',auth()->guard("admin")->user()->branch_id)->first();
             if(!empty($shipment_in_scan->id)){
                 if(!in_array($this->awb_no,$this->awb_no_list)){
                 array_push($this->awb_no_list,$this->awb_no);

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shipment_in_scan_details', function (Blueprint $table) {
             $table->id();
-            $table->string('mainfest_id');
+            $table->string('shipment_in_scan_id');
             $table->string('entry_date');
             $table->string('entry_time');
             $table->string('packet');

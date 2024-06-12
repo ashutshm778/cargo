@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Manifestation Show</h6>
+                            <h6 class="mb-0">Shipment In Scan Show</h6>
                         </div>
                         <div class="ms-auto">
 
@@ -16,23 +16,23 @@
                 <div class="card-body" id="printableArea">
                     <div class="row">
                         <div class="col-2">
-                            From:{{$manifest->forwardFrom->name}}
+                            From:{{$shipment->forwardFrom->name}}
                         </div>
 
                         <div class="col-2">
-                            To:{{$manifest->forwardTo->name}}
+                            To:{{$shipment->forwardTo->name}}
                         </div>
                         <div class="col-2">
-                            Date:{{$manifest->date}}
+                            Date:{{$shipment->date}}
                         </div>
                         <div class="col-2 ">
-                            MFNo:{{$manifest->mf_no}}
+                            MFNo:{{$shipment->mf_no}}
                         </div>
                         <div class="col-2 ">
-                            Total Weight:{{$manifest->weight}}
+                            Total Weight:{{$shipment->weight}}
                         </div>
                         <div class="col-2 ">
-                            Total PC's:{{count($manifest->manifestList)}}
+                            Total PC's:{{count($shipment->shipmentList)}}
                         </div>
                     </div>
                     <div class="table-responsive" id="printableArea">
@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (App\Models\ManifestDetails::where('mainfest_id',$manifest->id)->orderBy('awb_no','asc')->get() as $key=> $data)
+                                @foreach (App\Models\ShipmentInScanDetail::where('shipment_in_scan_id',$shipment->id)->orderBy('awb_no','asc')->get() as $key=> $data)
 
 
                                         <tr>

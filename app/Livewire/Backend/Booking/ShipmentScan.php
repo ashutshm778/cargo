@@ -114,7 +114,7 @@ class ShipmentScan extends Component
             if(!empty($data->id)){
 
                 $shipment_detail=new ShipmentInScanDetail;
-                $shipment_detail->mainfest_id=$shipment->id;
+                $shipment_detail->shipment_in_scan_id=$shipment->id;
                 $shipment_detail->entry_date=$this->date_array[$key];
                 $shipment_detail->entry_time=$this->time_array[$key];
                 $shipment_detail->packet=$data->packet;
