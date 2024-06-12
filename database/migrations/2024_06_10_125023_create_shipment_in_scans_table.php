@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('shipment_in_scans', function (Blueprint $table) {
             $table->id();
+            $table->string('forward_from');
+            $table->string('forward_to');
+            $table->string('mf_no');
+            $table->string('weight');
+            $table->string('date');
             $table->timestamps();
         });
     }

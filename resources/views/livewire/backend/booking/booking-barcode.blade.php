@@ -88,10 +88,10 @@
                                             <tr>
                                                 <td colspan="3" style="text-align: center">
                                                     @php
-                                                    $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
-                                                    $barcode = $generator->getBarcode($b_p_barcode->barcode, $generator::TYPE_CODE_128);
+                                                    $generators = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                                                    $barcodes = $generators->getBarcode($b_p_barcode->barcode, $generators::TYPE_CODE_128);
                                                 @endphp
-                                               <span style="justify-content: center;display: flex;"> {!!$barcode!!}</span>
+                                               <span style="justify-content: center;display: flex;"> {!!$barcodes!!}</span>
                                                <span style="justify-content: center;display: flex;">{{$b_p_barcode->barcode}}</span>
                                                 </td>
                                             </tr>

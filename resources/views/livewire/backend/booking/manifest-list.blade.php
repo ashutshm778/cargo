@@ -7,13 +7,13 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Booking List</h6>
+                            <h6 class="mb-0">Manifest List</h6>
                         </div>
                         <div class="ms-auto">
                             @if (auth()->guard('admin')->user()->can('booking-create'))
-                                <a href="{{ route('booking.create') }}" class="btn btn-primary radius-30 mt-2 mt-lg-0"
+                                <a href="{{ route('admin.mainifestation') }}" class="btn btn-primary radius-30 mt-2 mt-lg-0"
                                     wire:navigate><i class="bx bxs-plus-square"></i>Add New
-                                    Booking</a>
+                                    Manifest</a>
                             @endif
                         </div>
                     </div>
@@ -22,20 +22,21 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
+                            <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
+                        </div>
+                        <div class="col-2">
                             @if (auth()->guard('admin')->user()->id == 1)
-                                <select id='branch' wire:model="branch" class="form-control">
+                                {{-- <select id='branch' wire:model="branch" class="form-control">
                                     <option value=''>-- Select Branch--</option>
                                     @foreach (App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
                             @endif
                         </div>
-                        <div class="col-2">
-                            <input type="text" class="form-control" id="date_range" placeholder="Select Date" />
-                        </div>
+
                         <div class="col-5">
-                            <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a>
+                            {{-- <a href="#" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:click="fileExport()">Excel Export</a> --}}
                         </div>
                         <div class="col-3 mb-3">
                             <input type="search" wire:model.live="search" class="form-control form-control-sm"
@@ -46,42 +47,38 @@
                         <table class="table custom-brder align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
-                                    <th>AWB No / Tracking No</th>
-                                    <th>Consignor</th>
-                                    <th>Consignee</th>
-                                    <th>From</th>
-                                    <th>To</th>
+                                    <th>Forward From</th>
+                                    <th>Forward To</th>
+                                    <th>Manifest No</th>
                                     <th>Date</th>
+                                    <th>Weight</th>
+                                    <th>No Of Packet</th>
                                     @if (auth()->guard('admin')->user()->canany(['booking-edit', 'booking-view']))
                                         <th>Action</th>
                                     @endif
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bookings as $booking)
+                                @foreach ($list as $data)
                                     <tr>
-                                        <td>{{ $booking->bill_no }}</td>
-                                        <td>{{ $booking->consignor }}</td>
-                                        <td>{{ $booking->consignee }}</td>
-                                        <td>{{ $booking->branch_from->name }}</td>
-                                        <td>{{ $booking->branch_to->name }}</td>
-                                        <td>{{ $booking->date }}</td>
+                                        <td>{{ $data->forwardFrom->name }}</td>
+                                        <td>{{ $data->forwardTo->name }}</td>
+                                        <td>{{ $data->mf_no }}</td>
+                                        <td>{{ $data->date }}</td>
+                                        <td>{{ $data->weight}}</td>
+                                        <td>{{ count($data->manifestList) }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
-                                                @if (auth()->guard('admin')->user()->can('booking-edit'))
-                                                    <a href="{{ route('booking.edit', $booking->id) }}" class="me-2"
+                                                    {{-- @if (auth()->guard('admin')->user()->can('booking-edit'))
+                                                    <a href="{{ route('booking.edit', $data->id) }}" class="me-2"
                                                         title="Edit" wire:navigate><i class="bx bxs-edit"></i></a>
-                                                    @endif @if (auth()->guard('admin')->user()->can('booking-view'))
-                                                        <a href="{{ route('booking.show', $booking->id) }}"
+                                                    @endif  --}}
+                                                    @if (auth()->guard('admin')->user()->can('booking-view'))
+                                                        <a href="{{ route('admin.manifest_show', $data->id) }}"
                                                             class="me-2" title="View" wire:navigate><i
                                                                 class="bx bxs-show"></i></a>
                                                     @endif
-                                                    <a href="{{ route('booking.payment_receipt', $booking->id) }}"
-                                                        class="me-2" title="Payment Receipt" wire:navigate><i
-                                                            class="bx bx-money"></i></a>
-                                                    <a href="{{ route('booking.track_order', $booking->id) }}"
-                                                        class="me-2" title="Track Order" wire:navigate><i
-                                                            class="bx bx-map"></i></a>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -89,7 +86,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $bookings->links() }}
+                    {{ $list->links() }}
                 </div>
             </div>
         </div>

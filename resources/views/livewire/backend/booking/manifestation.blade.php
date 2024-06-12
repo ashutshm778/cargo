@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Manifestation List</h6>
+                            <h6 class="mb-0">Manifestation Create</h6>
                         </div>
                         <div class="ms-auto">
                             @if (!empty($message))
@@ -107,8 +107,6 @@
                                             </td>
                                             <td>{{ $mf_no }}</td>
                                             <td>{{ $bookingProductBarcode->weight }}</td>
-
-                                            </td>
                                             <td></td>
                                             <td></td>
                                             <td>

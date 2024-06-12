@@ -9,9 +9,11 @@ use App\Models\Manifest;
 use Livewire\WithPagination;
 use App\Models\BookingProduct;
 use App\Exports\BookingMExport;
+use App\Models\ManifestDetails;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\BookingProductBarcode;
+use App\Models\ShipmentInScanDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Manifestation extends Component
@@ -110,6 +112,17 @@ class Manifestation extends Component
                 }
                 $this->awb_no='';
             }
+            $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->first();
+            if(!empty($shipment_in_scan->id)){
+                if(!in_array($this->awb_no,$this->awb_no_list)){
+                array_push($this->awb_no_list,$this->awb_no);
+                array_push($this->date_array,date('Y-m-d'));
+                array_push($this->time_array,date('H:i:s'));
+
+                }
+                $this->awb_no='';
+            }
+
         }
         $this->forward();
     }
@@ -148,35 +161,55 @@ class Manifestation extends Component
     }
 
     public function store(){
+
+
+
         $this->message='';
         $this->forward();
         $this->validate([
             'branch_to' => 'required',
             'date' => 'required',
         ]);
+
         if(count($this->not_scan_barcode)==0){
-        foreach($this->scan_barcode as $key=> $data){
+            $mainfest=new Manifest;
+            $mainfest->forward_from=$this->branch;
+            $mainfest->forward_to=$this->branch_to;
+            $mainfest->date=$this->date;
+            $mainfest->mf_no=$this->mf_no;
+            $mainfest->save();
+
+
+            $total_weight=0;
+         foreach($this->scan_barcode as $key=> $data){
 
             $bookingProductBarcode=BookingProductBarcode::where('barcode',$data)->first();
 
-            if(empty(Manifest::where('packet',$bookingProductBarcode->barcode)->first()->id)){
-                $manifest=new Manifest;
-                $manifest->entry_date=$this->date_array[$key];
-                $manifest->entry_time=$this->time_array[$key];
-                $manifest->packet=$bookingProductBarcode->barcode;
-                $manifest->origin=$bookingProductBarcode->bookingProductData->bookingData->from;
-                $manifest->awb_no=$bookingProductBarcode->bookingProductData->bookingData->to;
-                $manifest->mf_no=$this->mf_no;
-                $manifest->weight=$bookingProductBarcode->weight;
-                $manifest->eway_no='';
-                $manifest->enter_by='';
-                $manifest->forward_from=$this->branch;
-                $manifest->forward_to=$this->branch_to;
-                $manifest->date=$this->date;
-                $manifest->save();
+            if(empty(ManifestDetails::where('packet',$bookingProductBarcode->barcode)->where('forward_from',auth()->guard("admin")->user()->branch_id)->first()->id)){
+                $manifest_detail=new ManifestDetails;
+                $manifest_detail->mainfest_id=$mainfest->id;
+                $manifest_detail->entry_date=$this->date_array[$key];
+                $manifest_detail->entry_time=$this->time_array[$key];
+                $manifest_detail->packet=$bookingProductBarcode->barcode;
+                $manifest_detail->origin=$bookingProductBarcode->bookingProductData->bookingData->from;
+                $manifest_detail->destination=$bookingProductBarcode->bookingProductData->bookingData->to;
+                $manifest_detail->awb_no=$bookingProductBarcode->bookingProductData->bookingData->bill_no;
+                $manifest_detail->mf_no=$this->mf_no;
+                $manifest_detail->weight=$bookingProductBarcode->weight;
+                $manifest_detail->eway_no='';
+                $manifest_detail->enter_by='';
+                $manifest_detail->forward_from=$this->branch;
+                $manifest_detail->forward_to=$this->branch_to;
+                $manifest_detail->date=$this->date;
+                $manifest_detail->save();
+
+                $total_weight=$total_weight+$bookingProductBarcode->weight;
             }
 
         }
+
+        $mainfest->weight=$total_weight;
+        $mainfest->save();
 
         $this->redirect('/admin/mainifestation', navigate: true);
        }else{

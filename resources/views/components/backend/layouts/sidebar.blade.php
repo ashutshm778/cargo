@@ -88,6 +88,13 @@
             </a>
         </li>
         <li>
+            <a href="{{route('admin.mainifest_summary')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-list-check'></i>
+                </div>
+                <div class="menu-title">Manifest List</div>
+            </a>
+        </li>
+        <li>
             <a href="{{route('admin.shipment_in_scan')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
                 </div>

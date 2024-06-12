@@ -13,19 +13,10 @@ return new class extends Migration
     {
         Schema::create('manifests', function (Blueprint $table) {
             $table->id();
-            $table->string('entry_date');
-            $table->string('entry_time');
-            $table->string('packet');
-            $table->string('origin');
-            $table->string('destination');
-            $table->string('awb_no');
-            $table->string('mf_no');
-            $table->string('weight');
-            $table->string('value');
-            $table->string('eway_no');
-            $table->string('enter_by');
             $table->string('forward_from');
             $table->string('forward_to');
+            $table->string('mf_no');
+            $table->string('weight');
             $table->string('date');
             $table->timestamps();
         });
