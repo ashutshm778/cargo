@@ -146,7 +146,7 @@
                 </main>
             <div class="toolbar no-print mb-3">
                 <div class="mt-4">
-                   <a href="{{route('booking.create')}}"  wire:navigate > <button type="button" class="btn btn-dark" ><i class="fa fa-print"></i>
+                   <a href="{{route('booking.create')}}"  > <button type="button" class="btn btn-dark" ><i class="fa fa-print"></i>
                         Add New</button> </a>
                         <div class="float-end">
                             <button type="button" id="print_button" class="btn btn-dark"
