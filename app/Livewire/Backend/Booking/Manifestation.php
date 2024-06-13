@@ -48,6 +48,7 @@ class Manifestation extends Component
 
     public function genrate_mf_no(){
         $this->mf_no=Branch::find($this->branch)->branch_code.rand(111111,999999);
+        $this->date=date('Y-m-d');
     }
 
 
