@@ -26,8 +26,9 @@
                                                 <tr>
                                                     <td colspan="2">
                                                         <label for="bill_no"> AWB No / Tracking No- </label>
-                                                        <input type="text" class="form-control col-5 mb-3" id="bill_no"
-                                                            wire:model.live="bill_no" placeholder="AWB No/Tracking No"
+                                                        <input type="text" class="form-control col-5 mb-3"
+                                                            id="bill_no" wire:model.live="bill_no"
+                                                            placeholder="AWB No/Tracking No"
                                                             wire:change="get_c_no_details()" required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
@@ -37,8 +38,8 @@
                                                         @if (auth()->guard('admin')->user()->id == 1)
                                                             <div class="mb-3">
                                                                 <label for="branch_id"> Branch- </label>
-                                                                <select id='branch_id' wire:model="branch_id" class="form-control"
-                                                                    required>
+                                                                <select id='branch_id' wire:model="branch_id"
+                                                                    class="form-control" required>
                                                                     <option value=''>-- Select Branch--</option>
                                                                     @foreach (App\Models\Branch::all() as $branch)
                                                                         <option value="{{ $branch->id }}">
@@ -47,28 +48,31 @@
                                                                 </select>
                                                             </div>
                                                         @else
-                                                        <div class="mb-3">
-                                                            <label for="branch_id"> Branch-</label>
-                                                            <select id='branch_id' wire:model="branch_id" class="form-control"
-                                                                required>
-                                                                <option value=''>-- Select Branch--</option>
-                                                                <option value="{{ auth()->guard('admin')->user()->branch_id }}" >
-                                                                {{ auth()->guard('admin')->user()->branch_data->name }}</option>
+                                                            <div class="mb-3">
+                                                                <label for="branch_id"> Branch-</label>
+                                                                <select id='branch_id' wire:model="branch_id"
+                                                                    class="form-control" required>
+                                                                    <option value=''>-- Select Branch--</option>
+                                                                    <option
+                                                                        value="{{ auth()->guard('admin')->user()->branch_id }}">
+                                                                        {{ auth()->guard('admin')->user()->branch_data->name }}
+                                                                    </option>
                                                                 </select>
-                                                        </div>
+                                                            </div>
                                                         @endif
                                                     </td>
                                                     <td colspan="2">
                                                         <div>
                                                             <label for="date">Date-</label>
-                                                            <input type="date" class="form-control col-5  mb-3" id="date"
-                                                                wire:model="date" placeholder="Date" required>
+                                                            <input type="date" class="form-control col-5  mb-3"
+                                                                id="date" wire:model="date" placeholder="Date"
+                                                                required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="delivery_address"> Delivery Address -</label>
-                                                            <input type="text" class="form-control" id="delivery_address"
-                                                                wire:model="delivery_address" placeholder="Delivery Address"
-                                                                required>
+                                                            <input type="text" class="form-control"
+                                                                id="delivery_address" wire:model="delivery_address"
+                                                                placeholder="Delivery Address" required>
                                                         </div>
                                                     </td>
                                 </div>
@@ -88,25 +92,27 @@
                                         @else
                                             <select class="form-control" wire:model="from" required>
                                                 <option value=''>-- Select Branch--</option>
-                                                <option value="{{ auth()->guard('admin')->user()->branch_id }}" selected>
+                                                <option value="{{ auth()->guard('admin')->user()->branch_id }}"
+                                                    selected>
                                                     {{ auth()->guard('admin')->user()->branch_data->name }}</option>
                                             </select>
                                         @endif
-                                        <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                             <strong>{{ $errors->first('from') }}</strong>
                                         </span>
                                     </td>
                                     <td colspan="2">
                                         <label for="branch_select_to">To-</label>
-                                        <select class="form-control" id="branch_select_to" wire:model="to"
-                                             required>
+                                        <select class="form-control" id="branch_select_to" wire:model="to" required>
                                             <option value=''>-- Select Branch--</option>
                                             @foreach (App\Models\Branch::all() as $branch)
                                                 <option value="{{ $branch->id }}">
                                                     {{ $branch->name }}</option>
                                             @endforeach
                                         </select>
-                                        <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
                                             <strong>{{ $errors->first('to') }}</strong>
                                         </span>
                                     </td>
@@ -114,18 +120,22 @@
                                 <tr>
                                     <td>
                                         <label for="consignor">Consignor- <a class="" data-toggle="modal"
-                                            data-target="#exampleModal2" style="font-size: 20px;"><i
-                                                class="bx bxs-plus-square" wire:click="openConsginer()"></i></a></label>
-                                        <input type="text" class="form-control" id="consignor" list="consignor-list" wire:model.live="consignor"
-                                            placeholder="Consignor"  wire:change="get_consigner_details()" required>
-                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('consignor') }}</strong>
-                                            </span>
-                                            <datalist class="data_search" id="consignor-list">
-                                                @foreach($consignors as $consignor_data)
-                                                    <option value="{{ $consignor_data->name }}">{{ $consignor_data->name }}</option>
-                                                @endforeach
-                                            </datalist>
+                                                data-target="#exampleModal2" style="font-size: 20px;"><i
+                                                    class="bx bxs-plus-square"
+                                                    wire:click="openConsginer()"></i></a></label>
+                                        <input type="text" class="form-control" id="consignor" list="consignor-list"
+                                            wire:model.live="consignor" placeholder="Consignor"
+                                            wire:change="get_consigner_details()" required>
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('consignor') }}</strong>
+                                        </span>
+                                        <datalist class="data_search" id="consignor-list">
+                                            @foreach ($consignors as $consignor_data)
+                                                <option value="{{ $consignor_data->name }}">
+                                                    {{ $consignor_data->name }}</option>
+                                            @endforeach
+                                        </datalist>
 
                                     </td>
                                     <td>
@@ -133,26 +143,31 @@
                                         <input type="text" class="form-control" id="consignor_phone"
                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
-                                            placeholder="Consignor Phone" wire:model="consignor_phone"  required
+                                            placeholder="Consignor Phone" wire:model="consignor_phone" required
                                             value="{{ old('consignor_phone') }}">
-                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('consignor_phone') }}</strong>
-                                            </span>
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('consignor_phone') }}</strong>
+                                        </span>
                                     </td>
                                     <td>
                                         <label for="consignor">Consignee-<a class="" data-toggle="modal"
-                                            data-target="#exampleModal" style="font-size: 20px;"><i
-                                                class="bx bxs-plus-square" wire:click="openConsginee()" ></i></a></label>
-                                        <input type="text" class="form-control" id="consignee" wire:model.live="consignee" list="consignee-list"
-                                            placeholder="Consignee"  wire:change="get_consignee_details()"  required>
-                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('consignee') }}</strong>
-                                            </span>
-                                            <datalist class="data_search" id="consignee-list">
-                                                @foreach($consignees as $consignee_data)
-                                                    <option value="{{ $consignee_data->name }}">{{ $consignee_data->name }}</option>
-                                                @endforeach
-                                            </datalist>
+                                                data-target="#exampleModal" style="font-size: 20px;"><i
+                                                    class="bx bxs-plus-square"
+                                                    wire:click="openConsginee()"></i></a></label>
+                                        <input type="text" class="form-control" id="consignee"
+                                            wire:model.live="consignee" list="consignee-list" placeholder="Consignee"
+                                            wire:change="get_consignee_details()" required>
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('consignee') }}</strong>
+                                        </span>
+                                        <datalist class="data_search" id="consignee-list">
+                                            @foreach ($consignees as $consignee_data)
+                                                <option value="{{ $consignee_data->name }}">
+                                                    {{ $consignee_data->name }}</option>
+                                            @endforeach
+                                        </datalist>
                                     </td>
 
                                     <td>
@@ -162,9 +177,10 @@
                                             onKeyPress="if(this.value.length==10) return false;" maxlength="10"
                                             placeholder="Consignee Phone" wire:model="consignee_phone" required
                                             value="{{ old('consignee_phone') }}">
-                                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                <strong>{{ $errors->first('consignee_phone') }}</strong>
-                                            </span>
+                                        <span
+                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                            <strong>{{ $errors->first('consignee_phone') }}</strong>
+                                        </span>
                                     </td>
 
                                 </tr>
@@ -232,61 +248,68 @@
                                     </thead>
                                     <tbody class="field_wrapper">
                                         @foreach ($inputs as $key => $value)
-                                        <tr>
-                                            {{-- <td>
-                                                @if($key!=0)
+                                            <tr>
+                                                {{-- <td>
+                                                @if ($key != 0)
                                                 <span class="rmv-btn removeBtn" data-toggle=""
                                                 wire:click.prevent="remove({{ $key }},{{ $value }})"><i
                                                 class="bx bxs-minus-square"></i></span>
                                                 @endif
                                             </td> --}}
-                                            <td class="text-left"><input type="text" class="form-control"
-                                                    id="no_of_pack" wire:model="no_of_pack.{{ $value }}"
-                                                    required></td>
-                                            <td> <input type="text" class="form-control" id="product"
-                                                    wire:model="product.{{ $value }}" required>
-                                            </td>
-                                            <td>
-                                                <select class="form-control" wire:model="unit.{{ $value }}" required>
-                                                    <option value="">Select Unit</option>
-                                                    @foreach (App\Models\Unit::all() as $unit)
-                                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
+                                                <td class="text-left"><input type="text" class="form-control"
+                                                        id="no_of_pack" wire:model="no_of_pack.{{ $value }}"
+                                                        required></td>
+                                                <td> <input type="text" class="form-control" id="product"
+                                                        wire:model="product.{{ $value }}" required>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control"
+                                                        wire:model="unit.{{ $value }}" required>
+                                                        <option value="">Select Unit</option>
+                                                        @foreach (App\Models\Unit::all() as $unit)
+                                                            <option value="{{ $unit->id }}">{{ $unit->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
 
-                                            <td><input type="text" class="form-control" id="qty" wire:model="qty.{{ $value }}"
-                                                     required></td>
-                                            <td><input type="text" class="form-control" id="weight"
-                                                    wire:model="weight.{{ $value }}" readonly required></td>
-                                            <td>Frieght Charges</td>
-                                            <td><input type="number" class="form-control frieght_amount"
-                                                    wire:model="frieght_charge.{{ $value }}"
-                                                    wire:change="cal_total_amount()" value="0" required></td>
+                                                <td><input type="text" class="form-control" id="qty"
+                                                        wire:model="qty.{{ $value }}" required></td>
+                                                <td><input type="text" class="form-control" id="weight"
+                                                        wire:model="weight.{{ $value }}" readonly required>
+                                                </td>
+                                                <td>Frieght Charges</td>
+                                                <td><input type="number" class="form-control frieght_amount"
+                                                        wire:model="frieght_charge.{{ $value }}"
+                                                        wire:change="cal_total_amount()" value="0" required></td>
 
-                                        </tr>
+                                            </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot >
+                                    <tfoot>
                                         <tr>
                                             <td colspan="5">
-                                                <input id="tags"  name="tags" value="{{ implode(',', $tags) }}" hidden>
+                                                <input id="tags" name="tags"
+                                                    value="{{ implode(',', $tags) }}" hidden>
                                                 <div wire:ignore>
-                                                <input type="text" class="form-control" id="tag-input" placeholder="Add Weight">
+                                                    <input type="text" class="form-control" id="tag-input"
+                                                        placeholder="Add Weight">
                                                 </div>
-                                                @error('tags') <span class="error">{{ $message }}</span> @enderror
+                                                @error('tags')
+                                                    <span class="error">{{ $message }}</span>
+                                                @enderror
                                             </td>
-                                                 <td colspan="1">Insurance</td>
-                                                 <td><input type="number" class="form-control" id="insurance"
-                                                         wire:model="insurance" value="0"
-                                                         wire:change="cal_total_amount()" required></td>
+                                            <td colspan="1">Insurance</td>
+                                            <td><input type="number" class="form-control" id="insurance"
+                                                    wire:model="insurance" value="0"
+                                                    wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
 
                                             <td colspan="5">Seal /Received above mentioned production in good
                                                 condition and correct measure.<br>
                                                 I/We declare that GST shall be payable by consignor/consignee</td>
-                                                <td colspan="1">B. Charges</td>
+                                            <td colspan="1">B. Charges</td>
                                             <td><input type="number" class="form-control" id="b_charges"
                                                     wire:model="b_charges" value="0"
                                                     wire:change="cal_total_amount()" required></td>
@@ -295,17 +318,17 @@
                                         <tr>
                                             <td colspan="5">I/We have not to claim or avail examption for value
                                                 of goods & material.</td>
-                                                <td colspan="1">Other Charges</td>
-                                                <td><input type="number" class="form-control" id="other_charges"
-                                                        wire:model="other_charges" value="0"
-                                                        wire:change="cal_total_amount()" required></td>
+                                            <td colspan="1">Other Charges</td>
+                                            <td><input type="number" class="form-control" id="other_charges"
+                                                    wire:model="other_charges" value="0"
+                                                    wire:change="cal_total_amount()" required></td>
 
                                         </tr>
                                         <tr>
                                             <td colspan="5"></td>
                                             <td colspan="1">G.S.T</td>
-                                            <td><input type="number" class="form-control" id="gst" wire:model="tax"
-                                                   value="0"  wire:change="cal_total_amount()"
+                                            <td><input type="number" class="form-control" id="gst"
+                                                    wire:model="tax" value="0" wire:change="cal_total_amount()"
                                                     required></td>
 
                                         </tr>
@@ -314,8 +337,7 @@
                                             <td colspan="5"></td>
                                             <td colspan="1">Total</td>
                                             <td><input type="number" class="form-control" id="total_amount"
-                                                    wire:model="total" value="0" readonly
-                                                    required></td>
+                                                    wire:model="total" value="0" readonly required></td>
                                         </tr>
                                         <tr>
                                             <td colspan="5"></td>
@@ -326,15 +348,15 @@
                                                     <option value="unpaid">To Pay</option>
                                                 </select>
                                                 <span
-                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
-                                                role="alert">
-                                                <strong>{{ $errors->first('status') }}</strong>
-                                            </span>
-                                        </td>
+                                                    style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                                                    role="alert">
+                                                    <strong>{{ $errors->first('status') }}</strong>
+                                                </span>
+                                            </td>
                                         </tr>
                                     </tfoot>
                                 </table>
-                                <hr/>
+                                <hr />
                                 <table style="border:0; margin-bottom:0;">
                                     <tbody>
                                         <tr>
@@ -350,7 +372,8 @@
                                 </main>
                                 <div class="col-12">
                                     <div class="">
-                                        <button type="button" class="btn btn-primary" wire:click="store()">Add</button>
+                                        <button type="button" class="btn btn-primary"
+                                            wire:click="store()">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -366,26 +389,8 @@
     @include('livewire.backend.booking.consignor_modal')
 
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-    @push('scripts')
     <script>
-
-        Livewire.on('showConignee', () => {
-            $('#conignee').modal('show');
-        });
-
-        Livewire.on('hideConignee', () => {
-            $('#conignee').modal('hide');
-        });
-
-        Livewire.on('showConsigner', () => {
-            $('#consigner').modal('show');
-        });
-
-        Livewire.on('hideConsigner', () => {
-            $('#consigner').modal('hide');
-        });
-
-         $(document).ready(function() {
+        $(document).ready(function() {
 
             const tagInput = document.querySelector('#tag-input');
             const hiddenInput = document.querySelector('#tags');
@@ -415,6 +420,23 @@
             tagify.addTags(@this.get('tags'));
         });
     </script>
+    @push('scripts')
+        <script>
+            Livewire.on('showConignee', () => {
+                $('#conignee').modal('show');
+            });
 
-   @endpush
+            Livewire.on('hideConignee', () => {
+                $('#conignee').modal('hide');
+            });
+
+            Livewire.on('showConsigner', () => {
+                $('#consigner').modal('show');
+            });
+
+            Livewire.on('hideConsigner', () => {
+                $('#consigner').modal('hide');
+            });
+        </script>
+    @endpush
 </div>
