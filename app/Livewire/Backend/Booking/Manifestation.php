@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Booking;
 
 use Carbon\Carbon;
+use App\Models\Branch;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Manifest;
@@ -10,10 +11,10 @@ use Livewire\WithPagination;
 use App\Models\BookingProduct;
 use App\Exports\BookingMExport;
 use App\Models\ManifestDetails;
+use App\Models\ShipmentInScanDetail;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\BookingProductBarcode;
-use App\Models\ShipmentInScanDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Manifestation extends Component
@@ -34,14 +35,21 @@ class Manifestation extends Component
     public $time_array=[];
 
     function mount(){
-        $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
-        $this->branch=auth()->guard("admin")->user()->branch_id;
-        $this->date=date('Y-m-d');
+        if (auth()->guard("admin")->user()->id != 1) {
+            $this->mf_no=auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
+            $this->branch=auth()->guard("admin")->user()->branch_id;
+            $this->date=date('Y-m-d');
+        }
     }
 
     public function updatedSearch(){
         $this->resetPage();
     }
+
+    public function genrate_mf_no(){
+        $this->mf_no=Branch::find($this->branch)->branch_code.rand(111111,999999);
+    }
+
 
     public function applySearch($query){
         $search=$this->search;

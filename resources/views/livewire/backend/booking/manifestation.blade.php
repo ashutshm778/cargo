@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-2">
                             From:
-                            <select id='branch' wire:model="branch" class="form-control" disabled>
+                            <select id='branch' wire:model="branch" class="form-control" @if(auth()->guard("admin")->user()->id != 1) disabled @else wire:change="genrate_mf_no()" @endif>
                                 <option value=''>-- Select Branch--</option>
                                 @foreach (App\Models\Branch::all() as $branch)
                                     <option value="{{ $branch->id }}">{{ $branch->name }}</option>
