@@ -94,7 +94,7 @@ class ShipmentScan extends Component
         $this->message='';
         $this->forward();
         $this->validate([
-            'mf_no' => 'required',
+            'mf_no' => 'required|unique:shipment_in_scans',
         ]);
         if(count($this->not_scan_barcode)==0){
 
