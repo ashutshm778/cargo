@@ -25,6 +25,13 @@ class AssignDelivery extends Component
     public $search,$branch,$startDate,$endDate;
     public $deivery_status_id,$status,$remark;
     public $delivery_boy_id;
+    public $delivery_type;
+
+    public $awb_no;
+    public $awb_no_list=[];
+    public $message='';
+
+    public $code,$route;
 
     public function updatedSearch(){
         $this->resetPage();
@@ -39,26 +46,26 @@ class AssignDelivery extends Component
 
     public function render()
     {
-        if(auth()->guard("admin")->user()->id==1){
-            $deliveries = Booking::where('id', '>', 0)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
-        }else{
-          $deliveries = Booking::where('assign_to',Auth::guard('admin')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
-        }
-        if($this->delivery_boy_id){
-            $deliveries=$deliveries->where('assign_to',$this->delivery_boy_id);
-         }
-         if($this->startDate && $this->endDate)
-         {
-             $da1=$this->startDate;
-             $da2=$this->endDate;
-             $startDate = Carbon::createFromFormat('Y-m-d', $da1)->startOfDay();
-             $endDate = Carbon::createFromFormat('Y-m-d', $da2)->endOfDay();
-             $deliveries = $deliveries->whereBetween('created_at', [$startDate, $endDate]);
-         }
-        $query = $this->applySearch($deliveries);
+        // if(auth()->guard("admin")->user()->id==1){
+        //     $deliveries = Booking::where('id', '>', 0)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
+        // }else{
+        //   $deliveries = Booking::where('assign_to',Auth::guard('admin')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc');
+        // }
+        // if($this->delivery_boy_id){
+        //     $deliveries=$deliveries->where('assign_to',$this->delivery_boy_id);
+        //  }
+        //  if($this->startDate && $this->endDate)
+        //  {
+        //      $da1=$this->startDate;
+        //      $da2=$this->endDate;
+        //      $startDate = Carbon::createFromFormat('Y-m-d', $da1)->startOfDay();
+        //      $endDate = Carbon::createFromFormat('Y-m-d', $da2)->endOfDay();
+        //      $deliveries = $deliveries->whereBetween('created_at', [$startDate, $endDate]);
+        //  }
+        // $query = $this->applySearch($deliveries);
 
-        $deliveries=$query->paginate(10);
-        return view('livewire.backend.booking.assign-delivery',compact('deliveries'));
+        // $deliveries=$query->paginate(10);
+        return view('livewire.backend.booking.assign-delivery');
     }
 
     public function openConsginee($id)
@@ -135,4 +142,27 @@ class AssignDelivery extends Component
             echo  $pdf->stream();
         }, 'drs.pdf');
     }
+
+    public function add_fields(){
+        $booking= Booking::where('bill_no', $this->awb_no)->where('to',auth()->guard("admin")->user()->branch_id)->where('assign_to','=','')->first();
+        if (!empty($booking->id)) {
+
+                if(!in_array($this->awb_no,$this->awb_no_list)){
+                    array_push($this->awb_no_list,$this->awb_no);
+                }
+                $this->awb_no='';
+        }else{
+            $this->awb_no='';
+            $this->message='Not Forward To Your Branch';
+        }
+    }
+
+    public function store(){
+        $this->validate([
+            'delivery_type' => 'required',
+            'code' => 'required|exists:admins',
+            'route' => 'required',
+        ]);
+    }
+
 }

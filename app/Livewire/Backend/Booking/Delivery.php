@@ -44,7 +44,7 @@ class Delivery extends Component
           $deliveries = Booking::where('to',Auth::guard('admin')->user()->branch_id)->with(['branch_from','branch_to'])->orderBy('id','desc');
         }
         if($this->branch){
-            $deliveries=$deliveries->where('branch_id',$this->branch);
+            $deliveries=$deliveries->where('to',$this->branch);
          }
          if($this->startDate && $this->endDate)
          {
