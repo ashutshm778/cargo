@@ -13,14 +13,7 @@
                 <div class="card-body">
                     <div class="form-body">
                         <form class="row">
-                            <div class="col-md-4 mb-3 mb-3 ">
-                                <label for="type" class="form-label">Type</label>
-                                <select class="form-control" id="type" wire:model="type" >
-                                 <option value=''>Select Type</option>
-                                 <option value="branch" >Branch</option>
-                                 <option value="frenchies" >Frenchies</option>
-                               </select>
-                            </div>
+
                             <div class="col-md-4 mb-3">
                                 <label for="fullname" class="form-label">Name<span>*</span></label>
                                 <input type="text" class="form-control" id="fullname" wire:model="name" placeholder="Name"

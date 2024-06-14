@@ -355,14 +355,34 @@ class Create extends Component
     }
 
     public function get_c_no_details(){
+
         $c_note_details=CNoteDetail::where('c_no',$this->bill_no)->first();
-        if(!empty($c_note_details->id)){
+        if (auth()->guard("admin")->user()->id == 1) {
+         if(!empty($c_note_details->id)){
             if($c_note_details->assign_type=='branch'){
+
+                    $this->branch_id = $c_note_details->assign_to;
+                    $this->from = $c_note_details->assign_to;
+                }
+
+            }
+        }else{
+        if (auth()->guard("admin")->user()->branch_id == $c_note_details->assign_to) {
+            if($c_note_details->assign_type=='branch'){
+
                 $this->branch_id = $c_note_details->assign_to;
                 $this->from = $c_note_details->assign_to;
-            }
-        }
 
-    }
+            }
+
+        }else{
+            $this->bill_no='';
+        }
+       }
+
+     }
+
+
 
 }
+

@@ -21,6 +21,11 @@
                         <div class="col-3 mb-3">
                             MFNo:
                             <input type="text" id="mf_no" wire:model.live="mf_no" class="form-control " wire:change="get_mf_no_detail()" />
+                            <span
+                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                            role="alert">
+                            <strong>{{ $errors->first('mf_no') }}</strong>
+                        </span>
                         </div>
                         <div class="col-2 mb-2">
                             From:

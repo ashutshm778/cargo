@@ -180,6 +180,8 @@ class Manifestation extends Component
             'date' => 'required',
         ]);
 
+        $delete=0;
+
         if(count($this->not_scan_barcode)==0){
             $mainfest=new Manifest;
             $mainfest->forward_from=$this->branch;
@@ -213,6 +215,8 @@ class Manifestation extends Component
                 $manifest_detail->save();
 
                 $total_weight=$total_weight+$bookingProductBarcode->weight;
+            }else{
+                $delete=1;
             }
 
         }
@@ -220,6 +224,9 @@ class Manifestation extends Component
         $mainfest->weight=$total_weight;
         $mainfest->save();
 
+        if($delete==1){
+            $mainfest->delete();
+        }
         $this->redirect('/admin/mainifestation', navigate: true);
        }else{
             $this->message='Please Scan All Left Barcode';

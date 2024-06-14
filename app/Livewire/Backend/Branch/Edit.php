@@ -42,7 +42,6 @@ class Edit extends Component
         $this->pincode = $branch->pincode;
         $this->address = $branch->address ;
         $this->serving_pincode= json_decode($branch->serving_pincode);
-        $this->type=$branch->type;
     }
 
     public function update(){
@@ -64,7 +63,6 @@ class Edit extends Component
         $branch->pincode = $this->pincode;
         $branch->address = $this->address;
         $branch->serving_pincode=json_encode($this->serving_pincode);
-        $branch->type=$this->type;
         $branch->save();
 
         $this->redirect('/admin/branch', navigate: true);

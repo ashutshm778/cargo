@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('consignee')->nullable();
             $table->string('consignor_gstin')->nullable();
             $table->string('consignee_gstin')->nullable();
-            $table->string('booking_no')->unique();
+            $table->string('booking_no')->nullable();
             $table->string('value')->nullable();
             $table->string('insurance')->nullable();
             $table->string('b_charges')->nullable();

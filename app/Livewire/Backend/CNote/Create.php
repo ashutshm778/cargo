@@ -51,6 +51,9 @@ class Create extends Component
             $c_no_detail=new CNoteDetail;
             $c_no_detail->c_no_id=$c_note->id;
             $c_no_detail->c_no=$i;
+            $c_no_detail->assign_type=null;
+            $c_no_detail->assign_to=null;
+            $c_no_detail->assign_no=null;
             $c_no_detail->save();
 
         }
