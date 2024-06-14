@@ -53,7 +53,6 @@ class PermissionTableSeeder extends Seeder
             'consignee-edit',
             'consignee-delete',
             'consignee-view',
-            'contact-list',
             'mainifestation-list',
             'mainifestation-create',
             'shipment_in_scan-list',

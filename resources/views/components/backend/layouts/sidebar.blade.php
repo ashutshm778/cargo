@@ -35,7 +35,7 @@
             </a>
         </li>
         @endif
-
+        @if(auth()->guard('admin')->user()->can('c_note-list'))
         <li>
             <a href="{{route('admin.c_note')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-user-check'></i>
@@ -43,6 +43,7 @@
                 <div class="menu-title">C-Note</div>
             </a>
         </li>
+        @endif
         @if(auth()->guard('admin')->user()->can('booking-list'))
         <li>
             <a href="{{route('admin.booking')}}" wire:navigate>
@@ -52,7 +53,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('bookinglog-list'))
+        @if(auth()->guard('admin')->user()->can('booking-log'))
         <li>
             <a href="{{route('admin.booking_log')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
@@ -79,7 +80,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('mainifestation-list'))
+        @if(auth()->guard('admin')->user()->can('mainifestation-create'))
         <li>
             <a href="{{route('admin.mainifestation')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
@@ -87,6 +88,8 @@
                 <div class="menu-title">Manifestation</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('mainifestation-list'))
         <li>
             <a href="{{route('admin.mainifest_summary')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
@@ -94,6 +97,8 @@
                 <div class="menu-title">Manifest List</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('shipment_in_scan-create'))
         <li>
             <a href="{{route('admin.shipment_in_scan')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
@@ -101,6 +106,8 @@
                 <div class="menu-title">Shipment In Scan</div>
             </a>
         </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('shipment_in_scan-list'))
         <li>
             <a href="{{route('admin.shipment_summary')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-list-check'></i>
@@ -147,7 +154,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('career-list'))
+        @if(auth()->guard('admin')->user()->can('carrer-list'))
         <li>
             <a href="{{route('admin.carrer')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-git-branch'></i>
@@ -165,6 +172,7 @@
             </a>
         </li>
         @endif
+        @if(auth()->guard('admin')->user()->can('user_log-list'))
         <li>
             <a href="{{route('admin.user_log')}}" aria-expanded="false">
                 <div class="parent-icon"><i class="bx bxs-user-detail"></i>
@@ -172,6 +180,7 @@
                 <div class="menu-title">User Log</div>
             </a>
         </li>
+        @endif
         @if(auth()->guard('admin')->user()->canany(['roles-list', 'staff-list']))
         <li>
             <a href="javascript:;" class="has-arrow" >
