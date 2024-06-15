@@ -34,7 +34,7 @@
                                         <div class="single-subscribe-inner">
 
                                             <input type="text" name="bill_no" placeholder="Enter AWB No / Tracking No." value="{{request('bill_no')}}" required>
-                                            <button type="submit" class="btn btn-base" href="#"> AWB No / Tracking No <i class="fa fa-paper-plane"></i></button>
+                                            <button type="submit" class="btn btn-base" href="#"> AWB No. <i class="fa fa-paper-plane"></i></button>
 
                                         </div>
                                     </div>

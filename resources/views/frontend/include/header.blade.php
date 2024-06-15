@@ -13,11 +13,11 @@
                     <a class="logo-1" href="/"><img src="{{ asset('frontend/assets/img/logo.png')}}" alt="img"></a>
                     <a class="logo-2" href="/"><img src="{{ asset('frontend/assets/img/logo.png')}}" alt="logo"></a>
                 </div>
-                <div class="nav-right-part nav-right-part-mobile">
+                {{-- <div class="nav-right-part nav-right-part-mobile">
                     <a class="btn btn-base" href="#"><span>
                       </span> Get A Quote
                     </a>
-                </div>
+                </div> --}}
                 <div class="collapse navbar-collapse" id="transpro_main_menu">
                     <ul class="navbar-nav menu-open text-end">
                     <li><a href="/">Home</a></li>
@@ -33,6 +33,7 @@
                         <li><a href="{{route('career')}}">Career</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                         <li style="border-bottom: 1px solid #541545;"><a href="{{route('login')}}" style="color: #541545;">Staff Login</a></li>
+                        <li class="d-sm-block d-md-none" style="border-bottom: 1px solid #541545;"><a href="{{route('track_order')}}" style="color: #541545;">Track Your Order <i class="fa fa-paper-plane"></i></a></li>
                     </ul>
                 </div>
                 <div class="nav-right-part nav-right-part-desktop">

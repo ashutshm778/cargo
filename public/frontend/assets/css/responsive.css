@@ -633,7 +633,7 @@
         top: 26px;
     }
 	.toggle-btn {
-		top: 10px;
+		top: 20px;
 	}
 	.navbar-area .nav-container .navbar-collapse.sopen {
 		display: block;
@@ -660,7 +660,7 @@
 }
 @media all and (max-width: 425px) {
 	.nav-right-part {
-		display: none;
+		/* display: none; */
 	}
 	.navbar-area-2 .nav-container,
 	.navbar-area-1 .nav-container {
