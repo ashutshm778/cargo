@@ -93,7 +93,7 @@
                                                     <img src="" alt="">
                                                 </td>
                                                 <td>Date/Time: {{ date('d-m-y H:i') }}<br></td>
-                                                <td>DelBoy- {{$data->staff_detail->name}}<br>Branch- {{$data->staff_detail->branch_data->name}}</td>
+                                                <td>DelBoy- {{$list->staff_detail->name}}<br>Branch- {{$list->staff_detail->branch_data->name}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
