@@ -37,7 +37,6 @@
                                                     <th style="width: 20%;">Awb No.</th>
                                                     <th style="width: 10%;">PC's</th>
                                                     <th style="width: 30%;">Consignee</th>
-                                                    <th style="width: 10%;">Payment Status</th>
                                                     <th style="width: 30%;">Sign/Stamp</th>
                                                 </tr>
                                             </thead>
@@ -63,7 +62,6 @@
                                                             {{ $booking->delivery_address }},<br>
                                                             {{ $booking->consignee_phone }}
                                                         </td>
-                                                        <td> @if($booking->payment_status=='paid'){{'PAID'}}@else{{'TO PAY / '}} {{$booking->total}}@endif</td>
                                                         <td></td>
                                                     </tr>
                                                 @endforeach
