@@ -240,7 +240,7 @@ class Manifestation extends Component
             $booking_log->branch_id = auth()->guard("admin")->user()->branch_id;
             $booking_log->tracking_code = $booking->tracking_code;
             $booking_log->user_id = auth()->guard("admin")->user()->id;
-            $booking_log->source = 'app';
+            $booking_log->source = 'web';
             $booking_log->action = 'Package Dispatched From '.$mainfest->forwardFrom->name.' to '.$mainfest->forwardTo->name;
             $booking_log->status = 'dispatched';
             $booking_log->description = '';
