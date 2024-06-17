@@ -62,6 +62,7 @@
                                     <th>PC's</th>
                                     <th>Consignee Details</th>
                                     <th>Payment Status</th>
+                                    <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,6 +74,7 @@
                                     <td>{{$booking->booking_product->no_of_pack}}</td>
                                     <td>{{$booking->consignee}}</td>
                                     <td>@if($booking->payment_status=='paid'){{'PAID'}}@else{{'TO PAY'}}@endif</td>
+                                    <td>@if($booking->payment_status=='paid'){{0}}@else{{$booking->total}}@endif</td>
                                  </tr>
                                 @endforeach
                             </tbody>
