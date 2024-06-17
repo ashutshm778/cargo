@@ -20,6 +20,7 @@
                                     <th>Sr No</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Code</th>
                                     <th>Roles</th>
                                     @if(auth()->guard('admin')->user()->canany(['staff-edit','staff-delete']))   <th width="280px">Action</th> @endif
                                 </tr>
@@ -30,6 +31,7 @@
                                         <th scope="row">{{ $key + 1 + ($list->currentPage() - 1) * $list->perPage() }}</th>
                                         <td>{{  $data->name }}</td>
                                         <td>{{  $data->email }}</td>
+                                        <td>{{  $data->code }}</td>
                                         <td>
                                             @if (!empty($data->getRoleNames()))
                                                 @foreach ($data->getRoleNames() as $v)
