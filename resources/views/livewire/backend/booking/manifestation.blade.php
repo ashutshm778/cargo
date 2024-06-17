@@ -63,7 +63,7 @@
 
                         <div class="col-3 mb-3">
                             AWB No:
-                            <input type="text" id="awb_no" wire:model.live="awb_no" wire:keyup="add_fields()"
+                            <input type="text" id="awb_no" wire:model.live="awb_no" wire:change="add_fields()"
                                 class="form-control " autofocus />
                         </div>
                     </div>
