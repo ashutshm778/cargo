@@ -12,6 +12,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AssigneDeliveryExport;
+use App\Models\DeliveryRunSheet;
+use App\Models\DeliveryRunSheetDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 
@@ -163,6 +165,23 @@ class AssignDelivery extends Component
             'code' => 'required|exists:admins',
             'route' => 'required',
         ]);
+
+        $drs=new DeliveryRunSheet;
+        $drs->drs_no='DRS'.auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
+        $drs->code=$this->code;
+        $drs->route=$this->route;
+        $drs->delivery_type=$this->delivery_type;
+        $drs->date=date('m-d-Y');
+        $drs->save();
+
+        foreach($this->awb_no_list as $awb){
+            $drs_detail=new DeliveryRunSheetDetail;
+            $drs_detail->delivery_run_sheet_id=$drs->id;
+            $drs_detail->user_id=$this->code;
+            $drs_detail->bill_no=$awb;
+            $drs_detail->save();
+        }
+
     }
 
 }
