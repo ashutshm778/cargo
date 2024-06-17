@@ -149,7 +149,7 @@ class ShipmentScan extends Component
             $booking_log->user_id = auth()->guard("admin")->user()->id;
             $booking_log->source = 'app';
             $booking_log->action = 'Package Arrived At '.$shipment->forwardTo->name.' from '.$shipment->forwardFrom->name;
-            $booking_log->status = 'dispatched';
+            $booking_log->status = 'arrived';
             $booking_log->description = '';
             $booking_log->save();
 
