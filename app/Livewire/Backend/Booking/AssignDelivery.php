@@ -182,6 +182,8 @@ class AssignDelivery extends Component
             $drs_detail->save();
         }
 
+        $this->redirect('/admin/drs/show/'.$drs->id, navigate: true);
+
     }
 
 }

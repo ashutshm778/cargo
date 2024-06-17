@@ -206,7 +206,7 @@ class Manifestation extends Component
                 $manifest_detail->mf_no=$this->mf_no;
                 $manifest_detail->weight=$bookingProductBarcode->weight;
                 $manifest_detail->eway_no='';
-                $manifest_detail->enter_by='';
+                $manifest_detail->enter_by=auth()->guard("admin")->user()->code;
                 $manifest_detail->forward_from=$this->branch;
                 $manifest_detail->forward_to=$this->branch_to;
                 $manifest_detail->date=$this->date;

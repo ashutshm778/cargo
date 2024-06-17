@@ -15,6 +15,20 @@
 
                 <div class="card-body" id="printableArea">
                     <div class="row">
+                        <div class="col-12 ">
+                            MFNo:{{$manifest->mf_no}}
+                            @php
+                                $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                                $barcode = $generator->getBarcode(
+                                    $manifest->mf_no,
+                                    $generator::TYPE_CODE_128,
+                                );
+                            @endphp
+                            {!! $barcode !!}
+                        </div>
+                       <div class="clearfix">
+                        <br>
+                       </div>
                         <div class="col-2">
                             From:{{$manifest->forwardFrom->name}}
                         </div>
@@ -25,9 +39,7 @@
                         <div class="col-2">
                             Date:{{$manifest->date}}
                         </div>
-                        <div class="col-2 ">
-                            MFNo:{{$manifest->mf_no}}
-                        </div>
+
                         <div class="col-2 ">
                             Total Weight:{{$manifest->weight}}
                         </div>

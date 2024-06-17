@@ -62,21 +62,22 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('delivery-list'))
-        <li>
-            <a href="{{route('admin.delivery')}}" wire:navigate>
-                <div class="parent-icon"><i class='bx bx-book-alt'></i>
-                </div>
-                <div class="menu-title">Delivery</div>
-            </a>
-        </li>
-        @endif
+
         @if(auth()->guard('admin')->user()->can('delivery_assign-list'))
         <li>
             <a href="{{route('admin.assign_delivery')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
                 </div>
                 <div class="menu-title">Assigned Delivery</div>
+            </a>
+        </li>
+        @endif
+        @if(auth()->guard('admin')->user()->can('delivery-list'))
+        <li>
+            <a href="{{route('admin.drs_list')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
+                </div>
+                <div class="menu-title">DRS List</div>
             </a>
         </li>
         @endif

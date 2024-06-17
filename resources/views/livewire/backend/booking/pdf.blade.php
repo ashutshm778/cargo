@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,63 +10,62 @@
     <link href="https://prashantcargo.com/backend/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        .page-wrapper{
+        .page-wrapper {
             height: 100%;
             margin-top: 60px;
             margin-bottom: 30px;
             margin-left: 250px
         }
+
         .invoice table {
 
-width: 100%;
+            width: 100%;
 
-border-collapse: collapse;
+            border-collapse: collapse;
 
-border-spacing: 0;
+            border-spacing: 0;
 
-margin-bottom: 20px
-
-}
-
-
-
-.invoice table td,
-
-.invoice table th {
-padding: 10px;
-border-bottom: 1px solid #eee
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
--webkit-appearance: none;
-}
-
-.invoice table th {
-
-white-space: nowrap;
-
-font-weight: 600;
-
-font-size: 14px
-
-}
+            margin-bottom: 20px
+        }
 
 
 
-.invoice table td h3 {
+        .invoice table td,
 
-margin: 0;
+        .invoice table th {
+            padding: 10px;
+            border-bottom: 1px solid #eee
+        }
 
-font-weight: 400;
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
 
-color: #541545;
+        .invoice table th {
 
-font-size: 1.2em
+            white-space: nowrap;
 
-}
+            font-weight: 600;
+
+            font-size: 14px
+        }
+
+
+
+        .invoice table td h3 {
+
+            margin: 0;
+
+            font-weight: 400;
+
+            color: #541545;
+
+            font-size: 1.2em
+        }
     </style>
 </head>
+
 <body style="background: #fff;">
     <div class="page-wrapper m-0">
         <div class="page-content">
@@ -89,39 +89,47 @@ font-size: 1.2em
                                     <table class="table" style="border-bottom: 0;">
                                         <tbody>
                                             <tr>
-                                                <td>DRS No: DKNP3A2405021636<br>
-                                                <img src="" alt="">
+                                                <td>DRS No:  {{$list->drs_no}}<br>
+                                                    <img src="" alt="">
                                                 </td>
-                                                <td>Date/Time: {{date('d-m-y H:i')}}<br></td>
-                                                <td>DelBoy- {{$delivery_boy->name}}<br>Branch- {{$delivery_boy->branch_data->name}}</td>
+                                                <td>Date/Time: {{ date('d-m-y H:i') }}<br></td>
+                                                <td>DelBoy- {{$data->staff_detail->name}}<br>Branch- {{$data->staff_detail->branch_data->name}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <table class="table table-borderd">
                                         <thead>
                                             <tr>
-                                                <th>Awb No.</th>
-                                                <th>VAS Details</th>
-                                                <th>Consignee/Address/Phone</th>
-                                                <th>Sign/Stamp</th>
+                                                <th style="width: 20%;">Awb No.</th>
+                                                    <th style="width: 10%;">PC's</th>
+                                                    <th style="width: 30%;">Consignee</th>
+                                                    <th style="width: 10%;">Payment Status</th>
+                                                    <th style="width: 30%;">Sign/Stamp</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($list as $booking)
+                                            @foreach ($list->drsList as $drs_detail)
+                                            @php $booking=App\Models\Booking::where('bill_no',$drs_detail->bill_no)->first(); @endphp
                                             <tr>
                                                 @php
                                                     $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
-                                                    $barcode = $generator->getBarcode($booking->bill_no, $generator::TYPE_CODE_128);
+                                                    $barcode = $generator->getBarcode(
+                                                        $booking->bill_no,
+                                                        $generator::TYPE_CODE_128,
+                                                    );
                                                 @endphp
                                                 <td>
-                                                    <span style="justify-content: center;display: flex;"> {!!$barcode!!}</span>
-                                                    <span style="justify-content: center;display: flex;">{{$booking->bill_no}}</span>
+                                                    <span style="justify-content: center;display: flex;">
+                                                        {!! $barcode !!}</span>
+                                                    <span
+                                                        style="justify-content: center;display: flex;">{{ $booking->bill_no }}</span>
                                                 </td>
-                                                <td>Pcs: {{count($booking->booking_product)}}</td>
+                                                <td>Pcs: {{ $booking->booking_product->no_of_pack }}</td>
                                                 <td>{{ $booking->consignee }} <br>
-                                                  {{$booking->delivery_address}},<br>
-                                                    {{$booking->consignee_phone}}
+                                                    {{ $booking->delivery_address }},<br>
+                                                    {{ $booking->consignee_phone }}
                                                 </td>
+                                                <td> @if($booking->payment_status=='paid'){{'PAID'}}@else{{'TO PAY / '}} {{$booking->total}}@endif</td>
                                                 <td></td>
                                             </tr>
                                             @endforeach
@@ -136,5 +144,5 @@ font-size: 1.2em
         </div>
     </div>
 </body>
-</html>
 
+</html>

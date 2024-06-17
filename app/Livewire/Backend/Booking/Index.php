@@ -28,7 +28,7 @@ class Index extends Component
     {
         $search = $this->search;
         return $this->search === '' ? $query : $query->where(function ($q) use ($search) {
-            $q->where('tracking_code', 'like', '%' . $search . '%');
+            $q->where('bill_no', 'like', '%' . $search . '%');
         });
     }
 

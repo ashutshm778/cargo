@@ -127,7 +127,7 @@ class ShipmentScan extends Component
                 $shipment_detail->mf_no=$this->mf_no;
                 $shipment_detail->weight=$data->weight;
                 $shipment_detail->eway_no='';
-                $shipment_detail->enter_by='';
+                $shipment_detail->enter_by=auth()->guard("admin")->user()->code;
                 $shipment_detail->forward_from=$data->forward_from;
                 $shipment_detail->forward_to=$data->forward_to;
                 $shipment_detail->date=date('Y-m-d');

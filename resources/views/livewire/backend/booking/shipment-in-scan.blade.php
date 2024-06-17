@@ -89,7 +89,7 @@
                                             </td>
                                             <td>{{ $mf_no }}</td>
                                             <td>{{ $bookingProductBarcode->weight }}</td>
-                                            <td></td>
+                                            <td>{{auth()->guard("admin")->user()->code}}</td>
                                         </tr>
                                     @endif
                                 @endforeach
