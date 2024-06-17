@@ -23,7 +23,7 @@
                             To:{{$shipment->forwardTo->name}}
                         </div>
                         <div class="col-2">
-                            Date:{{$shipment->date}}
+                            Date:{{ \Carbon\Carbon::parse($shipment->date)->format('d-m-Y') }}
                         </div>
                         <div class="col-2 ">
                             MFNo:{{$shipment->mf_no}}
@@ -55,7 +55,7 @@
 
 
                                         <tr>
-                                            <td>{{ $data->entry_date }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($data->entry_date)->format('d-m-Y') }}</td>
                                             <td>{{ $data->entry_time }}</td>
                                             <td>{{ $data->packet }}</td>
                                             <td>{{ $data->branch_from->name }}</td>
