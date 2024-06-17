@@ -396,13 +396,13 @@
             const hiddenInput = document.querySelector('#tags');
             const tagify = new Tagify(tagInput, {
                 validate: function(tag) {
-                    return /^-?\d+$/.test(tag.value); // Ensure tag is a number
+                    return /^-?\d+(\.\d+)?$/.test(tag.value); // Ensure tag is a number
                 },
                 duplicates: true // Allow duplicates
             });
 
             tagify.on('add', (e) => {
-                if (!/^-?\d+$/.test(e.detail.data.value)) {
+                if (!/^-?\d+(\.\d+)?$/.test(e.detail.data.value)) {
                     tagify.removeTag(e.detail.data.value);
                 } else {
                     @this.set('tags', tagify.value.map(tag => tag.value));
