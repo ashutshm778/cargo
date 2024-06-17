@@ -5,6 +5,7 @@ namespace App\Livewire\Backend\Booking;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Manifest;
+use App\Models\BookingLog;
 use App\Models\BookingProduct;
 use App\Models\ShipmentInScan;
 use App\Models\ManifestDetails;
@@ -96,6 +97,8 @@ class ShipmentScan extends Component
         $this->validate([
             'mf_no' => 'required|unique:shipment_in_scans',
         ]);
+
+
         if(count($this->not_scan_barcode)==0){
 
             $manifest=Manifest::where('mf_no',$this->mf_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->first();
@@ -130,10 +133,30 @@ class ShipmentScan extends Component
                 $shipment_detail->date=date('Y-m-d');
                 $shipment_detail->save();
 
+
             }
 
          }
 
+         foreach(ShipmentInScanDetail::where('shipment_in_scan_id',$shipment->id)->groupBy('awb_no')->get() as $data){
+
+            $booking=Booking::where('bill_no',$data->awb_no)->first();
+
+            $booking_log = new BookingLog;
+            $booking_log->booking_id = $booking->id;
+            $booking_log->branch_id = auth()->guard("admin")->user()->branch_id;
+            $booking_log->tracking_code = $booking->tracking_code;
+            $booking_log->user_id = auth()->guard("admin")->user()->id;
+            $booking_log->source = 'app';
+            $booking_log->action = 'Package Arrived At '.$shipment->forwardTo->name.' from '.$shipment->forwardFrom->name;
+            $booking_log->status = 'dispatched';
+            $booking_log->description = '';
+            $booking_log->save();
+
+            $booking->status = 'arrived-at-'.$shipment->forwardTo->name;
+            $booking->save();
+
+            }
 
         $this->redirect('/admin/shipment_in_scan', navigate: true);
        }else{

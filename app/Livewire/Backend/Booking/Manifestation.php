@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Manifest;
+use App\Models\BookingLog;
 use Livewire\WithPagination;
 use App\Models\BookingProduct;
 use App\Exports\BookingMExport;
@@ -171,8 +172,6 @@ class Manifestation extends Component
 
     public function store(){
 
-
-
         $this->message='';
         $this->forward();
         $this->validate([
@@ -181,7 +180,6 @@ class Manifestation extends Component
         ]);
 
         $delete=0;
-
         if(count($this->not_scan_barcode)==0){
             $mainfest=new Manifest;
             $mainfest->forward_from=$this->branch;
@@ -214,6 +212,7 @@ class Manifestation extends Component
                 $manifest_detail->date=$this->date;
                 $manifest_detail->save();
 
+
                 $total_weight=$total_weight+$bookingProductBarcode->weight;
             }else{
                 $delete=1;
@@ -224,9 +223,36 @@ class Manifestation extends Component
         $mainfest->weight=$total_weight;
         $mainfest->save();
 
+
+
+
         if($delete==1){
             $mainfest->delete();
         }
+
+        if($delete != 1){
+            foreach(ManifestDetails::where('mainfest_id',$mainfest->id)->groupBy('awb_no')->get() as $data){
+
+            $booking=Booking::where('bill_no',$data->awb_no)->first();
+
+            $booking_log = new BookingLog;
+            $booking_log->booking_id = $booking->id;
+            $booking_log->branch_id = auth()->guard("admin")->user()->branch_id;
+            $booking_log->tracking_code = $booking->tracking_code;
+            $booking_log->user_id = auth()->guard("admin")->user()->id;
+            $booking_log->source = 'app';
+            $booking_log->action = 'Package Dispatched From '.$mainfest->forwardFrom->name.' to '.$mainfest->forwardTo->name;
+            $booking_log->status = 'dispatched';
+            $booking_log->description = '';
+            $booking_log->save();
+
+            $booking->status = 'dispatched-from-'.$mainfest->forwardFrom->name;
+            $booking->save();
+
+            }
+
+        }
+
         $this->redirect('/admin/mainifestation', navigate: true);
        }else{
             $this->message='Please Scan All Left Barcode';
