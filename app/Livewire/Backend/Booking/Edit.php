@@ -131,7 +131,7 @@ class Edit extends Component
         $this->value = $booking->value;
         // $booking->description=$this->description;
         $this->total = $booking->total;
-        foreach ($booking->booking_product as $key => $value) {
+        foreach (BookingProduct::where('booking_id',$booking->id)->get() as $key => $value) {
             $this->add($key);
 
             $this->product[$key] = $value->product ;
@@ -324,7 +324,7 @@ class Edit extends Component
         $booking->total=$this->total;
         $booking->save();
 
-        foreach ($booking->booking_product as $key => $value) {
+        foreach (BookingProduct::where('booking_id',$booking->id)->get() as $key => $value) {
 
             $booking_product =BookingProduct::find($value->id);
             $booking_product->booking_id=$booking->id;
