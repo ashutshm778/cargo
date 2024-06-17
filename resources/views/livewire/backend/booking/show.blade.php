@@ -79,7 +79,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($booking->booking_product as $key => $booking_product)
+                            @foreach (App\Models\BookingProduct::where('booking_id',$booking->id)->get() as $key => $booking_product)
                                 <tr>
                                     <td><a href="{{ route('booking.barcode', $booking_product->id) }}" class="no-print"
                                             wire:navigate>Download Barcode</a></td>
