@@ -37,7 +37,7 @@
                             To:{{$manifest->forwardTo->name}}
                         </div>
                         <div class="col-2">
-                            Date:{{$manifest->date}}
+                            Date:{{ \Carbon\Carbon::parse($manifest->date)->format('d-m-Y') }}
                         </div>
 
                         <div class="col-2 ">
@@ -67,7 +67,7 @@
 
 
                                         <tr>
-                                            <td>{{ $data->entry_date }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($data->entry_date)->format('d-m-Y') }}</td>
                                             <td>{{ $data->entry_time }}</td>
                                             <td>{{ $data->packet }}</td>
                                             <td>{{ $data->branch_from->name }}</td>
