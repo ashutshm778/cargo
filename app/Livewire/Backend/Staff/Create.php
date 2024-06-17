@@ -40,6 +40,7 @@ class Create extends Component
         $staff->email = $this->email;
         $staff->password =Hash::make($this->password);
         $staff->branch_id=$this->branch;
+        $staff->code=substr($this->name, 0, 3).rand(1111,9999);
         $staff->save();
         $staff->assignRole($this->role);
 

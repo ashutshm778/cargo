@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('branch_id')->nullable();
+            $table->string('code')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
