@@ -367,20 +367,21 @@ class Create extends Component
 
             }
         }else{
-        if (auth()->guard("admin")->user()->branch_id == $c_note_details->assign_to) {
-            if($c_note_details->assign_type=='branch'){
+            if(!empty($c_note_details->assign_to)){
+                if (auth()->guard("admin")->user()->branch_id == $c_note_details->assign_to) {
+                    if($c_note_details->assign_type=='branch'){
 
-                $this->branch_id = $c_note_details->assign_to;
-                $this->from = $c_note_details->assign_to;
+                        $this->branch_id = $c_note_details->assign_to;
+                        $this->from = $c_note_details->assign_to;
 
-            }
+                    }
 
-        }else{
-            $this->bill_no='';
-        }
+                }else{
+
+                }
+             }
+         }
        }
-
-     }
 
 
 
