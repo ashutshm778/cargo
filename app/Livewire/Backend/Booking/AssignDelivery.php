@@ -112,7 +112,10 @@ class AssignDelivery extends Component
     }
 
     public function get_user_details(){
-        $this->user_name=Admin::where('code',$this->code)->first()->name;
+        $data=Admin::where('code',$this->code)->first();
+        if(!empty($data->id)){
+         $this->user_name=$data->name;
+        }
     }
 
     public function fileExport()
