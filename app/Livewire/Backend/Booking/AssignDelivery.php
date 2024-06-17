@@ -33,7 +33,7 @@ class AssignDelivery extends Component
     public $awb_no_list=[];
     public $message='';
 
-    public $code,$route;
+    public $code,$route,$user_name;
 
     public function updatedSearch(){
         $this->resetPage();
@@ -111,6 +111,10 @@ class AssignDelivery extends Component
         $this->hideDeliveryStatus();
     }
 
+    public function get_user_details(){
+        $this->user_name=Admin::where('code',$this->code)->first()->name;
+    }
+
     public function fileExport()
     {
         if(auth()->guard("admin")->user()->id==1){
@@ -175,11 +179,17 @@ class AssignDelivery extends Component
         $drs->save();
 
         foreach($this->awb_no_list as $awb){
+
             $drs_detail=new DeliveryRunSheetDetail;
             $drs_detail->delivery_run_sheet_id=$drs->id;
             $drs_detail->user_id=$this->code;
             $drs_detail->bill_no=$awb;
             $drs_detail->save();
+
+            $booking=Booking::where('bill_no',$awb)->first();
+            $booking->assign_to=$this->code;
+            $booking->save();
+
         }
 
         $this->redirect('/admin/drs/show/'.$drs->id, navigate: true);

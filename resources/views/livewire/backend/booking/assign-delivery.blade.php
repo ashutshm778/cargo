@@ -16,7 +16,7 @@
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             Delivery Type:
                                 <select id='delivery_boy_id' wire:model.live="delivery_type" class="form-control">
                                     <option value=''>-- Select Delivey Type--</option>
@@ -29,13 +29,18 @@
                             </span>
 
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             User Code:
-                            <input type="text" class="form-control" wire:model="code"  placeholder="User Code" />
+                            <input type="text" class="form-control" wire:model="code"  placeholder="User Code" wire:keyup="get_user_details()" />
                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                             role="alert">
                             <strong>{{ $errors->first('code') }}</strong>
                         </span>
+                        </div>
+                        <div class="col-2">
+                            User Name:
+                            <input type="text" class="form-control" wire:model="user_name"  placeholder="User Code"  readonly />
+
                         </div>
                         <div class="col-3">
                             Route:
