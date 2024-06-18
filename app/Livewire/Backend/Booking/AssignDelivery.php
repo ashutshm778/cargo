@@ -202,6 +202,7 @@ class AssignDelivery extends Component
             $booking_log->action = 'Out For Delivery';
             $booking_log->status = 'out-for-delivery';
             $booking_log->description = '';
+            $booking_log->action_no = $drs->drs_no;
             $booking_log->save();
 
             $booking->status = 'out-for-delivery';

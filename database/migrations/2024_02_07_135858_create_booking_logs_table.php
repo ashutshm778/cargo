@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('source');
             $table->string('action');
+            $table->string('action_no')->nullable();
             $table->string('status');
             $table->string('description')->nullable();
             $table->timestamps();

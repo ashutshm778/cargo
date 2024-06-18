@@ -16,6 +16,7 @@ use App\Models\ShipmentInScanDetail;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\BookingProductBarcode;
+use App\Models\BookingPrductPackageBarcodeLog;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Manifestation extends Component
@@ -109,32 +110,34 @@ class Manifestation extends Component
 
     public function add_fields(){
         $booking_product_barcode = BookingProductBarcode::where('barcode', $this->awb_no)->first();
-
         if (!empty($booking_product_barcode->id)) {
-            $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
-            $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->where('to','!=',auth()->guard("admin")->user()->branch_id)->first();
-            if(!empty($booking->id)){
-                if(!in_array($this->awb_no,$this->awb_no_list)){
-                array_push($this->awb_no_list,$this->awb_no);
-                array_push($this->date_array,date('Y-m-d'));
-                array_push($this->time_array,date('H:i:s'));
+        if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('forward_from',auth()->guard("admin")->user()->branch_id)->first()->id)){
 
-                }
-                $this->awb_no='';
-            }
-            $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->where('destination','!=',auth()->guard("admin")->user()->branch_id)->first();
-            if(!empty($shipment_in_scan->id)){
-                if(!in_array($this->awb_no,$this->awb_no_list)){
-                array_push($this->awb_no_list,$this->awb_no);
-                array_push($this->date_array,date('Y-m-d'));
-                array_push($this->time_array,date('H:i:s'));
+                $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+                $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->where('to','!=',auth()->guard("admin")->user()->branch_id)->first();
+                if(!empty($booking->id)){
+                    if(!in_array($this->awb_no,$this->awb_no_list)){
+                    array_push($this->awb_no_list,$this->awb_no);
+                    array_push($this->date_array,date('Y-m-d'));
+                    array_push($this->time_array,date('H:i:s'));
 
+                    }
+                    $this->awb_no='';
                 }
-                $this->awb_no='';
+                $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->where('destination','!=',auth()->guard("admin")->user()->branch_id)->first();
+                if(!empty($shipment_in_scan->id)){
+                    if(!in_array($this->awb_no,$this->awb_no_list)){
+                    array_push($this->awb_no_list,$this->awb_no);
+                    array_push($this->date_array,date('Y-m-d'));
+                    array_push($this->time_array,date('H:i:s'));
+
+                    }
+                    $this->awb_no='';
+                }
+                $this->forward();
             }
 
         }
-        $this->forward();
     }
 
     public function remove($value)
@@ -244,11 +247,33 @@ class Manifestation extends Component
             $booking_log->action = 'Package Dispatched From '.$mainfest->forwardFrom->name.' to '.$mainfest->forwardTo->name;
             $booking_log->status = 'dispatched';
             $booking_log->description = '';
+            $booking_log->action_no = $mainfest->mf_no;
             $booking_log->save();
 
             $booking->status = 'dispatched-from-'.$mainfest->forwardFrom->name;
             $booking->save();
 
+            }
+
+
+            foreach(ManifestDetails::where('mainfest_id',$mainfest->id)->get() as $data){
+
+                $booking_product_barcode = BookingProductBarcode::where('barcode', $data->packet)->first();
+                $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+                $booking=Booking::where('bill_no',$data->awb_no)->first();
+
+                $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+                $booking_product_package_barcode_log->booking_id = $booking->id;
+                $booking_product_package_barcode_log->branch_id =auth()->guard("admin")->user()->branch_id;
+                $booking_product_package_barcode_log->booking_product_id = $booking_product->id;
+                $booking_product_package_barcode_log->booking_product_barcode_id = $booking_product_barcode->id;
+                $booking_product_package_barcode_log->user_id =auth()->guard("admin")->user()->id;
+                $booking_product_package_barcode_log->tracking_code = $booking->tracking_code;
+                $booking_product_package_barcode_log->source = 'web';
+                $booking_product_package_barcode_log->action = 'dispatched';
+                $booking_product_package_barcode_log->status = 1;
+                $booking_product_package_barcode_log->description = 'Package Dispatched From '.$mainfest->forwardFrom->name.' to '.$mainfest->forwardTo->name;
+                $booking_product_package_barcode_log->save();
             }
 
         }

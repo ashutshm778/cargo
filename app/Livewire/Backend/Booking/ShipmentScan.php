@@ -11,6 +11,7 @@ use App\Models\ShipmentInScan;
 use App\Models\ManifestDetails;
 use App\Models\ShipmentInScanDetail;
 use App\Models\BookingProductBarcode;
+use App\Models\BookingPrductPackageBarcodeLog;
 
 class ShipmentScan extends Component
 {
@@ -50,7 +51,9 @@ class ShipmentScan extends Component
     }
 
     public function add_fields(){
-        $booking_product_barcode = ManifestDetails::where('packet', $this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->first();
+        $this->message='';
+        $manifest=Manifest::where('mf_no',$this->mf_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->first();
+        $booking_product_barcode = ManifestDetails::where('mainfest_id',$manifest->id)->where('packet', $this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->first();
         if (!empty($booking_product_barcode->id)) {
 
                 if(!in_array($this->awb_no,$this->awb_no_list)){
@@ -151,11 +154,33 @@ class ShipmentScan extends Component
             $booking_log->action = 'Package Arrived At '.$shipment->forwardTo->name.' from '.$shipment->forwardFrom->name;
             $booking_log->status = 'arrived';
             $booking_log->description = '';
+            $booking_log->action_no = $shipment->mf_no;
             $booking_log->save();
 
             $booking->status = 'arrived-at-'.$shipment->forwardTo->name;
             $booking->save();
 
+            }
+
+
+            foreach(ShipmentInScanDetail::where('shipment_in_scan_id',$shipment->id)->groupBy('awb_no')->get() as $data){
+
+                $booking_product_barcode = BookingProductBarcode::where('barcode', $data->packet)->first();
+                $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+                $booking=Booking::where('bill_no',$data->awb_no)->first();
+
+                $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+                $booking_product_package_barcode_log->booking_id = $booking->id;
+                $booking_product_package_barcode_log->branch_id =auth()->guard("admin")->user()->branch_id;
+                $booking_product_package_barcode_log->booking_product_id = $booking_product->id;
+                $booking_product_package_barcode_log->booking_product_barcode_id = $booking_product_barcode->id;
+                $booking_product_package_barcode_log->user_id =auth()->guard("admin")->user()->id;
+                $booking_product_package_barcode_log->tracking_code = $booking->tracking_code;
+                $booking_product_package_barcode_log->source = 'web';
+                $booking_product_package_barcode_log->action = 'arrived';
+                $booking_product_package_barcode_log->status = 1;
+                $booking_product_package_barcode_log->description = 'Package Arrived At '.$shipment->forwardTo->name.' from '.$shipment->forwardFrom->name;
+                $booking_product_package_barcode_log->save();
             }
 
         $this->redirect('/admin/shipment_in_scan', navigate: true);

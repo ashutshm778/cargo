@@ -14,7 +14,7 @@
                                         <div class="row">
                                             <div class="col-12 ">
                                                 <h2 class="fw-bold mb-1 text-center">Prashant
-                                                    Cargo & Logistics Pvt. Ltd</h2>
+                                                    Cargo & Logistics</h2>
                                                 <h6 class="text-center"> <u>Delivery Run Sheet</u></h6>
                                             </div>
                                         </div>
