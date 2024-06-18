@@ -6055,6 +6055,22 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.trackorder {
+    position: relative;
+}
+.trackorder a {
+    position: fixed;
+    top: 45%;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    transform: rotate(90deg);
+    z-index: 1024;
+    left: -60px;
+    font-size: 15px;
+    padding: 5px 10px !important;
+    letter-spacing: 1px;
+}
+
 .enquiryBtn {
     position: relative;
 }
