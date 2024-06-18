@@ -8,10 +8,10 @@
                             <tr>
                                 <td colspan="2" style="text-align: center;margin:0 auto;">
                                     <span style="justify-content: center;display: flex;">{!! $barcode !!}</span>
-                                    <p>{{ $booking->bill_no }}</p>
+                                    <p style="margin-bottom: 0;">{{ $booking->bill_no }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $booking_product->product }}</p>
+                                    <p style="margin-bottom: 0;">{{ $booking_product->product }}</p>
 
                                 </td>
                             </tr>
@@ -22,21 +22,21 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <p>Consignee:</p>
-                                    <p>{{ $booking->consignee }}</p>
+                                    <p style="margin-bottom: 0;">Consignee:</p>
+                                    <p style="margin-bottom: 0;">{{ $booking->consignee }}</p>
                                 </td>
 
                                 <td>
-                                    <p>Consignor:</p>
-                                    <p>{{ $booking->consignor }}</p>
+                                    <p style="margin-bottom: 0;">Consignor:</p>
+                                    <p style="margin-bottom: 0;">{{ $booking->consignor }}</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3">
 
-                                    <p>From : {{ $booking->branch_from->name }}</p>
-                                    <p>To : {{ $booking->branch_to->name }}</p>
-                                    <p>Weight : {{ $b_p_barcode->weight }} Kg</p>
+                                    <p style="margin-bottom: 0;">From : {{ $booking->branch_from->name }}</p>
+                                    <p style="margin-bottom: 0;">To : {{ $booking->branch_to->name }}</p>
+                                    <p style="margin-bottom: 0;">Weight : {{ $b_p_barcode->weight }} Kg</p>
                                 </td>
                             </tr>
                             <tr>
