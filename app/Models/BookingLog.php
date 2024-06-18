@@ -20,7 +20,10 @@ class BookingLog extends Model
         return $this->belongsTo(Booking::class,'booking_id','id');
     }
 
-
+    public function user_data()
+    {
+        return $this->belongsTo(Admin::class,'user_id','id');
+    }
     protected static function boot()
     {
         parent::boot();
@@ -58,11 +61,11 @@ class BookingLog extends Model
             ]);
         });
 
-        if(auth()->guard("admin")->user()->id!=1){
-            static::addGlobalScope('bookinglog', function (Builder $builder) {
-                $builder->where('user_id',auth()->guard("admin")->user()->id);
-            });
-        }
+        // if(auth()->guard("admin")->user()->id!=1){
+        //     static::addGlobalScope('bookinglog', function (Builder $builder) {
+        //         $builder->where('user_id',auth()->guard("admin")->user()->id);
+        //     });
+        // }
 
       }
 

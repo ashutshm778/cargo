@@ -44,6 +44,13 @@
             </a>
         </li>
         @endif
+        <li>
+            <a href="{{route('admin.track_booking')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-book-alt'></i>
+                </div>
+                <div class="menu-title">Track AWB</div>
+            </a>
+        </li>
         @if(auth()->guard('admin')->user()->can('booking-list'))
         <li>
             <a href="{{route('admin.booking')}}" wire:navigate>

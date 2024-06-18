@@ -55,6 +55,7 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('shipment/show/{id}', App\Livewire\Backend\Booking\ShipmentShow::class)->name('admin.shipment_show');
     Route::get('drs_list', App\Livewire\Backend\Booking\DeliveryRunSheetList::class)->name('admin.drs_list');
     Route::get('drs/show/{id}', App\Livewire\Backend\Booking\DeliveryRunSheetShow::class)->name('admin.drs_show');
+    Route::get('track_booking', App\Livewire\Backend\Booking\TrackBooking::class)->name('admin.track_booking');
 
     Route::get('consigner', App\Livewire\Backend\Consigner\Index::class)->name('admin.consigner');
     Route::get('consigner/create', App\Livewire\Backend\Consigner\Create::class)->name('admin.consigner_create');

@@ -20,7 +20,7 @@
                             Delivery Type:
                                 <select id='delivery_boy_id' wire:model.live="delivery_type" class="form-control">
                                     <option value=''>-- Select Delivey Type--</option>
-                                    <option value="self">OFD Self</option>
+                                    <option value="self">OFD Self Branch</option>
                                     <option value="frenchies">OFD Frenchies</option>
                                 </select>
                                 <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
