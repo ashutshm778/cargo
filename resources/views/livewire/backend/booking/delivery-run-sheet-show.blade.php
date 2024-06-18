@@ -1,43 +1,41 @@
 <div>
-
+<style>
+    tbody, td, tfoot, th, thead, tr {
+    border: 1px solid #000;
+}
+.invoice header{
+    border-bottom: 0;
+}
+</style>
     <div class="page-wrapper">
         <div class="page-content" id='printableArea'>
-            <!--end breadcrumb-->
-            <main>
-                <!--end breadcrumb-->
-                <div class="card">
-                    <div class="card-body">
-                        <div class="table table-bordered">
-                            <div id="invoice">
-                                <div class="invoice">
-                                    <header>
-                                        <div class="row">
-                                            <div class="col-12 ">
-                                                <h2 class="fw-bold mb-1 text-center">Prashant
-                                                    Cargo & Logistics</h2>
-                                                <h6 class="text-center"> <u>Delivery Run Sheet</u></h6>
-                                            </div>
-                                        </div>
-                                    </header>
+
                                     <main>
-                                        <table class="table" style="border-bottom: 0;">
+                                        <table class="table table-sm table-bordered mt-1 mb-0">
                                             <tbody>
                                                 <tr>
-                                                    <td>DRS No: {{$data->drs_no}}<br>
-                                                        <img src="" alt="">
+                                                    <td colspan="3" >
+                                                        <h2 class="fw-bold mb-1 text-center">Prashant
+                                                            Cargo & Logistics</h2>
+                                                        <h6 class="text-center"> <u>Delivery Run Sheet</u></h6>
                                                     </td>
-                                                    <td>Date/Time: {{ date('d-m-y H:i') }}<br></td>
-                                                    <td>DelBoy- {{$data->staff_detail->name}}<br>Branch- {{$data->staff_detail->branch_data->name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border-bottom: 1px solid transparent;">DRS No: {{$data->drs_no}}<br>
+                                                        <img src="" alt="">
+                                                    </td style="border-bottom: 1px solid transparent;">
+                                                    <td style="border-bottom: 1px solid transparent;">Date/Time: {{ date('d-m-y H:i') }}<br></td>
+                                                    <td style="border-bottom: 1px solid transparent;">DelBoy- {{$data->staff_detail->name}}<br>Branch- {{$data->staff_detail->branch_data->name}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <table class="table table-borderd">
+                                        <table class="table table-sm table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 20%;">Awb No.</th>
+                                                    <th style="width: 15%;">Awb No.</th>
                                                     <th style="width: 10%;">PC's</th>
-                                                    <th style="width: 30%;">Consignee</th>
-                                                    <th style="width: 30%;">Sign/Stamp</th>
+                                                    <th style="width: 35%;">Consignee</th>
+                                                    <th style="width: 40%;">Sign/Stamp</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -68,12 +66,7 @@
                                             </tbody>
                                         </table>
                                     </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+
             <div class="toolbar no-print mb-3">
                 <div class="mt-4">
 
