@@ -20,4 +20,8 @@ class TrackBooking extends Component
         $data = Booking::where('bill_no',$this->awb_no)->first();
         return view('livewire.backend.booking.track-booking',compact('data'));
     }
+
+    public function get_track_data(){
+
+    }
 }

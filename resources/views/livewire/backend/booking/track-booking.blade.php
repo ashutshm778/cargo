@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3 mb-3">
-                            <input type="search" wire:model.live="awb_no" class="form-control form-control-sm"
+                            <input type="search" wire:model="awb_no" wire:change="get_track_data()" class="form-control form-control-sm"
                                 placeholder="Type AWB No" />
                         </div>
                     </div>
