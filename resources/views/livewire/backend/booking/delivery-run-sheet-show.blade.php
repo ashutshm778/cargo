@@ -32,10 +32,10 @@
                                         <table class="table table-sm table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 15%;">Awb No.</th>
-                                                    <th style="width: 10%;">PC's</th>
-                                                    <th style="width: 35%;">Consignee</th>
-                                                    <th style="width: 40%;">Sign/Stamp</th>
+                                                    <th style="border: 1px solid #000; width:25%;text-align:center;">Awb No.</th>
+                                                    <th style="border: 1px solid #000; width:10%;text-align:center;">PC's</th>
+                                                    <th style="border: 1px solid #000; width:30%;text-align:center;">Consignee</th>
+                                                    <th style="border: 1px solid #000; width:35%;text-align:center;">Sign/Stamp</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
