@@ -175,6 +175,7 @@ class AssignDelivery extends Component
 
         $drs=new DeliveryRunSheet;
         $drs->drs_no='DRS'.auth()->guard("admin")->user()->branch_data->branch_code.rand(111111,999999);
+        $drs->branch_id=auth()->guard("admin")->user()->branch_id;
         $drs->code=$this->code;
         $drs->route=$this->route;
         $drs->delivery_type=$this->delivery_type;
@@ -207,6 +208,8 @@ class AssignDelivery extends Component
 
             $booking->status = 'out-for-delivery';
             $booking->save();
+
+
 
         }
 

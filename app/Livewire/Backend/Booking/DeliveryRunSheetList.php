@@ -8,6 +8,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\DeliveryRunSheet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class DeliveryRunSheetList extends Component
@@ -32,7 +33,12 @@ class DeliveryRunSheetList extends Component
 
     public function render()
     {
-        $list = DeliveryRunSheet::where('id', '>', 0);
+        if(auth()->guard("admin")->user()->id==1){
+            $list = DeliveryRunSheet::where('id', '>', 0);
+        }else{
+          $list = DeliveryRunSheet::where('branch_id',Auth::guard('admin')->user()->branch_id)->orderBy('id','desc');
+        }
+
         $query = $this->applySearch($list);
         $list=$query->paginate(10);
         return view('livewire.backend.booking.delivery-run-sheet-list',compact('list'));

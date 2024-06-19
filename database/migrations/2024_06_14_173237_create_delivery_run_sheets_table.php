@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('delivery_run_sheets', function (Blueprint $table) {
             $table->id();
+            $table->string('branch_id');
             $table->string('drs_no');
             $table->string('code');
             $table->string('route');

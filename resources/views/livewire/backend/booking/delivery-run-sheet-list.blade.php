@@ -60,7 +60,7 @@
                                     <tr>
                                         <td>{{ $data->drs_no }}</td>
                                         <td>{{ $data->route }}</td>
-                                        <td>{{ $data->date }}</td>
+                                        <td>{{\Carbon\Carbon::parse($data->created_at)->format('d-m-Y') }}</td>
                                         <td>{{ $data->delivery_type }}</td>
                                         <td>{{ $data->code}}<br>({{$data->staff_detail->name}})</td>
                                         <td>
