@@ -10,6 +10,7 @@ use App\Models\Booking;
 use App\Models\BookingLog;
 use Illuminate\Http\Request;
 use App\Models\BookingProduct;
+use App\Models\DeliveryRunSheet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -250,7 +251,7 @@ class HomeController extends Controller
     public function get_assign_delivery(Request $request)
     {
 
-        $booking =  Booking::where('assign_to',Auth::guard('api')->user()->id)->with(['branch_from','branch_to'])->where('assign_to','!=','')->orderBy('id','desc')->get();
+        $booking =  DeliveryRunSheet::where('branch_id',Auth::guard('api')->user()->id)->orderBy('id','desc')->get();
 
             return response()->json([
                 'assign_list' => $booking,
