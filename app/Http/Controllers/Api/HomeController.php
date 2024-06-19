@@ -296,6 +296,7 @@ class HomeController extends Controller
         }
         $drs_detail->signature=$image;
         $drs_detail->save();
+
         return response()->json([
             'message' => 'Status Updated Successfully',
             'status' => '200'
