@@ -28,7 +28,7 @@
                                                         <label for="bill_no"> AWB No / Tracking No- </label>
                                                         <input type="text" class="form-control col-5 mb-3"
                                                             id="bill_no" wire:model.live="bill_no"
-                                                            placeholder="AWB No/Tracking No"
+                                                            placeholder="AWB No/Tracking No" style="text-transform: uppercase"
                                                             wire:change="get_c_no_details()" required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
