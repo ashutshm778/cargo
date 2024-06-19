@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('drs_no');
             $table->string('code');
             $table->string('route');
+            $table->string('date');
             $table->string('delivery_type');
             $table->timestamps();
         });

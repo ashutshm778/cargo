@@ -8,12 +8,15 @@ use App\Models\Booking;
 use Livewire\Component;
 use App\Models\BookingLog;
 use Livewire\WithPagination;
+use App\Models\BookingProduct;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\DeliveryRunSheet;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\BookingProductBarcode;
 use App\Exports\AssigneDeliveryExport;
-use App\Models\DeliveryRunSheet;
 use App\Models\DeliveryRunSheetDetail;
+use App\Models\BookingPrductPackageBarcodeLog;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 
@@ -208,6 +211,31 @@ class AssignDelivery extends Component
 
             $booking->status = 'out-for-delivery';
             $booking->save();
+
+            foreach(BookingProduct::where('booking_id',$booking->id)->get() as $booking_product){
+
+                foreach(BookingProductBarcode::where('booking_product_id',$booking_product->id)->get() as $booking_product_barcode){
+
+                    $booking_product_barcode = BookingProductBarcode::where('barcode', $booking_product_barcode->barcode)->first();
+                    $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
+                    $booking=Booking::where('bill_no',$booking->bill_no)->first();
+
+                    $booking_product_package_barcode_log = new BookingPrductPackageBarcodeLog;
+                    $booking_product_package_barcode_log->booking_id = $booking->id;
+                    $booking_product_package_barcode_log->branch_id =auth()->guard("admin")->user()->branch_id;
+                    $booking_product_package_barcode_log->booking_product_id = $booking_product->id;
+                    $booking_product_package_barcode_log->booking_product_barcode_id = $booking_product_barcode->id;
+                    $booking_product_package_barcode_log->user_id =auth()->guard("admin")->user()->id;
+                    $booking_product_package_barcode_log->tracking_code = $booking->tracking_code;
+                    $booking_product_package_barcode_log->source = 'web';
+                    $booking_product_package_barcode_log->action = 'out-for-delivery';
+                    $booking_product_package_barcode_log->status = 1;
+                    $booking_product_package_barcode_log->description = 'Out For Delivery ';
+                    $booking_product_package_barcode_log->save();
+
+                }
+
+            }
 
 
 

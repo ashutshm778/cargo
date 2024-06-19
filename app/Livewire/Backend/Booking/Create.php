@@ -273,7 +273,7 @@ class Create extends Component
         $booking=new Booking;
         $booking->branch_id=$this->branch_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
-        $booking->bill_no=$this->bill_no;
+        $booking->bill_no=strtoupper($this->bill_no);
         $lastBooking = Booking::latest()->first(); // Retrieve the last entry from the database
 
         if ($lastBooking) {
