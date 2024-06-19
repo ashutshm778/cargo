@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('delivery_run_sheet_id');
             $table->string('user_id');
             $table->string('bill_no');
+            $table->string('signature');
             $table->timestamps();
         });
     }
