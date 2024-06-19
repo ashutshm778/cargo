@@ -54,7 +54,7 @@
                         <div class="col-3">
                             AWB No:
                             <input type="text" id="awb_no" wire:model.live="awb_no" wire:change="add_fields()"
-                                class="form-control " placeholder="AWB No" autofocus />
+                                class="form-control " placeholder="AWB No" onkeyup="this.value=this.value.toUpperCase()"autocomplete="off" autofocus />
                         </div>
                     </div>
                     <div class="table-responsive">
