@@ -251,10 +251,10 @@ class HomeController extends Controller
     public function get_assign_delivery(Request $request)
     {
 
-        $booking =  DeliveryRunSheet::where('branch_id',Auth::guard('api')->user()->id)->orderBy('id','desc')->get();
+        $drs_list =  DeliveryRunSheet::where('branch_id',Auth::guard('api')->user()->id)->orderBy('id','desc')->get();
 
             return response()->json([
-                'assign_list' => $booking,
+                'assign_list' => $drs_list,
                 'success' => true,
                 'status' => 200
             ]);
