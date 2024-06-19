@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-3 mb-3">
                             AWB No:
-                            <input type="text" id="awb_no" wire:model.live="awb_no" wire:change="add_fields()"
+                            <input type="text" id="awb_no" wire:model.live="awb_no" wire:change="add_fields()" onkeyup="this.value=this.value.toUpperCase()"autocomplete="off"
                                 class="form-control " />
                         </div>
                     </div>
