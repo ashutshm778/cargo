@@ -17,6 +17,7 @@ use App\Models\BookingProductBarcode;
 use App\Exports\AssigneDeliveryExport;
 use App\Models\DeliveryRunSheetDetail;
 use App\Models\BookingPrductPackageBarcodeLog;
+use App\Models\ShipmentInScanDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 
@@ -160,9 +161,10 @@ class AssignDelivery extends Component
     public function add_fields(){
         $booking= Booking::where('bill_no', $this->awb_no)->where('to',auth()->guard("admin")->user()->branch_id)->where('assign_to','=','')->first();
         if (!empty($booking->id)) {
-
-                if(!in_array($this->awb_no,$this->awb_no_list)){
-                    array_push($this->awb_no_list,$this->awb_no);
+                if(count(ShipmentInScanDetail::where('awb_no',$this->awb_no)->where('destination',auth()->guard("admin")->user()->branch_id)->get()) > 0){
+                    if(!in_array($this->awb_no,$this->awb_no_list)){
+                        array_push($this->awb_no_list,$this->awb_no);
+                    }
                 }
                 $this->awb_no='';
         }else{
