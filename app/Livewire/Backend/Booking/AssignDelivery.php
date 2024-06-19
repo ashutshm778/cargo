@@ -115,9 +115,11 @@ class AssignDelivery extends Component
     }
 
     public function get_user_details(){
-        $data=Admin::where('code',$this->code)->first();
+        $data=Admin::where('code',$this->code)->where('branch_id',Auth::guard('admin')->user()->branch_id)->first();
         if(!empty($data->id)){
          $this->user_name=$data->name;
+        }else{
+            $this->code='';
         }
     }
 
