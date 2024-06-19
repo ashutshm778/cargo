@@ -36,7 +36,7 @@
 
                                     <p style="margin-bottom: 0;">From : {{ $booking->branch_from->name }}</p>
                                     <p style="margin-bottom: 0;">To : {{ $booking->branch_to->name }}</p>
-                                    <p style="margin-bottom: 0;">Weight : {{ $b_p_barcode->weight }} Kg</p>
+                                    <p>Weight : {{ $b_p_barcode->weight }} Kg</p>
                                 </td>
                             </tr>
                             <tr>
@@ -69,16 +69,31 @@
     </div>
     @section('script')
         <script>
+
             function printDiv(divId) {
-                var printContents = document.getElementById(divId).innerHTML;
-                var originalContents = document.body.innerHTML;
+            // Get the content of the specified div
+            var divContents = document.getElementById(divId).innerHTML;
 
-                document.body.innerHTML = printContents;
+            // Open a new window
+            var printWindow = window.open('', '', 'height=600,width=800');
 
-                window.print();
+            // Write the content to the new window
+            printWindow.document.write('<html><head><title>Print DIV Content</title>');
+            // Add any additional CSS if needed
+            printWindow.document.write('<style>@media print { body {background-color:black;} }</style>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
 
-                document.body.innerHTML = originalContents;
-            }
+            // Close the document to finish writing
+            printWindow.document.close();
+
+            // Wait for the new window content to load and then print
+            printWindow.onload = function() {
+                printWindow.print();
+                printWindow.close();
+            };
+        }
         </script>
     @endsection
 </div>
