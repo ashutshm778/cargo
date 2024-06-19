@@ -252,8 +252,8 @@ class HomeController extends Controller
     {
 
         $drs_list =  DeliveryRunSheet::where('code',Auth::guard('api')->user()->code)->orderBy('id','desc')->with('drsList')->get();
-        foreach($drs_list->drsList as $list){
-            foreach($list as $data){
+        foreach($drs_list as $list){
+            foreach($list->drsList as $data){
                 $data->pc=$data->bookingData->booking_product->no_of_pack;
             }
         }
