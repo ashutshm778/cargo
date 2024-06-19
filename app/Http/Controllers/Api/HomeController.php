@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\BookingProductBarcode;
+use App\Models\DeliveryRunSheetDetail;
 use Illuminate\Support\Facades\Validator;
 use App\Models\BookingPrductPackageBarcodeLog;
 
@@ -286,6 +287,15 @@ class HomeController extends Controller
         }
         $booking_log->save();
 
+        $drs_detail =  DeliveryRunSheetDetail::find($request->drs_detail_id);
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $name = rand() . time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/public/frontend/drs_signature');
+            $image->move($destinationPath, $name);
+        }
+        $drs_detail->signature=$image;
+        $drs_detail->save();
         return response()->json([
             'message' => 'Status Updated Successfully',
             'status' => '200'
