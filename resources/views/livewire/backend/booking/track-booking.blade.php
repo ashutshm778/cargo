@@ -9,7 +9,7 @@
                         </div>
                         <div class="ms-auto">
                             @if(!empty($delivery_run_sheet_detail->id))
-                            <a href="{{public_path($delivery_run_sheet_detail->signature)}}" target="_blank">Click Here </a>
+                            <a href="https://prashantcargo.com/public/.{{$delivery_run_sheet_detail->signature}}" target="_blank">Click Here </a>
                             @endif
                         </div>
                     </div>
