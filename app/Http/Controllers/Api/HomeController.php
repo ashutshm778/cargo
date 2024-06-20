@@ -290,11 +290,21 @@ class HomeController extends Controller
         $drs_detail =  DeliveryRunSheetDetail::find($request->drs_detail_id);
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $name = rand() . time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/public/frontend/drs_signature');
-            $image->move($destinationPath, $name);
+        $name = uniqid() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/frontend/drs_signature');
+
+        // Ensure the destination path exists
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
         }
-        $drs_detail->signature=$image;
+
+        // Move the file to the destination path
+        $image->move($destinationPath, $name);
+
+        // Update the signature path in the database
+        $drs_detail->signature = '/frontend/drs_signature/' . $name;
+
+        }
         $drs_detail->save();
 
         return response()->json([
