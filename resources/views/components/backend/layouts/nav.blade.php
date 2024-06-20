@@ -38,14 +38,15 @@
                     </li>
                 </ul>
             </div>
+            <div class="user-info">
+                <p class="user-name mb-0">{{Auth::guard('admin')->user()->name}}@if(!empty(Auth::guard('admin')->user()->branch_id))({{Auth::guard('admin')->user()->branch_data->name}})@endif</p>
+
+            </div>
             <div class="user-box ">
                 <a class="d-flex align-items-center nav-link gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ asset('frontend/assets/img/favicon.png') }}" class="user-img" alt="user avatar">
                 </a>
-                    {{-- <div class="user-info">
-                        <p class="user-name mb-0">{{Auth::guard('admin')->user()->name}}</p>
 
-                    </div> --}}
                     <div class="user-info">
                         @livewire('Backend.Auth.Logout')
                     </div>
