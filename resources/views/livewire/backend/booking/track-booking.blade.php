@@ -8,7 +8,7 @@
                             <h6 class="mb-0">Track AWB</h6>
                         </div>
                         <div class="ms-auto">
-                            @if(!empty($delivery_run_sheet_detail->id))
+                            @if(!empty($delivery_run_sheet_detail->signature))
                             <a href="https://prashantcargo.com/public/.{{$delivery_run_sheet_detail->signature}}" target="_blank">Click Here </a>
                             @endif
                         </div>
