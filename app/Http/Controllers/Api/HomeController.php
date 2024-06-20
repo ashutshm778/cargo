@@ -316,9 +316,9 @@ class HomeController extends Controller
     public function get_all_remark_ndr(){
         return [
             "TOPAY / COD / CLEARANCE / PENALTY AMOUNT NOT READY",
-            "REFUSED TO PAY COD / TOPAY AMOUNT">"REFUSED TO PAY COD / TOPAY AMOUNT",
-            "RECEIVER RESCHEDULED DELIVERY DATE">"RECEIVER RESCHEDULED DELIVERY DATE",
-             "POLITICAL DISTURBANCE / BANDH /STRIKE (UNS)",
+            "REFUSED TO PAY COD / TOPAY AMOUNT",
+            "RECEIVER RESCHEDULED DELIVERY DATE",
+            "POLITICAL DISTURBANCE / BANDH /STRIKE (UNS)",
              "PARTIAL DELIVERED",
              "OUT OF DELIVERY AREA (ODA)",
              "OFFICE/INWARD CLOSED OR DOOR LOCKED / TIME OVER",
