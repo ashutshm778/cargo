@@ -118,7 +118,7 @@ class Manifestation extends Component
         $booking_product_barcode = BookingProductBarcode::where('barcode', $this->awb_no)->first();
         if (!empty($booking_product_barcode->id)) {
             $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
-        if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('awb_no',$booking_product->bookingData->bill_no)->where('forward_from',auth()->guard("admin")->user()->branch_id)->first()->id)){
+         if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('awb_no',$booking_product->bookingData->bill_no)->where('forward_from',auth()->guard("admin")->user()->branch_id)->first()->id)){
             if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('awb_no',$booking_product->bookingData->bill_no)->where('forward_to',$this->branch_to)->first()->id)){
                 $booking = Booking::where('id',$booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->where('to','!=',auth()->guard("admin")->user()->branch_id)->first();
                 if(!empty($booking->id) && ($booking->from!=$this->branch_to)){
