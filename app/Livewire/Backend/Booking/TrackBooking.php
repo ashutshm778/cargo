@@ -18,8 +18,11 @@ class TrackBooking extends Component
 
     public function render()
     {
+        $delivery_run_sheet_detail=[];
         $data = Booking::where('bill_no',$this->awb_no)->first();
-        $delivery_run_sheet_detail=DeliveryRunSheetDetail::where('bill_no',$data->bill_no)->first();
+        if($data->id){
+            $delivery_run_sheet_detail=DeliveryRunSheetDetail::where('bill_no',$data->bill_no)->first();
+        }
         return view('livewire.backend.booking.track-booking',compact('data','delivery_run_sheet_detail'));
     }
 
