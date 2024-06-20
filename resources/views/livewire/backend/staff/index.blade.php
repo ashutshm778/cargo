@@ -33,7 +33,7 @@
                                         <td>{{  $data->name }}</td>
                                         <td>{{  $data->email }}</td>
                                         <td>{{  $data->code }}</td>
-                                        <td>{{  $data->branch_data->name }}</td>
+                                        <td>@if(!empty($data->branch_id)){{  $data->branch_data->name }}@endif</td>
                                         <td>
                                             @if (!empty($data->getRoleNames()))
                                                 @foreach ($data->getRoleNames() as $v)
