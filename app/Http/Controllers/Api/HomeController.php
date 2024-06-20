@@ -280,10 +280,10 @@ class HomeController extends Controller
         $booking_log->tracking_code=$booking->tracking_code;
         $booking_log->user_id=auth()->guard("api")->user()->id;
         $booking_log->source='app';
-        $booking_log->action=$request->status;
+        $booking_log->action=$request->remarks;
         $booking_log->status=$request->status;
-        if(!empty($request->remarks)){
-         $booking_log->description=$request->remarks;
+        if(!empty($request->description)){
+         $booking_log->description=$request->description;
         }
         $booking_log->save();
 
