@@ -38,4 +38,8 @@ Route::post('login', [HomeController::class, 'login']);
     Route::get('get_assign_delivery', [HomeController::class, 'get_assign_delivery']);
     Route::post('assign_delivery_status_update', [HomeController::class, 'assign_delivery_status_update']);
 
+    Route::get('get_all_status', [HomeController::class, 'get_all_status']);
+    Route::get('get_all_remark_ndr', [HomeController::class, 'get_all_remark_ndr']);
+    Route::get('get_all_remark_delivered', [HomeController::class, 'get_all_remark_delivered']);
+
 });

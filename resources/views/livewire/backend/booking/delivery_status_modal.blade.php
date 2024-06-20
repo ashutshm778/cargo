@@ -43,6 +43,7 @@
                                 <option value="CONSIGNEE OUT OF STATION OR NOT AVAILABLE">CONSIGNEE OUT OF STATION OR NOT AVAILABLE</option>
                                 <option value="CONSIGNEE NOT RESPONDING TO PHONE COMPANY/PERSON SHIFTED">CONSIGNEE NOT RESPONDING TO PHONE COMPANY/PERSON SHIFTED</option>
                                 <option value="ADDRESS NOT FOUND / IN-COMPLETE / REQUIRE PHONE NO">ADDRESS NOT FOUND / IN-COMPLETE / REQUIRE PHONE NO</option>
+                                <option value="OTHER" >OTHER</option>
                             </select>
                             </span>
                         </div>
@@ -54,8 +55,9 @@
                                 <option value="SIGN WITH STAMP" >SIGN WITH STAMP</option>
                                 <option value="DROP IN BOX" >DROP IN BOX</option>
                                 <option value="DROP DELIVERY" >DOOR DELIVERY</option>
-                                <option value="DOOR DELIVERY" >DOOR DELIVERY</option>
+                                <option value="SELF RECIVE" >SELF RECIVE</option>
                                 <option value="COMPANY STAMP" >COMPANY STAMP</option>
+                                <option value="OTHER" >OTHER</option>
                             </select>
                             </span>
                         </div>
