@@ -116,7 +116,7 @@ class ShipmentScan extends Component
 
 
          foreach($this->scan_barcode as $key=> $data_barcode){
-            $data=ManifestDetails::where('packet',$data_barcode)->first();
+            $data=ManifestDetails::where('packet',$data_barcode)->where('mainfest_id',$manifest->id)->first();
             if(!empty($data->id)){
 
                 $shipment_detail=new ShipmentInScanDetail;
