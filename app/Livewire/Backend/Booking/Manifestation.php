@@ -109,12 +109,17 @@ class Manifestation extends Component
     }
 
     public function add_fields(){
+
+        $this->validate([
+            'branch_to' => 'required',
+            'date' => 'required',
+        ]);
+
         $booking_product_barcode = BookingProductBarcode::where('barcode', $this->awb_no)->first();
         if (!empty($booking_product_barcode->id)) {
             $booking_product = BookingProduct::find($booking_product_barcode->booking_product_id);
         if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('awb_no',$booking_product->bookingData->bill_no)->where('forward_from',auth()->guard("admin")->user()->branch_id)->first()->id)){
-
-
+            if(empty(ManifestDetails::where('packet',$booking_product_barcode->barcode)->where('awb_no',$booking_product->bookingData->bill_no)->where('forward_to',$this->branch_to)->first()->id)){
                 $booking = Booking::find($booking_product->booking_id)->where('from',auth()->guard("admin")->user()->branch_id)->where('to','!=',auth()->guard("admin")->user()->branch_id)->first();
                 if(!empty($booking->id)){
                     if(!in_array($this->awb_no,$this->awb_no_list)){
@@ -136,6 +141,7 @@ class Manifestation extends Component
                     $this->awb_no='';
                 }
                 $this->forward();
+             }
             }
 
         }
