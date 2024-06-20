@@ -53,6 +53,11 @@
                                         <div class="status_cont">
                                             <div class="status_check clearfix">
                                                 <span class="status-css">Delivered On</span>
+                                                @php $signature=App\Models\DeliveryRunSheetDetail::where('bill_no',$booking->bill_no)->first()->signature @endphp
+                                                @if(!empty($signature))
+                                                <a href="https://prashantcargo.com/public/.{{$signature}}" target="_blank">Click Here  View</a>
+                                                <a href="https://prashantcargo.com/public/.{{$signature}}" download>Click Here Download</a>
+                                                @endif
                                                 <hr>
                                                 <div class="edd_info">
                                                     <span class="edd_day sfproBold fs-20px mb-0">{{ \Carbon\Carbon::parse($booking->edd)->format('D') }}</span>
