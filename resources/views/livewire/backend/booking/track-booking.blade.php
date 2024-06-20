@@ -9,8 +9,7 @@
                         </div>
                         <div class="ms-auto">
                             @if(!empty($delivery_run_sheet_detail->id))
-                            <a href="{{$delivery_run_sheet_detail->signature}}" target="_blank">
-                              </a>
+                            <a href="{{$delivery_run_sheet_detail->signature}}" target="_blank">Click Here </a>
                             @endif
                         </div>
                     </div>
