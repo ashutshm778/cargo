@@ -306,4 +306,49 @@ class HomeController extends Controller
         return response()->json(['error' => 'Invalid Id', 'status' => '401'], 401);
      }
     }
+
+    public function get_all_status(){
+        return [
+            'NDR','DELIVERED'
+        ];
+    }
+
+    public function get_all_remark_ndr(){
+        return [
+            "TOPAY / COD / CLEARANCE / PENALTY AMOUNT NOT READY",
+            "REFUSED TO PAY COD / TOPAY AMOUNT">"REFUSED TO PAY COD / TOPAY AMOUNT",
+            "RECEIVER RESCHEDULED DELIVERY DATE">"RECEIVER RESCHEDULED DELIVERY DATE",
+             "POLITICAL DISTURBANCE / BANDH /STRIKE (UNS)",
+             "PARTIAL DELIVERED",
+             "OUT OF DELIVERY AREA (ODA)",
+             "OFFICE/INWARD CLOSED OR DOOR LOCKED / TIME OVER",
+            "NO SERVICE",
+            "NO ENTRY / RESTRICTED AREA MISROUTE",
+             "LATE ARRIVAL OF LOAD",
+            "INWARD CLOSED / BANK TIME OVER",
+            "EWAY BILL DISPUTE / WITHOUT GST INVOICE DECLARATION",
+             "DETAINED BY GOVERNMENT / SALES TAX/AIRPORT AUTHORITY",
+             "DELIVERY ISSUE DUE TO HEAVY RAIN / NATURAL CALAMITY",
+             "CONTACT NAME/DEPT NOT MENTIONED / NO SUCH PERSON",
+             "CONSIGNOR / AGENT REQUESTED TO HOLD",
+            "CONSIGNMENT LOST",
+             "CONSIGNEE WILL COLLECT FROM OFFICE",
+             "CONSIGNEE OUT OF STATION OR NOT AVAILABLE",
+             "CONSIGNEE NOT RESPONDING TO PHONE COMPANY/PERSON SHIFTED",
+             "ADDRESS NOT FOUND / IN-COMPLETE / REQUIRE PHONE NO",
+             "OTHER"
+        ];
+    }
+
+    public function get_all_remark_delivered(){
+        return [
+           "SIGNATURE",
+           "SIGN WITH STAMP",
+           "DROP IN BOX",
+           "DROP DELIVERY",
+           "SELF RECIVE",
+           "COMPANY STAMP",
+           "OTHER"
+        ];
+    }
 }
