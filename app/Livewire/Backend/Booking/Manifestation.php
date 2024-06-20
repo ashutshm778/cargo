@@ -131,7 +131,7 @@ class Manifestation extends Component
                     $this->awb_no='';
                 }
                 $shipment_in_scan = ShipmentInScanDetail::where('packet',$this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->where('destination','!=',auth()->guard("admin")->user()->branch_id)->first();
-                if(!empty($shipment_in_scan->id)){
+                if(!empty($shipment_in_scan->id)&& ($shipment_in_scan->origin!=$this->branch_to)){
                     if(!in_array($this->awb_no,$this->awb_no_list)){
                     array_push($this->awb_no_list,$this->awb_no);
                     array_push($this->date_array,date('Y-m-d'));
