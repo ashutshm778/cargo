@@ -9,7 +9,8 @@
                         </div>
                         <div class="ms-auto">
                             @if(!empty($delivery_run_sheet_detail->signature))
-                            <a href="https://prashantcargo.com/public/.{{$delivery_run_sheet_detail->signature}}" target="_blank">Click Here </a>
+                            <a href="https://prashantcargo.com/public/.{{$delivery_run_sheet_detail->signature}}" target="_blank">Click Here  View</a>
+                            <a href="https://prashantcargo.com/public/.{{$delivery_run_sheet_detail->signature}}" download>Click Here Download</a>
                             @endif
                         </div>
                     </div>
