@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-2">
                             User Code:
-                            <input type="text" class="form-control" wire:model="code"  placeholder="User Code" wire:keyup="get_user_details()" />
+                            <input type="text" class="form-control" wire:model="code"  placeholder="User Code" wire:change="get_user_details()" />
                             <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                             role="alert">
                             <strong>{{ $errors->first('code') }}</strong>
@@ -40,6 +40,10 @@
                         <div class="col-2">
                             User Name:
                             <input type="text" class="form-control" wire:model="user_name"  placeholder="User Code"  readonly />
+                            <span style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
+                            role="alert">
+                            <strong>{{ $errors->first('user_name') }}</strong>
+                        </span>
 
                         </div>
                         <div class="col-3">

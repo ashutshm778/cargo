@@ -119,8 +119,6 @@ class AssignDelivery extends Component
         $data=Admin::where('code',$this->code)->where('branch_id',Auth::guard('admin')->user()->branch_id)->first();
         if(!empty($data->id)){
          $this->user_name=$data->name;
-        }else{
-            $this->code='';
         }
     }
 
@@ -178,6 +176,7 @@ class AssignDelivery extends Component
             'delivery_type' => 'required',
             'code' => 'required|exists:admins',
             'route' => 'required',
+            'user_name' =>'required'
         ]);
 
         $drs=new DeliveryRunSheet;
