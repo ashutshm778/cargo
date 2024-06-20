@@ -121,7 +121,6 @@ class Manifestation extends Component
                     array_push($this->awb_no_list,$this->awb_no);
                     array_push($this->date_array,date('Y-m-d'));
                     array_push($this->time_array,date('H:i:s'));
-
                     }
                     $this->awb_no='';
                 }
