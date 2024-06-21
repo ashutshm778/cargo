@@ -15,7 +15,7 @@
 
                 <div class="card-body" id="printableArea">
                     <div class="row">
-                        <div class="col-12 " id="manifest_barcode">
+                        <div class="col-12 "  >
                             MFNo:{{$manifest->mf_no}}
                             @php
                                 $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
@@ -83,6 +83,20 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="col-12 " id="manifest_barcode" style="display:none;" >
+                    MFNo:{{$manifest->mf_no}}
+                    @php
+                        $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
+                        $barcode = $generator->getBarcode(
+                            $manifest->mf_no,
+                            $generator::TYPE_CODE_128,
+                        );
+                    @endphp
+                    {!! $barcode !!}
+                </div>
+
+
                 <div class="toolbar no-print mb-3 mt-3">
                     <div class="mt-4">
                         <button type="button" id="print_button" class="btn btn-dark"
