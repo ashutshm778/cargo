@@ -59,7 +59,7 @@
             @endforeach
             <div class="toolbar no-print mb-3">
                 <div class="text-end">
-                    <button type="button" class="btn btn-dark" onclick="printDiv('printableArea')"><i
+                    <button type="button" class="btn btn-dark"  onclick="window.print()"><i
                             class="fa fa-print"></i>
                         Print</button>
                 </div>
