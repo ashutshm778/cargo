@@ -1,30 +1,29 @@
 <div>
     <style>
         @media print {
-
+              body{
+                background: #fff !important;
+            }
             .print-container {
                position: fixed;
-               bottom: 5%;
-               left: 30%;
+                 background: #fff !important;
+               bottom: 10%;
+               left: 15%;
                page-break-after:always;
             }
-
             .card {
                 box-shadow: none;
                 background: transparent;
              }
-
            .page-wrapper {
                 margin-left: 0;
             }
-
             .sidebar-wrapper{
                 display: none;
             }
             .topbar{
                 display: none !important;
             }
-
             .barcode {
                 width: 100%;
                 text-align: center;
