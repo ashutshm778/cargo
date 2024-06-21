@@ -7,13 +7,20 @@
                 padding: 0;
                 background: #fff !important;
             }
-
             .print-container {
                position: fixed;
                background: #fff !important;
-               bottom: 0%;
+               bottom: -3%;
                page-break-after:always;
                width:85% !important;
+            }
+            .print-container p {
+                margin-bottom: 0rem;
+                font-size: 12px;
+                    line-height: 15px;
+            }
+            .print-container td {
+                padding: 1px 5px;
             }
             .card {
                 box-shadow: none;
