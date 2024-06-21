@@ -59,7 +59,7 @@
                                                         <td>
                                                             <span><b>{{ $booking->consignee }}</b></span> <br>
                                                             <span style="font-size:12px">{{ $booking->delivery_address }},</span><br>
-                                                           <span style="font-size:12px" > {{ $booking->consignee_phone }}</span>
+                                                           <span style="font-size:12px" ><b> {{ $booking->consignee_phone }}</b></span>
                                                         </td>
                                                         <td></td>
                                                     </tr>
