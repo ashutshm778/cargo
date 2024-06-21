@@ -1,8 +1,49 @@
 <div>
+    <style>
+        @media print {
+            body, html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background: #fff !important;
+            }
+
+            .print-container {
+               position: fixed;
+                background: #fff !important;
+               bottom: 10%;
+               page-break-after:always;
+               width:90% !important;
+            }
+            .card {
+                box-shadow: none;
+                background: transparent;
+             }
+           .page-wrapper {
+                margin-left: 0;
+            }
+            .sidebar-wrapper{
+                display: none;
+            }
+            .topbar{
+                display: none !important;
+            }
+            .barcode {
+                width: 100%;
+                text-align: center;
+            }
+            .no-print {
+                display: none;
+            }
+            .printableAreaTable{
+                display: none !important;
+            }
+        }
+    </style>
     <div class="page-wrapper">
         <div class="page-content" id='printableArea'>
             @foreach ($booking_product_barcode as $key => $b_p_barcode)
-                <main>
+                <main class="print-container">
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
