@@ -10,8 +10,8 @@
 
             .print-container {
                position: fixed;
-                background: #fff !important;
-               bottom: 10%;
+               background: #fff !important;
+               bottom: 3%;
                page-break-after:always;
                width:90% !important;
             }
