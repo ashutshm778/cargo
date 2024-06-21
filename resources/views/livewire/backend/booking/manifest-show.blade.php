@@ -36,12 +36,12 @@
                         <div class="col-2">
                             To:{{$manifest->forwardTo->name}}
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             Date:{{ \Carbon\Carbon::parse($manifest->date)->format('d-m-Y') }}
                         </div>
 
-                        <div class="col-2 ">
-                            Total Weight:{{$manifest->weight}}
+                        <div class="col-3 ">
+                         Weight:{{$manifest->weight}}
                         </div>
                         <div class="col-2 ">
                             Total PC's:{{count($manifest->manifestList)}}
