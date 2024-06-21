@@ -11,7 +11,6 @@
                position: fixed;
                background: #fff !important;
                bottom: -3%;
-               page-break-after:always;
                width:85% !important;
             }
             .print-container p {
