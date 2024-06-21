@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('franchises', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('company_name')->nullable();
+            $table->string('name');
+            $table->string('frenchie_code');
+            $table->string('branch_id');
+            $table->string('gst')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('services')->nullable();
-            $table->string('location')->nullable();
-            $table->string('message')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('address')->nullable();
+            $table->string('pincode')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('serving_pincode')->default('[]');
             $table->timestamps();
         });
     }

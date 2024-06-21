@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Franchise extends Model
 {
     use HasFactory;
+
+    public function branch_data()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id', 'id');
+    }
 }

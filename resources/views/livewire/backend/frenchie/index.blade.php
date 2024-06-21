@@ -8,7 +8,11 @@
                             <h6 class="mb-0">Frenchies List</h6>
                         </div>
                         <div class="ms-auto">
-
+                            @if (auth()->guard('admin')->user()->can('branch-create'))
+                            <a href="{{ route('frenchies.create') }}" class="btn btn-primary radius-30 mt-2 mt-lg-0" wire:navigate ><i
+                                    class="bx bxs-plus-square"></i>Add New
+                                    Frenchies</a>
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -25,27 +29,30 @@
                         <table class="table custom-brder align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
-                                    <th>Company Name</th>
                                     <th>Name</th>
+                                    <th>Branch</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Service</th>
-                                    <th>Message</th>
-
+                                    @if(auth()->guard('admin')->user()->canany(['branch-edit', 'branch-view']))
+                                     <th>Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($list as $data)
-                                    <tr>
-                                        <td>{{ $data->company_name }}</td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->email }}</td>
-                                        <td>{{ $data->phone }}</td>
-                                        <td>{{ $data->services }}</td>
-                                        <td>
-                                           {{$data->message}}
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{$data->branch_data->name}}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->phone }}</td>
+                                    <td>
+                                        <div class="d-flex order-actions">
+                                            @if (auth()->guard('admin')->user()->can('branch-edit'))
+                                                <a href="{{route('frenchies.edit',$data->id)}}" class="me-2"><i class="bx bxs-edit"></i></a>
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

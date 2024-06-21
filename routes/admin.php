@@ -77,7 +77,11 @@ Route::group(['middleware' => ['admin']], function() {
 
     Route::get('contact_us', App\Livewire\Backend\ContactUs\Index::class)->name('admin.contact_us');
     Route::get('carrer', App\Livewire\Backend\Career\Index::class)->name('admin.carrer');
+
+
     Route::get('frenchies', App\Livewire\Backend\Frenchie\Index::class)->name('admin.frenchies');
+    Route::get('frenchies/create', App\Livewire\Backend\Frenchie\Create::class)->name('frenchies.create');
+    Route::get('frenchies/edit/{id}', App\Livewire\Backend\Frenchie\Edit::class)->name('frenchies.edit');
 
     Route::get('c_note', App\Livewire\Backend\CNote\Index::class)->name('admin.c_note');
     Route::get('c_note/create', App\Livewire\Backend\CNote\Create::class)->name('admin.c_note_create');
