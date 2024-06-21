@@ -1,5 +1,5 @@
 <div>
-    <style>
+    {{-- <style>
         @media print {
             body, html {
                 height: 100%;
@@ -45,7 +45,7 @@
                 display: none !important;
             }
         }
-    </style>
+    </style> --}}
     <div class="page-wrapper">
         <div class="page-content" id='printableArea'>
             @foreach ($booking_product_barcode as $key => $b_p_barcode)
