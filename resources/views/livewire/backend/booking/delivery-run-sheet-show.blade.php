@@ -57,9 +57,9 @@
                                                         </td>
                                                         <td>Pcs: {{ $booking->booking_product->no_of_pack }}</td>
                                                         <td>
-                                                            <span>{{ $booking->consignee }}</span> <br>
-                                                            <span>{{ $booking->delivery_address }},</span><br>
-                                                           <span> {{ $booking->consignee_phone }}</span>
+                                                            <span><b>{{ $booking->consignee }}</b></span> <br>
+                                                            <span style="font-size:12px">{{ $booking->delivery_address }},</span><br>
+                                                           <span style="font-size:12px" > {{ $booking->consignee_phone }}</span>
                                                         </td>
                                                         <td></td>
                                                     </tr>
