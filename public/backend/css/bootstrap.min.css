@@ -2165,7 +2165,7 @@ progress {
 }
 
 .table>:not(caption)>*>* {
-    white-space: nowrap;
+    /* white-space: nowrap; */
     padding: .2rem .5rem;
     color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color)));
     background-color: var(--bs-table-bg);
