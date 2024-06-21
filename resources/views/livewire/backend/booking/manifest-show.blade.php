@@ -1,8 +1,46 @@
 <div>
+    <style>
+        @media print {
+
+            .print-container {
+               position: fixed;
+               bottom: 5%;
+               left: 30%;
+               page-break-after:always;
+            }
+
+            .card {
+                box-shadow: none;
+                background: transparent;
+             }
+
+           .page-wrapper {
+                margin-left: 0;
+            }
+
+            .sidebar-wrapper{
+                display: none;
+            }
+            .topbar{
+                display: none !important;
+            }
+
+            .barcode {
+                width: 100%;
+                text-align: center;
+            }
+            .no-print {
+                display: none;
+            }
+            .printableAreaTable{
+                display: none !important;
+            }
+        }
+    </style>
     <div class="page-wrapper">
         <div class="page-content">
             <div class="card radius-10">
-                <div class="card-header">
+                <div class="card-header printableAreaTable">
                     <div class="d-flex align-items-center">
                         <div>
                             <h6 class="mb-0">Manifestation Show</h6>
@@ -14,8 +52,8 @@
                 </div>
 
                 <div class="card-body" id="printableArea">
-                    <div class="row">
-                        <div class="col-12 "  >
+                    <div class="row print-container">
+                        <div class="col-12">
                             MFNo:{{$manifest->mf_no}}
                             @php
                                 $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
@@ -29,25 +67,25 @@
                        <div class="clearfix">
                         <br>
                        </div>
-                        <div class="col-2">
+                        <div class="col-2 printableAreaTable">
                             From:{{$manifest->forwardFrom->name}}
                         </div>
 
-                        <div class="col-2">
+                        <div class="col-2 printableAreaTable">
                             To:{{$manifest->forwardTo->name}}
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 printableAreaTable">
                             Date:{{ \Carbon\Carbon::parse($manifest->date)->format('d-m-Y') }}
                         </div>
 
-                        <div class="col-3 ">
+                        <div class="col-3 printableAreaTable">
                          Weight:{{$manifest->weight}}
                         </div>
-                        <div class="col-2 ">
+                        <div class="col-2 printableAreaTable">
                             Total PC's:{{count($manifest->manifestList)}}
                         </div>
                     </div>
-                    <div class="table-responsive" id="printableArea">
+                    <div class="table-responsive printableAreaTable" id="printableAreaTable">
                         <table class="table custom-brder align-middle mb-0" id="datatable">
                             <thead>
                                 <tr>
@@ -84,23 +122,12 @@
                     </div>
                 </div>
 
-                <div class="col-12 " id="manifest_barcode" style="display:none;" >
-                    MFNo:{{$manifest->mf_no}}
-                    @php
-                        $generator = new \Picqer\Barcode\BarcodeGeneratorHTML();
-                        $barcode = $generator->getBarcode(
-                            $manifest->mf_no,
-                            $generator::TYPE_CODE_128,
-                        );
-                    @endphp
-                    {!! $barcode !!}
-                </div>
 
 
                 <div class="toolbar no-print mb-3 mt-3">
                     <div class="mt-4">
                         <button type="button" id="print_button" class="btn btn-dark"
-                                onClick="printDiv('manifest_barcode');"><i class="fa fa-print"></i>
+                        onclick="window.print()"><i class="fa fa-print"></i>
                                 Print Manifest Barcode</button>
                         <div class="float-end">
 
