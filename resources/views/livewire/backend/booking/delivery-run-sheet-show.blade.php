@@ -56,9 +56,10 @@
                                                                 style="justify-content: center;display: flex;">{{ $booking->bill_no }}</span>
                                                         </td>
                                                         <td>Pcs: {{ $booking->booking_product->no_of_pack }}</td>
-                                                        <td>{{ $booking->consignee }} <br>
-                                                            {{ $booking->delivery_address }},<br>
-                                                            {{ $booking->consignee_phone }}
+                                                        <td>
+                                                            <span>{{ $booking->consignee }}</span> <br>
+                                                            <span>{{ $booking->delivery_address }},</span><br>
+                                                           <span> {{ $booking->consignee_phone }}</span>
                                                         </td>
                                                         <td></td>
                                                     </tr>
