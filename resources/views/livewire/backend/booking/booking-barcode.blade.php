@@ -53,14 +53,10 @@
                                 </td>
                                 <td>
                                     <p style="margin-bottom: 0;">{{ $booking_product->product }}</p>
-
+                                    {{ $key + 1 }}/{{ count($booking_product_barcode) }}
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="2"></td>
 
-                                <td>{{ $key + 1 }}/{{ count($booking_product_barcode) }}</td>
-                            </tr>
                             <tr>
                                 <td colspan="2">
                                     <p style="margin-bottom: 0;">Consignee:</p>
