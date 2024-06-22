@@ -59,8 +59,8 @@ class Assign extends Component
         for($i=$this->from;$i<=$this->to;$i++){
 
             $c_no_detail=CNoteDetail::where('c_no',$i)->first();
-            $c_no_detail->assign_type='branch';
-            $c_no_detail->assign_to=$this->branch;
+            $c_no_detail->assign_type=$this->assign_type;
+            $c_no_detail->assign_to=$this->assign_to;
             $c_no_detail->assign_no=$assign_no;
             $c_no_detail->status=1;
             $c_no_detail->save();
