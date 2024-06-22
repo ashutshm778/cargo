@@ -18,7 +18,6 @@ class TrackBooking extends Component
 
     public function render()
     {
-        compressImage('https://prashantcargo.com/public/frontend/drs_signature/667677e697f79.jpg','https://prashantcargo.com/public/frontend/drs_signature/667677e697f79.jpg', 75);
         $data = Booking::where('bill_no',$this->awb_no)->first();
         $delivery_run_sheet_detail=DeliveryRunSheetDetail::where('bill_no',$this->awb_no)->first();
         return view('livewire.backend.booking.track-booking',compact('data','delivery_run_sheet_detail'));
