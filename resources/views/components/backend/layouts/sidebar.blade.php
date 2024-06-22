@@ -43,7 +43,18 @@
                 <div class="menu-title">C-Note</div>
             </a>
         </li>
+
+
+
         @endif
+
+        <li>
+            <a href="{{route('admin.c_note_frenchies')}}" wire:navigate>
+                <div class="parent-icon"><i class='bx bx-user-check'></i>
+                </div>
+                <div class="menu-title">C-Note Frenchies</div>
+            </a>
+        </li>
         <li>
             <a href="{{route('admin.track_booking')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
