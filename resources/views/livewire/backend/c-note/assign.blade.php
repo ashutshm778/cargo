@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="form-body">
                         <form class="row">
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="from" class="form-label">From<span>*</span></label>
                                 <input type="text" class="form-control" id="from" wire:model="from"
                                     placeholder="From" readonly>
@@ -29,7 +29,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="to" class="form-label">To<span>*</span></label>
                                 <input type="text" class="form-control" id="to" wire:model="to"
                                     placeholder="To">
@@ -41,31 +41,15 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="to" class="form-label">Assign Type<span>*</span></label>
-                                <select id='branch' wire:model.live="assign_type" class="form-control">
-                                    <option value=''>-- Select Type--</option>
-                                    <option value='branch'>Branch</option>
-                                    <option value='frenchies'>Frenchies</option>
-                                </select>
-                                @error('assign_type')
-                                    <span
-                                        style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
-                                        role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            @if($assign_type == 'branch')
-                            <div class="col-md-3 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <label for="to" class="form-label">Assign To<span>*</span></label>
-                                <select id='branch' wire:model="assign_to" class="form-control">
-                                    <option value=''>-- Select --</option>
+                                <select id='branch' wire:model="branch" class="form-control">
+                                    <option value=''>-- Select Branch--</option>
                                     @foreach (App\Models\Branch::all() as $branch)
                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('assign_to')
+                                @error('branch')
                                     <span
                                         style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
                                         role="alert">
@@ -73,25 +57,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            @endif
-                            @if($assign_type == 'frenchies')
-                            <div class="col-md-3 mb-3">
-                                <label for="to" class="form-label">Assign To<span>*</span></label>
-                                <select id='branch' wire:model="assign_to" class="form-control">
-                                    <option value=''>-- Select --</option>
-                                    @foreach (App\Models\Franchise::all() as $data)
-                                        <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('assign_to')
-                                    <span
-                                        style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
-                                        role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            @endif
                             <div class="col-12">
                                 <div class="">
                                     <button type="button" wire:click="store()" class="btn btn-primary">Add</button>
