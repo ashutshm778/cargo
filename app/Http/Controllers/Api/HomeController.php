@@ -304,10 +304,10 @@ class HomeController extends Controller
 
         // Update the signature path in the database
         $drs_detail->signature = '/frontend/drs_signature/' . $name;
-         compressImage($originalPath,$destinationPath, 75);
+
         }
         $drs_detail->save();
-
+        compressImage($originalPath,$destinationPath, 75);
         return response()->json([
             'message' => 'Status Updated Successfully',
             'status' => '200'
