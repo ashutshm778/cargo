@@ -20,9 +20,7 @@ if (!function_exists('getFileBaseURL')) {
     }
 }
 
-<?php
-
-if (!function_exists('compressImage')) {
+if(!function_exists('compressImage')) {
     function compressImage($source, $destination, $quality) {
         // Get image info
         $imgInfo = getimagesize($source);
