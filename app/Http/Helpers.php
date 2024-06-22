@@ -20,48 +20,39 @@ if (!function_exists('getFileBaseURL')) {
     }
 }
 
-if(!function_exists('compressImage')) {
-    function compressImage($source, $destination, $quality) {
-        // Get image info
-        $imgInfo = getimagesize($source);
-        $mime = $imgInfo['mime'];
+if (!function_exists('compressImage')) {
+ function compressImage($source, $destination, $quality) {
+    // Get image info
+    $imgInfo = getimagesize($source);
+    $mime = $imgInfo['mime'];
 
-        // Create a new image from file
-        switch ($mime) {
-            case 'image/jpeg':
-                $image = @imagecreatefromjpeg($source);
-                if ($image === false) {
-                    return false;
-                }
-                imagejpeg($image, $destination, $quality);
-                break;
-            case 'image/png':
-                $image = @imagecreatefrompng($source);
-                if ($image === false) {
-                    return false;
-                }
-                imagealphablending($image, false);
-                imagesavealpha($image, true);
-                $scaleQuality = round(($quality / 100) * 9);
+    // Create a new image from file
+    switch($mime){
+        case 'image/jpeg':
+            $image = imagecreatefromjpeg($source);
+           imagejpeg($image, $destination, $quality);
+            break;
+        case 'image/png':
+            $image = imagecreatefrompng($source);
+            imagealphablending($image, false);
+            imagesavealpha($image, true);
+            $scaleQuality = round((90/100) * 9);
                 $invertScaleQuality = 9 - $scaleQuality;
-                imagepng($image, $destination, $invertScaleQuality);
-                break;
-            case 'image/gif':
-                $image = @imagecreatefromgif($source);
-                if ($image === false) {
-                    return false;
+                if (imagetypes() & IMG_PNG) {
+                    imagepng($image, $destination, $invertScaleQuality);
                 }
-                imagegif($image, $destination);
-                break;
-            default:
-                return false; // Unsupported image type
-        }
-
-        // Free up memory
-        imagedestroy($image);
-
-        // Return compressed image
-        return $destination;
+            break;
+        case 'image/gif':
+            $image = imagecreatefromgif($source);
+            imagegif($image, $destination, $quality);
+            break;
+        default:
+            $image = imagecreatefromjpeg($source);
+           imagejpeg($image, $destination, $quality);
     }
-}
 
+
+    // Return compressed image
+    return $destination;
+  }
+}
