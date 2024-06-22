@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class Assign extends Component
 {
 
-    public $from,$to,$branch,$max_to,$hidden_id;
+    public $from,$to,$branch,$max_to,$hidden_id,$assign_type,$assign_to;
 
     function mount($id){
         $this->hidden_id=$id;

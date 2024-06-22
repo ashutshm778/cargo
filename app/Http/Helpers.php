@@ -19,3 +19,51 @@ if (!function_exists('getFileBaseURL')) {
         }
     }
 }
+
+<?php
+
+if (!function_exists('compressImage')) {
+    function compressImage($source, $destination, $quality) {
+        // Get image info
+        $imgInfo = getimagesize($source);
+        $mime = $imgInfo['mime'];
+
+        // Create a new image from file
+        switch ($mime) {
+            case 'image/jpeg':
+                $image = @imagecreatefromjpeg($source);
+                if ($image === false) {
+                    return false;
+                }
+                imagejpeg($image, $destination, $quality);
+                break;
+            case 'image/png':
+                $image = @imagecreatefrompng($source);
+                if ($image === false) {
+                    return false;
+                }
+                imagealphablending($image, false);
+                imagesavealpha($image, true);
+                $scaleQuality = round(($quality / 100) * 9);
+                $invertScaleQuality = 9 - $scaleQuality;
+                imagepng($image, $destination, $invertScaleQuality);
+                break;
+            case 'image/gif':
+                $image = @imagecreatefromgif($source);
+                if ($image === false) {
+                    return false;
+                }
+                imagegif($image, $destination);
+                break;
+            default:
+                return false; // Unsupported image type
+        }
+
+        // Free up memory
+        imagedestroy($image);
+
+        // Return compressed image
+        return $destination;
+    }
+}
+
