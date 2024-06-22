@@ -307,7 +307,7 @@ class HomeController extends Controller
 
         }
         $drs_detail->save();
-        compressImage($originalPath,$destinationPath, 75);
+
         return response()->json([
             'message' => 'Status Updated Successfully',
             'status' => '200'
