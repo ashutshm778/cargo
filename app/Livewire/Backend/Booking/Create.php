@@ -375,14 +375,21 @@ class Create extends Component
                 if (auth()->guard("admin")->user()->branch_id == $c_note_details->assign_to) {
                     if($c_note_details->assign_type=='branch'){
 
-                        $this->branch_id = $c_note_details->assign_to;
-                        $this->from = $c_note_details->assign_to;
+
                         $c_note_frenchies_details=CNoteFrenchiesDetail::where('c_no',$this->bill_no)->first();
                         if(!empty($c_note_frenchies_details->id)){
 
                             $frenchies=Franchise::where('id',$c_note_frenchies_details->assign_to)->first();
                             $this->frenchies_id=$frenchies->id;
 
+                            $this->branch_id = $c_note_details->assign_to;
+                            $this->from = $c_note_details->assign_to;
+
+                        }
+
+                        if (empty(auth()->guard("admin")->user()->frenchies_id)) {
+                            $this->branch_id = $c_note_details->assign_to;
+                            $this->from = $c_note_details->assign_to;
                         }
                     }
                 }else{
