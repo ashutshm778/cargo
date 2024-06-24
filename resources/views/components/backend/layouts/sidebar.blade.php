@@ -43,7 +43,8 @@
                 <div class="menu-title">C-Note</div>
             </a>
         </li>
-
+    @endif
+    @if(auth()->guard('admin')->user()->can('c_note_frenchies-list'))
         <li>
             <a href="{{route('admin.c_note_frenchies')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-user-check'></i>
@@ -81,7 +82,7 @@
         </li>
         @endif
 
-        @if(auth()->guard('admin')->user()->can('delivery_assign-list'))
+        @if(auth()->guard('admin')->user()->can('drs-list'))
         <li>
             <a href="{{route('admin.assign_delivery')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
@@ -90,7 +91,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('delivery-list'))
+        @if(auth()->guard('admin')->user()->can('drs-list'))
         <li>
             <a href="{{route('admin.drs_list')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
