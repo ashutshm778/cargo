@@ -16,7 +16,7 @@ class Create extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $name,$email,$password,$role,$branch;
+    public $name,$email,$password,$role,$branch,$frenchies;
 
     public function render()
     {
@@ -40,6 +40,7 @@ class Create extends Component
         $staff->email = $this->email;
         $staff->password =Hash::make($this->password);
         $staff->branch_id=$this->branch;
+        $staff->frenchies_id=$this->frenchies;
         $staff->code=substr($this->name, 0, 1).rand(11111,99999);
         $staff->save();
         $staff->assignRole($this->role);

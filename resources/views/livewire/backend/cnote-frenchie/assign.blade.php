@@ -5,13 +5,14 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Add C-Note</h6>
+                            <h6 class="mb-0">All C-Note</h6>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div class="form-body">
+                        @if(auth()->guard("admin")->user()->id != 1)
                         <form class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="from" class="form-label">From<span>*</span></label>
@@ -59,6 +60,7 @@
                                 </div>
                             </div>
                         </form>
+                        @endif
                     </div>
                 </div>
 

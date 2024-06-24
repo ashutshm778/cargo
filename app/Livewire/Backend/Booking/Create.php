@@ -6,12 +6,14 @@ use App\Models\Booking;
 use Livewire\Component;
 use App\Models\Consignee;
 use App\Models\Consignor;
+use App\Models\Franchise;
 use App\Models\BookingLog;
+use App\Models\CNoteDetail;
 use Livewire\WithPagination;
 use App\Models\BookingProduct;
+use App\Models\CNoteFrenchiesDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BookingProductBarcode;
-use App\Models\CNoteDetail;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Create extends Component
@@ -20,7 +22,7 @@ class Create extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $branch_id, $delivery_address, $from, $to, $consignor_phone,  $consignee_phone, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date;
+    public $branch_id, $delivery_address, $from, $to, $consignor_phone,  $consignee_phone, $consignor_gstin, $consignee_gstin, $booking_no, $value,$date,$frenchies_id;
     public $no_of_pack = [];
     public $product = [];
     public $unit = [];
@@ -51,8 +53,8 @@ class Create extends Component
         $this->add($this->i);
         $this->date = date('Y-m-d');
         if(auth()->guard('admin')->user()->id != 1){
-            $this->branch_id = auth()->guard('admin')->user()->branch_id;
-            $this->from = auth()->guard('admin')->user()->branch_id;
+            // $this->branch_id = auth()->guard('admin')->user()->branch_id;
+            // $this->from = auth()->guard('admin')->user()->branch_id;
         }
     }
 
@@ -229,6 +231,7 @@ class Create extends Component
         $this->updatedTags();
         $this->validate([
             'bill_no' => 'required|unique:bookings',
+            'branch_id' => 'required',
             'from' => 'required',
             'to' => 'required',
             'consignee' => 'required',
@@ -272,6 +275,7 @@ class Create extends Component
         $input=$this->all();
         $booking=new Booking;
         $booking->branch_id=$this->branch_id;
+        $booking->frenchies_id=$this->frenchies_id;
         $booking->added_by=Auth::guard('admin')->user()->id;
         $booking->bill_no=strtoupper($this->bill_no);
         $lastBooking = Booking::latest()->first(); // Retrieve the last entry from the database
@@ -373,11 +377,17 @@ class Create extends Component
 
                         $this->branch_id = $c_note_details->assign_to;
                         $this->from = $c_note_details->assign_to;
+                        $c_note_frenchies_details=CNoteFrenchiesDetail::where('c_no',$this->bill_no)->first();
+                        if(!empty($c_note_frenchies_details->id)){
 
+                            $frenchies=Franchise::where('id',$c_note_frenchies_details->assign_to)->first();
+                            $this->frenchies_id=$frenchies->id;
+
+                        }
                     }
-
                 }else{
-
+                    $this->branch_id = '';
+                    $this->from = '';
                 }
              }
          }
