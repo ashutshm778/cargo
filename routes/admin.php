@@ -88,6 +88,11 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('c_note/edit/{id}', App\Livewire\Backend\CNote\Edit::class)->name('admin.c_note_edit');
     Route::get('c_note/assign/{id}', App\Livewire\Backend\CNote\Assign::class)->name('admin.c_note_assign');
 
+    Route::get('c_note_frenchies', App\Livewire\Backend\CnoteFrenchie\Index::class)->name('admin.c_note_frenchies');
+    Route::get('c_note_frenchies/create', App\Livewire\Backend\CnoteFrenchie\Create::class)->name('admin.c_note_frenchies_create');
+    Route::get('c_note_frenchies/edit/{id}', App\Livewire\Backend\CnoteFrenchie\Edit::class)->name('admin.c_note_frenchies_edit');
+    Route::get('c_note_frenchies/assign/{id}/{start_range}/{end_range}', App\Livewire\Backend\CnoteFrenchie\Assign::class)->name('admin.c_note_frenchies_assign');
+
     Route::view('xyz', 'guftyuyguy');
     Route::view('booking_barcode/{id}','guftyuyguy');
 });
