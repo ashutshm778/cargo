@@ -76,5 +76,10 @@ class Booking extends Model
         return $this->belongsTo(Admin::class,'assign_to','id');
     }
 
+    public function frenchiesData()
+    {
+        return $this->belongsTo(Franchise::class,'frenchies_id','id');
+    }
+
 
 }

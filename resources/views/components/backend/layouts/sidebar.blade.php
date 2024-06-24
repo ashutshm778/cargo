@@ -43,18 +43,19 @@
                 <div class="menu-title">C-Note</div>
             </a>
         </li>
-
-
-
-        @endif
-
+    @endif
+    @if(auth()->guard('admin')->user()->can('c_note_frenchies-list'))
         <li>
             <a href="{{route('admin.c_note_frenchies')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-user-check'></i>
                 </div>
-                <div class="menu-title">C-Note Frenchies</div>
+                <div class="menu-title">Issue C-Note</div>
             </a>
         </li>
+
+        @endif
+
+
         <li>
             <a href="{{route('admin.track_booking')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
@@ -81,7 +82,7 @@
         </li>
         @endif
 
-        @if(auth()->guard('admin')->user()->can('delivery_assign-list'))
+        @if(auth()->guard('admin')->user()->can('drs-list'))
         <li>
             <a href="{{route('admin.assign_delivery')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>
@@ -90,7 +91,7 @@
             </a>
         </li>
         @endif
-        @if(auth()->guard('admin')->user()->can('delivery-list'))
+        @if(auth()->guard('admin')->user()->can('drs-list'))
         <li>
             <a href="{{route('admin.drs_list')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-book-alt'></i>

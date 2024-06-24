@@ -40,6 +40,9 @@ class Index extends Component
         } else {
             $bookings = Booking::where('id', '>', 0)->where('branch_id', auth()->guard("admin")->user()->branch_id)->with(['branch_from', 'branch_to'])->orderBy('id', 'desc');
         }
+        if (!empty(auth()->guard("admin")->user()->frenchies_id)) {
+            $bookings = $bookings->where('frenchies_id', auth()->guard("admin")->user()->frenchies_id);
+        }
 
         if ($this->branch) {
             $bookings = $bookings->where('branch_id', $this->branch);

@@ -76,7 +76,6 @@ class Assign extends Component
 
         }
 
-        $this->redirect('/admin/c_note/assign/'.$this->hidden_id, navigate: true);
     }
 
 }

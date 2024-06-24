@@ -54,8 +54,8 @@
                                             <label for="text-placeholder">Role</label>
                                             <select class="form-control" wire:model="role">
                                                 <option>Select Role</option>
-                                                @foreach($roles as $role)
-                                                <option value="{{$role->name}}" >{{ explode('_', $role->name)[0] }}</option>
+                                                @foreach($roles as $rol)
+                                                <option value="{{$rol->name}}" >{{ explode('_', $rol->name)[0] }}</option>
                                                 @endforeach
                                             </select>
                                             @error('role')
@@ -64,10 +64,10 @@
                                         </div>
                                         <div class="form-group  mb-25">
                                             <label for="text-placeholder">Branch</label>
-                                            <select class="form-control" wire:model="branch">
+                                            <select class="form-control" wire:model.live="branch">
                                                 <option>Select Branch</option>
-                                                @foreach($branches as $branch)
-                                                <option value="{{ $branch->id}}" >{{ $branch->name }}</option>
+                                                @foreach($branches as $branchs)
+                                                <option value="{{ $branchs->id}}" >{{ $branchs->name }}</option>
                                                 @endforeach
 
                                             </select>
@@ -75,6 +75,21 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                        @if($role=='Frenchies')
+                                        <div class="form-group  mb-25">
+                                            <label for="text-placeholder">Frenchies</label>
+                                            <select class="form-control" wire:model="frenchies">
+                                                <option>Select Frenchies</option>
+                                                @foreach(App\Models\Franchise::where('branch_id',$branch)->get() as $frenchies)
+                                                <option value="{{ $frenchies->id}}" >{{ $frenchies->name }}</option>
+                                                @endforeach
+
+                                            </select>
+                                            @error('frenchies')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

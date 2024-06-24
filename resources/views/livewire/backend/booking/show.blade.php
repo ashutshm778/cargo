@@ -30,7 +30,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">From- <b>{{ $booking->branch_from->name }}</b></td>
+                                <td colspan="3">From- <b>{{ $booking->branch_from->name }} @if($booking->frenchies_id)- {{$booking->frenchiesData->name}}({{$booking->frenchiesData->frenchie_code}}) @endif</b></td>
                                 <td>To- <b>{{ $booking->branch_to->name }}</b></td>
                             </tr>
                             <tr>

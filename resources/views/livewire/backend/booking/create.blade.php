@@ -46,19 +46,66 @@
                                                                             {{ $branch->name }}</option>
                                                                     @endforeach
                                                                 </select>
+                                                                <span
+                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                <strong>{{ $errors->first('branch_id') }}</strong>
+                                                            </span>
                                                             </div>
                                                         @else
+                                                        @if(empty($frenchies_id))
                                                             <div class="mb-3">
                                                                 <label for="branch_id"> Branch-</label>
                                                                 <select id='branch_id' wire:model="branch_id"
-                                                                    class="form-control" required>
+                                                                    class="form-control" disabled required>
                                                                     <option value=''>-- Select Branch--</option>
                                                                     <option
                                                                         value="{{ auth()->guard('admin')->user()->branch_id }}">
                                                                         {{ auth()->guard('admin')->user()->branch_data->name }}
                                                                     </option>
                                                                 </select>
+                                                                <span
+                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                <strong>{{ $errors->first('branch_id') }}</strong>
+                                                             </span>
                                                             </div>
+
+
+
+                                                            @else
+                                                            <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="branch_id"> Branch-</label>
+                                                                <select id='branch_id' wire:model="branch_id"
+                                                                    class="form-control" disabled required>
+                                                                    <option value=''>-- Select Branch--</option>
+                                                                    <option
+                                                                        value="{{ auth()->guard('admin')->user()->branch_id }}">
+                                                                        {{ auth()->guard('admin')->user()->branch_data->name }}
+                                                                    </option>
+                                                                </select>
+                                                                <span
+                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                <strong>{{ $errors->first('branch_id') }}</strong>
+                                                             </span>
+                                                            </div>
+                                                            @php $frenchies_data=App\Models\Franchise::find($frenchies_id); @endphp
+                                                            <div class="col-6">
+                                                                <label for="branch_id"> Frenchies-</label>
+                                                                <select id='branch_id' wire:model="frenchies_id"
+                                                                    class="form-control" disabled required>
+                                                                    <option value=''>-- Select Frenchies--</option>
+                                                                    <option value="{{$frenchies_data->id}}">
+                                                                        {{$frenchies_data->name}}
+                                                                    </option>
+                                                                </select>
+                                                                <span
+                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                <strong>{{ $errors->first('frenchies_id') }}</strong>
+                                                             </span>
+                                                            </div>
+                                                            </div>
+                                                            @endif
+
                                                         @endif
                                                     </td>
                                                     <td colspan="2">
@@ -82,7 +129,7 @@
                                         <label for="branch_select_from">From- </label>
                                         @if (auth()->guard('admin')->user()->id == 1)
                                             <select class="form-control" id="branch_select_from" wire:model="from"
-                                                required>
+                                                 required>
                                                 <option value=''>-- Select Branch--</option>
                                                 @foreach (App\Models\Branch::all() as $branch)
                                                     <option value="{{ $branch->id }}">
@@ -90,7 +137,7 @@
                                                 @endforeach
                                             </select>
                                         @else
-                                            <select class="form-control" wire:model="from" required>
+                                            <select class="form-control" wire:model="from" disabled required>
                                                 <option value=''>-- Select Branch--</option>
                                                 <option value="{{ auth()->guard('admin')->user()->branch_id }}"
                                                     selected>
