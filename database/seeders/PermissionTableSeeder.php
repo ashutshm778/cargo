@@ -67,6 +67,10 @@ class PermissionTableSeeder extends Seeder
             'c_note-list',
             'c_note-create',
             'c_note-assign',
+            'c_note_frenchies-list',
+            'c_note_frenchies-create',
+            'c_note_frenchies-assign',
+            'drs-list',
         ];
 
 
