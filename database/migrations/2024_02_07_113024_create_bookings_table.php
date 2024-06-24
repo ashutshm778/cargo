@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('branch_id');
+            $table->string('frenchies_id');
             $table->string('added_by');
             $table->string('bill_no')->unique();
             $table->string('date')->nullable() ;
