@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 
 
+use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Booking;
 use App\Models\BookingLog;
@@ -254,6 +255,7 @@ class HomeController extends Controller
 
         $drs_list =  DeliveryRunSheet::where('code',Auth::guard('api')->user()->code)->orderBy('id','desc')->with('drsList')->get();
         foreach($drs_list as $list){
+            $list->date=Carbon::parse($list->created_at)->format('d-m-Y');
             foreach($list->drsList as $data){
                 $data->pc=$data->bookingData->booking_product->no_of_pack;
             }
