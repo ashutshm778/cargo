@@ -360,6 +360,9 @@ class Create extends Component
 
     public function get_c_no_details(){
 
+        $this->branch_id = '';
+        $this->from = '';
+
         $c_note_details=CNoteDetail::where('c_no',$this->bill_no)->first();
         if (auth()->guard("admin")->user()->id == 1) {
          if(!empty($c_note_details->id)){
