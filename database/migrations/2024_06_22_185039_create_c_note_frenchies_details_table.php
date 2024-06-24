@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('c_no_id');
             $table->string('c_no');
-            $table->string('assign_type');
-            $table->string('assign_to');
-            $table->string('assign_no');
+            $table->string('assign_type')->nullable();
+            $table->string('assign_to')->nullable();
+            $table->string('assign_no')->nullable();
             $table->string('status');
             $table->timestamps();
         });
