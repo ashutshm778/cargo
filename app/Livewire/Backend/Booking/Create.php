@@ -362,6 +362,7 @@ class Create extends Component
 
         $this->branch_id = '';
         $this->from = '';
+        $this->frenchies_id='';
 
         $c_note_details=CNoteDetail::where('c_no',$this->bill_no)->first();
         if (auth()->guard("admin")->user()->id == 1) {
