@@ -159,7 +159,7 @@ class AssignDelivery extends Component
     public function add_fields(){
         $booking= Booking::where('bill_no', $this->awb_no)->where('to',auth()->guard("admin")->user()->branch_id)->where('assign_to','=','')->first();
         if (!empty($booking->id)) {
-                if(count(ShipmentInScanDetail::where('awb_no',$this->awb_no)->where('destination',auth()->guard("admin")->user()->branch_id)->get()) > 0){
+                if(count(ShipmentInScanDetail::where('awb_no',$this->awb_no)->where('forward_to',auth()->guard("admin")->user()->branch_id)->where('destination',auth()->guard("admin")->user()->branch_id)->get()) > 0){
                     if(!in_array($this->awb_no,$this->awb_no_list)){
                         array_push($this->awb_no_list,$this->awb_no);
                     }
