@@ -40,7 +40,7 @@
                                 @foreach (App\Models\BookingLog::where('booking_id',$data->id)->orderBy('id','desc')->get() as $log)
                                     <tr>
                                         <td>{{$log->created_at->format('d-m-Y H:i:s')}}</td>
-                                        <td>{{$log->status}}</td>
+                                        <td>{{strtoupper($log->status)}}</td>
                                         <td>{{$log->branch_data->name}}</td>
                                         <td>@if($log->status == 'order_created') {{$data->bill_no}} @else {{$log->action_no}}@endif</td>
                                         <td>{{$log->action}}</td>
