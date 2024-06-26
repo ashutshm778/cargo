@@ -8,12 +8,12 @@
                    background: #fff !important;
                }
                .print-container {
-                  /*position: fixed;*/
+                  /* position: fixed; */
                   /*background: #fff !important;*/
                   /*bottom: -3%;*/
                   /*width:85% !important;*/
                   page-break-after: always;
-                  /*margin: 50% auto;*/
+                  margin: 0 auto;
                }
                .print-container p {
                    margin-bottom: 0rem;

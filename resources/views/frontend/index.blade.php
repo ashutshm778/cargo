@@ -10,6 +10,10 @@
         </div>
     </div>
     <!-- preloader area end -->
+    <div>
+        <div class="bg-dark d-sm-block d-md-none"><a href="{{route('track_order')}}" target="_blank" style="border-radius: 0; border:0;font-size: 16px;color:#fff;
+    font-weight: 600;" class="blink-button w-100">Track Order</a></div>
+    </div>
     <!-- banner start -->
     <div class="banner-area banner-area-1">
         <div class="banner-slider owl-carousel">

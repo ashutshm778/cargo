@@ -13,15 +13,34 @@ p{
     }
 /* Print styles */
 @media print {
-    .page {
-        position: relative;
-        height: 100vh; /* Full page height */
+    @page {
+        size: 4in 3in;
+        margin: 0;
+
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4in;
+        height: 3in;
         box-sizing: border-box;
-        page-break-after: always;
+
+    }
+    .page {
+       width: 100%;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       border: 1px solid black;
     }
     p{
         margin-top: 0;
-        margin-bottom: 0
+        margin-bottom: 0;
+        font-size: 12px;
     }
     .top-container {
         position: absolute;
@@ -44,6 +63,9 @@ p{
     .table{
         /* width: 100% !important */
     }
+    .table p{
+        font-size: 12px !important;
+}
 }
 
 /* Screen styles */
@@ -72,6 +94,9 @@ p{
 .table tr, td, th{
     border: 1px solid;
     padding: 5px;
+}
+p{
+    font-size: 12px;
 }
 </style>
 {{-- <div class="prnt"> --}}

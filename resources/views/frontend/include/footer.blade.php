@@ -49,7 +49,8 @@
                         </div>
                         <div class="details">
                             <p>Prashant Cargo & Logistics is one of the renowned service provider for packing and moving of goods. We are one of the known names in packers and movers industry.</p>
-                            <ul class="social-media style-border mb-3">
+                            <div class="mt-2 mb-3"><a href="{{ asset('frontend/assets/img/app-release.apk')}}" target="_blank" class="blink-button">Download App</a></div>
+                            <ul class="social-media style-border">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
@@ -114,10 +115,6 @@
         <span class="back-top"><i class="fa fa-angle-up"></i></span>
     </div>
     <!-- back to top area end -->
-
-    <div class="download_apk hidden-xs">
-        <a href="{{ asset('frontend/assets/img/app-release.apk')}}" target="_blank"> <img src="{{ asset('frontend/assets/img/download.png')}}"> </a>
-    </div>
 
     <!-- all plugins here -->
     <script src="{{ asset('frontend/assets/js/vendor.js')}}"></script>

@@ -5691,7 +5691,6 @@ blockquote .icon {
   font-size: 16px;
   line-height: 26px;
   color: #fff;
-  margin-bottom: 30px;
 }
 .footer-area .widget_nav_menu ul {
   margin: 0;
@@ -6081,9 +6080,9 @@ input[type=number] {
     color: rgb(255, 255, 255);
     transform: rotate(90deg);
     z-index: 1024;
-    right: -76px;
+    right: -75px;
     font-size: 15px;
-    padding: 5px 10px !important;
+    padding: 5px 10px 1px 10px !important;
     letter-spacing: 1px;
 }
 .dds p{
@@ -6102,3 +6101,78 @@ input[type=number] {
     animation-name: example1;
     z-index: 9999;
 }
+.blink-button {
+    border: 2px solid #fff;
+    /* -webkit-border-radius: 40px; */
+    border-radius: 40px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 4px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    -webkit-animation: glowing 1300ms infinite;
+    -moz-animation: glowing 1300ms infinite;
+    -o-animation: glowing 1300ms infinite;
+    animation: glowing 1300ms infinite;
+  }
+  @-webkit-keyframes glowing {
+    0% {
+      background-color: #ff00b3;
+      -webkit-box-shadow: 0 0 3px #ff00b3;
+    }
+    50% {
+      background-color: #7120af;
+      -webkit-box-shadow: 0 0 15px #7120af;
+    }
+    100% {
+      background-color: #ff00b3;
+      -webkit-box-shadow: 0 0 3px #ff00b3;
+    }
+  }
+  @keyframes glowing {
+    0% {
+      background-color: #ff00b3;
+      box-shadow: 0 0 3px #ff00b3;
+    }
+    50% {
+      background-color: #7120af;
+      box-shadow: 0 0 15px #7120af;
+    }
+    100% {
+      background-color: #ff00b3;
+      box-shadow: 0 0 3px #ff00b3;
+    }
+  }
+
+  @-webkit-keyframes glowing-polygon {
+    0% {
+      fill: #ff00b3;
+      -webkit-filter: drop-shadow( 0 0 3px #ff00b3);
+    }
+    50% {
+      fill: #7120af;
+      -webkit-filter: drop-shadow( 0 0 15px #7120af);
+    }
+    100% {
+      fill: #ff00b3;
+      -webkit-filter: drop-shadow( 0 0 3px #ff00b3);
+    }
+  }
+  @keyframes glowingPolygon {
+    0% {
+      fill: #ff00b3;
+      filter: drop-shadow( 0 0 3px #ff00b3);
+    }
+    50% {
+      fill: #7120af;
+      filter: drop-shadow( 0 0 15px #7120af);
+    }
+    100% {
+      fill: #ff00b3;
+      filter: drop-shadow( 0 0 3px #ff00b3);
+    }
+  }

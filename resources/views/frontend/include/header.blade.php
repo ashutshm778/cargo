@@ -46,10 +46,8 @@
     </header>
     <!-- navbar end -->
 
-    <div class="trackorder d-sm-block d-md-none"><a class="btn btn-base" href="{{route('track_order')}}">Track Your Order <i class="fa fa-envelope" aria-hidden="true"></i></a></div>
-
-    <div class="enquiryBtn"><a class="btn btn-base" data-bs-toggle="modal" data-bs-target="#myModal1">Franchise Enquiry <i class="fa fa-envelope" aria-hidden="true"></i></a></div>
-
+    <div class="enquiryBtn d-sm-none d-md-block"><a class="btn btn-base" data-bs-toggle="modal" data-bs-target="#myModal1">Franchise Enquiry <i class="fa fa-envelope" aria-hidden="true"></i></a></div>
+    <div class="enquiryBtn d-sm-block d-md-none"><a class="btn btn-base" href="{{route('track_order')}}">Track Your Order <i class="fa fa-envelope" aria-hidden="true"></i></a></div>
     <div class="modal fade show" id="myModal1" >
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
