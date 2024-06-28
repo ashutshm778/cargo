@@ -253,7 +253,33 @@ class HomeController extends Controller
     public function get_assign_delivery(Request $request)
     {
 
-        $drs_list =  DeliveryRunSheet::where('code',Auth::guard('api')->user()->code)->orderBy('id','desc')->with('drsList')->get();
+        $drs_list = DeliveryRunSheet::where('code', Auth::guard('api')->user()->code)
+        ->whereDoesntHave('drsList', function($query) {
+            $query->whereNotNull('signature');
+        })
+        ->orderBy('id', 'desc')
+        ->with(['drsList' => function($query) {
+            $query->whereNull('signature');
+        }])
+        ->get();
+        foreach($drs_list as $list){
+            $list->date=Carbon::parse($list->created_at)->format('d-m-Y');
+            foreach($list->drsList as $data){
+                $data->pc=$data->bookingData->booking_product->no_of_pack;
+            }
+        }
+            return response()->json([
+                'assign_list' => $drs_list,
+                'success' => true,
+                'status' => 200
+            ]);
+
+    }
+
+    public function get_assign_delivery_by_date(Request $request)
+    {
+
+        $drs_list =  DeliveryRunSheet::where('code',Auth::guard('api')->user()->code)->where('date',$request->date)->orderBy('id','desc')->with('drsList')->get();
         foreach($drs_list as $list){
             $list->date=Carbon::parse($list->created_at)->format('d-m-Y');
             foreach($list->drsList as $data){
