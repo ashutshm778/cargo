@@ -11,6 +11,7 @@ use App\Models\BookingLog;
 use App\Models\CNoteDetail;
 use Livewire\WithPagination;
 use App\Models\BookingProduct;
+use Illuminate\Support\Facades\DB;
 use App\Models\CNoteFrenchiesDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BookingProductBarcode;
@@ -45,6 +46,7 @@ class Create extends Component
     public $consignees = [];
 
     public $tags = [];
+    public $barcodes = [];
 
     function mount()
     {
@@ -63,10 +65,30 @@ class Create extends Component
         return [
             'tags' => 'required|array|min:' . $this->no_of_pack[1]. '|max:' . $this->no_of_pack[1],
             'tags.*' => 'string|max:255',
+            'barcodes' => 'required|array|min:' . $this->no_of_pack[1]. '|max:' . $this->no_of_pack[1],
+            'barcodes.*' => [
+                'string',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    if (DB::table('booking_product_barcodes')->where('barcode', $value)->exists()) {
+                        $fail('The ' . $attribute . ' must be unique in the booking barcode table.');
+                    }
+                },
+            ],
         ];
     }
 
     public function updatedTags()
+    {
+        $this->validate();
+        $total=0;
+        foreach($this->tags as $tag){
+           $total = $total+$tag;
+        }
+        $this->weight[1]=$total;
+    }
+
+    public function updatedbarcodes()
     {
         $this->validate();
         $total=0;
@@ -332,7 +354,7 @@ class Create extends Component
             for($i=1;$i<=$value;$i++){
                 $booking_product_barcode=new BookingProductBarcode;
                 $booking_product_barcode->booking_product_id=$booking_product->id;
-                $booking_product_barcode->barcode=$booking->bill_no.$i;
+                $booking_product_barcode->barcode=$this->barcodes[$i-1];
                 $booking_product_barcode->weight=$this->tags[$i-1];
                 $booking_product_barcode->status=0;
                 $booking_product_barcode->save();

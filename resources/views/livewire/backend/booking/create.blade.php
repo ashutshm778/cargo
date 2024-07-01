@@ -28,7 +28,8 @@
                                                         <label for="bill_no"> AWB No / Tracking No- </label>
                                                         <input type="text" class="form-control col-5 mb-3"
                                                             id="bill_no" wire:model.live="bill_no"
-                                                            placeholder="AWB No/Tracking No" style="text-transform: uppercase"
+                                                            placeholder="AWB No/Tracking No"
+                                                            style="text-transform: uppercase"
                                                             wire:change="get_c_no_details()" required>
                                                         <span
                                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"
@@ -47,63 +48,63 @@
                                                                     @endforeach
                                                                 </select>
                                                                 <span
-                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                                <strong>{{ $errors->first('branch_id') }}</strong>
-                                                            </span>
+                                                                    style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                    <strong>{{ $errors->first('branch_id') }}</strong>
+                                                                </span>
                                                             </div>
                                                         @else
-                                                        @if(empty($frenchies_id))
-                                                            <div class="mb-3">
-                                                                <label for="branch_id"> Branch-</label>
-                                                                <select id='branch_id' wire:model="branch_id"
-                                                                    class="form-control" disabled required>
-                                                                    <option value=''>-- Select Branch--</option>
-                                                                    <option
-                                                                        value="{{ auth()->guard('admin')->user()->branch_id }}">
-                                                                        {{ auth()->guard('admin')->user()->branch_data->name }}
-                                                                    </option>
-                                                                </select>
-                                                                <span
-                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                                <strong>{{ $errors->first('branch_id') }}</strong>
-                                                             </span>
-                                                            </div>
-
-
-
+                                                            @if (empty($frenchies_id))
+                                                                <div class="mb-3">
+                                                                    <label for="branch_id"> Branch-</label>
+                                                                    <select id='branch_id' wire:model="branch_id"
+                                                                        class="form-control" disabled required>
+                                                                        <option value=''>-- Select Branch--
+                                                                        </option>
+                                                                        <option
+                                                                            value="{{ auth()->guard('admin')->user()->branch_id }}">
+                                                                            {{ auth()->guard('admin')->user()->branch_data->name }}
+                                                                        </option>
+                                                                    </select>
+                                                                    <span
+                                                                        style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                        <strong>{{ $errors->first('branch_id') }}</strong>
+                                                                    </span>
+                                                                </div>
                                                             @else
-                                                            <div class="row">
-                                                            <div class="col-6">
-                                                                <label for="branch_id"> Branch-</label>
-                                                                <select id='branch_id' wire:model="branch_id"
-                                                                    class="form-control" disabled required>
-                                                                    <option value=''>-- Select Branch--</option>
-                                                                    <option
-                                                                        value="{{ auth()->guard('admin')->user()->branch_id }}">
-                                                                        {{ auth()->guard('admin')->user()->branch_data->name }}
-                                                                    </option>
-                                                                </select>
-                                                                <span
-                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                                <strong>{{ $errors->first('branch_id') }}</strong>
-                                                             </span>
-                                                            </div>
-                                                            @php $frenchies_data=App\Models\Franchise::find($frenchies_id); @endphp
-                                                            <div class="col-6">
-                                                                <label for="branch_id"> Frenchies-</label>
-                                                                <select id='branch_id' wire:model="frenchies_id"
-                                                                    class="form-control" disabled required>
-                                                                    <option value=''>-- Select Frenchies--</option>
-                                                                    <option value="{{$frenchies_data->id}}">
-                                                                        {{$frenchies_data->name}}
-                                                                    </option>
-                                                                </select>
-                                                                <span
-                                                                style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
-                                                                <strong>{{ $errors->first('frenchies_id') }}</strong>
-                                                             </span>
-                                                            </div>
-                                                            </div>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <label for="branch_id"> Branch-</label>
+                                                                        <select id='branch_id' wire:model="branch_id"
+                                                                            class="form-control" disabled required>
+                                                                            <option value=''>-- Select Branch--
+                                                                            </option>
+                                                                            <option
+                                                                                value="{{ auth()->guard('admin')->user()->branch_id }}">
+                                                                                {{ auth()->guard('admin')->user()->branch_data->name }}
+                                                                            </option>
+                                                                        </select>
+                                                                        <span
+                                                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                            <strong>{{ $errors->first('branch_id') }}</strong>
+                                                                        </span>
+                                                                    </div>
+                                                                    @php $frenchies_data=App\Models\Franchise::find($frenchies_id); @endphp
+                                                                    <div class="col-6">
+                                                                        <label for="branch_id"> Frenchies-</label>
+                                                                        <select id='branch_id' wire:model="frenchies_id"
+                                                                            class="form-control" disabled required>
+                                                                            <option value=''>-- Select Frenchies--
+                                                                            </option>
+                                                                            <option value="{{ $frenchies_data->id }}">
+                                                                                {{ $frenchies_data->name }}
+                                                                            </option>
+                                                                        </select>
+                                                                        <span
+                                                                            style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
+                                                                            <strong>{{ $errors->first('frenchies_id') }}</strong>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
                                                             @endif
 
                                                         @endif
@@ -129,7 +130,7 @@
                                         <label for="branch_select_from">From- </label>
                                         @if (auth()->guard('admin')->user()->id == 1)
                                             <select class="form-control" id="branch_select_from" wire:model="from"
-                                                 required>
+                                                required>
                                                 <option value=''>-- Select Branch--</option>
                                                 @foreach (App\Models\Branch::all() as $branch)
                                                     <option value="{{ $branch->id }}">
@@ -170,8 +171,8 @@
                                                 data-target="#exampleModal2" style="font-size: 20px;"><i
                                                     class="bx bxs-plus-square"
                                                     wire:click="openConsginer()"></i></a></label>
-                                        <input type="text" class="form-control" id="consignor" list="consignor-list"
-                                            wire:model.live="consignor" placeholder="Consignor"
+                                        <input type="text" class="form-control" id="consignor"
+                                            list="consignor-list" wire:model.live="consignor" placeholder="Consignor"
                                             wire:change="get_consigner_details()" required>
                                         <span
                                             style="display: block; width: 100%;margin-top: 0.25rem;font-size: 80%;color: #dc3545;"="alert">
@@ -352,10 +353,18 @@
                                                     wire:change="cal_total_amount()" required></td>
                                         </tr>
                                         <tr>
+                                            <td colspan="5">
+                                                <input id="barcode" name="barcodes"
+                                                    value="{{ implode(',', $barcodes) }}" hidden>
+                                                <div wire:ignore>
+                                                    <input type="text" class="form-control" id="barcode-input"
+                                                        placeholder="Add Barcode">
+                                                </div>
+                                                @error('barcodes')
+                                                    <span class="error">{{ $message }}</span>
+                                                @enderror
+                                            </td>
 
-                                            <td colspan="5">Seal /Received above mentioned production in good
-                                                condition and correct measure.<br>
-                                                I/We declare that GST shall be payable by consignor/consignee</td>
                                             <td colspan="1">B. Charges</td>
                                             <td><input type="number" class="form-control" id="b_charges"
                                                     wire:model="b_charges" value="0"
@@ -363,8 +372,10 @@
 
                                         </tr>
                                         <tr>
-                                            <td colspan="5">I/We have not to claim or avail examption for value
-                                                of goods & material.</td>
+                                            <td colspan="5">Seal /Received above mentioned production in good
+                                                condition and correct measure.<br>
+                                                I/We declare that GST shall be payable by consignor/consignee</td>
+
                                             <td colspan="1">Other Charges</td>
                                             <td><input type="number" class="form-control" id="other_charges"
                                                     wire:model="other_charges" value="0"
@@ -372,7 +383,8 @@
 
                                         </tr>
                                         <tr>
-                                            <td colspan="5"></td>
+                                            <td colspan="5">I/We have not to claim or avail examption for value
+                                                of goods & material.</td>
                                             <td colspan="1">G.S.T</td>
                                             <td><input type="number" class="form-control" id="gst"
                                                     wire:model="tax" value="0" wire:change="cal_total_amount()"
@@ -465,6 +477,36 @@
             });
 
             tagify.addTags(@this.get('tags'));
+        });
+
+        $(document).ready(function() {
+
+            const barcodeInput = document.querySelector('#barcode-input');
+            const hiddenInput = document.querySelector('#barcode');
+            const tagify = new Tagify(barcodeInput, {
+                validate: function(tag) {
+                    return /^[a-zA-Z0-9]+$/.test(tag.value); // Ensure tag is alphanumeric
+                },
+                duplicates: false // Allow duplicates
+            });
+
+            tagify.on('add', (e) => {
+                if (!/^[a-zA-Z0-9]+$/.test(e.detail.data.value)) {
+                    tagify.removeTag(e.detail.data.value);
+                } else {
+                    @this.set('barcodes', tagify.value.map(tag => tag.value));
+                }
+            });
+
+            tagify.on('remove', () => {
+                @this.set('barcodes', tagify.value.map(tag => tag.value));
+            });
+
+            Livewire.on('inputUpdated', (barcodes) => {
+                tagify.loadOriginalValues(barcodes);
+            });
+
+            tagify.addTags(@this.get('barcodes'));
         });
     </script>
     @push('scripts')
